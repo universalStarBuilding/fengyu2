@@ -30,7 +30,7 @@ public class LoginController {
     /**
      * 日志对象
      */
-    protected Logger logger = LoggerFactory.getLogger(ProjectController.class);
+    protected Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     private UserService userService;
