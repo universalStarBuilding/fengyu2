@@ -26,4 +26,5 @@ public class LogAccessService extends BaseService {
 
         return result ;
     }
+
 }
