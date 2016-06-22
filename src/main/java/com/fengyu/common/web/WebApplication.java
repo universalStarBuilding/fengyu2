@@ -1,5 +1,8 @@
-package com.fengyu.common.config;
+package com.fengyu.common.web;
 
+import com.fengyu.common.filter.AuthorizationRequestFilter;
+import com.fengyu.common.filter.FeatureAnnotatedFactory;
+import com.fengyu.system.interceptor.AirLogFilter;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.mvc.jsp.JspMvcFeature;
 import org.glassfish.jersey.server.validation.ValidationConfig;
@@ -19,13 +22,17 @@ import java.util.List;
 /**
  * Created by guozheng on 2016/6/7.
  */
-public class APIApplication extends ResourceConfig{
+public class WebApplication extends ResourceConfig{
 
-    public APIApplication() {
-        //register(AuthorizationRequestFilter.class);
-
+    public WebApplication() {
+        //注册日志记录
+        register(AirLogFilter.class);
         // MVC.
         register(JspMvcFeature.class);
+        //注册注解工厂
+        register(FeatureAnnotatedFactory.class);
+        //注册身份验证
+        register(AuthorizationRequestFilter.class);
         // Validation.
        // register(ValidationConfigurationContextResolver.class);
     }

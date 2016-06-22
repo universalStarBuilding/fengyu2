@@ -56,7 +56,7 @@
         </init-param>
         <init-param>
             <param-name>javax.ws.rs.Application</param-name>
-            <param-value>com.fengyu.common.config.APIApplication</param-value>
+            <param-value>com.fengyu.common.web.WebApplication</param-value>
         </init-param>
         <!-- beanValidation -->
         <init-param>
