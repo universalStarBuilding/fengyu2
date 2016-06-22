@@ -69,7 +69,12 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
         postAddress.setIsDefault(postAddress.getIsNewRecord());
         return postAddressDao.updatePostAddress(postAddress);
     }
-    //删除收货地址
+
+    /**
+     * 删除收货地址
+     * @param id
+     * @return
+     */
     public Integer deletePostAddress(Integer id){
         if (id==null){
             throw new UserException("收货地址删除失败");
@@ -78,7 +83,12 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
         postAddress.setUserId(id);
         return postAddressDao.delete(id);
     }
-    //分页查询收获地址
+
+    /**
+     * 分页查询收获地址
+     * @param logAccess
+     * @return
+     */
     public SearchResult getListPostAddress(LogAccess logAccess){
         SearchResult<LogAccess> result=new SearchResult<>();
         result.setTotalRows(postAddressDao.postAddressPage(logAccess));

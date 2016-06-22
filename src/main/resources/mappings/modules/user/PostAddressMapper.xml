@@ -73,10 +73,12 @@
   <select id="postAddressPage" resultType="java.lang.Long" parameterType="com.fengyu.system.entity.LogAccess">
     SELECT COUNT(*) FROM post_address
   </select>
+
   <select id="getListPostAddress" resultMap="BaseResultMap" parameterType="com.fengyu.system.entity.LogAccess">
     SELECT
     <include refid="Base_Column_List" />
     FROM post_address
     limit #{startPage},#{rows}
   </select>
+
 </mapper>

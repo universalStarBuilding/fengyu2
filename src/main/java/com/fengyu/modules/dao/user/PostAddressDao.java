@@ -9,14 +9,6 @@ import java.util.List;
 
 @MyBatisDao
 public interface PostAddressDao extends CrudDao<PostAddress> {
-
-    int insertSelective(PostAddress record);
-
-    PostAddress selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(PostAddress record);
-
-    int updateByPrimaryKey(PostAddress record);
     //查询收货地址详细信息
     PostAddress getPostAddress(Integer id);
     //增加收货地址

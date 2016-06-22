@@ -48,23 +48,6 @@
             }
         });
     }
-//        //修改收货地址
-//        $("#insertPostAddress").click(function (){
-//            $.post("http://localhost:8080/rest/user/postAddress/insertPostAddress",
-//                    {
-//                        userId:2,
-//                        postCode:3,
-//                        postUser:"zs123",
-//                        mobile:13127158259,
-//                        provinceId:3,
-//                        cityId:3,
-//                        countyId:3,
-//                        addressDetail:"德玛西亚"
-//                    },function(data){
-//                        alert("code:"+data["code"]+"   message:"+data["messageDesc"]);
-//                        console.log(data["code"],data["messageDesc"]);
-//                    },"json");
-//        });
     //添加收货地址
     function updatePostAddress()
     {
