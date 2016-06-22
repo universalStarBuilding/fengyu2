@@ -24,7 +24,7 @@ import javax.ws.rs.core.MediaType;
  * @version 2015-05-19
  */
 @Component
-@Path("/")
+@Path("/user")
 public class LoginController {
 
     /**
