@@ -19,8 +19,9 @@ import javax.ws.rs.core.MediaType;
 
 
 @Component
-@Path("/")
+@Path("/project/text")
 public class ProjectController {
+
 
     @POST
     @Path("doLogin")
@@ -30,5 +31,4 @@ public class ProjectController {
     {
         return null;
     }
-
 }

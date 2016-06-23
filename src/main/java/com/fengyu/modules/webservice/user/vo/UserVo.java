@@ -11,7 +11,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.security.Principal;
 import java.util.Date;
 
-public class UserVo {
+@XmlRootElement
+public class UserVo{
+
 
     private String nameLogin;
 
