@@ -1222,6 +1222,306 @@
                 </p>
             </div>
         </div>
+        <!--我支持的项目-->
+        <div class="data">
+        <h1 class="jkname">接口名称:查看我支持项目列表</h1>
+        <div class="tabel" style = "padding-bottom:20px;">
+            <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-right:40px;">
+                <div class="uk-width-100 bedeck">
+                    <label for="" style="line-height:28px">接口地址：</label>
+                    <p>/project/msg/queryById</p>
+                    <p class="typeP uk-float-right">POST</p>
+                </div>
+            </div>
+            <div class="sccs">
+                <div class="uk-grid uk-grid-collapse bedeckBox">
+                    <div class="uk-width-100 bedeck">
+                        <label for="" style="line-height:28px">上传参数</label>
+                    </div>
+                </div>
+                <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-left:50px">
+                    <div class="uk-width-1-3 bedeck">
+                        <label for="" style="line-height:28px">参数名称：</label>
+                        <p>id</p>&nbsp;<p>page</p>&nbsp;<p>rows</p>
+                    </div>
+                    <div class="uk-width-1-3 bedeck">
+                        <label for="" style="line-height:28px">类型：</label>
+                        <p>int</p>&nbsp;<p>int</p>&nbsp;<p>int</p>
+                    </div>
+                    <div class="uk-width-1-3 bedeck">
+                        <label for="" style="line-height:28px">备注：</label>
+                        <p>传递支持对象</p>
+                    </div>
+                </div>
+            </div>
+            <div class="fhcs">
+                <div class="uk-grid uk-grid-collapse bedeckBox">
+                    <div class="uk-width-100 bedeck">
+                        <label for="" style="line-height:28px">返回参数</label>
+                    </div>
+                </div>
+                <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-left:50px">
+                    <div class="uk-width-1-3 bedeck">
+                        <label for="" style="line-height:28px">参数名称：</label>
+                        <p>projectName</p>
+                    </div>
+                    <div class="uk-width-1-3 bedeck">
+                        <label for="" style="line-height:28px">类型：</label>
+                        <p>String</p>
+                    </div>
+                    <div class="uk-width-1-3 bedeck">
+                        <label for="" style="line-height:28px">备注：</label>
+                        <p>项目名称</p>
+                    </div>
+                </div>
+                <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-left:50px">
+                    <div class="uk-width-1-3 bedeck">
+                        <label for="" style="line-height:28px">参数名称：</label>
+                        <p>projectImage</p>
+                    </div>
+                    <div class="uk-width-1-3 bedeck">
+                        <label for="" style="line-height:28px">类型：</label>
+                        <p>String</p>
+                    </div>
+                    <div class="uk-width-1-3 bedeck">
+                        <label for="" style="line-height:28px">备注：</label>
+                        <p>项目图片</p>
+                    </div>
+                </div>
+                <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-left:50px">
+                    <div class="uk-width-1-3 bedeck">
+                        <label for="" style="line-height:28px">参数名称：</label>
+                        <p>projectSummary</p>
+                    </div>
+                    <div class="uk-width-1-3 bedeck">
+                        <label for="" style="line-height:28px">类型：</label>
+                        <p>String</p>
+                    </div>
+                    <div class="uk-width-1-3 bedeck">
+                        <label for="" style="line-height:28px">备注：</label>
+                        <p>一句话描述</p>
+                    </div>
+                </div>
+                <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-left:50px">
+                    <div class="uk-width-1-3 bedeck">
+                        <label for="" style="line-height:28px">参数名称：</label>
+                        <p>releasesTime</p>
+                    </div>
+                    <div class="uk-width-1-3 bedeck">
+                        <label for="" style="line-height:28px">类型：</label>
+                        <p>date</p>
+                    </div>
+                    <div class="uk-width-1-3 bedeck">
+                        <label for="" style="line-height:28px">备注：</label>
+                        <p>项目发布日期</p>
+                    </div>
+                </div>
+            </div>
+            <p style="color:#000;" >
+                {"access_result":"SUCCESS","msg":"com.fengyu.system.entity.SearchResult@58e60b2f"}
+            </p>
+        </div >
+    </div>
+        <!--我发起的项目-->
+        <div class="data">
+            <h1 class="jkname">接口名称:查看我发起的项目列表</h1>
+            <div class="tabel" style = "padding-bottom:20px;">
+                <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-right:40px;">
+                    <div class="uk-width-100 bedeck">
+                        <label for="" style="line-height:28px">接口地址：</label>
+                        <p>/project/msg/launchProject/queryBy</p>
+                        <p class="typeP uk-float-right">POST</p>
+                    </div>
+                </div>
+                <div class="sccs">
+                    <div class="uk-grid uk-grid-collapse bedeckBox">
+                        <div class="uk-width-100 bedeck">
+                            <label for="" style="line-height:28px">上传参数</label>
+                        </div>
+                    </div>
+                    <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-left:50px">
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">参数名称：</label>
+                            <p>id</p>&nbsp;<p>page</p>&nbsp;<p>rows</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">类型：</label>
+                            <p>int</p>&nbsp;<p>int</p>&nbsp;<p>int</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">备注：</label>
+                            <p>传递发起对象</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fhcs">
+                    <div class="uk-grid uk-grid-collapse bedeckBox">
+                        <div class="uk-width-100 bedeck">
+                            <label for="" style="line-height:28px">返回参数</label>
+                        </div>
+                    </div>
+                    <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-left:50px">
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">参数名称：</label>
+                            <p>projectName</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">类型：</label>
+                            <p>String</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">备注：</label>
+                            <p>项目名称</p>
+                        </div>
+                    </div>
+                    <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-left:50px">
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">参数名称：</label>
+                            <p>projectImage</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">类型：</label>
+                            <p>String</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">备注：</label>
+                            <p>项目图片</p>
+                        </div>
+                    </div>
+                    <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-left:50px">
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">参数名称：</label>
+                            <p>projectSummary</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">类型：</label>
+                            <p>String</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">备注：</label>
+                            <p>一句话描述</p>
+                        </div>
+                    </div>
+                    <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-left:50px">
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">参数名称：</label>
+                            <p>releasesTime</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">类型：</label>
+                            <p>date</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">备注：</label>
+                            <p>项目发布日期</p>
+                        </div>
+                    </div>
+                </div>
+                <p style="color:#000;" >
+                    {"access_result":"SUCCESS","msg":"com.fengyu.system.entity.SearchResult@4340b3d2"}
+                </p>
+            </div >
+        </div>
+        <!--我关注的项目-->
+        <div class="data">
+            <h1 class="jkname">接口名称:查看我关注的项目列表</h1>
+            <div class="tabel" style = "padding-bottom:20px;">
+                <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-right:40px;">
+                    <div class="uk-width-100 bedeck">
+                        <label for="" style="line-height:28px">接口地址：</label>
+                        <p>/project/msg/followProject/queryByIdFollow</p>
+                        <p class="typeP uk-float-right">POST</p>
+                    </div>
+                </div>
+                <div class="sccs">
+                    <div class="uk-grid uk-grid-collapse bedeckBox">
+                        <div class="uk-width-100 bedeck">
+                            <label for="" style="line-height:28px">上传参数</label>
+                        </div>
+                    </div>
+                    <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-left:50px">
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">参数名称：</label>
+                            <p>id</p>&nbsp;<p>page</p>&nbsp;<p>rows</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">类型：</label>
+                            <p>int</p>&nbsp;<p>int</p>&nbsp;<p>int</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">备注：</label>
+                            <p>传递关注对象</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fhcs">
+                    <div class="uk-grid uk-grid-collapse bedeckBox">
+                        <div class="uk-width-100 bedeck">
+                            <label for="" style="line-height:28px">返回参数</label>
+                        </div>
+                    </div>
+                    <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-left:50px">
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">参数名称：</label>
+                            <p>projectName</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">类型：</label>
+                            <p>String</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">备注：</label>
+                            <p>项目名称</p>
+                        </div>
+                    </div>
+                    <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-left:50px">
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">参数名称：</label>
+                            <p>projectImage</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">类型：</label>
+                            <p>String</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">备注：</label>
+                            <p>项目图片</p>
+                        </div>
+                    </div>
+                    <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-left:50px">
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">参数名称：</label>
+                            <p>projectSummary</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">类型：</label>
+                            <p>String</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">备注：</label>
+                            <p>一句话描述</p>
+                        </div>
+                    </div>
+                    <div class="uk-grid uk-grid-collapse bedeckBox" style="padding-left:50px">
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">参数名称：</label>
+                            <p>releasesTime</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">类型：</label>
+                            <p>date</p>
+                        </div>
+                        <div class="uk-width-1-3 bedeck">
+                            <label for="" style="line-height:28px">备注：</label>
+                            <p>项目发布日期</p>
+                        </div>
+                    </div>
+                </div>
+                <p style="color:#000;" >
+                    {"<ac></ac>cess_result":"SUCCESS","msg":"com.fengyu.system.entity.SearchResult@497b1125"}
+                </p>
+            </div >
+        </div>
     </div>
 </body>
 <script>
