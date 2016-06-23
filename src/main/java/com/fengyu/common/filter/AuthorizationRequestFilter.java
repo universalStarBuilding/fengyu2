@@ -103,14 +103,14 @@ public class AuthorizationRequestFilter implements ContainerRequestFilter
 				VirtualSession session= VirtualSessionManager.getInstance().getSession(tokenText, false);
 				if (session!=null && session.getAttribute("user")!=null)
 				{
-					final User user=(User)session.getAttribute("user");
+					final UserVo user=(UserVo)session.getAttribute("user");
 					if(String.valueOf(user.getId()).equals(userId))
 					{
 						requestContext.setSecurityContext(new SecurityContextAuthorizer(uriInfo,user, new String[]{"user"}));
 						return;
 					}
 					else{
-						logger.info("User not found " + userId);
+						logger.info("UserVo not found " + userId);
 					}
 				}
 				else {

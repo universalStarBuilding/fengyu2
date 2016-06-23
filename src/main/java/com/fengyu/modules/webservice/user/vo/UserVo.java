@@ -14,7 +14,7 @@ import java.util.Date;
 @XmlRootElement
 public class UserVo{
 
-    @NotNull
+
     private String nameLogin;
 
     private String email;
