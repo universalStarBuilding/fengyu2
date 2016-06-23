@@ -39,7 +39,7 @@ public class UserInfoController {
     }
 
     @GET
-    @Path("getUserInfo/{id}")
+    @Path("get/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public ResultAPI getUserInfo(@PathParam("id") Integer id) {
@@ -54,7 +54,7 @@ public class UserInfoController {
         return resultAPI;
     }
     @POST
-    @Path("updateUserInfo")
+    @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public ResultAPI updateUserInfo(UserInfo userInfo){
