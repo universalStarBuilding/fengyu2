@@ -11,6 +11,12 @@ public class SendMail {
 	private final static String password = "guozheng123";
 	private static  String nick = "360fengyu";//发送者别名
 
+	/**
+	 * 发送
+	 * @param email     邮箱地址
+	 * @param subject   标题
+	 * @param content   内容
+     */
 	public static void send(String email, String subject, String content) {
 		Properties props = new Properties();
 		props.put("mail.smtp.host", host); // 指定SMTP服务器

@@ -30,6 +30,13 @@ public class AliMsgApi {
     private static final String appSecret = "cf77eaace3add952cf0678e8f82acc51"; // 可替换为您的沙箱环境应用的appSecret
     private static final String sessionKey = "test"; // 必须替换为沙箱账号授权得到的真实有效sessionKey
 
+    /**
+     * 发送
+     * @param userId          操作用户（非必填）
+     * @param phone           手机号
+     * @param securityCode   验证码
+     * @return
+     */
     public static String sendMsg(String userId,String phone,String securityCode){
         Map<String, String> params = new HashMap<String, String>();
         // 公共参数
