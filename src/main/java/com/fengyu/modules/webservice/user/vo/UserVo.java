@@ -12,7 +12,7 @@ import java.security.Principal;
 import java.util.Date;
 
 @XmlRootElement
-public class User {
+public class UserVo{
 
     @NotNull
     private String nameLogin;
