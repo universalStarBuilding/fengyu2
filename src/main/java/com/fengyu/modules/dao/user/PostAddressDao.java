@@ -18,7 +18,7 @@ public interface PostAddressDao extends CrudDao<PostAddress> {
     //修改收货地址
     Integer updatePostAddress(PostAddress postAddress);
     //查询收货列表
-    List<LogAccess>getListPostAddress(LogAccess logAccess);
+    List<PostAddress>getListPostAddress(LogAccess logAccess);
     //统计数据
     long postAddressPage(LogAccess logAccess);
 }

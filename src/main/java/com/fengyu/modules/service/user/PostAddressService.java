@@ -90,7 +90,7 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
      * @return
      */
     public SearchResult getListPostAddress(LogAccess logAccess){
-        SearchResult<LogAccess> result=new SearchResult<>();
+        SearchResult<PostAddress> result=new SearchResult<>();
         result.setTotalRows(postAddressDao.postAddressPage(logAccess));
         result.setRows(postAddressDao.getListPostAddress(logAccess));
         return result;
