@@ -37,15 +37,6 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
      * @return
      */
     public Integer insert(PostAddress postAddress){
-        postAddress.setUserId(postAddress.getUserId());
-        postAddress.setPostCode(postAddress.getPostCode());
-        postAddress.setPostUser(postAddress.getPostUser());
-        postAddress.setMobile(postAddress.getMobile());
-        postAddress.setProvinceId(postAddress.getProvinceId());
-        postAddress.setCityId(postAddress.getCityId());
-        postAddress.setCountyId(postAddress.getCountyId());
-        postAddress.setAddressDetail(postAddress.getAddressDetail());
-        postAddress.setIsDefault(postAddress.getIsNewRecord());
         return postAddressDao.insert(postAddress);
     }
 
@@ -58,15 +49,6 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
         if (postAddress.getUserId()==null){
             throw new UserException("收货地址修改失败");
         }
-        postAddress.setUserId(postAddress.getUserId());
-        postAddress.setPostCode(postAddress.getPostCode());
-        postAddress.setPostUser(postAddress.getPostUser());
-        postAddress.setMobile(postAddress.getMobile());
-        postAddress.setProvinceId(postAddress.getProvinceId());
-        postAddress.setCityId(postAddress.getCityId());
-        postAddress.setCountyId(postAddress.getCountyId());
-        postAddress.setAddressDetail(postAddress.getAddressDetail());
-        postAddress.setIsDefault(postAddress.getIsNewRecord());
         return postAddressDao.updatePostAddress(postAddress);
     }
 

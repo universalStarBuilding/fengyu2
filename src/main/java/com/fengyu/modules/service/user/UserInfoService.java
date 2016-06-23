@@ -30,15 +30,6 @@ public class UserInfoService extends CrudService<UserInfoDao,UserInfo> {
         if (userInfo.getUserId()==null){
             throw new UserException("用户信息修改失败");
         }
-        userInfo.setUserId(userInfo.getUserId());
-        userInfo.setRealName(userInfo.getRealName());
-        userInfo.setNickName(userInfo.getNickName());
-        userInfo.setSex(userInfo.getSex());
-        userInfo.setBrithday(new Date());
-        userInfo.setProvinceId(userInfo.getProvinceId());
-        userInfo.setProvinceId(userInfo.getCityId());
-        userInfo.setCountyId(userInfo.getCountyId());
-        userInfo.setAddress(userInfo.getAddress());
         return userInfoDao.updateUserInfo(userInfo);
     }
 }
