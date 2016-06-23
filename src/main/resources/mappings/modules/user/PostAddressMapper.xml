@@ -74,7 +74,7 @@
     SELECT COUNT(*) FROM post_address
   </select>
 
-  <select id="getListPostAddress" resultMap="BaseResultMap" parameterType="com.fengyu.system.entity.LogAccess">
+  <select id="getListPostAddress" resultType="com.fengyu.modules.model.PostAddress" parameterType="com.fengyu.system.entity.LogAccess">
     SELECT
     <include refid="Base_Column_List" />
     FROM post_address
