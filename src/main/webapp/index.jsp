@@ -148,6 +148,8 @@
             //传过去的参数，格式为 变量名：变量值
             success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
             },
             error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 alert( "Ajax跳转处理失败");
@@ -169,6 +171,8 @@
             //传过去的参数，格式为 变量名：变量值
             success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
             },
             error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 alert( "Ajax跳转处理失败");
@@ -190,6 +194,8 @@
             //传过去的参数，格式为 变量名：变量值
             success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
             },
             error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 alert( "Ajax跳转处理失败");
@@ -205,5 +211,10 @@
 <input type="button" value="添加收货地址"id="insertPostAddress"onclick="insertPostAddress()">
 <input type="button" value="修改收货地址"id="updatePostAddress" onclick="updatePostAddress()">
 <input type="button" value="分页查询收货地址" onclick="pageList()">
+<form action="" method="post">
+    <input type="button" value="支持" onclick="queryById()">
+    <input type="button" value="发起" onclick="queryBy()">
+    <input type="button" value="关注" onclick="queryByIdFollow()">
+</form>
 </body>
 </html>
