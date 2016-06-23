@@ -34,13 +34,12 @@
     </where>
   </sql>
 
-  <select id="get" resultMap="BaseResultMap" parameterType="com.fengyu.modules.model.User" >
-    select 
-    <include refid="Base_Column_List" />
-    from user
-    <include refid="base_where"></include>
+  <select id="getPhone" resultType="com.fengyu.modules.model.User" parameterType="java.lang.Integer" >
+    SELECT PHONE
+     FROM user
+     WHERE id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="delete" parameterType="java.lang.Integer" >
+  <!--<delete id="delete" parameterType="java.lang.Integer" >
     delete from user
     where ID = #{id,jdbcType=INTEGER}
   </delete>
@@ -162,6 +161,6 @@
       </if>
     </set>
     where ID = #{id,jdbcType=INTEGER}
-  </update>
+  </update>-->
 
 </mapper>
