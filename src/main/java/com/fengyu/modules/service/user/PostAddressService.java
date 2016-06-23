@@ -86,13 +86,13 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
 
     /**
      * 分页查询收获地址
-     * @param logAccess
+     * @param postAddress
      * @return
      */
-    public SearchResult getListPostAddress(LogAccess logAccess){
+    public SearchResult getListPostAddress(PostAddress postAddress){
         SearchResult<PostAddress> result=new SearchResult<>();
-        result.setTotalRows(postAddressDao.postAddressPage(logAccess));
-        result.setRows(postAddressDao.getListPostAddress(logAccess));
+        result.setTotalRows(postAddressDao.postAddressPage(postAddress));
+        result.setRows(postAddressDao.getListPostAddress(postAddress));
         return result;
     }
 }

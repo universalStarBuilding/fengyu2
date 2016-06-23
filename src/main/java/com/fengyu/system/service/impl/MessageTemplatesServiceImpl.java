@@ -1,8 +1,6 @@
 package com.fengyu.system.service.impl;
 
 import com.fengyu.common.service.CrudService;
-import com.fengyu.system.dao.MessageTemplatesDao;
-import com.fengyu.system.entity.MessageTemplates;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,12 +12,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class MessageTemplatesServiceImpl extends CrudService<MessageTemplatesDao,MessageTemplates>
+public class MessageTemplatesServiceImpl
 {
-    @Autowired
+    /*@Autowired
     private MessageTemplatesDao messageTemplatesDao;
 
-    /**
+    *//**
      * @Name:
      * @Author: junz（作者）
      * @Version: V1.00 （版本号）
@@ -28,7 +26,7 @@ public class MessageTemplatesServiceImpl extends CrudService<MessageTemplatesDao
      *往信息模板里的变量注入内容
      * 分为List 跟 Map两种 map需要名称对应key List需要次序正确
      *
-     */
+     *//*
     public String inject2MsgTpl4Code(Object params, String msgTplCode) throws Exception
     {
         MessageTemplates msgTpl=new MessageTemplates();
@@ -71,5 +69,5 @@ public class MessageTemplatesServiceImpl extends CrudService<MessageTemplatesDao
         System.out.println(sb.toString());
         return sb.toString();
     }
-
+*/
 }

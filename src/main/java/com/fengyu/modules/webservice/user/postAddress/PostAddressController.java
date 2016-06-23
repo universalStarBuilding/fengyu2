@@ -1,6 +1,7 @@
 package com.fengyu.modules.webservice.user.postAddress;
 
 import com.fengyu.common.exception.SystemException;
+import com.fengyu.common.exception.UserException;
 import com.fengyu.modules.model.PostAddress;
 import com.fengyu.modules.service.user.PostAddressService;
 import com.fengyu.system.entity.LogAccess;
@@ -33,7 +34,7 @@ public class PostAddressController {
         return resultAPI;
     }
     @GET
-    @Path("getPostAddress/{id}")
+    @Path("get/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public ResultAPI getPostAddress(@PathParam("id")Integer id){
@@ -48,7 +49,7 @@ public class PostAddressController {
         return resultAPI;
     }
     @POST
-    @Path("insertPostAddress")
+    @Path("insert")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public ResultAPI insertPostAddress(PostAddress postAddress){
@@ -63,7 +64,7 @@ public class PostAddressController {
         return resultAPI;
     }
     @POST
-    @Path("updatePostAddress")
+    @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public ResultAPI updatePostAddress( PostAddress postAddress){
@@ -78,7 +79,7 @@ public class PostAddressController {
         return resultAPI;
     }
     @GET
-    @Path("deletePostAddress/{id}")
+    @Path("delete/{id}")
     public ResultAPI deletePostAddress(@PathParam("id")Integer id){
         ResultAPI resultAPI=new ResultAPI();
         try {
@@ -94,13 +95,13 @@ public class PostAddressController {
     @Path("pageList")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI pageList(@BeanParam LogAccess logAccess){
+    public ResultAPI pageList(PostAddress postAddress){
 
         ResultAPI resultAPI = new ResultAPI();
         try {
-            resultAPI.setMsg(postAddressService.getListPostAddress(logAccess));
+            resultAPI.setMsg(postAddressService.getListPostAddress(postAddress));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (SystemException e){
+        }catch (UserException e){
             resultAPI.setAccess_result("FAILURE");
             resultAPI.setMsg(e.getMessage());
         }catch (Exception e){
