@@ -21,15 +21,13 @@ public class PersistenceException extends AbstractException {
         return "PersistenceExceptionType";
     }
 
-    @Override
-    public PersistenceExceptionType getUserDefindType() {
-        return this.type;
-    }
-
     public PersistenceException(PersistenceExceptionType type,Object data){
         this(null,type,data);
     }
 
+    public PersistenceExceptionType getType(){
+        return  type;
+    }
     public  Object getData(){
         return  data;
     }

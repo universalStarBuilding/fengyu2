@@ -16,10 +16,8 @@ import java.util.Date;
 @Service(value="userInfoService")
 @Transactional
 public class UserInfoService extends CrudService<UserInfoDao,UserInfo> {
-
     @Autowired
     private UserInfoDao userInfoDao;
-
     //获取用户的详细信息
     public UserInfo getUserInfo(Integer id){
         if (id==null){

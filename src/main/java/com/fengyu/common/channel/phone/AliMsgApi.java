@@ -282,5 +282,8 @@ public class AliMsgApi {
         }
         return false;
     }
-
+    public static void main(String[]args){
+        new AliMsgApi().sendMsg(null,"13127158259","567123");
+        System.out.println("发送成功！");
+    }
 }

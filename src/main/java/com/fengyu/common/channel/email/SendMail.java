@@ -38,7 +38,7 @@ public class SendMail {
 		}
 	}
 	public static void main(String[] args) {
-		new SendMail().send( "2192952290@qq.com", "标题", "HelloWold!");
+		new SendMail().send( "296734078@qq.com", "标题", "HelloWold!");
 		System.out.println("发送成功！");
 	}
 }
