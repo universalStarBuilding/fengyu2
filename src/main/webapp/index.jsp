@@ -8,20 +8,21 @@
     function loginSystem()
     {
         $.ajax({
-            url:"http://localhost:8080/rest/user/web/0",
+            url:"http://localhost:8080/rest/user/doLogin",
+            contentType: "application/json; charset=utf-8",
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
-            type:"get", //传参方式，get 或post
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "nameLogin":"admin@qq.com",
+                "pwdLogin":"admin"}),
             //传过去的参数，格式为 变量名：变量值
-            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
-                console.log("this is success! data:"+data,",status="+status);
+            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
             },
-            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                //console.log("this is error! request:"+request+",status:"+status+",message:"+message);
-                console.log("this is error");
-                console.log(request.responseText);
-                $("#error").html(request);
-                var error = request.responseJSON;
-                console.log(error);
+            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                alert( "Ajax跳转处理失败");
             }
         });
     }
@@ -201,19 +202,164 @@
             }
         });
     }
+    function updatePhone()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/security/update",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "id":"1",
+                "phone":"13853122127",
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
+            },
+            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                alert( "Ajax跳转处理失败");
+            }
+        });
+    }
+    function updateEmail()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/security/emailUpdate",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "id":"1",
+                "email":"akswudonglin@qq.com",
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
+            },
+            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                alert( "Ajax跳转处理失败");
+            }
+        });
+    }
+    function updatePayPwd()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/accbasic/payPwdUpdate",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "userId":"1",
+                "payPwd":"456zxc",
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
+            },
+            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                alert( "Ajax跳转处理失败");
+            }
+        });
+    }
+    function updateLoginPwd()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/security/updateLoginPwd",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "id":"1",
+                "pwdLogin":"456zxc",
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
+            },
+            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                alert( "Ajax跳转处理失败");
+            }
+        });
+    }
+    function insertRealName()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/user/insertRealName",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "userId":"1",
+                "realName":"李四",
+                "idCardNo":"370834199508163430"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
+            },
+            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                alert( "Ajax跳转处理失败");
+            }
+        });
+    }
+    function insertAccUserBank()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/accuserbank/insert",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "userId":"2",
+                "name":"ssss",
+                "bankNo":"95533",
+                "bankAccount":"6226201600810575",
+                "ownerName":"sss",
+                "openAcctBank":"www",
+                "bankType":"www",
+                "bankCityId":"1",
+                "bankProvinceId":"1",
+                "state":"1"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
+            },
+            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                alert( "Ajax跳转处理失败");
+            }
+        });
+    }
 
 </script>
 <body>
-<div id = "error"></div>
-<input type="button" value="测试token" id="testButton" onclick="loginSystem()">
-<input type="button" value="修改用户信息"id="updateUserInfo" onclick="updateUserInfo()">
-<input type="button" value="添加收货地址"id="insertPostAddress"onclick="insertPostAddress()">
-<input type="button" value="修改收货地址"id="updatePostAddress" onclick="updatePostAddress()">
-<input type="button" value="分页查询收货地址" onclick="pageList()">
-<form action="" method="post">
-    <input type="button" value="支持" onclick="queryById()">
-    <input type="button" value="发起" onclick="queryBy()">
-    <input type="button" value="关注" onclick="queryByIdFollow()">
-</form>
+
+<input type="button" value="测试token" id="testButton" onclick="loginSystem()"><br/>
+<input type="button" value="修改用户信息"id="updateUserInfo" onclick="updateUserInfo()"><br/>
+<input type="button" value="添加收货地址"id="insertPostAddress"onclick="insertPostAddress()"><br/>
+<input type="button" value="修改收货地址"id="updatePostAddress" onclick="updatePostAddress()"><br/>
+<input type="button" value="分页查询收货地址" onclick="pageList()"><br/>
+<input type="button" value="支持" onclick="queryById()"><br/>
+<input type="button" value="发起" onclick="queryBy()"><br/>
+<input type="button" value="关注" onclick="queryByIdFollow()"><br/>
+<input type="button" value="修改手机号" onclick="updatePhone()"><br/>
+<input type="button" value="修改邮箱" onclick="updateEmail()"><br/>
+<input type="button" value="修改支付密码" onclick="updatePayPwd()"><br/>
+<input type="button" value="修改登录密码" onclick="updateLoginPwd()"><br/>
+<input type="button" value="添加实名信息" onclick="insertRealName()">
+<input type="button" value="绑定银行卡信息" onclick="insertAccUserBank()">
 </body>
 </html>

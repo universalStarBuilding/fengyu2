@@ -65,4 +65,15 @@
     where USER_ID = #{userId,jdbcType=INTEGER}
   </update>
 
+  <select id="getRealName" resultType="java.lang.String" parameterType="java.lang.Integer">
+    SELECT REAL_NAME
+    from user_info
+    WHERE USER_ID = #{userId,jdbcType=INTEGER}
+  </select>
+  <update id="insertRealName" parameterType="com.fengyu.modules.model.UserInfo">
+    UPDATE user_info SET
+    REAL_NAME= #{realName,jdbcType=VARCHAR},
+    ID_CARD_NO= #{idCardNo,jdbcType=VARCHAR}
+    WHERE USER_ID = #{userId,jdbcType=INTEGER}
+  </update>
 </mapper>
