@@ -2,7 +2,6 @@ package com.fengyu.modules.webservice.project.vo;
 
 import com.fengyu.common.page.Pagetables;
 import com.fengyu.common.persistence.DataEntity;
-import com.sun.tools.doclets.internal.toolkit.taglets.ParamTaglet;
 
 import java.math.BigDecimal;
 import java.util.Date;
