@@ -18,10 +18,13 @@
             error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 //console.log("this is error! request:"+request+",status:"+status+",message:"+message);
                 console.log("this is error");
-                console.log(request.responseText);
-                $("#error").html(request);
+               // var jsonResponse = JSON.parse(request.responseText);
+                var jsonResponse = eval('(' + request.responseText + ')');
+                console.log(jsonResponse["exceptionMsg"]);
+               // console.log(request.responseText);
+               /* $("#error").html(request);
                 var error = request.responseJSON;
-                console.log(error);
+                console.log(error);*/
             }
         });
     }

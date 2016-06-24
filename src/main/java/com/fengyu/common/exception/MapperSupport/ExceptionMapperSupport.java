@@ -14,6 +14,7 @@ public class ExceptionMapperSupport implements ExceptionMapper<Throwable>{
     @Override
     public Response toResponse(Throwable exception) {
         exception.printStackTrace();
-        return Response.status(500).entity(exception).type("application/json").build();
+        AbstractException exception1= (AbstractException) exception;
+        return Response.status(500).entity("{exceptionMsg:\""+exception1.getUserDefindType()+"\"}").type("application/json").build();
     }
 }

@@ -1,6 +1,6 @@
 package com.fengyu.modules.webservice.user;
 
-import com.fengyu.common.exception.MapperSupport.Constant.WebActionExceptionType;
+import com.fengyu.common.exception.MapperSupport.Constant.PersistenceExceptionType;
 import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.modules.model.UserInfo;
 import com.fengyu.modules.service.user.UserInfoService;
@@ -67,7 +67,7 @@ public class UserInfoController {
     public ResultAPI getException(@PathParam("id")Integer id){
         ResultAPI resultAPI = new ResultAPI();
         if (id == 0) {
-            throw new WebActionException(WebActionExceptionType.LoginNotFund, id);
+            throw new WebActionException(PersistenceExceptionType.LoginNotFund, id);
         }
 
         return resultAPI;
