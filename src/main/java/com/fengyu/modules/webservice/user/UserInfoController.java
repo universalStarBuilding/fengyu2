@@ -68,4 +68,43 @@ public class UserInfoController {
         }
         return resultAPI;
     }
+
+    /**
+     * 查询实名，模糊
+     * @param id
+     * @return
+     */
+    @GET
+    @Path("realname/{id}")
+    public ResultAPI getRealName(@PathParam("id")Integer id){
+        ResultAPI resultAPI=new ResultAPI();
+        try {
+            resultAPI.setMsg(userInfoService.getRealName(id));
+            resultAPI.setAccess_result("SUCCESS");
+        }catch (Exception e){
+            e.printStackTrace();
+            resultAPI.setAccess_result("FAILURE");
+        }
+        return resultAPI;
+    }
+
+    /**
+     * 添加实名
+     * @param userInfo
+     * @return
+     */
+    @POST
+    @Path("insertRealName")
+    public ResultAPI insertRealName(UserInfo userInfo){
+        ResultAPI resultAPI=new ResultAPI();
+        try {
+            resultAPI.setMsg(userInfoService.insertRealName(userInfo));
+            resultAPI.setAccess_result("SUCCESS");
+        }catch (Exception e){
+            e.printStackTrace();
+            resultAPI.setAccess_result("FAILURE");
+        }
+        return resultAPI;
+    }
+
 }
