@@ -70,11 +70,11 @@
     </set>
     where USER_ID = #{userId,jdbcType=INTEGER}
   </update>
-  <select id="postAddressPage" resultType="java.lang.Long" parameterType="com.fengyu.system.entity.LogAccess">
+  <select id="postAddressPage" resultType="java.lang.Long" parameterType="com.fengyu.modules.model.PostAddress">
     SELECT COUNT(*) FROM post_address
   </select>
 
-  <select id="getListPostAddress" resultType="com.fengyu.modules.model.PostAddress" parameterType="com.fengyu.system.entity.LogAccess">
+  <select id="getListPostAddress" resultType="com.fengyu.modules.model.PostAddress" parameterType="com.fengyu.modules.model.PostAddress">
     SELECT
     <include refid="Base_Column_List" />
     FROM post_address

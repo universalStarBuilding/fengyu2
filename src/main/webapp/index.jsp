@@ -8,19 +8,20 @@
     function loginSystem()
     {
         $.ajax({
-            url:"http://localhost:8080/rest/user/doLogin",
-            contentType: "application/json; charset=utf-8",
+            url:"http://localhost:8080/rest/user/web/0",
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
-            type:"post", //传参方式，get 或post
-            data:JSON.stringify({
-                "nameLogin":"admin@qq.com",
-                "pwdLogin":"admin"}),
+            type:"get", //传参方式，get 或post
             //传过去的参数，格式为 变量名：变量值
-            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
-                alert("Ajax处理已成功：" + text);
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
             },
-            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                alert( "Ajax跳转处理失败");
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                //console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log("this is error");
+                console.log(request.responseText);
+                $("#error").html(request);
+                var error = request.responseJSON;
+                console.log(error);
             }
         });
     }
@@ -28,13 +29,13 @@
     function updateUserInfo()
     {
         $.ajax({
-            url:"http://localhost:8080/rest/user/updateUserInfo",
+            url:"http://localhost:8080/rest/user/update",
             contentType: "application/json; charset=utf-8",
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
                 "userId":"2",
-                "realName":"admin",
+                "realName":"nidaye",
                 "nickName":"3",
                 "idCardNo":"4",
                 "headImg":"3"
@@ -42,17 +43,19 @@
             //传过去的参数，格式为 变量名：变量值
             success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
             },
             error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 alert( "Ajax跳转处理失败");
             }
         });
     }
-    //添加收货地址
+    //修改收货地址
     function updatePostAddress()
     {
         $.ajax({
-            url:"http://localhost:8080/rest/user/postAddress/updatePostAddress",
+            url:"http://localhost:8080/rest/user/postAddress/update",
             contentType: "application/json; charset=utf-8",
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"post", //传参方式，get 或post
@@ -68,6 +71,8 @@
             //传过去的参数，格式为 变量名：变量值
             success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
             },
             error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 alert( "Ajax跳转处理失败");
@@ -78,7 +83,7 @@
     function insertPostAddress()
     {
         $.ajax({
-            url:"http://localhost:8080/rest/user/postAddress/insertPostAddress",
+            url:"http://localhost:8080/rest/user/postAddress/insert",
             contentType: "application/json; charset=utf-8",
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"post", //传参方式，get 或post
@@ -94,6 +99,8 @@
             //传过去的参数，格式为 变量名：变量值
             success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
             },
             error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 alert( "Ajax跳转处理失败");
@@ -115,6 +122,8 @@
             //传过去的参数，格式为 变量名：变量值
             success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
             },
             error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 alert( "Ajax跳转处理失败");
@@ -123,13 +132,88 @@
     }
 
 
+    function queryById()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/project/msg/queryById",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+
+                "startPage":"1",
+                "rows":"2"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
+            },
+            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                alert( "Ajax跳转处理失败");
+            }
+        });
+    }
+
+    function queryBy()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/project/msg/launchProject/queryBy",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "startPage":"1",
+                "rows":"10"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
+            },
+            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                alert( "Ajax跳转处理失败");
+            }
+        });
+    }
+
+    function queryByIdFollow()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/project/msg/followProject/queryByIdFollow",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "startPage":"1",
+                "rows":"10"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
+            },
+            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                alert( "Ajax跳转处理失败");
+            }
+        });
+    }
+
 </script>
 <body>
-
+<div id = "error"></div>
 <input type="button" value="测试token" id="testButton" onclick="loginSystem()">
 <input type="button" value="修改用户信息"id="updateUserInfo" onclick="updateUserInfo()">
 <input type="button" value="添加收货地址"id="insertPostAddress"onclick="insertPostAddress()">
 <input type="button" value="修改收货地址"id="updatePostAddress" onclick="updatePostAddress()">
 <input type="button" value="分页查询收货地址" onclick="pageList()">
+<form action="" method="post">
+    <input type="button" value="支持" onclick="queryById()">
+    <input type="button" value="发起" onclick="queryBy()">
+    <input type="button" value="关注" onclick="queryByIdFollow()">
+</form>
 </body>
 </html>

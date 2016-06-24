@@ -19,16 +19,24 @@ import javax.ws.rs.core.MediaType;
 
 
 @Component
-@Path("/")
+@Path("/project")
 public class ProjectController {
 
+
+    /**
+     *发起项目
+     * @param user
+     * @return
+     */
     @POST
-    @Path("doLogin")
+    @Path("publish")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public AuthenticationResult doLogin(User user)
+    public String publish(User user)
     {
         return null;
     }
+
+
 
 }
