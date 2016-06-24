@@ -1,5 +1,7 @@
 package com.fengyu.modules.webservice.user;
 
+import com.fengyu.common.exception.MapperSupport.Constant.WebActionExceptionType;
+import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.modules.model.UserInfo;
 import com.fengyu.modules.service.user.UserInfoService;
 import com.fengyu.system.entity.ResultAPI;
@@ -30,15 +32,6 @@ public class UserInfoController {
     private UserInfoService userInfoService;
 
     @GET
-    @Path("get")
-    public ResultAPI get() {
-
-        ResultAPI resultAPI = new ResultAPI();
-
-        return resultAPI;
-    }
-
-    @GET
     @Path("get/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -66,6 +59,17 @@ public class UserInfoController {
             e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");
         }
+        return resultAPI;
+    }
+
+    @GET
+    @Path("web/{id}")
+    public ResultAPI getException(@PathParam("id")Integer id){
+        ResultAPI resultAPI = new ResultAPI();
+        if (id == 0) {
+            throw new WebActionException(WebActionExceptionType.LoginNotFund, id);
+        }
+
         return resultAPI;
     }
 }
