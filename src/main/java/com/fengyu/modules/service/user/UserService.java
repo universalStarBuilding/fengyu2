@@ -1,9 +1,6 @@
 package com.fengyu.modules.service.user;
 
 
-import com.alibaba.druid.sql.visitor.functions.Substring;
-import com.fengyu.common.exception.UserException;
-import com.fengyu.common.service.BaseService;
 import com.fengyu.common.service.CrudService;
 import com.fengyu.common.utils.StringUtils;
 import com.fengyu.modules.dao.user.UserDao;

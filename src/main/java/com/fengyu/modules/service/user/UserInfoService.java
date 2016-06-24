@@ -1,14 +1,11 @@
 package com.fengyu.modules.service.user;
 
-import com.fengyu.common.exception.UserException;
 import com.fengyu.common.service.CrudService;
 import com.fengyu.modules.dao.user.UserInfoDao;
 import com.fengyu.modules.model.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Date;
 
 /**
  * Created by admin on 2016/6/22.

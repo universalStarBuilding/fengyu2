@@ -23,7 +23,7 @@ public class WebActionException extends AbstractException {
         this(null,type,data);
     }
     @Override
-    public PersistenceExceptionType getUserDefindType(){
+    public PersistenceExceptionType getUserDefindExType(){
         return this.type;
     }
     public  Object getData(){

@@ -1,6 +1,5 @@
 package com.fengyu.modules.service.account;
 
-import com.fengyu.common.exception.AccountException;
 import com.fengyu.common.service.CrudService;
 import com.fengyu.common.utils.StringUtils;
 import com.fengyu.modules.dao.user.AccBasicDao;

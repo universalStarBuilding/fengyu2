@@ -1,11 +1,8 @@
 package com.fengyu.modules.service.project.msg;
 
-import com.fengyu.common.exception.OrderException;
 import com.fengyu.modules.dao.project.msg.FollowProjectMapper;
 import com.fengyu.modules.model.FollowProject;
-import com.fengyu.modules.model.LaunchProject;
 import com.fengyu.modules.webservice.project.vo.FollowProjectVo;
-import com.fengyu.modules.webservice.project.vo.LaunchProjectVo;
 import com.fengyu.system.entity.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

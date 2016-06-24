@@ -1,10 +1,8 @@
 package com.fengyu.modules.service.user;
 
-import com.fengyu.common.exception.UserException;
 import com.fengyu.common.service.CrudService;
 import com.fengyu.modules.dao.user.PostAddressDao;
 import com.fengyu.modules.model.PostAddress;
-import com.fengyu.system.entity.LogAccess;
 import com.fengyu.system.entity.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

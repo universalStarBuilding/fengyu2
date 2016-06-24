@@ -1,6 +1,5 @@
 package com.fengyu.modules.webservice.account;
 
-import com.fengyu.common.exception.AccountException;
 import com.fengyu.modules.model.AccUserBank;
 import com.fengyu.modules.service.account.AccUserBankService;
 import com.fengyu.system.entity.ResultAPI;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import java.util.Scanner;
 
 /**
  * Created by admin on 2016/6/24.

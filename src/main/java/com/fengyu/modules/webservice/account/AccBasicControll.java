@@ -1,7 +1,5 @@
 package com.fengyu.modules.webservice.account;
 
-import com.fengyu.common.exception.AccountException;
-import com.fengyu.common.exception.UserException;
 import com.fengyu.modules.model.AccBasic;
 import com.fengyu.modules.service.account.AccBasicService;
 import com.fengyu.system.entity.ResultAPI;

@@ -13,6 +13,6 @@ public abstract class AbstractException extends RuntimeException{
     }
 
     public abstract String getExceptionType();
-    public abstract PersistenceExceptionType getUserDefindType();
+    public abstract PersistenceExceptionType getUserDefindExType();
 
 }
