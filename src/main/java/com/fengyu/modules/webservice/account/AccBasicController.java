@@ -16,18 +16,10 @@ import javax.ws.rs.PathParam;
  */
 @Component
 @Path("/accbasic")
-public class AccBasicControll {
+public class AccBasicController {
+
     @Autowired
     private AccBasicService accBasicService;
-
-    @GET
-    @Path("get")
-    public ResultAPI get() {
-
-        ResultAPI resultAPI = new ResultAPI();
-
-        return resultAPI;
-    }
 
     /**
      * 获取支付密码
@@ -41,7 +33,7 @@ public class AccBasicControll {
         try {
             resultAPI.setMsg(accBasicService.getPayPwd(id));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (AccountException e){
+        }catch (Exception e){
             e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");
         }
@@ -59,7 +51,7 @@ public class AccBasicControll {
         try {
             resultAPI.setMsg(accBasicService.updatePayPwd(accBasic));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
+        }catch (Exception e){
             e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");
         }

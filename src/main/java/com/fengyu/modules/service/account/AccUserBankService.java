@@ -21,7 +21,7 @@ public class AccUserBankService extends CrudService<AccUserBankDao,AccUserBank> 
 
     public Integer insert(AccUserBank accUserBank){
         if (accUserBank.getUserId()==null){
-            throw new AccountException("添加失败");
+            throw new RuntimeException("添加失败");
         }
         accUserBank.setCreateTime(new Date());
         return accUserBankDao.insert(accUserBank);

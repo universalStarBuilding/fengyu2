@@ -40,9 +40,7 @@ public class LaunchProjectController {
         try {
             resultAPI.setMsg(launchProjectService.queryBy(launchProjectVo));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (ProjectException e){
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg(e.getMessage());
+
         }catch (Exception e){
             //e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");

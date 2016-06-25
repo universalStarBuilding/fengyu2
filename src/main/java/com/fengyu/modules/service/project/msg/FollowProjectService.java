@@ -20,7 +20,7 @@ public class FollowProjectService {
 
     public SearchResult queryById(FollowProjectVo followProjectVo){
         if (followProjectVo==null){
-            throw new OrderException("获取信息列表失败");
+            throw new RuntimeException("获取信息列表失败");
         }
         //分页
         SearchResult<FollowProject> result = new SearchResult<>();

@@ -34,7 +34,7 @@ public class AccUserBankControll {
         try {
             resultAPI.setMsg(accUserBankService.insert(accUserBank));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (AccountException e){
+        }catch (Exception e){
             resultAPI.setAccess_result("FAILURE");
         }
         return resultAPI;

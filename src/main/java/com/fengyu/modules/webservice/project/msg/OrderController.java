@@ -37,9 +37,6 @@ public class OrderController {
         try {
             resultAPI.setMsg(orderService.getPageList(orderVo));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (ProjectException e){
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg(e.getMessage());
         }catch (Exception e){
             //e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");

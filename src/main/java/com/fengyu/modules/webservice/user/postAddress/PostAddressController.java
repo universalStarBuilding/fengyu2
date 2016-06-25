@@ -98,9 +98,6 @@ public class PostAddressController {
         try {
             resultAPI.setMsg(postAddressService.getListPostAddress(postAddress));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg(e.getMessage());
         }catch (Exception e){
             resultAPI.setAccess_result("FAILURE");
             resultAPI.setMsg("服务器异常");

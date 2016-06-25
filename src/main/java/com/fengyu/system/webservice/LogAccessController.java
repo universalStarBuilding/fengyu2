@@ -38,7 +38,7 @@ public class LogAccessController {
         try {
             resultAPI.setMsg(logAccessService.findPageList(logAccess));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (SystemException e){
+        }catch (RuntimeException e){
             resultAPI.setAccess_result("FAILURE");
             resultAPI.setMsg(e.getMessage());
         }catch (Exception e){

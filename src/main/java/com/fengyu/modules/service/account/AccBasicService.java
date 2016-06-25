@@ -23,7 +23,7 @@ public class AccBasicService extends CrudService<AccBasicDao,AccBasic> {
 
     public SercurityVo getPayPwd(Integer id){
         if (id==null){
-            throw new AccountException("支付密码查询失败");
+            throw new RuntimeException("支付密码查询失败");
         }
         SercurityVo vo=new SercurityVo();
         String payPwd=accBasicDao.getPayPwd(id);
@@ -42,7 +42,7 @@ public class AccBasicService extends CrudService<AccBasicDao,AccBasic> {
      */
     public Integer updatePayPwd(AccBasic accBasic){
         if (accBasic.getUserId()==null){
-            throw new AccountException("支付密码修改失败");
+            throw new RuntimeException("支付密码修改失败");
         }
         return accBasicDao.updatePayPwd(accBasic);
     }
