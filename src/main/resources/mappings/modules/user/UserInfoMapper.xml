@@ -65,4 +65,5 @@
     where USER_ID = #{userId,jdbcType=INTEGER}
   </update>
 
+
 </mapper>
