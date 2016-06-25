@@ -14,10 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- * Created by admin on 2016/6/22.
- * @OrderService 我支持的项目
- */
+
 @Service(value = "orderService")
 @Transactional
 public class OrderService {
@@ -26,13 +23,17 @@ public class OrderService {
     @Autowired
     private OrderMapper orderMapper;
 
-
+    /**
+     * 分页：我支持的项目列表
+     * @param orderVo
+     * @return
+     */
     public SearchResult getPageList(OrderVo orderVo) {
         if (orderVo==null){
             throw new OrderException ("获取支持项目失败");
         }
 
-        //分页
+
         SearchResult<Order> result = new SearchResult<>();
         result.setTotalRows(orderMapper.queryById(orderVo));
         result.setRows(orderMapper.orderPageList(orderVo));

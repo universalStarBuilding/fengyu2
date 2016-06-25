@@ -1,10 +1,8 @@
 package com.fengyu.modules.webservice.project.msg;
 
 import com.fengyu.common.exception.ProjectException;
-import com.fengyu.common.exception.SystemException;
-import com.fengyu.modules.model.LaunchProject;
-import com.fengyu.modules.service.project.msg.LaunchProjectService;
-import com.fengyu.modules.webservice.project.vo.LaunchProjectVo;
+import com.fengyu.modules.service.project.msg.LaunchService;
+import com.fengyu.modules.webservice.project.vo.LaunchVo;
 import com.fengyu.system.entity.ResultAPI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,24 +18,24 @@ import javax.ws.rs.core.MediaType;
  */
 @Component
 @Path("/project/msg/launchProject")
-public class LaunchProjectController {
+public class LaunchController {
 
 
     /**
      * 日志对象
      */
-    protected Logger logger = LoggerFactory.getLogger(LaunchProjectController.class);
+    protected Logger logger = LoggerFactory.getLogger(LaunchController.class);
 
 
 
     @Autowired
-    private LaunchProjectService launchProjectService;
+    private LaunchService launchProjectService;
 
     @POST
     @Path("queryBy")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI pageList(LaunchProjectVo launchProjectVo){
+    public ResultAPI pageList(LaunchVo launchProjectVo){
 
         ResultAPI resultAPI = new ResultAPI();
         try {

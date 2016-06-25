@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * @LaunchProject 我发起项目的实体类
  */
-public class LaunchProject extends Pagetables{
+public class Launch extends Pagetables{
     private Integer id;
 
     private Integer projectNo;
