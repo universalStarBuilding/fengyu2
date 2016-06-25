@@ -21,56 +21,28 @@ import javax.ws.rs.PathParam;
 @Component
 @Path("/security")
 public class SercurityController {
+
     @Autowired
     private UserService userService;
 
-    @GET
-    @Path("get")
-    public ResultAPI get() {
-
-        ResultAPI resultAPI = new ResultAPI();
-
-        return resultAPI;
-    }
-
     /**
-     * 查询手机号是否存在
-     * @param id
+     * 查询安全中心信息
+     * @param id    用户编号
      * @return
      */
     @GET
     @Path("get/{id}")
-    public ResultAPI getPhone(@PathParam("id")Integer id){
+    public ResultAPI get(@PathParam("id")Integer id){
         ResultAPI resultAPI=new ResultAPI();
         try {
             resultAPI.setMsg(userService.getSercurityById(id));
             resultAPI.setAccess_result("SUCCESS");
         }catch (UserException e){
-            e.printStackTrace();
+            resultAPI.setMsg(e.getMessage());
             resultAPI.setAccess_result("FAILURE");
         }
         return resultAPI;
     }
-
-    /**
-     * 查询邮箱是否存在
-     * @param id
-     * @return
-     */
-    @GET
-    @Path("email/{id}")
-    public ResultAPI getEmail(@PathParam("id") Integer id){
-        ResultAPI resultAPI=new ResultAPI();
-        try {
-            resultAPI.setMsg(userService.getEmailById(id));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
-        }
-        return resultAPI;
-    }
-
     /**
      * 查询模糊手机号和邮箱
      * @param id
@@ -108,7 +80,6 @@ public class SercurityController {
         }
         return resultAPI;
     }
-
     /**
      * 修改邮箱
      * @param user
@@ -127,7 +98,6 @@ public class SercurityController {
         }
         return resultAPI;
     }
-
     /**
      * 修改登录密码
      * @param user

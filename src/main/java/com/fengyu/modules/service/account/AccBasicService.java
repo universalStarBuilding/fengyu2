@@ -20,22 +20,6 @@ public class AccBasicService extends CrudService<AccBasicDao,AccBasic> {
     @Autowired
     private AccBasicDao accBasicDao;
 
-    //查询是否设置支付密码
-
-    public SercurityVo getPayPwd(Integer id){
-        if (id==null){
-            throw new AccountException("支付密码查询失败");
-        }
-        SercurityVo vo=new SercurityVo();
-        String payPwd=accBasicDao.getPayPwd(id);
-        if (StringUtils.isNotEmpty(payPwd)){
-            vo.setPayPwdStatus(true);
-        }else {
-            vo.setPayPwdStatus(false);
-        }
-        return vo;
-    }
-
     /**
      * 修改支付密码
      * @param accBasic

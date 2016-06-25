@@ -20,6 +20,11 @@ public class AccUserBankService extends CrudService<AccUserBankDao,AccUserBank> 
     @Autowired
     private AccUserBankDao accUserBankDao;
 
+    /**
+     * 添加银行卡
+     * @param accUserBank
+     * @return
+     */
     public Integer insert(AccUserBank accUserBank){
         if (accUserBank.getUserId()==null){
             throw new AccountException("添加失败");

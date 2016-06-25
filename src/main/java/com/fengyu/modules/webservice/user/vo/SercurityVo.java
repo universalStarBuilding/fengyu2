@@ -11,6 +11,25 @@ public class SercurityVo {
     private Boolean emailStatus;
     private String hidePayPwd;
     private Boolean payPwdStatus;
+    private String vagueUserBank;
+
+    public String getVagueUserBank() {
+        return vagueUserBank;
+    }
+
+    public void setVagueUserBank(String vagueUserBank) {
+        this.vagueUserBank = vagueUserBank;
+    }
+
+    public Boolean getUserBankStatus() {
+        return userBankStatus;
+    }
+
+    public void setUserBankStatus(Boolean userBankStatus) {
+        this.userBankStatus = userBankStatus;
+    }
+
+    private Boolean userBankStatus;
 
     public String getVagueRealName() {
         return vagueRealName;

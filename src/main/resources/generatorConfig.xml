@@ -4,7 +4,7 @@
 <generatorConfiguration>
 
 	<classPathEntry
-		location="E:/jar/mysql-connector-java-5.1.38.jar" ></classPathEntry>
+		location="D:/jar/mysql-connector-java-5.1.38.jar" ></classPathEntry>
 	<context id="MysqlTables" targetRuntime="MyBatis3">
 		<commentGenerator>
 			<property name="suppressAllComments" value="true" />
@@ -36,14 +36,6 @@
 		<table tableName="crowdfund_basicinfo" domainObjectName="CrowdfundBasicinfo" enableCountByExample="false" enableUpdateByExample="false"
 			   enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 		</table>
-		<table tableName="crowdfund_returnset" domainObjectName="CrowdfundReturnset" enableCountByExample="false" enableUpdateByExample="false"
-			   enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-		</table>
-		<table tableName="crowdfund_organizer" domainObjectName="CrowdfundOrganizer" enableCountByExample="false" enableUpdateByExample="false"
-			   enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-		</table>
-
-
 	</context>
 
 </generatorConfiguration>

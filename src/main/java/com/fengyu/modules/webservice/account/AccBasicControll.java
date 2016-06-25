@@ -32,24 +32,6 @@ public class AccBasicControll {
     }
 
     /**
-     * 获取支付密码
-     * @param id
-     * @return
-     */
-    @GET
-    @Path("paypwd/{id}")
-    public ResultAPI getPayPwd(@PathParam("id")Integer id){
-        ResultAPI resultAPI=new ResultAPI();
-        try {
-            resultAPI.setMsg(accBasicService.getPayPwd(id));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (AccountException e){
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
-        }
-        return resultAPI;
-    }
-    /**
      * 修改支付密码
      * @param accBasic
      * @return

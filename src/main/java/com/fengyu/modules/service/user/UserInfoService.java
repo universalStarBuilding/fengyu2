@@ -39,27 +39,6 @@ public class UserInfoService extends CrudService<UserInfoDao,UserInfo> {
     }
 
     /**
-     *查询真实姓名
-     * @param id
-     * @return
-     */
-    public SercurityVo getRealName(Integer id){
-        if (id==null){
-            throw new UserException("真实姓名查询失败");
-        }
-        SercurityVo vo=new SercurityVo();
-        String realName=userInfoDao.getRealName(id);
-        if (StringUtils.isNotEmpty(realName)){
-            vo.setVagueRealName(realName);
-            realName.replace(realName.substring(2),"*");
-            vo.setRealNameStatus(true);
-        }else {
-            vo.setRealNameStatus(false);
-        }
-        return vo;
-    }
-
-    /**
      * 添加用户实名信息
      * @param userInfo
      * @return

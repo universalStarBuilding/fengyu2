@@ -44,6 +44,9 @@
         #{state,jdbcType=TINYINT}
     )
   </insert>
+  <select id="getUserBank" resultType="java.lang.String" parameterType="java.lang.Integer">
+
+  </select>
 </mapper>
       <!--  `NAME`=#{name,jdbcType=VARCHAR},
         BANK_NO = #{bankNo,jdbcType=VARCHAR},

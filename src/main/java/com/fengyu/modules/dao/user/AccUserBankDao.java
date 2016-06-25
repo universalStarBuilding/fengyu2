@@ -13,4 +13,11 @@ public interface AccUserBankDao extends CrudDao<AccUserBank> {
      * @return
      */
     int insert(AccUserBank record);
+
+    /**
+     * 查询银行卡是否绑定
+     * @param id
+     * @return
+     */
+    String getUserBank(Integer id);
 }

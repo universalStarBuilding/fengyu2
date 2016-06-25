@@ -31,6 +31,11 @@ public class UserInfoController {
     @Autowired
     private UserInfoService userInfoService;
 
+    /**
+     * 获取用户详细信息
+     * @param id
+     * @return
+     */
     @GET
     @Path("get/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -46,6 +51,11 @@ public class UserInfoController {
         }
         return resultAPI;
     }
+    /**
+     * 修改用户信息
+     * @param userInfo
+     * @return
+     */
     @POST
     @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
@@ -62,6 +72,26 @@ public class UserInfoController {
         return resultAPI;
     }
 
+    /**
+     * 添加实名信息
+     * @param userInfo
+     * @return
+     */
+    @POST
+    @Path("insertRealName")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public ResultAPI insertRealName(UserInfo userInfo){
+        ResultAPI resultAPI=new ResultAPI();
+        try {
+            resultAPI.setMsg(userInfoService.insertRealName(userInfo));
+            resultAPI.setAccess_result("SUCCESS");
+        }catch (Exception e){
+            e.printStackTrace();
+            resultAPI.setAccess_result("FAILURE");
+        }
+        return resultAPI;
+    }
     @GET
     @Path("web/{id}")
     public ResultAPI getException(@PathParam("id")Integer id){
