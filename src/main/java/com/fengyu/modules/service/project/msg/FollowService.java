@@ -1,6 +1,5 @@
 package com.fengyu.modules.service.project.msg;
 
-import com.fengyu.common.exception.OrderException;
 import com.fengyu.modules.dao.project.msg.FollowDao;
 import com.fengyu.modules.model.Follow;
 import com.fengyu.modules.webservice.project.vo.FollowVo;
@@ -25,7 +24,7 @@ public class FollowService {
      */
     public SearchResult queryById(FollowVo followProjectVo){
         if (followProjectVo==null){
-            throw new OrderException("获取信息列表失败");
+            throw new RuntimeException("获取信息列表失败");
         }
 
         SearchResult<Follow> result = new SearchResult<>();
@@ -41,7 +40,7 @@ public class FollowService {
      */
     public Integer insert(FollowVo followProjectVo){
         if (followProjectVo==null){
-            throw new OrderException("添加失败");
+            throw new RuntimeException("添加失败");
         }
         Follow followProject=new Follow();
         followProject.setUserId(followProjectVo.getUserId());

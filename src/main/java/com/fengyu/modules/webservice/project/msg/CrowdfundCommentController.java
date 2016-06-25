@@ -1,6 +1,5 @@
 package com.fengyu.modules.webservice.project.msg;
 
-import com.fengyu.common.exception.ProjectException;
 import com.fengyu.modules.service.project.msg.CrowdfundCommentService;
 import com.fengyu.modules.service.project.msg.OrderService;
 import com.fengyu.modules.webservice.project.vo.CrowdfundCommentVo;
@@ -42,7 +41,7 @@ public class CrowdfundCommentController {
         try {
             resultAPI.setMsg(crowdfundCommentService.queryById(crowdfundCommentVo));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (ProjectException e){
+        }catch (RuntimeException e){
             resultAPI.setAccess_result("FAILURE");
             resultAPI.setMsg(e.getMessage());
         }catch (Exception e){

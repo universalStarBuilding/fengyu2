@@ -1,6 +1,5 @@
 package com.fengyu.modules.service.project.msg;
 
-import com.fengyu.common.exception.OrderException;
 import com.fengyu.modules.dao.project.msg.DynamicDao;
 import com.fengyu.modules.model.Dynamic;
 import com.fengyu.modules.webservice.project.vo.DynamicRequestVo;
@@ -27,7 +26,7 @@ public class DynamicService {
      */
     public Integer insert(DynamicRequestVo dynamicVo){
         if (dynamicVo==null){
-            throw new OrderException("添加失败");
+            throw new RuntimeException("添加失败");
         }
         Dynamic dynamic=new Dynamic();
         dynamic.setProjectNo(dynamicVo.getProjectNo());

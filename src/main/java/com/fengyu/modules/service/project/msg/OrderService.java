@@ -1,6 +1,5 @@
 package com.fengyu.modules.service.project.msg;
 
-import com.fengyu.common.exception.OrderException;
 import com.fengyu.modules.dao.project.msg.OrderMapper;
 import com.fengyu.modules.model.Order;
 import com.fengyu.modules.webservice.project.vo.OrderVo;

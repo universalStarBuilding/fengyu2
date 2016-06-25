@@ -1,6 +1,5 @@
 package com.fengyu.modules.webservice.project.msg;
 
-import com.fengyu.common.exception.ProjectException;
 import com.fengyu.modules.service.project.msg.MessageService;
 import com.fengyu.modules.webservice.project.vo.MessageRequestVo;
 import com.fengyu.system.entity.ResultAPI;
@@ -36,9 +35,6 @@ public class MessageController {
             try {
                 resultAPI.setMsg(messageService.insert(messageTextVo));
                 resultAPI.setAccess_result("SUCCESS");
-            }catch (ProjectException e){
-                resultAPI.setAccess_result("FAILURE");
-                resultAPI.setMsg(e.getMessage());
             }catch (Exception e){
                 e.printStackTrace();
                 resultAPI.setAccess_result("FAILURE");
@@ -60,9 +56,6 @@ public class MessageController {
         try {
             resultAPI.setMsg(messageService.getSendMsgListByRecId(messageRequestVo));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (ProjectException e){
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg(e.getMessage());
         }catch (Exception e){
             e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");
@@ -83,9 +76,6 @@ public class MessageController {
         try {
             resultAPI.setMsg(messageService.deleteById(messageTextVo));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (ProjectException e){
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg(e.getMessage());
         }catch (Exception e){
             e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");

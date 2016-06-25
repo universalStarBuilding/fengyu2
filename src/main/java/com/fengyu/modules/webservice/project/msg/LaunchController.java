@@ -1,6 +1,5 @@
 package com.fengyu.modules.webservice.project.msg;
 
-import com.fengyu.common.exception.ProjectException;
 import com.fengyu.modules.service.project.msg.LaunchService;
 import com.fengyu.modules.webservice.project.vo.LaunchVo;
 import com.fengyu.system.entity.ResultAPI;

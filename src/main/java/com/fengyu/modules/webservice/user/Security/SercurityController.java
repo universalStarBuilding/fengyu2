@@ -41,7 +41,7 @@ public class SercurityController {
         try {
             resultAPI.setMsg(userService.getSercurityById(id));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
+        }catch (Exception e){
             e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");
         }
@@ -60,7 +60,7 @@ public class SercurityController {
         try {
             resultAPI.setMsg(userService.getEmailById(id));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
+        }catch (Exception e){
             e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");
         }
@@ -79,7 +79,7 @@ public class SercurityController {
         try {
             resultAPI.setMsg(userService.getContact(id));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
+        }catch (Exception e){
             e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");
         }
@@ -98,7 +98,7 @@ public class SercurityController {
         try {
             resultAPI.setMsg(userService.updatePhone(user));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
+        }catch (Exception e){
             e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");
         }
@@ -117,7 +117,7 @@ public class SercurityController {
         try {
             resultAPI.setMsg(userService.updateEmail(user));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
+        }catch (Exception e){
             e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");
         }
@@ -136,7 +136,7 @@ public class SercurityController {
         try {
             resultAPI.setMsg(userService.updateLoginPwd(user));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
+        }catch (Exception e){
             e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");
         }

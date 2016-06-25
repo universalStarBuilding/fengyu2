@@ -1,6 +1,5 @@
 package com.fengyu.modules.service.project.msg;
 
-import com.fengyu.common.exception.OrderException;
 import com.fengyu.modules.dao.project.msg.MessageDao;
 import com.fengyu.modules.dao.project.msg.MessageTextDao;
 import com.fengyu.modules.dao.user.UserInfoDao;
@@ -41,7 +40,7 @@ public class MessageService {
     public int insert(MessageRequestVo messageTextVo){
 
         if (messageTextVo==null){
-            throw new OrderException("添加失败");
+            throw new RuntimeException("添加失败");
         }
 
         MessageText messageTextProject=new MessageText();
@@ -70,7 +69,7 @@ public class MessageService {
     public SearchResult getSendMsgListByRecId(MessageRequestVo messageRequestVo){
 
         if (messageRequestVo == null){
-            throw new OrderException("查询失败");
+            throw new RuntimeException("查询失败");
         }
         List<MessageResponseVo> list = messageDao.getSendUserListByRecId(messageRequestVo);
         for (MessageResponseVo vo : list){
@@ -103,7 +102,7 @@ public class MessageService {
      */
     public int deleteById(MessageRequestVo messageRequestVo){
         if (messageRequestVo==null){
-            throw new OrderException("删除失败");
+            throw new RuntimeException("删除失败");
         }
         Message message=new Message();
         message.setId(messageRequestVo.getId());
