@@ -1,5 +1,6 @@
 package com.fengyu.common.web;
 
+import com.fengyu.common.exception.MapperSupport.ExceptionMapperSupport;
 import com.fengyu.common.filter.AuthorizationRequestFilter;
 import com.fengyu.common.filter.FeatureAnnotatedFactory;
 import com.fengyu.system.interceptor.AirLogFilter;
@@ -25,6 +26,8 @@ import java.util.List;
 public class WebApplication extends ResourceConfig{
 
     public WebApplication() {
+
+        register(ExceptionMapperSupport.class);
         //注册日志记录
         register(AirLogFilter.class);
         // MVC.

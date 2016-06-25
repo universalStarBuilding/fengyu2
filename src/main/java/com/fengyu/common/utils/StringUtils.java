@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringEscapeUtils;
 import javax.ws.rs.container.ContainerRequestContext;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,6 +19,51 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	
     private static final char SEPARATOR = '_';
     private static final String CHARSET_NAME = "UTF-8";
+	/**
+	 * @Name:
+	 * @Author: junz（作者）
+	 * @Version: V1.00 （版本号）
+	 * @Create Date: 2016-06-23（创建日期）
+	 * @Description:
+	 *往字符串模板里的变量注入内容
+	 * 分为List 跟 Map两种 map需要名称对应key List需要次序正确
+	 * 格式如String dynamicContent= "${pamam1} inject ${pamam2}.";
+	 */
+	public static String injectParams2DynamicStr(Object params, String dynamicContent)
+	{
+		//生成匹配模式的正则表达式
+		String patternString = "";
+		StringBuffer sb = new StringBuffer();
+		if(params instanceof Map)
+		{
+			Map mapParams=(Map)params;
+			patternString = "\\$\\{(" + org.apache.commons.lang3.StringUtils.join(mapParams.keySet(), "|") + ")\\}";
+			Pattern pattern = Pattern.compile(patternString);
+			Matcher matcher = pattern.matcher(dynamicContent);
+			while(matcher.find()) {
+				matcher.appendReplacement(sb, mapParams.get(matcher.group(1)).toString());
+			}
+			matcher.appendTail(sb);
+		}else if (params instanceof List)
+		{
+			patternString= "\\$\\{(.+?)\\}";
+			List listParams=(List)params;
+			Pattern pattern = Pattern.compile(patternString);
+			Matcher matcher = pattern.matcher(dynamicContent);
+			int i=0;
+			while(matcher.find()) {
+				//matcher.appendReplacement(sb, list.get(i).toString());
+				matcher.appendReplacement(sb,listParams.get(i).toString());
+				i++;
+			}
+			matcher.appendTail(sb);
+		}else
+		{
+			throw new RuntimeException("参数类型不支持，只支持list map");
+		}
+
+		return sb.toString();
+	}
     
     /**
      * 转换为字节数组

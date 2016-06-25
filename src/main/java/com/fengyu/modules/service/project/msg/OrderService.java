@@ -30,7 +30,7 @@ public class OrderService {
      */
     public SearchResult getPageList(OrderVo orderVo) {
         if (orderVo==null){
-            throw new OrderException ("获取支持项目失败");
+            throw new RuntimeException ("获取支持项目失败");
         }
 
 

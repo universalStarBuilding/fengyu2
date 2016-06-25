@@ -27,7 +27,7 @@ public class LaunchService {
      */
     public SearchResult queryBy(LaunchVo launchProjectVo){
         if (launchProjectVo==null){
-            throw new OrderException("查询发起项目失败");
+            throw new RuntimeException("查询发起项目失败");
         }
 
         SearchResult<Launch> result = new SearchResult<>();
