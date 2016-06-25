@@ -66,4 +66,26 @@
     &lt;!&ndash; 计划任务配置，用 @Service @Lazy(false)标注类，用@Scheduled(cron = "0 0 2 * * ?")标注方法 &ndash;&gt;
     <bean  class = "milliongravity.common.utils.SpringContextHolder" lazy-init="false"/>
 -->
+    <!-- quartz持久化存储 -->
+    <bean id="scheduler"
+          class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="dataSource">
+            <ref bean="dataSource" />
+        </property>
+        <property name="exposeSchedulerInRepository" value="true" />
+        <!--
+        <property name="jobFactory">
+            <bean class="com.esoft.core.quartz.AutowiringSpringBeanJobFactory " />
+         -->
+        <!-- <bean class="org.springframework.scheduling.quartz.SpringBeanJobFactory"
+            /> -->
+        <!--
+        </property>
+
+        <property name="schedulerName" value="Mscheduler" />
+        -->
+        <property name="configLocation" value="classpath:properties/quartz.properties" />
+        <property name="applicationContextSchedulerContextKey" value="applicationContextKey" />
+        <property name="autoStartup" value="true" />
+    </bean>
 </beans>
