@@ -57,7 +57,7 @@ public class CrowdfundCommentController {
         return resultAPI;
     }
 
-    @POST
+    /*@POST
     @Path("quartzTest")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -72,5 +72,5 @@ public class CrowdfundCommentController {
         }
 
         return resultAPI;
-    }
+    }*/
 }
