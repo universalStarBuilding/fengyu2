@@ -1,6 +1,5 @@
 package com.fengyu.modules.service.account;
 
-import com.fengyu.common.exception.AccountException;
 import com.fengyu.common.service.CrudService;
 import com.fengyu.common.utils.StringUtils;
 import com.fengyu.modules.dao.user.AccBasicDao;
@@ -27,7 +26,7 @@ public class AccBasicService extends CrudService<AccBasicDao,AccBasic> {
      */
     public Integer updatePayPwd(AccBasic accBasic){
         if (accBasic.getUserId()==null){
-            throw new AccountException("支付密码修改失败");
+            throw new RuntimeException("支付密码修改失败");
         }
         return accBasicDao.updatePayPwd(accBasic);
     }

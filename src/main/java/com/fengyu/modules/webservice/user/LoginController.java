@@ -47,33 +47,28 @@ public class LoginController {
     @Path("doLogin")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public AuthenticationResult doLogin(User user)
-    {
+    public AuthenticationResult doLogin(User user) {
         AuthenticationResult result = new AuthenticationResult();
-        user=userService.get(user);
-        if(user==null)
-        {
+        user = userService.get(user);
+        if (user == null) {
             //异常处理机制，记录异常
             return null;
         }
         //判断用户在已经登录且session未失效时，重复登录时的处理
-        if(StringUtils.isNotBlank(user.getToken()))
-        {
-            VirtualSession virtualSession=
-                    VirtualSessionManager.getInstance().getSession(user.getToken(),false);
-            if(virtualSession==null)
-            {
+        if (StringUtils.isNotBlank(user.getToken())) {
+            VirtualSession virtualSession =
+                    VirtualSessionManager.getInstance().getSession(user.getToken(), false);
+            if (virtualSession == null) {
 
             }
-        }else
-        {
+        } else {
             //验证登录等相关操作，暂时省略，等认证以及权限机制搞定再去处理
             //.........
             //登录成功，生成token，生成用户虚拟session
             String token = JwtUtil.generateToken(String.valueOf(user.getId()));
             VirtualSessionManager.getInstance().getSession(token, true).addAttribute("user", user);
-            System.out.println(VirtualSessionManager.getInstance().getSession(token,false));
-            logger.debug("login token="+token);
+            System.out.println(VirtualSessionManager.getInstance().getSession(token, false));
+            logger.debug("login token=" + token);
             result.setToken(token);
         }
         return result;

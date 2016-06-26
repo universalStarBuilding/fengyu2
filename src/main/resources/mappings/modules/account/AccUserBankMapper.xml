@@ -45,7 +45,8 @@
     )
   </insert>
   <select id="getUserBank" resultType="java.lang.String" parameterType="java.lang.Integer">
-
+    SELECT COUNT(*) FROM acc_user_bank
+    WHERE USER_ID = #{userId,jdbcType=INTEGER}
   </select>
 </mapper>
       <!--  `NAME`=#{name,jdbcType=VARCHAR},

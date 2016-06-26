@@ -201,6 +201,32 @@
             }
         });
     }
+    function sendMsg()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/send/sendMsg",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+              // "type":"phone",
+                //"phone":"13127158259"
+                "type":"email",
+                "title":"蜂娱文化",
+                "email":"296734078@qq.com",
+                "context":"Hello word"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
+            },
+            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                alert( "Ajax跳转处理失败");
+            }
+        });
+    }
 
 </script>
 <body>
@@ -215,5 +241,6 @@
     <input type="button" value="发起" onclick="queryBy()">
     <input type="button" value="关注" onclick="queryByIdFollow()">
 </form>
+<input type="button" value="发送手机验证码" onclick="sendMsg()">
 </body>
 </html>

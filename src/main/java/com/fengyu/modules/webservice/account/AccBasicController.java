@@ -1,7 +1,5 @@
 package com.fengyu.modules.webservice.account;
 
-import com.fengyu.common.exception.AccountException;
-import com.fengyu.common.exception.UserException;
 import com.fengyu.modules.model.AccBasic;
 import com.fengyu.modules.service.account.AccBasicService;
 import com.fengyu.system.entity.ResultAPI;
@@ -18,7 +16,8 @@ import javax.ws.rs.PathParam;
  */
 @Component
 @Path("/accbasic")
-public class AccBasicControll {
+public class AccBasicController {
+
     @Autowired
     private AccBasicService accBasicService;
 
@@ -31,24 +30,7 @@ public class AccBasicControll {
         return resultAPI;
     }
 
-    /**
-     * 获取支付密码
-     * @param id
-     * @return
-     */
-    @GET
-    @Path("paypwd/{id}")
-    public ResultAPI getPayPwd(@PathParam("id")Integer id){
-        ResultAPI resultAPI=new ResultAPI();
-        try {
-            resultAPI.setMsg(accBasicService.getPayPwd(id));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
-        }
-        return resultAPI;
-    }
+
     /**
      * 修改支付密码
      * @param accBasic
@@ -61,8 +43,7 @@ public class AccBasicControll {
         try {
             resultAPI.setMsg(accBasicService.updatePayPwd(accBasic));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
-            e.printStackTrace();
+        }catch (Exception e){
             resultAPI.setAccess_result("FAILURE");
         }
         return resultAPI;

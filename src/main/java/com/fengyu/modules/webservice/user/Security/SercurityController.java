@@ -1,5 +1,8 @@
 package com.fengyu.modules.webservice.user.Security;
 
+import com.fengyu.common.channel.email.SendMail;
+import com.fengyu.common.channel.phone.AliMsgApi;
+import com.fengyu.common.config.Cache;
 import com.fengyu.modules.model.User;
 import com.fengyu.modules.service.user.UserService;
 import com.fengyu.system.entity.ResultAPI;
@@ -33,7 +36,7 @@ public class SercurityController {
         try {
             resultAPI.setMsg(userService.getSercurityById(id));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
+        }catch (Exception e){
             resultAPI.setMsg(e.getMessage());
             resultAPI.setAccess_result("FAILURE");
         }
@@ -51,11 +54,30 @@ public class SercurityController {
         try {
             resultAPI.setMsg(userService.getContact(id));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
-            e.printStackTrace();
+        }catch (Exception e){
             resultAPI.setAccess_result("FAILURE");
         }
         return resultAPI;
+    }
+
+    /**
+     * 发送验证码
+     * @param
+     * @return
+     */
+    @GET
+    @Path("sendCode/{type}/{value}")
+    public ResultAPI sendCode(@PathParam("type")String type,@PathParam("value")String value){
+
+        String code = "123213";
+        if(type.equals("email")){
+            SendMail.send(value,"测试邮箱接口","SUCCESS,code:"+code);
+        }else if(type.equals("phone")){
+            AliMsgApi.sendMsg(null,value,code);
+        }
+        Cache.setCodeCache(code);
+
+        return null;
     }
 
     /**
@@ -70,8 +92,7 @@ public class SercurityController {
         try {
             resultAPI.setMsg(userService.updatePhone(user));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
-            e.printStackTrace();
+        }catch (Exception e){
             resultAPI.setAccess_result("FAILURE");
         }
         return resultAPI;
@@ -88,8 +109,7 @@ public class SercurityController {
         try {
             resultAPI.setMsg(userService.updateEmail(user));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
-            e.printStackTrace();
+        }catch (Exception e){
             resultAPI.setAccess_result("FAILURE");
         }
         return resultAPI;
@@ -106,8 +126,7 @@ public class SercurityController {
         try {
             resultAPI.setMsg(userService.updateLoginPwd(user));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
-            e.printStackTrace();
+        }catch (Exception e){
             resultAPI.setAccess_result("FAILURE");
         }
         return resultAPI;

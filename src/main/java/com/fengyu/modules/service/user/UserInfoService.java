@@ -1,6 +1,5 @@
 package com.fengyu.modules.service.user;
 
-import com.fengyu.common.exception.UserException;
 import com.fengyu.common.service.CrudService;
 import com.fengyu.common.utils.StringUtils;
 import com.fengyu.modules.dao.user.UserInfoDao;
@@ -43,7 +42,7 @@ public class UserInfoService extends CrudService<UserInfoDao,UserInfo> {
      */
     public Integer insertRealName(UserInfo userInfo){
         if (userInfo.getUserId()==null){
-            throw new UserException("添加实名信息失败");
+            throw new RuntimeException("添加实名信息失败");
         }
         return userInfoDao.insertRealName(userInfo);
     }
