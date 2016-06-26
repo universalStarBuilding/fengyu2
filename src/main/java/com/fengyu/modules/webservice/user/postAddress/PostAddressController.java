@@ -1,10 +1,7 @@
 package com.fengyu.modules.webservice.user.postAddress;
 
-import com.fengyu.common.exception.SystemException;
-import com.fengyu.common.exception.UserException;
 import com.fengyu.modules.model.PostAddress;
 import com.fengyu.modules.service.user.PostAddressService;
-import com.fengyu.system.entity.LogAccess;
 import com.fengyu.system.entity.ResultAPI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -101,9 +98,6 @@ public class PostAddressController {
         try {
             resultAPI.setMsg(postAddressService.getListPostAddress(postAddress));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg(e.getMessage());
         }catch (Exception e){
             resultAPI.setAccess_result("FAILURE");
             resultAPI.setMsg("服务器异常");

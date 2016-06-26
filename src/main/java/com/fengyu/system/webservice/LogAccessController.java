@@ -1,6 +1,5 @@
 package com.fengyu.system.webservice;
 
-import com.fengyu.common.exception.SystemException;
 import com.fengyu.system.entity.LogAccess;
 import com.fengyu.system.entity.ResultAPI;
 import com.fengyu.system.service.LogAccessService;
@@ -39,7 +38,7 @@ public class LogAccessController {
         try {
             resultAPI.setMsg(logAccessService.findPageList(logAccess));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (SystemException e){
+        }catch (RuntimeException e){
             resultAPI.setAccess_result("FAILURE");
             resultAPI.setMsg(e.getMessage());
         }catch (Exception e){

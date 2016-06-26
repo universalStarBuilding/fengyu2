@@ -38,15 +38,16 @@ public enum PersistenceExceptionType {
 
 
 
+
     private PersistenceExceptionType(String value){
-        this.value = value;
+        this.type = value;
     }
 
-    private String value;
+    private String type;
 
 
     @Override
     public String toString() {
-        return this.value;
+        return this.type;
     }
 }

@@ -1,10 +1,6 @@
 package com.fengyu.modules.webservice.user.Security;
 
-import com.fengyu.common.exception.AccountException;
-import com.fengyu.common.exception.UserException;
-import com.fengyu.modules.model.AccBasic;
 import com.fengyu.modules.model.User;
-import com.fengyu.modules.service.account.AccBasicService;
 import com.fengyu.modules.service.user.UserService;
 import com.fengyu.system.entity.ResultAPI;
 import org.springframework.beans.factory.annotation.Autowired;

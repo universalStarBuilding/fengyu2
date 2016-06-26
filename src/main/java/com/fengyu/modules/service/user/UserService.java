@@ -37,7 +37,7 @@ public class UserService extends CrudService<UserDao, User> {
      */
     public SercurityVo getSercurityById(Integer id){
         if (id==null){
-            throw  new UserException("用户手机号获取失败");
+            throw  new RuntimeException("用户手机号获取失败");
         }
         SercurityVo vo = new SercurityVo();
 
@@ -85,10 +85,9 @@ public class UserService extends CrudService<UserDao, User> {
         }
         return vo;
     }
-
     public SercurityVo getContact(Integer id){
         if (id==null){
-            throw new UserException("查询手机号和邮箱失败");
+            throw new RuntimeException("查询手机号和邮箱失败");
         }
         SercurityVo vo=new SercurityVo();
         String phone=userDao.getPhone(id);
@@ -110,7 +109,7 @@ public class UserService extends CrudService<UserDao, User> {
      */
     public Integer updatePhone(User user){
         if (user==null){
-            throw new UserException("手机号修改失败");
+            throw new RuntimeException("手机号修改失败");
         }
         return userDao.updatePhone(user);
     }
@@ -122,7 +121,7 @@ public class UserService extends CrudService<UserDao, User> {
      */
     public Integer updateEmail(User user){
         if (user==null){
-            throw  new UserException("邮箱修改失败");
+            throw  new RuntimeException("邮箱修改失败");
         }
         return userDao.updateEmail(user);
     }
@@ -134,7 +133,7 @@ public class UserService extends CrudService<UserDao, User> {
      */
     public Integer updateLoginPwd(User user){
         if (user==null){
-            throw new UserException("密码修改失败");
+            throw new RuntimeException("密码修改失败");
         }
         return userDao.updateLoginPwd(user);
     }

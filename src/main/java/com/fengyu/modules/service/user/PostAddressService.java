@@ -1,10 +1,8 @@
 package com.fengyu.modules.service.user;
 
-import com.fengyu.common.exception.UserException;
 import com.fengyu.common.service.CrudService;
 import com.fengyu.modules.dao.user.PostAddressDao;
 import com.fengyu.modules.model.PostAddress;
-import com.fengyu.system.entity.LogAccess;
 import com.fengyu.system.entity.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +24,7 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
      */
     public PostAddress getPostAddress(Integer id){
         if (id==null){
-            throw new UserException("收货地址获取失败");
+            throw new RuntimeException("收货地址获取失败");
         }
         return postAddressDao.getPostAddress(id);
     }
@@ -47,7 +45,7 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
      */
     public Integer updatePostAddress(PostAddress postAddress){
         if (postAddress.getUserId()==null){
-            throw new UserException("收货地址修改失败");
+            throw new RuntimeException("收货地址修改失败");
         }
         return postAddressDao.updatePostAddress(postAddress);
     }
@@ -59,7 +57,7 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
      */
     public Integer deletePostAddress(Integer id){
         if (id==null){
-            throw new UserException("收货地址删除失败");
+            throw new RuntimeException("收货地址删除失败");
         }
         PostAddress postAddress=new PostAddress();
         postAddress.setUserId(id);

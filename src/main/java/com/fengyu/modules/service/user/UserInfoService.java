@@ -19,21 +19,19 @@ import java.util.Date;
 @Service(value="userInfoService")
 @Transactional
 public class UserInfoService extends CrudService<UserInfoDao,UserInfo> {
-
-
     @Autowired
     private UserInfoDao userInfoDao;
     //获取用户的详细信息
     public UserInfo getUserInfo(Integer id){
         if (id==null){
-            throw new UserException("用户信息获取失败");
+            throw new RuntimeException("用户信息获取失败");
         }
         return userInfoDao.getUserInfo(id);
     }
     //修改用户信息
     public Integer updateUserInfo(UserInfo userInfo){
         if (userInfo.getUserId()==null){
-            throw new UserException("用户信息修改失败");
+            throw new RuntimeException("用户信息修改失败");
         }
         return userInfoDao.updateUserInfo(userInfo);
     }

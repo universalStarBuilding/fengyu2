@@ -25,7 +25,7 @@ public class PersistenceException extends AbstractException {
         this(null,type,data);
     }
 
-    public PersistenceExceptionType getType(){
+    public PersistenceExceptionType getUserDefindExType(){
         return  type;
     }
     public  Object getData(){

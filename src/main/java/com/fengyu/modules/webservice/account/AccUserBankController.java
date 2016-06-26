@@ -1,9 +1,7 @@
 package com.fengyu.modules.webservice.account;
 
-import com.fengyu.common.exception.AccountException;
-import com.fengyu.common.exception.UserException;
-import com.fengyu.modules.model.AccBasic;
-import com.fengyu.modules.service.account.AccBasicService;
+import com.fengyu.modules.model.AccUserBank;
+import com.fengyu.modules.service.account.AccUserBankService;
 import com.fengyu.system.entity.ResultAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,16 +9,15 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 
 /**
- * Created by admin on 2016/6/23.
+ * Created by admin on 2016/6/24.
  */
 @Component
-@Path("/accbasic")
-public class AccBasicControll {
+@Path("/accuserbank")
+public class AccUserBankController {
     @Autowired
-    private AccBasicService accBasicService;
+    private AccUserBankService accUserBankService;
 
     @GET
     @Path("get")
@@ -30,21 +27,14 @@ public class AccBasicControll {
 
         return resultAPI;
     }
-
-    /**
-     * 修改支付密码
-     * @param accBasic
-     * @return
-     */
     @POST
-    @Path("payPwdUpdate")
-    public ResultAPI updatePayPwd(AccBasic accBasic){
+    @Path("insert")
+    public ResultAPI insertAccUserBank(AccUserBank accUserBank){
         ResultAPI resultAPI=new ResultAPI();
         try {
-            resultAPI.setMsg(accBasicService.updatePayPwd(accBasic));
+            resultAPI.setMsg(accUserBankService.insert(accUserBank));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (UserException e){
-            e.printStackTrace();
+        }catch (Exception e){
             resultAPI.setAccess_result("FAILURE");
         }
         return resultAPI;

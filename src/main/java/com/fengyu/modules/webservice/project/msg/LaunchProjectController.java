@@ -1,8 +1,5 @@
 package com.fengyu.modules.webservice.project.msg;
 
-import com.fengyu.common.exception.ProjectException;
-import com.fengyu.common.exception.SystemException;
-import com.fengyu.modules.model.LaunchProject;
 import com.fengyu.modules.service.project.msg.LaunchProjectService;
 import com.fengyu.modules.webservice.project.vo.LaunchProjectVo;
 import com.fengyu.system.entity.ResultAPI;
@@ -43,9 +40,7 @@ public class LaunchProjectController {
         try {
             resultAPI.setMsg(launchProjectService.queryBy(launchProjectVo));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (ProjectException e){
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg(e.getMessage());
+
         }catch (Exception e){
             //e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");

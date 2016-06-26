@@ -1,8 +1,6 @@
 package com.fengyu.modules.webservice.project.msg;
 
-import com.fengyu.common.exception.SystemException;
 import com.fengyu.modules.service.project.msg.FollowProjectService;
-import com.fengyu.modules.service.project.msg.LaunchProjectService;
 import com.fengyu.modules.webservice.project.vo.FollowProjectVo;
 import com.fengyu.system.entity.ResultAPI;
 import org.slf4j.Logger;
@@ -41,9 +39,7 @@ public class FollowProjectController {
         try {
             resultAPI.setMsg(followProjectService.queryById(followProjectVo));
             resultAPI.setAccess_result("SUCCESS");
-        }catch (SystemException e){
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg(e.getMessage());
+
         }catch (Exception e){
             //e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");

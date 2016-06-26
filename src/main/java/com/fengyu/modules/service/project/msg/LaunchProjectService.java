@@ -1,9 +1,7 @@
 package com.fengyu.modules.service.project.msg;
 
-import com.fengyu.common.exception.OrderException;
 import com.fengyu.modules.dao.project.msg.LaunchProjectMapper;
 import com.fengyu.modules.model.LaunchProject;
-import com.fengyu.modules.model.Order;
 import com.fengyu.modules.webservice.project.vo.LaunchProjectVo;
 import com.fengyu.system.entity.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +21,7 @@ public class LaunchProjectService {
 
     public SearchResult queryBy(LaunchProjectVo launchProjectVo){
         if (launchProjectVo==null){
-            throw new OrderException("查询发起项目失败");
+            throw new RuntimeException("查询发起项目失败");
         }
         //分页
         SearchResult<LaunchProject> result = new SearchResult<>();

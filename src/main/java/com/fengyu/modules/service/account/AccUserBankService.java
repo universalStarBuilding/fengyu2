@@ -1,6 +1,5 @@
 package com.fengyu.modules.service.account;
 
-import com.fengyu.common.exception.AccountException;
 import com.fengyu.common.service.CrudService;
 import com.fengyu.modules.dao.user.AccUserBankDao;
 import com.fengyu.modules.model.AccUserBank;
@@ -27,7 +26,7 @@ public class AccUserBankService extends CrudService<AccUserBankDao,AccUserBank> 
      */
     public Integer insert(AccUserBank accUserBank){
         if (accUserBank.getUserId()==null){
-            throw new AccountException("添加失败");
+            throw new RuntimeException("添加失败");
         }
         accUserBank.setCreateTime(new Date());
         return accUserBankDao.insert(accUserBank);
