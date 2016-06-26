@@ -5,11 +5,14 @@ import com.fengyu.modules.service.project.msg.OrderService;
 import com.fengyu.modules.webservice.project.vo.CrowdfundCommentVo;
 import com.fengyu.modules.webservice.project.vo.OrderVo;
 import com.fengyu.system.entity.ResultAPI;
+import com.fengyu.test.example3.CronTriggerExample;
+import org.quartz.impl.StdScheduler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -27,7 +30,8 @@ public class CrowdfundCommentController {
      * 日志对象
      */
     protected Logger logger = LoggerFactory.getLogger(CrowdfundCommentController.class);
-
+    @Resource
+    private StdScheduler scheduler;
     @Autowired
     private CrowdfundCommentService crowdfundCommentService;
 
@@ -52,4 +56,21 @@ public class CrowdfundCommentController {
 
         return resultAPI;
     }
+
+    /*@POST
+    @Path("quartzTest")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public ResultAPI quartzTest(CrowdfundCommentVo crowdfundCommentVo){
+
+        ResultAPI resultAPI = new ResultAPI();
+            CronTriggerExample example = new CronTriggerExample();
+        try {
+            example.run(scheduler);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return resultAPI;
+    }*/
 }
