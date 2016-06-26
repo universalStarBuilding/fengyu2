@@ -1,8 +1,10 @@
 package com.fengyu.modules.model;
 
+import com.fengyu.common.page.Pagetables;
+
 import java.util.Date;
 
-public class MessageText {
+public class MessageText extends Pagetables{
     private Integer id;
 
     private Integer sendId;

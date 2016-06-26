@@ -5,9 +5,7 @@ import com.fengyu.common.page.Pagetables;
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- * @LaunchProject 我发起项目的实体类
- */
+
 public class Launch extends Pagetables{
     private Integer id;
 
@@ -60,6 +58,26 @@ public class Launch extends Pagetables{
     private Date releasesTime;
 
     private Date shelvesTime;
+
+    private Boolean hot;
+
+    private Integer hotNum;
+
+    public Boolean getHot() {
+        return hot;
+    }
+
+    public void setHot(Boolean hot) {
+        this.hot = hot;
+    }
+
+    public Integer getHotNum() {
+        return hotNum;
+    }
+
+    public void setHotNum(Integer hotNum) {
+        this.hotNum = hotNum;
+    }
 
     public Integer getId() {
         return id;

@@ -15,137 +15,13 @@
   <sql id="Base_Column_List" >
     ID, TOPIC_ID, TOPIC_TYPE, CONTENT, FROM_UID, COMMENT_DATE, STATUS, AUDIT_ID, AUDIT_DATE
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from crowdfund_comment
-    where ID = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from crowdfund_comment
-    where ID = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.fengyu.modules.model.CrowdfundComment" >
-    insert into crowdfund_comment (ID, TOPIC_ID, TOPIC_TYPE, 
-      CONTENT, FROM_UID, COMMENT_DATE, 
-      STATUS, AUDIT_ID, AUDIT_DATE
-      )
-    values (#{id,jdbcType=INTEGER}, #{topicId,jdbcType=INTEGER}, #{topicType,jdbcType=VARCHAR}, 
-      #{content,jdbcType=VARCHAR}, #{fromUid,jdbcType=INTEGER}, #{commentDate,jdbcType=TIMESTAMP}, 
-      #{status,jdbcType=BIT}, #{auditId,jdbcType=INTEGER}, #{auditDate,jdbcType=TINYINT}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.fengyu.modules.model.CrowdfundComment" >
-    insert into crowdfund_comment
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        ID,
-      </if>
-      <if test="topicId != null" >
-        TOPIC_ID,
-      </if>
-      <if test="topicType != null" >
-        TOPIC_TYPE,
-      </if>
-      <if test="content != null" >
-        CONTENT,
-      </if>
-      <if test="fromUid != null" >
-        FROM_UID,
-      </if>
-      <if test="commentDate != null" >
-        COMMENT_DATE,
-      </if>
-      <if test="status != null" >
-        STATUS,
-      </if>
-      <if test="auditId != null" >
-        AUDIT_ID,
-      </if>
-      <if test="auditDate != null" >
-        AUDIT_DATE,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="topicId != null" >
-        #{topicId,jdbcType=INTEGER},
-      </if>
-      <if test="topicType != null" >
-        #{topicType,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="fromUid != null" >
-        #{fromUid,jdbcType=INTEGER},
-      </if>
-      <if test="commentDate != null" >
-        #{commentDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=BIT},
-      </if>
-      <if test="auditId != null" >
-        #{auditId,jdbcType=INTEGER},
-      </if>
-      <if test="auditDate != null" >
-        #{auditDate,jdbcType=TINYINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fengyu.modules.model.CrowdfundComment" >
-    update crowdfund_comment
-    <set >
-      <if test="topicId != null" >
-        TOPIC_ID = #{topicId,jdbcType=INTEGER},
-      </if>
-      <if test="topicType != null" >
-        TOPIC_TYPE = #{topicType,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null" >
-        CONTENT = #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="fromUid != null" >
-        FROM_UID = #{fromUid,jdbcType=INTEGER},
-      </if>
-      <if test="commentDate != null" >
-        COMMENT_DATE = #{commentDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null" >
-        STATUS = #{status,jdbcType=BIT},
-      </if>
-      <if test="auditId != null" >
-        AUDIT_ID = #{auditId,jdbcType=INTEGER},
-      </if>
-      <if test="auditDate != null" >
-        AUDIT_DATE = #{auditDate,jdbcType=TINYINT},
-      </if>
-    </set>
-    where ID = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.fengyu.modules.model.CrowdfundComment" >
-    update crowdfund_comment
-    set TOPIC_ID = #{topicId,jdbcType=INTEGER},
-      TOPIC_TYPE = #{topicType,jdbcType=VARCHAR},
-      CONTENT = #{content,jdbcType=VARCHAR},
-      FROM_UID = #{fromUid,jdbcType=INTEGER},
-      COMMENT_DATE = #{commentDate,jdbcType=TIMESTAMP},
-      STATUS = #{status,jdbcType=BIT},
-      AUDIT_ID = #{auditId,jdbcType=INTEGER},
-      AUDIT_DATE = #{auditDate,jdbcType=TINYINT}
-    where ID = #{id,jdbcType=INTEGER}
-  </update>
-
 
   <select id="queryById" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundCommentVo" resultType="java.lang.Long">
     SELECT COUNT(*) FROM crowdfund_comment CC,crowdfund_basicinfo CB
     WHERE CC.TOPIC_ID=CB.PROJECT_NO
     AND CC.TOPIC_ID=#{topicId,jdbcType=INTEGER}
   </select>
-  <select id="getListCrowdfund" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundCommentVo" resultType="com.fengyu.modules.model.CrowdfundComment">
+  <select id="getListCrowdfund" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundCommentVo" resultType="com.fengyu.modules.model.Launch">
     SELECT PROJECT_NO,PROJECT_NAME,PROJECT_SYNOPSIS,PROJECT_IMAGE
     FROM crowdfund_comment CC,crowdfund_basicinfo CB
     WHERE CC.TOPIC_ID=CB.PROJECT_NO

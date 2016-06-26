@@ -16,8 +16,8 @@
 
   <select id="getPrivateLetterByMessId" parameterType="com.fengyu.modules.webservice.project.vo.MessageResponseVo" resultType="com.fengyu.modules.model.MessageText">
     SELECT
-    <include refid="Base_Column_List"/>
-    FROM message_text
+    SEND_ID,MESSAGE,TITLE,POST_DATE
+    FROM `message_text`
     WHERE ID=#{messId,jdbcType=INTEGER} AND `TYPE` = #{type,jdbcType=INTEGER}
   </select>
 

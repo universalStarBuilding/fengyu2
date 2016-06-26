@@ -228,14 +228,14 @@
     function inserts()
     {
         $.ajax({
-            url:"http://localhost:8080/rest/project/msg/messageTextController/inserts",
+            url:"http://localhost:8080/rest/project/msg/message/inserts",
             contentType: "application/json; charset=utf-8",
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
                 "sendId":1,
                 "recId":1,
-                "type":1,
+                "messageType":1,
                 "title":"aaa",
                 "message":"bbb",
 
@@ -260,7 +260,7 @@
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
                 "page":"0",
-                "rows":"10",
+                "rows":"9",
                 "recId":"1",
                 "messageType":"0"
 
@@ -340,7 +340,7 @@
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
                 "topicId":"1",
-                "startPage":"1",
+                "page":"1",
                 "rows":"2"
             }),
             //传过去的参数，格式为 变量名：变量值

@@ -9,7 +9,7 @@ import com.fengyu.modules.webservice.project.vo.MessageResponseVo;
 
 @MyBatisDao
 public interface MessageTextDao extends CrudDao<MessageText>{
-    //添加信息
+    //添加站内信
     int insert(MessageText messageTextProject);
     //查询类型，获取标题、内容、时间
     MessageText queryType(int type);

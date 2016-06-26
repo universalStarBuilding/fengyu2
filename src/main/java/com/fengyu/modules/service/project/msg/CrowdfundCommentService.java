@@ -2,6 +2,7 @@ package com.fengyu.modules.service.project.msg;
 
 import com.fengyu.modules.dao.project.msg.CrowdfundCommentDao;
 import com.fengyu.modules.model.CrowdfundComment;
+import com.fengyu.modules.model.Launch;
 import com.fengyu.modules.webservice.project.vo.CrowdfundCommentVo;
 import com.fengyu.system.entity.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class CrowdfundCommentService {
         if (crowdfundCommentVo==null){
             throw new RuntimeException("获取信息列表失败");
         }
-        SearchResult<CrowdfundComment> result = new SearchResult<>();
+        SearchResult<Launch> result = new SearchResult<>();
         result.setTotalRows(crowdfundCommentDao.queryById(crowdfundCommentVo));
         result.setRows(crowdfundCommentDao.getListCrowdfund(crowdfundCommentVo));
         return result ;

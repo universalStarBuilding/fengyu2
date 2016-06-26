@@ -26,7 +26,7 @@ public class MessageController {
         private MessageService messageService;
 
         @POST
-        @Path("insert")
+        @Path("inserts")
         @Produces(MediaType.APPLICATION_JSON)
         @Consumes(MediaType.APPLICATION_JSON)
         public ResultAPI pageList(MessageRequestVo messageTextVo){
