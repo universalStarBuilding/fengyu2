@@ -18,7 +18,6 @@ public enum WebExceptionType {
 
     //用户基本信息
     UserNotFund("用户不存在！"),
-    UpdateInvalidUserInfo("用户信息修改异常！"),
     UserPhoneEmail("手机号不存在或邮箱不存在"),
     UserPassword("原密码错误，修改失败"),
     //账户
