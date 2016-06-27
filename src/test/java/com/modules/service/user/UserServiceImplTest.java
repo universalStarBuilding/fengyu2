@@ -11,11 +11,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+/*
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+*/
 
 import java.util.Date;
 import java.util.List;
@@ -23,10 +25,10 @@ import java.util.List;
 /**
  * Created by guozheng.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+/*@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
 //@ContextConfiguration(classes=AppConfig.class, loader=AnnotationConfigContextLoader.class)
-@TestExecutionListeners(value = { DependencyInjectionTestExecutionListener.class })
+@TestExecutionListeners(value = { DependencyInjectionTestExecutionListener.class })*/
 public class UserServiceImplTest {
 
     @Autowired
