@@ -3,6 +3,7 @@ package com.fengyu.modules.dao.project.msg;
 import com.fengyu.common.persistence.annotation.MyBatisDao;
 import com.fengyu.modules.model.Order;
 import com.fengyu.modules.webservice.project.vo.OrderVo;
+import com.sun.tools.corba.se.idl.constExpr.Or;
 
 import java.util.List;
 
@@ -20,5 +21,8 @@ public interface OrderDao {
     Integer supportNumber(Order order);
     //查询所有订单列表
     List<Order> getOrderList(Order order);
-    //
+    //查询订单状态列表
+    List<Order> getStateOrderList(Order order);
+    //统计订单的总数
+    Integer orderPage(Order order);
 }

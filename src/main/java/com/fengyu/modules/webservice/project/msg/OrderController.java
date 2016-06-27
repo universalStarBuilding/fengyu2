@@ -38,43 +38,39 @@ public class OrderController {
     @Consumes(MediaType.APPLICATION_JSON)
     public String pageList(OrderVo orderVo){
         if (orderVo==null){
-            throw new WebActionException(WebExceptionType.GetPageList,orderVo);
+            //throw new WebActionException(WebExceptionType.GetPageList,orderVo);
         }
         SearchResult<Order> result=orderService.getPageList(orderVo);
 
         return JSON.toJSONString(result);
     }
-    /*@POST
+
+    /**
+     * 查询订单列表
+     * @param order
+     * @return
+     */
+    @POST
     @Path("order")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI getOrderList(Order order){
-        ResultAPI resultAPI = new ResultAPI();
-        try {
-            resultAPI.setMsg(orderService.getOrderList(order));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg("服务器异常");
+    public String getOrderList(Order order){
+        SearchResult searchResult=orderService.getOrderList(order);
+        if (searchResult==null){
+
         }
-        return resultAPI;
+        return JSON.toJSONString(searchResult);
     }
     @POST
     @Path("payment")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI getPaymentList(Order order){
-        ResultAPI resultAPI = new ResultAPI();
-        try {
-            resultAPI.setMsg(orderService.getPaymentList(order));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg("服务器异常");
+    public String getPaymentList(Order order){
+        SearchResult searchResult=orderService.getPayment(order);
+        if (searchResult==null){
+
         }
-        return resultAPI;
-    }*/
+        return JSON.toJSONString(searchResult);
+    }
 
 }
