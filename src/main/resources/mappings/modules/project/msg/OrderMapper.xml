@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fengyu.modules.dao.project.msg.OrderMapper" >
+<mapper namespace="com.fengyu.modules.dao.project.msg.OrderDao" >
   <resultMap id="BaseResultMap" type="com.fengyu.modules.model.Order" >
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="ORDER_ID" property="orderId" jdbcType="INTEGER" />
@@ -33,6 +33,12 @@
       WHERE O.ORDER_OWNER = CB.USER_ID
     AND CB.USER_ID =#{id,jdbcType=INTEGER}
     limit #{page},#{rows}
+  </select>
+
+  <select id="supportNumber" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="com.fengyu.modules.webservice.project.vo.HotResponseVo">
+    SELECT COUNT(*)
+    FROM `order` O,crowdfund_basicinfo CB
+    WHERE O.ORDER_OWNER = CB.USER_ID
   </select>
 
 </mapper>

@@ -1,13 +1,12 @@
-package com.fengyu.modules.webservice.project.vo;
+package com.fengyu.modules.model;
 
-import com.fengyu.common.page.Pagetables;
+import com.fengyu.common.persistence.DataEntity;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class LaunchVo extends Pagetables{
-    private Integer id;
 
+public class CrowdfundBasicinfo extends DataEntity<CrowdfundBasicinfo>{
     private Integer projectNo;
 
     private Integer userId;
@@ -58,12 +57,24 @@ public class LaunchVo extends Pagetables{
 
     private Date shelvesTime;
 
-    public Integer getId() {
-        return id;
+    private Integer hot;
+
+    private Integer hotNum;
+
+    public Integer getHot() {
+        return hot;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setHot(Integer hot) {
+        this.hot = hot;
+    }
+
+    public Integer getHotNum() {
+        return hotNum;
+    }
+
+    public void setHotNum(Integer hotNum) {
+        this.hotNum = hotNum;
     }
 
     public Integer getProjectNo() {

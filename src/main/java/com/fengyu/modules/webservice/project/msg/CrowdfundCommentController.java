@@ -1,9 +1,7 @@
 package com.fengyu.modules.webservice.project.msg;
 
 import com.fengyu.modules.service.project.msg.CrowdfundCommentService;
-import com.fengyu.modules.service.project.msg.OrderService;
-import com.fengyu.modules.webservice.project.vo.CrowdfundCommentVo;
-import com.fengyu.modules.webservice.project.vo.OrderVo;
+import com.fengyu.modules.webservice.project.vo.CrowdfundCommentRequestVo;
 import com.fengyu.system.entity.ResultAPI;
 import org.quartz.impl.StdScheduler;
 import org.slf4j.Logger;
@@ -38,7 +36,7 @@ public class CrowdfundCommentController {
     @Path("queryById")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI pageList(CrowdfundCommentVo crowdfundCommentVo){
+    public ResultAPI pageList(CrowdfundCommentRequestVo crowdfundCommentVo){
 
         ResultAPI resultAPI = new ResultAPI();
         try {
@@ -60,7 +58,7 @@ public class CrowdfundCommentController {
     @Path("quartzTest")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI quartzTest(CrowdfundCommentVo crowdfundCommentVo){
+    public ResultAPI quartzTest(CrowdfundCommentRequestVo crowdfundCommentVo){
 
         ResultAPI resultAPI = new ResultAPI();
             CronTriggerExample example = new CronTriggerExample();

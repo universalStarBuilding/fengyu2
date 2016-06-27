@@ -1,9 +1,10 @@
-package com.fengyu.modules.webservice.project.vo;
+package com.fengyu.modules.model;
+
+import com.fengyu.common.persistence.DataEntity;
 
 import java.util.Date;
 
-public class DynamicRequestVo {
-    private Integer id;
+public class CrowdfundIfmtDscle extends DataEntity<CrowdfundIfmtDscle>{
 
     private Integer projectNo;
 
@@ -22,14 +23,6 @@ public class DynamicRequestVo {
     private Integer auditor;
 
     private Date auditTime;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getProjectNo() {
         return projectNo;

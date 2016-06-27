@@ -1,7 +1,7 @@
 package com.fengyu.modules.webservice.project.msg;
 
-import com.fengyu.modules.service.project.msg.DynamicService;
-import com.fengyu.modules.webservice.project.vo.DynamicRequestVo;
+import com.fengyu.modules.service.project.msg.CrowdfundIfmtDscleService;
+import com.fengyu.modules.webservice.project.vo.CrowdfundIfmtDscleRequestVo;
 import com.fengyu.system.entity.ResultAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,13 +20,13 @@ import javax.ws.rs.core.MediaType;
 public class DynamicController {
 
     @Autowired
-    private DynamicService dynamicService;
+    private CrowdfundIfmtDscleService dynamicService;
 
     @POST
     @Path("insertDynamic")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI insertDynamic(DynamicRequestVo dynamicRequestVo){
+    public ResultAPI insertDynamic(CrowdfundIfmtDscleRequestVo dynamicRequestVo){
 
         ResultAPI resultAPI = new ResultAPI();
         try {
