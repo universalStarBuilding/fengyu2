@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fengyu.modules.dao.project.msg.OrderMapper" >
+<mapper namespace="com.fengyu.modules.dao.project.msg.OrderDao" >
   <resultMap id="BaseResultMap" type="com.fengyu.modules.model.Order" >
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="ORDER_ID" property="orderId" jdbcType="INTEGER" />
@@ -16,7 +16,7 @@
     <result column="PAYMENT_TIME" property="paymentTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-     ORDER_ID, ORDER_OWNER, ORDER_AMT, ORDER_STATE, ORDER_TYPE, ORDER_OBJECT, PAY_CHANNEL,
+    ID, ORDER_ID, ORDER_OWNER, ORDER_AMT, ORDER_STATE, ORDER_TYPE, ORDER_OBJECT, PAY_CHANNEL, 
     PAY_USER, SUBMIT_TIME, COMPLETE_TIME, PAYMENT_TIME
   </sql>
 
@@ -34,23 +34,11 @@
     AND CB.USER_ID =#{id,jdbcType=INTEGER}
     limit #{page},#{rows}
   </select>
-<select id="getOrderList" parameterType="com.fengyu.modules.model.Order" resultType="com.fengyu.modules.model.Order">
-  SELECT
-  o.ORDER_OWNER,o.SUBMIT_TIME,p.PROJECT_NAME,p.PROJECT_LIST_IMAGE,o.ORDER_STATE,p.user_id,o.ORDER_AMT
-  FROM `order`o,crowdfund_basicinfo p
-  WHERE o.ORDER_OWNER=p.USER_ID AND o.ORDER_OWNER=#{orderOwner,jdbcType=INTEGER}
-  limit #{page},#{rows}
-</select>
-  <select id="orderPage" parameterType="com.fengyu.modules.model.Order" resultType="java.lang.Long">
-    SELECT COUNT(*)FROM `order` o,crowdfund_basicinfo p
-    WHERE o.ORDER_OWNER=p.USER_ID
+
+  <select id="supportNumber" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="com.fengyu.modules.webservice.project.vo.HotResponseVo">
+    SELECT COUNT(*)
+    FROM `order` O,crowdfund_basicinfo CB
+    WHERE O.ORDER_OWNER = CB.USER_ID
   </select>
-  <select id="getPaymentList" parameterType="com.fengyu.modules.webservice.project.vo.OrderVo" resultType="com.fengyu.modules.model.Order">
-    SELECT
-      o.ORDER_OWNER,o.SUBMIT_TIME,p.PROJECT_NAME,p.PROJECT_LIST_IMAGE,o.ORDER_STATE,p.user_id,o.ORDER_AMT
-      FROM `order`o,crowdfund_basicinfo p
-      WHERE o.ORDER_OWNER=p.USER_ID AND o.ORDER_OWNER=#{orderOwner,jdbcType=INTEGER}
-      AND o.ORDER_STATE=#{orderState,jdbcType=VARCHAR}
-    limit #{page},#{rows}
-  </select>
+
 </mapper>

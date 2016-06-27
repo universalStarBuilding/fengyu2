@@ -1,8 +1,8 @@
-package com.fengyu.modules.model;
+package com.fengyu.modules.webservice.project.vo;
 
 import java.util.Date;
 
-public class Dynamic {
+public class CrowdfundIfmtDscleRequestVo {
     private Integer id;
 
     private Integer projectNo;

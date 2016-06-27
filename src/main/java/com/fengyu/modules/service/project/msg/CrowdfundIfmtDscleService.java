@@ -1,8 +1,8 @@
 package com.fengyu.modules.service.project.msg;
 
-import com.fengyu.modules.dao.project.msg.DynamicDao;
-import com.fengyu.modules.model.Dynamic;
-import com.fengyu.modules.webservice.project.vo.DynamicRequestVo;
+import com.fengyu.modules.dao.project.msg.CrowdfundIfmtDscleDao;
+import com.fengyu.modules.model.CrowdfundIfmtDscle;
+import com.fengyu.modules.webservice.project.vo.CrowdfundIfmtDscleRequestVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,21 +14,21 @@ import java.util.Date;
  */
 @Service(value = "dynamicService")
 @Transactional
-public class DynamicService {
+public class CrowdfundIfmtDscleService {
 
     @Autowired
-    private DynamicDao dynamicDao;
+    private CrowdfundIfmtDscleDao dynamicDao;
 
     /**
      * 添加项目动态
      * @param dynamicVo
      * @return
      */
-    public Integer insert(DynamicRequestVo dynamicVo){
+    public Integer insert(CrowdfundIfmtDscleRequestVo dynamicVo){
         if (dynamicVo==null){
             throw new RuntimeException("添加失败");
         }
-        Dynamic dynamic=new Dynamic();
+        CrowdfundIfmtDscle dynamic=new CrowdfundIfmtDscle();
         dynamic.setProjectNo(dynamicVo.getProjectNo());
         dynamic.setDsclUser(dynamicVo.getDsclUser());
         dynamic.setDsclNode(dynamicVo.getDsclNode());

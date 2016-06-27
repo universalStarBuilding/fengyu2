@@ -4,7 +4,7 @@ import com.fengyu.common.page.Pagetables;
 
 import java.util.Date;
 
-public class CrowdfundCommentVo extends Pagetables{
+public class CrowdfundCommentRequestVo extends Pagetables{
     private Integer id;
 
     private Integer topicId;

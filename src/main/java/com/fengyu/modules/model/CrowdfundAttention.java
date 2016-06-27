@@ -1,14 +1,13 @@
 package com.fengyu.modules.model;
 
-import com.fengyu.common.page.Pagetables;
+import com.fengyu.common.persistence.DataEntity;
 
 import java.util.Date;
 
 /**
  * @FollowProject 我关注项目的实体类
  */
-public class Follow extends Pagetables{
-    private Integer id;
+public class CrowdfundAttention extends DataEntity<CrowdfundAttention>{
 
     private Integer userId;
 
@@ -17,14 +16,6 @@ public class Follow extends Pagetables{
     private String attentionType;
 
     private Date attentionTime;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getUserId() {
         return userId;
