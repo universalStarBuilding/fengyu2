@@ -1,6 +1,6 @@
 package com.fengyu.common.exception.MapperSupport;
 
-import com.fengyu.common.exception.MapperSupport.Constant.PersistenceExceptionType;
+import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
 
 /**
  * Created by admin on 2016/6/24.
@@ -13,6 +13,6 @@ public abstract class AbstractException extends RuntimeException{
     }
 
     public abstract String getExceptionType();
-    public abstract PersistenceExceptionType getUserDefindExType();
+    public abstract WebExceptionType getUserDefindExType();
 
 }

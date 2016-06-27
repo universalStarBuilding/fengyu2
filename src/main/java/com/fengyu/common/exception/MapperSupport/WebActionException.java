@@ -1,14 +1,14 @@
 package com.fengyu.common.exception.MapperSupport;
 
-import com.fengyu.common.exception.MapperSupport.Constant.PersistenceExceptionType;
+import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
 
 /**
  * Created by admin on 2016/6/24.
  */
 public class WebActionException extends AbstractException {
-    protected PersistenceExceptionType type;
+    protected WebExceptionType type;
     protected Object data;
-    public WebActionException(Throwable ex, PersistenceExceptionType type, Object data){
+    public WebActionException(Throwable ex, WebExceptionType type, Object data){
         super(ex);
         this.type = type;
         this.data = data;
@@ -19,11 +19,11 @@ public class WebActionException extends AbstractException {
         return "WebActionExceptionType";
     }
 
-    public WebActionException(PersistenceExceptionType type, Object data){
+    public WebActionException(WebExceptionType type, Object data){
         this(null,type,data);
     }
     @Override
-    public PersistenceExceptionType getUserDefindExType(){
+    public WebExceptionType getUserDefindExType(){
         return this.type;
     }
     public  Object getData(){

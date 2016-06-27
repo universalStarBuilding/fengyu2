@@ -27,6 +27,8 @@ public class WebApplication extends ResourceConfig{
 
     public WebApplication() {
 
+        // Validation.
+        register(ValidationConfigurationContextResolver.class);
         register(ExceptionMapperSupport.class);
         //注册日志记录
         register(AirLogFilter.class);
@@ -36,8 +38,7 @@ public class WebApplication extends ResourceConfig{
         register(FeatureAnnotatedFactory.class);
         //注册身份验证
         register(AuthorizationRequestFilter.class);
-        // Validation.
-       // register(ValidationConfigurationContextResolver.class);
+
     }
     public static class ValidationConfigurationContextResolver implements ContextResolver<ValidationConfig> {
 

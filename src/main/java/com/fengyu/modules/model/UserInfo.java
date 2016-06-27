@@ -1,7 +1,9 @@
 package com.fengyu.modules.model;
 
 import com.fengyu.common.persistence.DataEntity;
+import org.hibernate.validator.constraints.Email;
 
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
@@ -19,6 +21,19 @@ public class UserInfo extends DataEntity<UserInfo> {
     private Integer cityId;
     private Integer countyId;
     private String address;
+
+
+
+    private String email;
+
+    @Email(message = "{contact.wrong.email}", regexp = "[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public Integer getUserId() {
         return userId;
