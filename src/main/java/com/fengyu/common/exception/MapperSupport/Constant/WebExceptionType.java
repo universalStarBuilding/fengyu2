@@ -28,8 +28,7 @@ public enum WebExceptionType {
     DeletePostAccess("删除收货地址失败"),
     InsertPostAccess("收货地址添加失败"),
     UpdatePostAccess("收货地址修改失败"),
-    PostAccessNotFund("收货地址不存在");
-    UpdateInvalidUserInfo("用户信息修改异常！"),
+    PostAccessNotFund("收货地址不存在"),
 
 
 
