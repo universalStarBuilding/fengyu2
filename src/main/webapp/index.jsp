@@ -7,21 +7,59 @@
 <script>
     function loginSystem()
     {
+//        $.ajax({
+//            url:"http://localhost:8080/rest/user/web/0",
+//            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+//            type:"get", //传参方式，get 或post
+//            //传过去的参数，格式为 变量名：变量值
+//            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+//                console.log("this is success! data:"+data,",status="+status);
+//            },
+//            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+//                //console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+//                console.log("this is error");
+//                console.log(request.responseText);
+//                $("#error").html(request);
+//                var error = request.responseJSON;
+//                console.log(error);
+//            }
+//        });
         $.ajax({
-            url:"http://localhost:8080/rest/user/web/0",
-            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            url:"http://localhost:8080/rest/user/test/aa",
+           // dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"get", //传参方式，get 或post
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
             },
             error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                //console.log("this is error! request:"+request+",status:"+status+",message:"+message);
-                console.log("this is error");
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                errrorText = errrorText.substring(0,errrorText.indexOf("."));
+                console.log(errrorText);
+            }
+        });
+    }
+    //获取用户信息
+    function getUserInfo()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/user/get/1",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"get", //传参方式，get 或post
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                console.log(data);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request);
                 console.log(request.responseText);
-                $("#error").html(request);
-                var error = request.responseJSON;
-                console.log(error);
+                var json = eval(request.responseText);
+                console.log(json.exceptionMsg);
             }
         });
     }
@@ -38,16 +76,16 @@
                 "realName":"nidaye",
                 "nickName":"3",
                 "idCardNo":"4",
-                "headImg":"3"
+                "headImg":"3",
+                "email":"1321"
             }),
             //传过去的参数，格式为 变量名：变量值
-            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
-                alert("Ajax处理已成功：" + text);
-                var jsonText=JSON.stringify(text)
-                document.write(jsonText);
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
             },
-            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                alert( "Ajax跳转处理失败");
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request.responseText);
             }
         });
     }
@@ -381,22 +419,21 @@
 </script>
 <body>
 <div id = "error"></div>
-<input type="button" value="测试token" id="testButton" onclick="loginSystem()">
-<input type="button" value="修改用户信息"id="updateUserInfo" onclick="updateUserInfo()">
-<input type="button" value="添加收货地址"id="insertPostAddress"onclick="insertPostAddress()">
-<input type="button" value="修改收货地址"id="updatePostAddress" onclick="updatePostAddress()">
-<input type="button" value="分页查询收货地址" onclick="pageList()">
-<form action="" method="post">
+    <input type="button" value="测试token" id="testButton" onclick="loginSystem()">
+    <input type="button" value="获取用户信息"id="getUserInfo" onclick="getUserInfo()">
+    <input type="button" value="修改用户信息"id="updateUserInfo" onclick="updateUserInfo()">
+    <input type="button" value="添加收货地址"id="insertPostAddress"onclick="insertPostAddress()">
+    <input type="button" value="修改收货地址"id="updatePostAddress" onclick="updatePostAddress()">
+    <input type="button" value="分页查询收货地址" onclick="pageList()">
     <input type="button" value="支持" onclick="queryById()">
     <input type="button" value="发起" onclick="queryBy()">
     <input type="button" value="关注" onclick="queryByIdFollow()">
-</form><br/><br/><br/>
-<input type="button" value="添加关注" onclick="insert()">
-<input type="button" value="添加站内信" onclick="inserts()">
-<input type="button" value="私信列表" onclick="privateLetter()">
-<input type="button" value="删除私信" onclick="deleteLetter()">
-<input type="button" value="项目动态" onclick="insertDynamic()">
-<input type="button" value="项目评论列表" onclick="querysById()">
-<input type="button" value="QuartzTest" onclick="quartzTest()">
+    <input type="button" value="添加关注" onclick="insert()">
+    <input type="button" value="添加站内信" onclick="inserts()">
+    <input type="button" value="私信列表" onclick="privateLetter()">
+    <input type="button" value="删除私信" onclick="deleteLetter()">
+    <input type="button" value="项目动态" onclick="insertDynamic()">
+    <input type="button" value="项目评论列表" onclick="querysById()">
+    <input type="button" value="QuartzTest" onclick="quartzTest()">
 </body>
 </html>
