@@ -43,7 +43,7 @@ public class LaunchController {
     @Consumes(MediaType.APPLICATION_JSON)
     public String pageList(CrowdfundBasicinfoVo launchProjectVo){
         if (launchProjectVo==null){
-            throw new WebActionException(WebExceptionType.QueryBy,launchProjectVo);
+            throw new WebActionException(WebExceptionType.GetInvalidLaunchProject,launchProjectVo);
         }
         SearchResult searchResult=launchProjectService.queryBy(launchProjectVo);
 
@@ -63,7 +63,7 @@ public class LaunchController {
     public String selectHot(CrowdfundBasicinfoVo launchVo){
 
             if (launchVo==null){
-                throw new WebActionException(WebExceptionType.SelectHot,launchVo);
+                throw new WebActionException(WebExceptionType.SelectInvalidHot,launchVo);
             }
         SearchResult  searchResult=launchProjectService.selectHot(launchVo);
 

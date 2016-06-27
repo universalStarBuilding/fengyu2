@@ -40,7 +40,7 @@ public class FollowController {
     public String pageList(CrowdfundAttentionRequestVo followProjectVo){
 
         if (followProjectVo==null){
-            throw new WebActionException(WebExceptionType.QueryById,followProjectVo);
+            throw new WebActionException(WebExceptionType.GetInvalidProjectConcerns,followProjectVo);
         }
         SearchResult searchResult=followProjectService.queryById(followProjectVo);
 
@@ -55,7 +55,7 @@ public class FollowController {
     @Consumes(MediaType.APPLICATION_JSON)
     public String insert(CrowdfundAttentionRequestVo followProjectVo){
         if (followProjectVo==null){
-            throw new WebActionException(WebExceptionType.QueryById,followProjectVo);
+            throw new WebActionException(WebExceptionType.InsertInvalidDynamic,followProjectVo);
         }
         Integer resultAPI=followProjectService.insert(followProjectVo);
 

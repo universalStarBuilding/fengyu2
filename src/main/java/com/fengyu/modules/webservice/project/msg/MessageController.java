@@ -37,7 +37,7 @@ public class MessageController {
         public String pageList(MessageRequestVo messageTextVo){
 
            if (messageTextVo==null){
-               throw new WebActionException(WebExceptionType.InsertDynamic,messageTextVo);
+               throw new WebActionException(WebExceptionType.InsertInvalidDynamic,messageTextVo);
            }
             int  resultAPI=messageService.insert(messageTextVo);
 
@@ -52,7 +52,7 @@ public class MessageController {
     @Consumes(MediaType.APPLICATION_JSON)
     public String privateLetter(MessageRequestVo messageRequestVo){
             if (messageRequestVo==null){
-                throw new WebActionException(WebExceptionType.GetSendMsgListByRecId,messageRequestVo);
+                throw new WebActionException(WebExceptionType.GetInvalidProjectLetter,messageRequestVo);
             }
         SearchResult searchResult=messageService.getSendMsgListByRecId(messageRequestVo);
 
@@ -67,7 +67,7 @@ public class MessageController {
     public String deleteLetter(MessageRequestVo messageTextVo){
 
         if (messageTextVo==null){
-            throw new WebActionException(WebExceptionType.DeleteById,messageTextVo);
+            throw new WebActionException(WebExceptionType.DeleteInvalidProjectLetter,messageTextVo);
         }
         int message=messageService.deleteById(messageTextVo);
 
