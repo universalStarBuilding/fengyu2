@@ -1,8 +1,13 @@
 package com.fengyu.modules.webservice.project.msg;
 
+import com.alibaba.fastjson.JSON;
+import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
+import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.modules.service.project.msg.MessageService;
 import com.fengyu.modules.webservice.project.vo.MessageRequestVo;
+import com.fengyu.modules.webservice.project.vo.MessageResponseVo;
 import com.fengyu.system.entity.ResultAPI;
+import com.fengyu.system.entity.SearchResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,20 +34,15 @@ public class MessageController {
         @Path("inserts")
         @Produces(MediaType.APPLICATION_JSON)
         @Consumes(MediaType.APPLICATION_JSON)
-        public ResultAPI pageList(MessageRequestVo messageTextVo){
+        public String pageList(MessageRequestVo messageTextVo){
 
-            ResultAPI resultAPI = new ResultAPI();
-            try {
-                resultAPI.setMsg(messageService.insert(messageTextVo));
-                resultAPI.setAccess_result("SUCCESS");
-            }catch (Exception e){
-                e.printStackTrace();
-                resultAPI.setAccess_result("FAILURE");
-                resultAPI.setMsg("服务器异常");
-            }
+           if (messageTextVo==null){
+               throw new WebActionException(WebExceptionType.InsertDynamic,messageTextVo);
+           }
+            int  resultAPI=messageService.insert(messageTextVo);
 
 
-            return resultAPI;
+            return JSON.toJSONString(resultAPI);
         }
 
 
@@ -50,39 +50,29 @@ public class MessageController {
     @Path("privateLetter")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI privateLetter(MessageRequestVo messageRequestVo){
-
-        ResultAPI resultAPI = new ResultAPI();
-        try {
-            resultAPI.setMsg(messageService.getSendMsgListByRecId(messageRequestVo));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg("服务器异常");
-        }
+    public String privateLetter(MessageRequestVo messageRequestVo){
+            if (messageRequestVo==null){
+                throw new WebActionException(WebExceptionType.GetSendMsgListByRecId,messageRequestVo);
+            }
+        SearchResult searchResult=messageService.getSendMsgListByRecId(messageRequestVo);
 
 
-        return resultAPI;
+        return JSON.toJSONString(searchResult);
     }
 
     @POST
     @Path("deleteLetter")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI deleteLetter(MessageRequestVo messageTextVo){
+    public String deleteLetter(MessageRequestVo messageTextVo){
 
-        ResultAPI resultAPI = new ResultAPI();
-        try {
-            resultAPI.setMsg(messageService.deleteById(messageTextVo));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg("服务器异常");
+        if (messageTextVo==null){
+            throw new WebActionException(WebExceptionType.DeleteById,messageTextVo);
         }
+        int message=messageService.deleteById(messageTextVo);
 
-        return resultAPI;
+
+        return JSON.toJSONString(message);
     }
 
 }

@@ -1,8 +1,13 @@
 package com.fengyu.modules.webservice.project.msg;
 
+import com.alibaba.fastjson.JSON;
+import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
+import com.fengyu.common.exception.MapperSupport.WebActionException;
+import com.fengyu.modules.model.CrowdfundBasicinfo;
 import com.fengyu.modules.service.project.msg.CrowdfundBasicinfoService;
 import com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo;
 import com.fengyu.system.entity.ResultAPI;
+import com.fengyu.system.entity.SearchResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,21 +41,14 @@ public class LaunchController {
     @Path("queryBy")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI pageList(CrowdfundBasicinfoVo launchProjectVo){
-
-        ResultAPI resultAPI = new ResultAPI();
-        try {
-            resultAPI.setMsg(launchProjectService.queryBy(launchProjectVo));
-            resultAPI.setAccess_result("SUCCESS");
-
-        }catch (Exception e){
-            //e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg("服务器异常");
+    public String pageList(CrowdfundBasicinfoVo launchProjectVo){
+        if (launchProjectVo==null){
+            throw new WebActionException(WebExceptionType.QueryBy,launchProjectVo);
         }
+        SearchResult searchResult=launchProjectService.queryBy(launchProjectVo);
 
 
-        return resultAPI;
+        return JSON.toJSONString(searchResult);
     }
 
     /**
@@ -62,19 +60,14 @@ public class LaunchController {
     @Path("selectHot")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI selectHot(CrowdfundBasicinfoVo launchVo){
+    public String selectHot(CrowdfundBasicinfoVo launchVo){
 
-        ResultAPI resultAPI = new ResultAPI();
-        try {
-            resultAPI.setMsg(launchProjectService.selectHot(launchVo));
-            resultAPI.setAccess_result("SUCCESS");
+            if (launchVo==null){
+                throw new WebActionException(WebExceptionType.SelectHot,launchVo);
+            }
+        SearchResult  searchResult=launchProjectService.selectHot(launchVo);
 
-        }catch (Exception e){
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg("服务器异常");
-        }
-        return resultAPI;
+        return JSON.toJSONString(searchResult);
     }
 
 

@@ -1,8 +1,12 @@
 package com.fengyu.modules.webservice.project.msg;
 
+import com.alibaba.fastjson.JSON;
+import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
+import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.modules.service.project.msg.CrowdfundCommentService;
 import com.fengyu.modules.webservice.project.vo.CrowdfundCommentRequestVo;
 import com.fengyu.system.entity.ResultAPI;
+import com.fengyu.system.entity.SearchResult;
 import org.quartz.impl.StdScheduler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,8 +31,8 @@ public class CrowdfundCommentController {
      * 日志对象
      */
     protected Logger logger = LoggerFactory.getLogger(CrowdfundCommentController.class);
-    @Resource
-    private StdScheduler scheduler;
+ /*   @Resource
+    private StdScheduler scheduler;*/
     @Autowired
     private CrowdfundCommentService crowdfundCommentService;
 
@@ -36,38 +40,26 @@ public class CrowdfundCommentController {
     @Path("queryById")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI pageList(CrowdfundCommentRequestVo crowdfundCommentVo){
+    public String pageList(CrowdfundCommentRequestVo crowdfundCommentVo){
 
-        ResultAPI resultAPI = new ResultAPI();
-        try {
-            resultAPI.setMsg(crowdfundCommentService.queryById(crowdfundCommentVo));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (RuntimeException e){
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg(e.getMessage());
-        }catch (Exception e){
-            //e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg("服务器异常");
+        if(crowdfundCommentVo==null){
+            throw new WebActionException(WebExceptionType.QueryById,crowdfundCommentVo);
         }
+        SearchResult searchResult  = crowdfundCommentService.queryById(crowdfundCommentVo);
 
-        return resultAPI;
+        return JSON.toJSONString(searchResult);
     }
 
-    /*@POST
+/*    @POST
     @Path("quartzTest")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI quartzTest(CrowdfundCommentRequestVo crowdfundCommentVo){
-
-        ResultAPI resultAPI = new ResultAPI();
-            CronTriggerExample example = new CronTriggerExample();
-        try {
-            example.run(scheduler);
-        } catch (Exception e) {
-            e.printStackTrace();
+    public ResultAPI quartzTest(CrowdfundCommentRequestVo crowdfundCommentRequestVo){
+        if (crowdfundCommentRequestVo==null){
+            throw new WebActionException();
         }
 
-        return resultAPI;
+        return null;
     }*/
+
 }

@@ -1,5 +1,8 @@
 package com.fengyu.modules.webservice.project.msg;
 
+import com.alibaba.fastjson.JSON;
+import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
+import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.modules.service.project.msg.CrowdfundIfmtDscleService;
 import com.fengyu.modules.webservice.project.vo.CrowdfundIfmtDscleRequestVo;
 import com.fengyu.system.entity.ResultAPI;
@@ -26,14 +29,13 @@ public class DynamicController {
     @Path("insertDynamic")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI insertDynamic(CrowdfundIfmtDscleRequestVo dynamicRequestVo){
+    public String insertDynamic(CrowdfundIfmtDscleRequestVo dynamicRequestVo){
+        if (dynamicRequestVo==null){
+            throw new WebActionException(WebExceptionType.InsertDynamic,dynamicRequestVo);
+        }
+        Integer resultAPI =dynamicService.insert(dynamicRequestVo);
 
-        ResultAPI resultAPI = new ResultAPI();
-
-            resultAPI.setMsg(dynamicService.insert(dynamicRequestVo));
-
-
-        return resultAPI;
+        return JSON.toJSONString(resultAPI);
     }
 
 

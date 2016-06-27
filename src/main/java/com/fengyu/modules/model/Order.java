@@ -2,7 +2,6 @@ package com.fengyu.modules.model;
 
 import com.fengyu.common.page.Pagetables;
 import com.fengyu.common.persistence.DataEntity;
-import com.sun.tools.corba.se.idl.constExpr.Or;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;

@@ -1,11 +1,11 @@
 package com.fengyu.modules.webservice.project.vo;
 
 import com.fengyu.common.page.Pagetables;
+import com.fengyu.common.persistence.DataEntity;
 
 import java.util.Date;
 
-public class CrowdfundCommentRequestVo extends Pagetables{
-    private Integer id;
+public class CrowdfundCommentRequestVo extends DataEntity<CrowdfundCommentRequestVo>{
 
     private Integer topicId;
 
@@ -22,14 +22,6 @@ public class CrowdfundCommentRequestVo extends Pagetables{
     private Integer auditId;
 
     private Byte auditDate;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getTopicId() {
         return topicId;
