@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fengyu.modules.dao.user.AccBasicDao">
+<mapper namespace="com.fengyu.modules.dao.account.AccBasicDao">
   <resultMap id="BaseResultMap" type="com.fengyu.modules.model.AccBasic">
     <id column="USER_ID" jdbcType="INTEGER" property="userId" />
     <result column="BALANCE" jdbcType="DECIMAL" property="balance" />

@@ -20,4 +20,6 @@ public interface AccUserBankDao extends CrudDao<AccUserBank> {
      * @return
      */
     String getUserBank(Integer id);
+
+
 }

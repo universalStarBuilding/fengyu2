@@ -1,5 +1,8 @@
 package com.fengyu.modules.webservice.account;
 
+import com.alibaba.fastjson.JSON;
+import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
+import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.modules.model.AccBasic;
 import com.fengyu.modules.service.account.AccBasicService;
 import com.fengyu.system.entity.ResultAPI;
@@ -38,14 +41,11 @@ public class AccBasicController {
      */
     @POST
     @Path("payPwdUpdate")
-    public ResultAPI updatePayPwd(AccBasic accBasic){
-        ResultAPI resultAPI=new ResultAPI();
-        try {
-            resultAPI.setMsg(accBasicService.updatePayPwd(accBasic));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            resultAPI.setAccess_result("FAILURE");
+    public String updatePayPwd(AccBasic accBasic){
+        Integer rows=accBasicService.updatePayPwd(accBasic);
+        if (rows==0){
+            throw new WebActionException(WebExceptionType.UpdatePayPwdAccUserBank,accBasic);
         }
-        return resultAPI;
+        return JSON.toJSONString(rows);
     }
 }

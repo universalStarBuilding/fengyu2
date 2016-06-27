@@ -47,8 +47,6 @@ public class UserInfoController {
         return JSON.toJSONString(userInfo);
     }
 
-
-
     @POST
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)

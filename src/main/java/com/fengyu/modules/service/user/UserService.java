@@ -1,25 +1,20 @@
 package com.fengyu.modules.service.user;
 
 
-import com.alibaba.druid.sql.visitor.functions.Substring;
 import com.fengyu.common.channel.email.SendMail;
 import com.fengyu.common.channel.phone.AliMsgApi;
 import com.fengyu.common.config.Cache;
-import com.fengyu.common.service.BaseService;
 import com.fengyu.common.service.CrudService;
 import com.fengyu.common.utils.StringUtils;
-import com.fengyu.modules.dao.user.AccBasicDao;
-import com.fengyu.modules.dao.user.AccUserBankDao;
+import com.fengyu.modules.dao.account.AccBasicDao;
+import com.fengyu.modules.dao.account.AccUserBankDao;
 import com.fengyu.modules.dao.user.UserDao;
 import com.fengyu.modules.dao.user.UserInfoDao;
 import com.fengyu.modules.model.User;
-import com.fengyu.modules.service.account.AccBasicService;
 import com.fengyu.modules.webservice.user.vo.SercurityVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.ws.rs.PathParam;
 
 @Service(value = "userService")
 @Transactional

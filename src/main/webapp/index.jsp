@@ -86,13 +86,18 @@
                 "addressDetail":"艾欧尼亚"
             }),
             //传过去的参数，格式为 变量名：变量值
-            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
-                alert("Ajax处理已成功：" + text);
-                var jsonText=JSON.stringify(text)
-                document.write(jsonText);
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                console.log(data);
+                alert("处理成功");
             },
-            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                alert( "Ajax跳转处理失败");
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request);
+                console.log(request.responseText);
+                var json = eval(request.responseText);
+                console.log(json.exceptionMsg);
+                alert("处理失败");
             }
         });
     }
@@ -114,13 +119,18 @@
                 "addressDetail":"德玛西亚"
             }),
             //传过去的参数，格式为 变量名：变量值
-            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
-                alert("Ajax处理已成功：" + text);
-                var jsonText=JSON.stringify(text)
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                console.log(data);
+                var jsonText=JSON.stringify(data)
                 document.write(jsonText);
             },
-            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                alert( "Ajax跳转处理失败");
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request);
+                console.log(request.responseText);
+                var json = eval(request.responseText);
+                console.log(json.exceptionMsg);
             }
         });
     }
@@ -149,7 +159,7 @@
     }
 
 
-    function queryById()
+    function queryById ()
     {
         $.ajax({
             url:"http://localhost:8080/rest/project/msg/queryById",
@@ -161,14 +171,18 @@
                 "startPage":"1",
                 "rows":"2"
             }),
-            //传过去的参数，格式为 变量名：变量值
-            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
-                alert("Ajax处理已成功：" + text);
-                var jsonText=JSON.stringify(text)
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                console.log(data);
+                var jsonText=JSON.stringify(status)
                 document.write(jsonText);
             },
-            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                alert( "Ajax跳转处理失败");
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request);
+                console.log(request.responseText);
+                var json = eval(request.responseText);
+                console.log(json.exceptionMsg);
             }
         });
     }
@@ -185,13 +199,18 @@
                 "rows":"10"
             }),
             //传过去的参数，格式为 变量名：变量值
-            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
-                alert("Ajax处理已成功：" + text);
-                var jsonText=JSON.stringify(text)
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                console.log(data);
+                var jsonText=JSON.stringify(status)
                 document.write(jsonText);
             },
-            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                alert( "Ajax跳转处理失败");
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request);
+                console.log(request.responseText);
+                var json = eval(request.responseText);
+                console.log(json.exceptionMsg);
             }
         });
     }
@@ -207,14 +226,18 @@
                 "startPage":"1",
                 "rows":"10"
             }),
-            //传过去的参数，格式为 变量名：变量值
-            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
-                alert("Ajax处理已成功：" + text);
-                var jsonText=JSON.stringify(text)
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                console.log(data);
+                var jsonText=JSON.stringify(status)
                 document.write(jsonText);
             },
-            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                alert( "Ajax跳转处理失败");
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request);
+                console.log(request.responseText);
+                var json = eval(request.responseText);
+                console.log(json.exceptionMsg);
             }
         });
     }
@@ -233,14 +256,18 @@
                 "email":"296734078@qq.com",
                 "context":"Hello word"
             }),
-            //传过去的参数，格式为 变量名：变量值
-            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
-                alert("Ajax处理已成功：" + text);
-                var jsonText=JSON.stringify(text)
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                console.log(data);
+                var jsonText=JSON.stringify(status)
                 document.write(jsonText);
             },
-            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                alert( "Ajax跳转处理失败");
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request);
+                console.log(request.responseText);
+                var json = eval(request.responseText);
+                console.log(json.exceptionMsg);
             }
         });
     }
@@ -259,14 +286,18 @@
                 "page":"1",
                 "rows":"10"
             }),
-            //传过去的参数，格式为 变量名：变量值
-            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
-                alert("Ajax处理已成功：" + text);
-                var jsonText=JSON.stringify(text)
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                console.log(data);
+                var jsonText=JSON.stringify(status)
                 document.write(jsonText);
             },
-            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                alert( "Ajax跳转处理失败");
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request);
+                console.log(request.responseText);
+                var json = eval(request.responseText);
+                console.log(json.exceptionMsg);
             }
         });
     }
@@ -285,14 +316,18 @@
                 "page":"0",
                 "rows":"10"
             }),
-            //传过去的参数，格式为 变量名：变量值
-            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
-                alert("Ajax处理已成功：" + text);
-                var jsonText=JSON.stringify(text)
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                console.log(data);
+                var jsonText=JSON.stringify(status)
                 document.write(jsonText);
             },
-            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                alert( "Ajax跳转处理失败");
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request);
+                console.log(request.responseText);
+                var json = eval(request.responseText);
+                console.log(json.exceptionMsg);
             }
         });
     }

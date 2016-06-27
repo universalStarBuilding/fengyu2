@@ -1,10 +1,8 @@
 package com.fengyu.modules.service.account;
 
 import com.fengyu.common.service.CrudService;
-import com.fengyu.common.utils.StringUtils;
-import com.fengyu.modules.dao.user.AccBasicDao;
+import com.fengyu.modules.dao.account.AccBasicDao;
 import com.fengyu.modules.model.AccBasic;
-import com.fengyu.modules.webservice.user.vo.SercurityVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
