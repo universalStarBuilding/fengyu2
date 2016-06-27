@@ -1,17 +1,20 @@
 package com.fengyu.modules.webservice.user;
 
-import com.fengyu.common.exception.MapperSupport.Constant.PersistenceExceptionType;
+import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
 import com.fengyu.common.exception.MapperSupport.WebActionException;
+import com.fengyu.common.utils.Constant;
 import com.fengyu.modules.model.UserInfo;
 import com.fengyu.modules.service.user.UserInfoService;
-import com.fengyu.system.entity.ResultAPI;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.alibaba.fastjson.JSON;
+import com.sun.org.apache.xerces.internal.impl.xs.identity.Selector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+
 
 /**
  * 用户详细信息 Controller
@@ -23,10 +26,6 @@ import javax.ws.rs.core.MediaType;
 @Component
 @Path("/user")
 public class UserInfoController {
-    /**
-     * 日志对象
-     */
-    protected Logger logger = LoggerFactory.getLogger(UserInfoController.class);
 
     @Autowired
     private UserInfoService userInfoService;
@@ -38,68 +37,44 @@ public class UserInfoController {
      */
     @GET
     @Path("get/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI getUserInfo(@PathParam("id") Integer id) {
-        ResultAPI resultAPI = new ResultAPI();
-        try {
-            resultAPI.setMsg(userInfoService.getUserInfo(id));
-            resultAPI.setAccess_result("SUCCESS");
-        } catch (Exception e) {
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
+    public String getUserInfo(@PathParam("id") Integer id) {
+        UserInfo userInfo = userInfoService.getUserInfo(id);
+        if(userInfo == null){
+            throw  new WebActionException(WebExceptionType.UserNotFund,userInfo);
         }
-        return resultAPI;
-    }
-    /**
-     * 修改用户信息
-     * @param userInfo
-     * @return
-     */
-    @POST
-    @Path("update")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI updateUserInfo(UserInfo userInfo){
-        ResultAPI resultAPI=new ResultAPI();
-        try {
-            resultAPI.setMsg(userInfoService.updateUserInfo(userInfo));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
-        }
-        return resultAPI;
+        return JSON.toJSONString(userInfo);
     }
 
-    /**
-     * 添加实名信息
-     * @param userInfo
-     * @return
-     */
+
+
     @POST
-    @Path("insertRealName")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI insertRealName(UserInfo userInfo){
-        ResultAPI resultAPI=new ResultAPI();
-        try {
-            resultAPI.setMsg(userInfoService.insertRealName(userInfo));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
+    public String updateUserInfo(UserInfo userInfo){
+        Integer rows = userInfoService.updateUserInfo(userInfo);
+        if(rows == 0){
+            throw  new WebActionException(WebExceptionType.UpdateInvalidUserInfo,userInfo);
         }
-        return resultAPI;
+        return JSON.toJSONString(rows);
     }
     @GET
     @Path("web/{id}")
-    public ResultAPI getException(@PathParam("id")Integer id){
-        ResultAPI resultAPI = new ResultAPI();
+    public String getException(@PathParam("id")Integer id){
         if (id == 0) {
-            throw new WebActionException(PersistenceExceptionType.LoginNotFund, id);
+            throw new WebActionException(WebExceptionType.LoginNotFund, id);
         }
 
-        return resultAPI;
+        return null;
+    }
+
+    @GET
+    @Path("test/{phone}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String updateUserInfo(@PathParam("phone") @Pattern(message = Constant.PhoneInvalidError, regexp = "[0-9]{3,9}") String phone){
+
+        return phone;
     }
 }

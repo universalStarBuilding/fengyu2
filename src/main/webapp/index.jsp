@@ -7,6 +7,23 @@
 <script>
     function loginSystem()
     {
+//        $.ajax({
+//            url:"http://localhost:8080/rest/user/web/0",
+//            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+//            type:"get", //传参方式，get 或post
+//            //传过去的参数，格式为 变量名：变量值
+//            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+//                console.log("this is success! data:"+data,",status="+status);
+//            },
+//            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+//                //console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+//                console.log("this is error");
+//                console.log(request.responseText);
+//                $("#error").html(request);
+//                var error = request.responseJSON;
+//                console.log(error);
+//            }
+//        });
         $.ajax({
             url:"http://localhost:8080/rest/user/web/0",
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
@@ -14,14 +31,14 @@
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
+                console.log(data);
             },
             error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                //console.log("this is error! request:"+request+",status:"+status+",message:"+message);
-                console.log("this is error");
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request);
                 console.log(request.responseText);
-                $("#error").html(request);
-                var error = request.responseJSON;
-                console.log(error);
+                var json = eval(request.responseText);
+                console.log(json.exceptionMsg);
             }
         });
     }
@@ -38,16 +55,16 @@
                 "realName":"nidaye",
                 "nickName":"3",
                 "idCardNo":"4",
-                "headImg":"3"
+                "headImg":"3",
+                "email":"1321"
             }),
             //传过去的参数，格式为 变量名：变量值
-            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
-                alert("Ajax处理已成功：" + text);
-                var jsonText=JSON.stringify(text)
-                document.write(jsonText);
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
             },
-            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                alert( "Ajax跳转处理失败");
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request.responseText);
             }
         });
     }
@@ -253,7 +270,7 @@
             }
         });
     }
-    function getPaymentList()
+    function privateLetter()
     {
         $.ajax({
             url:"http://localhost:8080/rest/project/msg/payment",

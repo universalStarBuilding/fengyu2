@@ -22,9 +22,7 @@ public class UserInfoService extends CrudService<UserInfoDao,UserInfo> {
     private UserInfoDao userInfoDao;
     //获取用户的详细信息
     public UserInfo getUserInfo(Integer id){
-        if (id==null){
-            throw new RuntimeException("用户信息获取失败");
-        }
+
         return userInfoDao.getUserInfo(id);
     }
     //修改用户信息

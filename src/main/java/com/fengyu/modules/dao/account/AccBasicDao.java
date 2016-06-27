@@ -1,4 +1,4 @@
-package com.fengyu.modules.dao.user;
+package com.fengyu.modules.dao.account;
 
 import com.fengyu.common.persistence.CrudDao;
 import com.fengyu.common.persistence.annotation.MyBatisDao;
