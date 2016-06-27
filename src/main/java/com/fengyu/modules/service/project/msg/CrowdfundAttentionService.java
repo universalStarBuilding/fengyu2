@@ -23,10 +23,6 @@ public class CrowdfundAttentionService {
      * @return
      */
     public SearchResult queryById(CrowdfundAttentionRequestVo followProjectVo){
-        if (followProjectVo==null){
-            throw new RuntimeException("获取信息列表失败");
-        }
-
         SearchResult<CrowdfundAttention> result = new SearchResult<>();
         result.setTotalRows(followProjectMapper.queryById(followProjectVo));
         result.setRows(followProjectMapper.getListFollow(followProjectVo));
@@ -39,9 +35,7 @@ public class CrowdfundAttentionService {
      * @return
      */
     public Integer insert(CrowdfundAttentionRequestVo followProjectVo){
-        if (followProjectVo==null){
-            throw new RuntimeException("添加失败");
-        }
+
         CrowdfundAttention followProject=new CrowdfundAttention();
         followProject.setUserId(followProjectVo.getUserId());
         followProject.setAttentionNo(followProjectVo.getAttentionNo());

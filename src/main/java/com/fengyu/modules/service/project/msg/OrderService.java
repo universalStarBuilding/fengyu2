@@ -23,10 +23,6 @@ public class OrderService {
      * @return
      */
     public SearchResult getPageList(OrderVo orderVo) {
-        if (orderVo==null){
-            throw new RuntimeException ("获取支持项目失败");
-        }
-
 
         SearchResult<Order> result = new SearchResult<>();
         result.setTotalRows(orderMapper.queryById(orderVo));

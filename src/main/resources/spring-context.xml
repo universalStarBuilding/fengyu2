@@ -67,25 +67,25 @@
     <bean  class = "milliongravity.common.utils.SpringContextHolder" lazy-init="false"/>
 -->
     <!-- quartz持久化存储 -->
-    <bean id="scheduler"
-          class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-        <property name="dataSource">
-            <ref bean="dataSource" />
-        </property>
-        <property name="exposeSchedulerInRepository" value="true" />
-        <!--
-        <property name="jobFactory">
-            <bean class="com.esoft.core.quartz.AutowiringSpringBeanJobFactory " />
-         -->
-        <!-- <bean class="org.springframework.scheduling.quartz.SpringBeanJobFactory"
-            /> -->
-        <!--
-        </property>
+    <!--<bean id="scheduler"-->
+          <!--class="org.springframework.scheduling.quartz.SchedulerFactoryBean">-->
+        <!--<property name="dataSource">-->
+            <!--<ref bean="dataSource" />-->
+        <!--</property>-->
+        <!--<property name="exposeSchedulerInRepository" value="true" />-->
+        <!--&lt;!&ndash;-->
+        <!--<property name="jobFactory">-->
+            <!--<bean class="com.esoft.core.quartz.AutowiringSpringBeanJobFactory " />-->
+         <!--&ndash;&gt;-->
+        <!--&lt;!&ndash; <bean class="org.springframework.scheduling.quartz.SpringBeanJobFactory"-->
+            <!--/> &ndash;&gt;-->
+        <!--&lt;!&ndash;-->
+        <!--</property>-->
 
-        <property name="schedulerName" value="Mscheduler" />
-        -->
-        <property name="configLocation" value="classpath:properties/quartz.properties" />
-        <property name="applicationContextSchedulerContextKey" value="applicationContextKey" />
-        <property name="autoStartup" value="true" />
-    </bean>
+        <!--<property name="schedulerName" value="Mscheduler" />-->
+        <!--&ndash;&gt;-->
+        <!--<property name="configLocation" value="classpath:properties/quartz.properties" />-->
+        <!--<property name="applicationContextSchedulerContextKey" value="applicationContextKey" />-->
+        <!--<property name="autoStartup" value="true" />-->
+    <!--</bean>-->
 </beans>

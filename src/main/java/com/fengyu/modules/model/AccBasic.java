@@ -1,7 +1,6 @@
 package com.fengyu.modules.model;
 
 import com.fengyu.common.persistence.DataEntity;
-import com.fengyu.modules.dao.user.AccBasicDao;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

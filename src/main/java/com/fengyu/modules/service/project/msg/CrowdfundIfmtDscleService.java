@@ -25,9 +25,6 @@ public class CrowdfundIfmtDscleService {
      * @return
      */
     public Integer insert(CrowdfundIfmtDscleRequestVo dynamicVo){
-        if (dynamicVo==null){
-            throw new RuntimeException("添加失败");
-        }
         CrowdfundIfmtDscle dynamic=new CrowdfundIfmtDscle();
         dynamic.setProjectNo(dynamicVo.getProjectNo());
         dynamic.setDsclUser(dynamicVo.getDsclUser());

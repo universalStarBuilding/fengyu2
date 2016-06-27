@@ -35,6 +35,11 @@ public class UserInfoController {
     @Autowired
     private UserInfoService userInfoService;
 
+    /**
+     * 获取用户详细信息
+     * @param id
+     * @return
+     */
     @GET
     @Path("get/{id}")
     public String getUserInfo(@PathParam("id") Integer id) {
@@ -44,9 +49,7 @@ public class UserInfoController {
         }
         return JSON.toJSONString(userInfo);
     }
-
-
-
+    //修改用户信息
     @POST
     @Path("update")
     public String updateUserInfo(UserInfo userInfo){
@@ -56,6 +59,7 @@ public class UserInfoController {
         }
         return JSON.toJSONString(rows);
     }
+
     @GET
     @Path("web/{id}")
     public String getException(@PathParam("id")Integer id){
@@ -65,7 +69,6 @@ public class UserInfoController {
 
         return null;
     }
-
     @GET
     @Path("test/{phone}")
     @Produces(MediaType.TEXT_PLAIN)
@@ -79,5 +82,14 @@ public class UserInfoController {
     public String testPhone(@Valid FormVo form){
 
         return JSON.toJSONString(form);
+    }
+    @POST
+    @Path("insertRealName")
+    public String insertRealName(UserInfo userInfo){
+        Integer rows=userInfoService.insertRealName(userInfo);
+        if (rows==0){
+            throw new WebActionException(WebExceptionType.LoginNotFund,userInfo);
+        }
+        return JSON.toJSONString(rows);
     }
 }
