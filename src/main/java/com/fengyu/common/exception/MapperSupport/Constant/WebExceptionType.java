@@ -18,7 +18,12 @@ public enum WebExceptionType {
 
     //用户基本信息
     UserNotFund("用户不存在！"),
-    UpdateInvalidUserInfo("用户信息修改异常！");
+    UpdateInvalidUserInfo("用户信息修改异常！"),
+    //账户
+    UpdatePayPwdAccUserBank("修改支付密码"),
+    InsertInvalidAccUserBank(""),
+    //收货地址
+    DeletePostAccess("删除收货地址失败");
 
 
 

@@ -21,6 +21,11 @@ public class AccUserBankController {
     @Autowired
     private AccUserBankService accUserBankService;
 
+    /**
+     * 绑定银行卡
+     * @param accUserBank
+     * @return
+     */
     @POST
     @Path("insert")
     @Produces(MediaType.TEXT_PLAIN)

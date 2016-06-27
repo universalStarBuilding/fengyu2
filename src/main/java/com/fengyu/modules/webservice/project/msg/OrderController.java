@@ -45,7 +45,7 @@ public class OrderController {
 
         return resultAPI;
     }
-    @POST
+/*    @POST
     @Path("order")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -76,6 +76,6 @@ public class OrderController {
             resultAPI.setMsg("服务器异常");
         }
         return resultAPI;
-    }
+    }*/
 
 }
