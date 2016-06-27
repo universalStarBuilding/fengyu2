@@ -1,14 +1,19 @@
-package com.fengyu.modules.webservice.user.Security;
+package com.fengyu.modules.webservice.user.security;
 
+import com.alibaba.fastjson.JSON;
 import com.fengyu.common.channel.email.SendMail;
 import com.fengyu.common.channel.phone.AliMsgApi;
 import com.fengyu.common.config.Cache;
+import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
+import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.modules.model.User;
 import com.fengyu.modules.service.user.UserService;
+import com.fengyu.modules.webservice.user.vo.SercurityVo;
 import com.fengyu.system.entity.ResultAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.json.Json;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -31,16 +36,12 @@ public class SercurityController {
      */
     @GET
     @Path("get/{id}")
-    public ResultAPI get(@PathParam("id")Integer id){
-        ResultAPI resultAPI=new ResultAPI();
-        try {
-            resultAPI.setMsg(userService.getSercurityById(id));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            resultAPI.setMsg(e.getMessage());
-            resultAPI.setAccess_result("FAILURE");
+    public String get(@PathParam("id")Integer id){
+        SercurityVo sercurityVo=userService.getSercurityById(id);
+        if (sercurityVo==null){
+            throw  new WebActionException(WebExceptionType.UserNotFund,sercurityVo);
         }
-        return resultAPI;
+        return JSON.toJSONString(sercurityVo);
     }
     /**
      * 查询模糊手机号和邮箱
@@ -49,15 +50,12 @@ public class SercurityController {
      */
     @GET
     @Path("contact/{id}")
-    public ResultAPI getContact(@PathParam("id") Integer id){
-        ResultAPI resultAPI=new ResultAPI();
-        try {
-            resultAPI.setMsg(userService.getContact(id));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            resultAPI.setAccess_result("FAILURE");
+    public String getContact(@PathParam("id") Integer id){
+        SercurityVo sercurityVo=userService.getContact(id);
+        if (sercurityVo==null){
+            throw  new WebActionException(WebExceptionType.UserPhoneEmail,sercurityVo);
         }
-        return resultAPI;
+        return JSON.toJSONString(sercurityVo);
     }
 
     /**
@@ -87,15 +85,12 @@ public class SercurityController {
      */
     @POST
     @Path("update")
-    public ResultAPI updatePhone(User user){
-        ResultAPI resultAPI=new ResultAPI();
-        try {
-            resultAPI.setMsg(userService.updatePhone(user));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            resultAPI.setAccess_result("FAILURE");
+    public String updatePhone(User user){
+        Integer rows=userService.updatePhone(user);
+        if (rows==0){
+            throw  new WebActionException(WebExceptionType.UserPhoneEmail,user);
         }
-        return resultAPI;
+        return JSON.toJSONString(user);
     }
     /**
      * 修改邮箱
@@ -104,15 +99,12 @@ public class SercurityController {
      */
     @POST
     @Path("emailUpdate")
-    public ResultAPI updateEmail(User user){
-        ResultAPI resultAPI=new ResultAPI();
-        try {
-            resultAPI.setMsg(userService.updateEmail(user));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            resultAPI.setAccess_result("FAILURE");
+    public String updateEmail(User user){
+        Integer rows=userService.updatePhone(user);
+        if (rows==0){
+            throw  new WebActionException(WebExceptionType.UserPhoneEmail,user);
         }
-        return resultAPI;
+        return JSON.toJSONString(user);
     }
     /**
      * 修改登录密码
@@ -121,15 +113,12 @@ public class SercurityController {
      */
     @POST
     @Path("updateLoginPwd")
-    public ResultAPI updateLoginPwd(User user){
-        ResultAPI resultAPI=new ResultAPI();
-        try {
-            resultAPI.setMsg(userService.updateLoginPwd(user));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            resultAPI.setAccess_result("FAILURE");
+    public String updateLoginPwd(User user){
+        Integer rows=userService.updatePhone(user);
+        if (rows==0){
+            throw  new WebActionException(WebExceptionType.UserPassword,user);
         }
-        return resultAPI;
+        return JSON.toJSONString(user);
     }
 
 }
