@@ -7,39 +7,57 @@
 <script>
     function loginSystem()
     {
-//        $.ajax({
-//            url:"http://localhost:8080/rest/user/web/0",
-//            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
-//            type:"get", //传参方式，get 或post
-//            //传过去的参数，格式为 变量名：变量值
-//            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
-//                console.log("this is success! data:"+data,",status="+status);
-//            },
-//            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-//                //console.log("this is error! request:"+request+",status:"+status+",message:"+message);
-//                console.log("this is error");
-//                console.log(request.responseText);
-//                $("#error").html(request);
-//                var error = request.responseJSON;
-//                console.log(error);
-//            }
-//        });
         $.ajax({
-            url:"http://localhost:8080/rest/user/test/aa",
-           // dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            url:"http://localhost:8080/rest/user/web/0",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"get", //传参方式，get 或post
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
             },
             error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                console.log(request);
+                //console.log("this is error! request:"+request+",status:"+status+",message:"+message);
                 console.log("this is error! request:"+request+",status:"+status+",message:"+message);
                 var errrorText = request.responseText;
-                errrorText = errrorText.substring(0,errrorText.indexOf("."));
-                console.log(errrorText);
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
             }
         });
+//        $.ajax({
+//            url:"http://localhost:8080/rest/user/test/aa",
+//           // dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+//            type:"get", //传参方式，get 或post
+//            //传过去的参数，格式为 变量名：变量值
+//            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+//                console.log("this is success! data:"+data,",status="+status);
+//            },
+//            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+//                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+//                var errrorText = request.responseText;
+//                var errrorText = eval('(' + errrorText + ')');
+//                console.log(errrorText[0]["message"]);
+//            }
+//        });
+//        $.ajax({
+//            url:"http://localhost:8080/rest/user/test/form",
+//            contentType: "application/json; charset=utf-8",
+//            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+//            type:"post", //传参方式，get 或post
+//            data:JSON.stringify({
+//                "email":"1321"
+//            }),
+//            //传过去的参数，格式为 变量名：变量值
+//            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+//                console.log("this is success! data:"+data,",status="+status);
+//            },
+//            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+//                console.log(request);
+//                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+//                var errrorText = request.responseText;
+//                var errrorText = eval('(' + errrorText + ')');
+//                console.log(errrorText[0]["message"]);
+//            }
+//        });
     }
     //获取用户信息
     function getUserInfo()
