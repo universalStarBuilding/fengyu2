@@ -18,7 +18,14 @@ public enum WebExceptionType {
 
     //用户基本信息
     UserNotFund("用户不存在！"),
-    UpdateInvalidUserInfo("用户信息修改异常！");
+    UpdateInvalidUserInfo("用户信息修改异常！"),
+
+
+
+    //项目回报设置
+    DeleteInvalidProejctReturnset("删除项目回报异常！"),
+    UpdateInvalidProejctReturnset("更新项目回报异常！"),
+    CrowdFundReturnsetNotFund("项目回报不存在！");
 
 
 
