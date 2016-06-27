@@ -1,14 +1,16 @@
 package com.fengyu.modules.webservice.account;
 
+import com.alibaba.fastjson.JSON;
+import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
+import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.modules.model.AccUserBank;
 import com.fengyu.modules.service.account.AccUserBankService;
 import com.fengyu.system.entity.ResultAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 
 /**
  * Created by admin on 2016/6/24.
@@ -19,24 +21,20 @@ public class AccUserBankController {
     @Autowired
     private AccUserBankService accUserBankService;
 
-    @GET
-    @Path("get")
-    public ResultAPI get() {
-
-        ResultAPI resultAPI = new ResultAPI();
-
-        return resultAPI;
-    }
+    /**
+     * 绑定银行卡
+     * @param accUserBank
+     * @return
+     */
     @POST
     @Path("insert")
-    public ResultAPI insertAccUserBank(AccUserBank accUserBank){
-        ResultAPI resultAPI=new ResultAPI();
-        try {
-            resultAPI.setMsg(accUserBankService.insert(accUserBank));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            resultAPI.setAccess_result("FAILURE");
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String insertAccUserBank(AccUserBank accUserBank){
+        Integer rows=accUserBankService.insert(accUserBank);
+        if(rows==0){
+            throw new WebActionException(WebExceptionType.InsertInvalidAccUserBank,accUserBank);
         }
-        return resultAPI;
+        return JSON.toJSONString(rows);
     }
 }

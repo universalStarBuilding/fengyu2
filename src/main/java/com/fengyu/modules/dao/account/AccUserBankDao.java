@@ -1,4 +1,4 @@
-package com.fengyu.modules.dao.user;
+package com.fengyu.modules.dao.account;
 
 import com.fengyu.common.persistence.CrudDao;
 import com.fengyu.common.persistence.annotation.MyBatisDao;
@@ -13,4 +13,13 @@ public interface AccUserBankDao extends CrudDao<AccUserBank> {
      * @return
      */
     int insert(AccUserBank record);
+
+    /**
+     * 查询银行卡是否绑定
+     * @param id
+     * @return
+     */
+    String getUserBank(Integer id);
+
+
 }

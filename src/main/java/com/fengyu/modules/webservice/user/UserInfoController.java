@@ -35,6 +35,11 @@ public class UserInfoController {
     @Autowired
     private UserInfoService userInfoService;
 
+    /**
+     * 获取用户详细信息
+     * @param id
+     * @return
+     */
     @GET
     @Path("get/{id}")
     public String getUserInfo(@PathParam("id") Integer id) {
@@ -44,8 +49,6 @@ public class UserInfoController {
         }
         return JSON.toJSONString(userInfo);
     }
-
-
 
     @POST
     @Path("update")

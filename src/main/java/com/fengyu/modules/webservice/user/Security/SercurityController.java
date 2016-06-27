@@ -1,5 +1,8 @@
 package com.fengyu.modules.webservice.user.Security;
 
+import com.fengyu.common.channel.email.SendMail;
+import com.fengyu.common.channel.phone.AliMsgApi;
+import com.fengyu.common.config.Cache;
 import com.fengyu.modules.model.User;
 import com.fengyu.modules.service.user.UserService;
 import com.fengyu.system.entity.ResultAPI;
@@ -17,56 +20,28 @@ import javax.ws.rs.PathParam;
 @Component
 @Path("/security")
 public class SercurityController {
+
     @Autowired
     private UserService userService;
 
-    @GET
-    @Path("get")
-    public ResultAPI get() {
-
-        ResultAPI resultAPI = new ResultAPI();
-
-        return resultAPI;
-    }
-
     /**
-     * 查询手机号是否存在
-     * @param id
+     * 查询安全中心信息
+     * @param id    用户编号
      * @return
      */
     @GET
     @Path("get/{id}")
-    public ResultAPI getPhone(@PathParam("id")Integer id){
+    public ResultAPI get(@PathParam("id")Integer id){
         ResultAPI resultAPI=new ResultAPI();
         try {
             resultAPI.setMsg(userService.getSercurityById(id));
             resultAPI.setAccess_result("SUCCESS");
         }catch (Exception e){
-            e.printStackTrace();
+            resultAPI.setMsg(e.getMessage());
             resultAPI.setAccess_result("FAILURE");
         }
         return resultAPI;
     }
-
-    /**
-     * 查询邮箱是否存在
-     * @param id
-     * @return
-     */
-    @GET
-    @Path("email/{id}")
-    public ResultAPI getEmail(@PathParam("id") Integer id){
-        ResultAPI resultAPI=new ResultAPI();
-        try {
-            resultAPI.setMsg(userService.getEmailById(id));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
-        }
-        return resultAPI;
-    }
-
     /**
      * 查询模糊手机号和邮箱
      * @param id
@@ -80,10 +55,29 @@ public class SercurityController {
             resultAPI.setMsg(userService.getContact(id));
             resultAPI.setAccess_result("SUCCESS");
         }catch (Exception e){
-            e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");
         }
         return resultAPI;
+    }
+
+    /**
+     * 发送验证码
+     * @param
+     * @return
+     */
+    @GET
+    @Path("sendCode/{type}/{value}")
+    public ResultAPI sendCode(@PathParam("type")String type,@PathParam("value")String value){
+
+        String code = "123213";
+        if(type.equals("email")){
+            SendMail.send(value,"测试邮箱接口","SUCCESS,code:"+code);
+        }else if(type.equals("phone")){
+            AliMsgApi.sendMsg(null,value,code);
+        }
+        Cache.setCodeCache(code);
+
+        return null;
     }
 
     /**
@@ -99,12 +93,10 @@ public class SercurityController {
             resultAPI.setMsg(userService.updatePhone(user));
             resultAPI.setAccess_result("SUCCESS");
         }catch (Exception e){
-            e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");
         }
         return resultAPI;
     }
-
     /**
      * 修改邮箱
      * @param user
@@ -118,12 +110,10 @@ public class SercurityController {
             resultAPI.setMsg(userService.updateEmail(user));
             resultAPI.setAccess_result("SUCCESS");
         }catch (Exception e){
-            e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");
         }
         return resultAPI;
     }
-
     /**
      * 修改登录密码
      * @param user
@@ -137,7 +127,6 @@ public class SercurityController {
             resultAPI.setMsg(userService.updateLoginPwd(user));
             resultAPI.setAccess_result("SUCCESS");
         }catch (Exception e){
-            e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");
         }
         return resultAPI;
