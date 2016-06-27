@@ -53,4 +53,14 @@ public class OrderService extends CrudService<OrderMapper,Order>{
         result.setRows(orderMapper.getOrderList(order));
         return result;
     }
+    public SearchResult getPaymentList(Order order){
+        if (order==null){
+            throw new RuntimeException ("获取未付款订单列表失败");
+        }
+        order.setOrderState("0");
+        SearchResult<Order> result = new SearchResult<>();
+        result.setTotalRows(orderMapper.orderPage(order));
+        result.setRows(orderMapper.getPaymentList(order));
+        return result;
+    }
 }

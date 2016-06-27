@@ -20,8 +20,12 @@ public interface OrderMapper extends CrudDao<Order>{
     long queryById(OrderVo orderVo);
     //查询支持列表
     List<Order> orderPageList(OrderVo orderVo);
-    //订单列表
+    //所有订单列表
     List<Order> getOrderList(Order order);
+    //代付款的列表
+    List<Order> getPaymentList(Order order);
+    //代评价的列表
+    List<Order> getEvaluate(Order order);
     //统计
     long orderPage(Order order);
 

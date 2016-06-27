@@ -36,19 +36,21 @@
   </select>
 <select id="getOrderList" parameterType="com.fengyu.modules.model.Order" resultType="com.fengyu.modules.model.Order">
   SELECT
-  <include refid="Base_Column_List"/>
-    FROM `order`
-  WHERE ORDER_OWNER=#{orderOwner,jdbcType=INTEGER}
-  limit #{startPage},#{rows}
- <!-- SELECT
-  <include refid="List" />
-  FROM project_comment
-  WHERE project_id=#{id,jdbcType=VARCHAR}
-  <if test="displayStart!=null and displayLength!=null">
-    limit #{displayStart},#{displayLength}
-  </if>-->
+  o.ORDER_OWNER,o.SUBMIT_TIME,p.PROJECT_NAME,p.PROJECT_LIST_IMAGE,o.ORDER_STATE,p.user_id,o.ORDER_AMT
+  FROM `order`o,crowdfund_basicinfo p
+  WHERE o.ORDER_OWNER=p.USER_ID AND o.ORDER_OWNER=#{orderOwner,jdbcType=INTEGER}
+  limit #{page},#{rows}
 </select>
   <select id="orderPage" parameterType="com.fengyu.modules.model.Order" resultType="java.lang.Long">
-    SELECT COUNT(*)FROM `order`
+    SELECT COUNT(*)FROM `order` o,crowdfund_basicinfo p
+    WHERE o.ORDER_OWNER=p.USER_ID
+  </select>
+  <select id="getPaymentList" parameterType="com.fengyu.modules.webservice.project.vo.OrderVo" resultType="com.fengyu.modules.model.Order">
+    SELECT
+      o.ORDER_OWNER,o.SUBMIT_TIME,p.PROJECT_NAME,p.PROJECT_LIST_IMAGE,o.ORDER_STATE,p.user_id,o.ORDER_AMT
+      FROM `order`o,crowdfund_basicinfo p
+      WHERE o.ORDER_OWNER=p.USER_ID AND o.ORDER_OWNER=#{orderOwner,jdbcType=INTEGER}
+      AND o.ORDER_STATE=#{orderState,jdbcType=VARCHAR}
+    limit #{page},#{rows}
   </select>
 </mapper>

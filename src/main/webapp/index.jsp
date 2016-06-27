@@ -253,6 +253,32 @@
             }
         });
     }
+    function getPaymentList()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/project/msg/payment",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                // "type":"phone",
+                //"phone":"13127158259"
+                //ORDER_OWNER
+                "orderOwner":"1",
+                "page":"0",
+                "rows":"10"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                alert("Ajax处理已成功：" + text);
+                var jsonText=JSON.stringify(text)
+                document.write(jsonText);
+            },
+            error: function(msg){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                alert( "Ajax跳转处理失败");
+            }
+        });
+    }
 
 </script>
 <body>
@@ -263,6 +289,7 @@
 <input type="button" value="修改收货地址"id="updatePostAddress" onclick="updatePostAddress()">
 <input type="button" value="分页查询收货地址" onclick="pageList()">
 <input type="button" value="获取订单列表" onclick="getOrderList()">
+<input type="button" value="获取未付款列表" onclick="getPaymentList()">
 <form action="" method="post">
     <input type="button" value="支持" onclick="queryById()">
     <input type="button" value="发起" onclick="queryBy()">

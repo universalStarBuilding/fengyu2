@@ -59,7 +59,22 @@ public class OrderController {
             resultAPI.setAccess_result("FAILURE");
             resultAPI.setMsg("服务器异常");
         }
-
+        return resultAPI;
+    }
+    @POST
+    @Path("payment")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public ResultAPI getPaymentList(Order order){
+        ResultAPI resultAPI = new ResultAPI();
+        try {
+            resultAPI.setMsg(orderService.getPaymentList(order));
+            resultAPI.setAccess_result("SUCCESS");
+        }catch (Exception e){
+            e.printStackTrace();
+            resultAPI.setAccess_result("FAILURE");
+            resultAPI.setMsg("服务器异常");
+        }
         return resultAPI;
     }
 
