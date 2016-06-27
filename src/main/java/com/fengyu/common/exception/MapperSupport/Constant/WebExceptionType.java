@@ -36,19 +36,21 @@ public enum WebExceptionType {
 
     PostAccessNotFund("收货地址不存在"),
     //添加
-    InsertDynamic("添加失败！"),
+    InsertInvalidDynamic("添加失败！"),
     //查询我的私信列表
-    QueryById("获取信息列表失败"),
+    GetInvalidCrowdFundComment("获取信息列表失败"),
+    //我关注的项目列表
+    GetInvalidProjectConcerns("获取信息列表失败"),
     //我发起的项目列表
-    QueryBy("获取列表失败"),
+    GetInvalidLaunchProject("获取列表失败"),
     //查询热门项目列表
-    SelectHot("获取热门项目列表失败"),
+    SelectInvalidHot("获取热门项目列表失败"),
     //查询我的私信列表
-    GetSendMsgListByRecId("获取我的私信失败"),
+    GetInvalidProjectLetter("获取我的私信失败"),
     //删除私信
-    DeleteById("删除私信失败"),
+    DeleteInvalidProjectLetter("删除私信失败"),
     //我支持的项目列表
-    GetPageList("获取支持项目失败");
+    GetInvalidProjectSupport("获取支持项目失败");
 
 
 
