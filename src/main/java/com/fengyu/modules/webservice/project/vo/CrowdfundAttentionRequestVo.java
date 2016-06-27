@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 @XmlRootElement
-public class FollowVo extends Pagetables{
+public class CrowdfundAttentionRequestVo extends Pagetables{
     private Integer id;
 
     private Integer userId;

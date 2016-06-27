@@ -1,10 +1,11 @@
 package com.fengyu.modules.model;
 
 import com.fengyu.common.page.Pagetables;
+import com.fengyu.common.persistence.DataEntity;
 
 import java.util.Date;
 
-public class MessageText extends Pagetables{
+public class MessageText extends DataEntity<MessageText>{
     private Integer id;
 
     private Integer sendId;
@@ -18,14 +19,6 @@ public class MessageText extends Pagetables{
     private Date postDate;
 
     private Integer groupId;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getSendId() {
         return sendId;

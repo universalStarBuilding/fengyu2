@@ -1,7 +1,7 @@
 package com.fengyu.modules.webservice.project.msg;
 
-import com.fengyu.modules.service.project.msg.FollowService;
-import com.fengyu.modules.webservice.project.vo.FollowVo;
+import com.fengyu.modules.service.project.msg.CrowdfundAttentionService;
+import com.fengyu.modules.webservice.project.vo.CrowdfundAttentionRequestVo;
 import com.fengyu.system.entity.ResultAPI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,14 +26,14 @@ public class FollowController {
     protected Logger logger = LoggerFactory.getLogger(FollowController.class);
 
     @Autowired
-    private FollowService followProjectService;
+    private CrowdfundAttentionService followProjectService;
 
 
     @POST
     @Path("queryByIdFollow")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI pageList(FollowVo followProjectVo){
+    public ResultAPI pageList(CrowdfundAttentionRequestVo followProjectVo){
 
         ResultAPI resultAPI = new ResultAPI();
         try {
@@ -54,7 +54,7 @@ public class FollowController {
     @Path("insert")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI insert(FollowVo followProjectVo){
+    public ResultAPI insert(CrowdfundAttentionRequestVo followProjectVo){
 
         ResultAPI resultAPI = new ResultAPI();
         try {
