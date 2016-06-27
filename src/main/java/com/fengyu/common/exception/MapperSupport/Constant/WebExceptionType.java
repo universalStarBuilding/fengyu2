@@ -18,7 +18,6 @@ public enum WebExceptionType {
 
     //用户基本信息
     UserNotFund("用户不存在！"),
-    UpdateInvalidUserInfo("用户信息修改异常！"),
     UserPhoneEmail("手机号不存在或邮箱不存在"),
     UserPassword("原密码错误，修改失败"),
     //账户
@@ -28,15 +27,12 @@ public enum WebExceptionType {
     DeletePostAccess("删除收货地址失败"),
     InsertPostAccess("收货地址添加失败"),
     UpdatePostAccess("收货地址修改失败"),
-    PostAccessNotFund("收货地址不存在");
     UpdateInvalidUserInfo("用户信息修改异常！"),
-
-
 
     //项目回报设置
     DeleteInvalidProejctReturnset("删除项目回报异常！"),
     UpdateInvalidProejctReturnset("更新项目回报异常！"),
-    CrowdFundReturnsetNotFund("项目回报不存在！");
+    CrowdFundReturnsetNotFund("项目回报不存在！"),
 
     PostAccessNotFund("收货地址不存在"),
     //添加
