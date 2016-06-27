@@ -16,7 +16,7 @@ public class FormVo {
     //@Email
     private String email;
 
-    @Pattern(message = Constant.EmailInvalidError, regexp = "[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")
+    @Pattern(message = Constant.EmailInvalidError,regexp = "[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")
     public String getEmail() {
         return email;
     }

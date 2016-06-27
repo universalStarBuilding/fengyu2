@@ -51,8 +51,8 @@
 //                console.log("this is success! data:"+data,",status="+status);
 //            },
 //            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-//                console.log(request);
-//                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+////                console.log(request);
+////                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
 //                var errrorText = request.responseText;
 //                var errrorText = eval('(' + errrorText + ')');
 //                console.log(errrorText[0]["message"]);

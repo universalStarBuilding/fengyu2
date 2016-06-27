@@ -18,7 +18,7 @@ public enum WebExceptionType {
 
     //用户基本信息
     UserNotFund("用户不存在！"),
-    UpdateInvalidUserInfo("用户信息修改异常！");;
+    UpdateInvalidUserInfo("用户信息修改异常！");
 
 
 
