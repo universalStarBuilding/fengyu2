@@ -16,7 +16,7 @@
     <result column="PAYMENT_TIME" property="paymentTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, ORDER_ID, ORDER_OWNER, ORDER_AMT, ORDER_STATE, ORDER_TYPE, ORDER_OBJECT, PAY_CHANNEL, 
+     ORDER_ID, ORDER_OWNER, ORDER_AMT, ORDER_STATE, ORDER_TYPE, ORDER_OBJECT, PAY_CHANNEL,
     PAY_USER, SUBMIT_TIME, COMPLETE_TIME, PAYMENT_TIME
   </sql>
 
@@ -34,5 +34,21 @@
     AND CB.USER_ID =#{id,jdbcType=INTEGER}
     limit #{page},#{rows}
   </select>
-
+<select id="getOrderList" parameterType="com.fengyu.modules.model.Order" resultType="com.fengyu.modules.model.Order">
+  SELECT
+  <include refid="Base_Column_List"/>
+    FROM `order`
+  WHERE ORDER_OWNER=#{orderOwner,jdbcType=INTEGER}
+  limit #{startPage},#{rows}
+ <!-- SELECT
+  <include refid="List" />
+  FROM project_comment
+  WHERE project_id=#{id,jdbcType=VARCHAR}
+  <if test="displayStart!=null and displayLength!=null">
+    limit #{displayStart},#{displayLength}
+  </if>-->
+</select>
+  <select id="orderPage" parameterType="com.fengyu.modules.model.Order" resultType="java.lang.Long">
+    SELECT COUNT(*)FROM `order`
+  </select>
 </mapper>

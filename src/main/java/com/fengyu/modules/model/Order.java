@@ -1,6 +1,8 @@
 package com.fengyu.modules.model;
 
 import com.fengyu.common.page.Pagetables;
+import com.fengyu.common.persistence.DataEntity;
+import com.sun.tools.corba.se.idl.constExpr.Or;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
@@ -8,9 +10,7 @@ import java.util.Date;
 /**
  *@Order 我支持项目的实体类
  */
-public class Order extends Pagetables{
-    private Integer id;
-
+public class Order extends DataEntity<Order>{
     private Integer orderId;
 
     private Integer orderOwner;
@@ -32,10 +32,6 @@ public class Order extends Pagetables{
     private Date completeTime;
 
     private Date paymentTime;
-
-    public Integer getId() {
-        return id;
-    }
 
     public void setId(Integer id) {
         this.id = id;

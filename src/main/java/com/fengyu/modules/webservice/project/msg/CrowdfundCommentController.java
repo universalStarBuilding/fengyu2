@@ -5,7 +5,6 @@ import com.fengyu.modules.service.project.msg.OrderService;
 import com.fengyu.modules.webservice.project.vo.CrowdfundCommentVo;
 import com.fengyu.modules.webservice.project.vo.OrderVo;
 import com.fengyu.system.entity.ResultAPI;
-import com.fengyu.test.example3.CronTriggerExample;
 import org.quartz.impl.StdScheduler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

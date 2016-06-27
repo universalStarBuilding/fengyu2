@@ -1,5 +1,6 @@
 package com.fengyu.modules.webservice.project.msg;
 
+import com.fengyu.modules.model.Order;
 import com.fengyu.modules.service.project.msg.OrderService;
 import com.fengyu.modules.webservice.project.vo.OrderVo;
 import com.fengyu.system.entity.ResultAPI;
@@ -32,13 +33,29 @@ public class OrderController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public ResultAPI pageList(OrderVo orderVo){
-
         ResultAPI resultAPI = new ResultAPI();
         try {
             resultAPI.setMsg(orderService.getPageList(orderVo));
             resultAPI.setAccess_result("SUCCESS");
         }catch (Exception e){
             //e.printStackTrace();
+            resultAPI.setAccess_result("FAILURE");
+            resultAPI.setMsg("服务器异常");
+        }
+
+        return resultAPI;
+    }
+    @POST
+    @Path("order")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public ResultAPI getOrderList(Order order){
+        ResultAPI resultAPI = new ResultAPI();
+        try {
+            resultAPI.setMsg(orderService.getOrderList(order));
+            resultAPI.setAccess_result("SUCCESS");
+        }catch (Exception e){
+            e.printStackTrace();
             resultAPI.setAccess_result("FAILURE");
             resultAPI.setMsg("服务器异常");
         }
