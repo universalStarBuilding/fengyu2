@@ -6,10 +6,13 @@ import com.fengyu.common.utils.Constant;
 import com.fengyu.modules.model.UserInfo;
 import com.fengyu.modules.service.user.UserInfoService;
 import com.alibaba.fastjson.JSON;
+import com.fengyu.modules.webservice.user.vo.FormVo;
 import com.sun.org.apache.xerces.internal.impl.xs.identity.Selector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.json.Json;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
@@ -25,6 +28,8 @@ import javax.ws.rs.core.MediaType;
  */
 @Component
 @Path("/user")
+@Produces(MediaType.TEXT_PLAIN)
+@Consumes(MediaType.APPLICATION_JSON)
 public class UserInfoController {
 
     @Autowired
@@ -32,8 +37,6 @@ public class UserInfoController {
 
     @GET
     @Path("get/{id}")
-    @Produces(MediaType.TEXT_PLAIN)
-    @Consumes(MediaType.APPLICATION_JSON)
     public String getUserInfo(@PathParam("id") Integer id) {
         UserInfo userInfo = userInfoService.getUserInfo(id);
         if(userInfo == null){
@@ -46,8 +49,6 @@ public class UserInfoController {
 
     @POST
     @Path("update")
-    @Produces(MediaType.TEXT_PLAIN)
-    @Consumes(MediaType.APPLICATION_JSON)
     public String updateUserInfo(UserInfo userInfo){
         Integer rows = userInfoService.updateUserInfo(userInfo);
         if(rows == 0){
@@ -68,8 +69,15 @@ public class UserInfoController {
     @GET
     @Path("test/{phone}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String updateUserInfo(@PathParam("phone") @Pattern(message = Constant.PhoneInvalidError, regexp = "[0-9]{3,9}") String phone){
+    public String test(@PathParam("phone") @Pattern(message = Constant.PhoneInvalidError, regexp = "[0-9]{3,9}") String phone){
 
         return phone;
+    }
+
+    @POST
+    @Path("test/form")
+    public String testPhone(@Valid FormVo form){
+
+        return JSON.toJSONString(form);
     }
 }
