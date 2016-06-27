@@ -459,6 +459,39 @@
             }
         });
     }
+        function returnsetSave() {
+            $.ajax({
+                url: "http://localhost:8080/rest/project/returnset/save",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json", //返回的数据类型,text 或者 json数据，建议为json
+                type: "post", //传参方式，get 或post
+                data: JSON.stringify({
+                    "projectNo": "002",
+                    "price": "500000",
+                    "numberLimits": "100",
+                    "returnContent": "这是回报内容",
+                    "returnType": "goods",
+                    "returnImageDesc": "/img/desc/1.img",
+                    "returnChannel": "APP",
+                    "appPerfScale": "0.99",
+                    "remark": "这是备注",
+                    "postFlag": "true",
+                    "invoiceFlag": "true",
+                    "returnDate": "10",
+                    "courierFees": "10"
+                }),
+                //传过去的参数，格式为 变量名：变量值
+                success: function (text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                    alert("Ajax处理已成功：" + text);
+                    var jsonText = JSON.stringify(text)
+                    document.write(jsonText);
+                },
+                error: function (msg) {  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                    alert("Ajax跳转处理失败");
+                }
+            });
+        }
+
 
 </script>
 <body>
@@ -480,5 +513,6 @@
     <input type="button" value="项目评论列表" onclick="querysById()">
     <input type="button" value="热门项目列表" onclick="selectHot()">
     <input type="button" value="QuartzTest" onclick="quartzTest()">
+    <input type="button" value="添加回报" onclick="returnsetSave()">
 </body>
 </html>
