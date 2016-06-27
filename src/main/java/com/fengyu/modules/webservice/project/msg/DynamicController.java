@@ -29,15 +29,8 @@ public class DynamicController {
     public ResultAPI insertDynamic(CrowdfundIfmtDscleRequestVo dynamicRequestVo){
 
         ResultAPI resultAPI = new ResultAPI();
-        try {
-            resultAPI.setMsg(dynamicService.insert(dynamicRequestVo));
-            resultAPI.setAccess_result("SUCCESS");
 
-        }catch (Exception e){
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg("服务器异常");
-        }
+            resultAPI.setMsg(dynamicService.insert(dynamicRequestVo));
 
 
         return resultAPI;
