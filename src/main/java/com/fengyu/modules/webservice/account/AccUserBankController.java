@@ -15,7 +15,7 @@ import javax.ws.rs.Path;
  */
 @Component
 @Path("/accuserbank")
-public class AccUserBankControll {
+public class AccUserBankController {
     @Autowired
     private AccUserBankService accUserBankService;
 
