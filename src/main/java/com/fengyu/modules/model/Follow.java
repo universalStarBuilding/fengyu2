@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * @FollowProject 我关注项目的实体类
  */
-public class FollowProject extends Pagetables{
+public class Follow extends Pagetables{
     private Integer id;
 
     private Integer userId;

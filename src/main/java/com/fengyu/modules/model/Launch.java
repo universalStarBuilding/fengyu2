@@ -1,11 +1,12 @@
-package com.fengyu.modules.webservice.project.vo;
+package com.fengyu.modules.model;
 
 import com.fengyu.common.page.Pagetables;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class LaunchProjectVo extends Pagetables{
+
+public class Launch extends Pagetables{
     private Integer id;
 
     private Integer projectNo;
@@ -57,6 +58,26 @@ public class LaunchProjectVo extends Pagetables{
     private Date releasesTime;
 
     private Date shelvesTime;
+
+    private Boolean hot;
+
+    private Integer hotNum;
+
+    public Boolean getHot() {
+        return hot;
+    }
+
+    public void setHot(Boolean hot) {
+        this.hot = hot;
+    }
+
+    public Integer getHotNum() {
+        return hotNum;
+    }
+
+    public void setHotNum(Integer hotNum) {
+        this.hotNum = hotNum;
+    }
 
     public Integer getId() {
         return id;

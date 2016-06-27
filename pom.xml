@@ -31,6 +31,7 @@
         <validator.version>5.1.1.Final</validator.version>
         <sitemesh.version>3.0.0</sitemesh.version>
         <jsonwebtoken.version>0.6.0</jsonwebtoken.version>
+        <quartz.version>2.2.3</quartz.version>
     </properties>
     <!-- 设定主仓库，按设定顺序进行查找。 -->
     <repositories>
@@ -51,6 +52,17 @@
     </repositories>
 
     <dependencies>
+        <!-- quartz driver dependencies -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>${quartz.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz-jobs</artifactId>
+            <version>${quartz.version}</version>
+        </dependency>
         <!-- MySQL driver dependencies -->
         <dependency>
             <groupId>mysql</groupId>
@@ -379,6 +391,21 @@
                     <port>${webserver.port}</port>
                     <path>/${project.artifactId}</path>
                     <uriEncoding>${project.build.sourceEncoding}</uriEncoding>
+                </configuration>
+            </plugin>
+            <!-- 运行测试器插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <includes>
+                        <include>**/*Tests.java</include>
+                    </includes>
+                    <excludes>
+                        <exclude>**/*ServiceTest.java</exclude>
+                        <exclude>**/TempDaoTest.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
         </plugins>

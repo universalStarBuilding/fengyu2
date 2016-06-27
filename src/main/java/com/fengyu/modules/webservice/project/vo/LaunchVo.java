@@ -1,14 +1,11 @@
-package com.fengyu.modules.model;
+package com.fengyu.modules.webservice.project.vo;
 
 import com.fengyu.common.page.Pagetables;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- * @LaunchProject 我发起项目的实体类
- */
-public class LaunchProject extends Pagetables{
+public class LaunchVo extends Pagetables{
     private Integer id;
 
     private Integer projectNo;

@@ -32,7 +32,7 @@
       FROM `order` O,crowdfund_basicinfo CB
       WHERE O.ORDER_OWNER = CB.USER_ID
     AND CB.USER_ID =#{id,jdbcType=INTEGER}
-    limit #{startPage},#{rows}
+    limit #{page},#{rows}
   </select>
 
 </mapper>

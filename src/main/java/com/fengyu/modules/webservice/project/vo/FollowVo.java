@@ -2,9 +2,11 @@ package com.fengyu.modules.webservice.project.vo;
 
 import com.fengyu.common.page.Pagetables;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
-public class FollowProjectVo extends Pagetables{
+@XmlRootElement
+public class FollowVo extends Pagetables{
     private Integer id;
 
     private Integer userId;

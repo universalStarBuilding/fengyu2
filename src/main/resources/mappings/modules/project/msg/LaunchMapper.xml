@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fengyu.modules.dao.project.msg.LaunchProjectMapper" >
-  <resultMap id="BaseResultMap" type="com.fengyu.modules.model.LaunchProject" >
+<mapper namespace="com.fengyu.modules.dao.project.msg.LaunchDao" >
+  <resultMap id="BaseResultMap" type="com.fengyu.modules.model.Launch" >
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="PROJECT_NO" property="projectNo" jdbcType="INTEGER" />
     <result column="USER_ID" property="userId" jdbcType="INTEGER" />
@@ -37,16 +37,16 @@
     PROJECT_IMAGE, CREATE_TIME, RELEASES_TIME, SHELVES_TIME
   </sql>
 
-  <select id="queryBy" parameterType="com.fengyu.modules.webservice.project.vo.LaunchProjectVo" resultType="java.lang.Long">
+  <select id="queryBy" parameterType="com.fengyu.modules.webservice.project.vo.LaunchVo" resultType="java.lang.Long">
     SELECT COUNT(*) FROM crowdfund_basicinfo cb
     WHERE cb.user_id=#{id,jdbcType=INTEGER}
   </select>
 
-  <select id="getListLaunch" parameterType="com.fengyu.modules.webservice.project.vo.LaunchProjectVo" resultType="com.fengyu.modules.model.LaunchProject">
+  <select id="getListLaunch" parameterType="com.fengyu.modules.webservice.project.vo.LaunchVo" resultType="com.fengyu.modules.model.Launch">
     SELECT
     cb.PROJECT_NAME,cb.PROJECT_IMAGE,cb.PROJECT_SUMMARY,cb.RELEASES_TIME
     FROM crowdfund_basicinfo cb
     WHERE cb.user_id=#{id,jdbcType=INTEGER}
-    limit #{startPage},#{rows}
+    limit #{page},#{rows}
   </select>
 </mapper>

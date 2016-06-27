@@ -1,8 +1,8 @@
 package com.fengyu.modules.service.project.msg;
 
-import com.fengyu.modules.dao.project.msg.LaunchProjectMapper;
-import com.fengyu.modules.model.LaunchProject;
-import com.fengyu.modules.webservice.project.vo.LaunchProjectVo;
+import com.fengyu.modules.dao.project.msg.LaunchDao;
+import com.fengyu.modules.model.Launch;
+import com.fengyu.modules.webservice.project.vo.LaunchVo;
 import com.fengyu.system.entity.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,17 +14,22 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service(value = "launchProjectService")
 @Transactional
-public class LaunchProjectService {
+public class LaunchService {
 
     @Autowired
-    private LaunchProjectMapper launchProjectMapper;
+    private LaunchDao launchProjectMapper;
 
-    public SearchResult queryBy(LaunchProjectVo launchProjectVo){
+    /**
+     * 分页：我发起的项目列表
+     * @param launchProjectVo
+     * @return
+     */
+    public SearchResult queryBy(LaunchVo launchProjectVo){
         if (launchProjectVo==null){
             throw new RuntimeException("查询发起项目失败");
         }
-        //分页
-        SearchResult<LaunchProject> result = new SearchResult<>();
+
+        SearchResult<Launch> result = new SearchResult<>();
         result.setTotalRows(launchProjectMapper.queryBy(launchProjectVo));
         result.setRows(launchProjectMapper.getListLaunch(launchProjectVo));
 

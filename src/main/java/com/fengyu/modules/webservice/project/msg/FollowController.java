@@ -1,7 +1,7 @@
 package com.fengyu.modules.webservice.project.msg;
 
-import com.fengyu.modules.service.project.msg.FollowProjectService;
-import com.fengyu.modules.webservice.project.vo.FollowProjectVo;
+import com.fengyu.modules.service.project.msg.FollowService;
+import com.fengyu.modules.webservice.project.vo.FollowVo;
 import com.fengyu.system.entity.ResultAPI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,23 +17,23 @@ import javax.ws.rs.core.MediaType;
  */
 @Component
 @Path("/project/msg/followProject")
-public class FollowProjectController {
+public class FollowController {
 
 
     /**
      * 日志对象
      */
-    protected Logger logger = LoggerFactory.getLogger(FollowProjectController.class);
+    protected Logger logger = LoggerFactory.getLogger(FollowController.class);
 
     @Autowired
-    private FollowProjectService followProjectService;
+    private FollowService followProjectService;
 
 
     @POST
     @Path("queryByIdFollow")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI pageList(FollowProjectVo followProjectVo){
+    public ResultAPI pageList(FollowVo followProjectVo){
 
         ResultAPI resultAPI = new ResultAPI();
         try {
@@ -46,6 +46,26 @@ public class FollowProjectController {
             resultAPI.setMsg("服务器异常");
         }
 
+        return resultAPI;
+    }
+
+
+    @POST
+    @Path("insert")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public ResultAPI insert(FollowVo followProjectVo){
+
+        ResultAPI resultAPI = new ResultAPI();
+        try {
+            resultAPI.setMsg(followProjectService.insert(followProjectVo));
+            resultAPI.setAccess_result("SUCCESS");
+
+        }catch (Exception e){
+            e.printStackTrace();
+            resultAPI.setAccess_result("FAILURE");
+            resultAPI.setMsg("服务器异常");
+        }
         return resultAPI;
     }
 
