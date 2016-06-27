@@ -16,12 +16,12 @@
     ID, TOPIC_ID, TOPIC_TYPE, CONTENT, FROM_UID, COMMENT_DATE, STATUS, AUDIT_ID, AUDIT_DATE
   </sql>
 
-  <select id="queryById" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundCommentRequestVo" resultType="java.lang.Long">
+  <select id="queryById" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="java.lang.Long">
     SELECT COUNT(*) FROM crowdfund_comment CC,crowdfund_basicinfo CB
     WHERE CC.TOPIC_ID=CB.PROJECT_NO
     AND CC.TOPIC_ID=#{topicId,jdbcType=INTEGER}
   </select>
-  <select id="getListCrowdfund" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundCommentRequestVo" resultType="com.fengyu.modules.model.CrowdfundBasicinfo">
+  <select id="getListCrowdfund" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="com.fengyu.modules.model.CrowdfundBasicinfo">
     SELECT PROJECT_NO,PROJECT_NAME,PROJECT_SYNOPSIS,PROJECT_IMAGE
     FROM crowdfund_comment CC,crowdfund_basicinfo CB
     WHERE CC.TOPIC_ID=CB.PROJECT_NO

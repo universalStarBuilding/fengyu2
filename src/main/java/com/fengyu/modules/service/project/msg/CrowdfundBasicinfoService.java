@@ -13,10 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by admin on 2016/6/22.
- * @LaunchProjectService 我发起的项目
- */
+
 @Service(value = "launchProjectService")
 @Transactional
 public class CrowdfundBasicinfoService {
@@ -32,9 +29,6 @@ public class CrowdfundBasicinfoService {
      * @return
      */
     public SearchResult queryBy(CrowdfundBasicinfoVo launchProjectVo){
-        if (launchProjectVo==null){
-            throw new RuntimeException("查询发起项目失败");
-        }
 
         SearchResult<CrowdfundBasicinfo> result = new SearchResult<>();
         result.setTotalRows(launchProjectMapper.queryBy(launchProjectVo));
@@ -64,9 +58,6 @@ public class CrowdfundBasicinfoService {
             vo.setOrderOwner(count);
         }*/
 
-        if (launchVo==null){
-            throw new RuntimeException("获取热门项目列表失败");
-        }
         CrowdfundBasicinfo launch=new CrowdfundBasicinfo();/*
         launch.setHot(launchVo.getHot());
         launch.setHotNum(launchVo.getHotNum());

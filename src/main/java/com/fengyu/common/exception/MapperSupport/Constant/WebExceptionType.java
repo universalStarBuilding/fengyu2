@@ -56,7 +56,6 @@ public enum WebExceptionType {
 
 
 
-
     private WebExceptionType(String value){
         this.type = value;
     }

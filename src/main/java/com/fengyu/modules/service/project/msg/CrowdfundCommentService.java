@@ -20,14 +20,12 @@ public class CrowdfundCommentService {
 
 
     /**
-     * 分页：查询我的私信列表
+     * 分页：查询项目评论列表
      * @param crowdfundCommentVo
      * @return
      */
     public SearchResult queryById(CrowdfundCommentRequestVo crowdfundCommentVo){
-        if (crowdfundCommentVo==null){
-            throw new RuntimeException("获取信息列表失败");
-        }
+
         SearchResult<CrowdfundBasicinfo> result = new SearchResult<>();
         result.setTotalRows(crowdfundCommentDao.queryById(crowdfundCommentVo));
         result.setRows(crowdfundCommentDao.getListCrowdfund(crowdfundCommentVo));
