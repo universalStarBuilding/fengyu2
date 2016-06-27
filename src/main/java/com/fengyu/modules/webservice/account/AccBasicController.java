@@ -24,16 +24,6 @@ public class AccBasicController {
     @Autowired
     private AccBasicService accBasicService;
 
-    @GET
-    @Path("get")
-    public ResultAPI get() {
-
-        ResultAPI resultAPI = new ResultAPI();
-
-        return resultAPI;
-    }
-
-
     /**
      * 修改支付密码
      * @param accBasic

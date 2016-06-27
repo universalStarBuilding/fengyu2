@@ -6,6 +6,7 @@ import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.modules.model.PostAddress;
 import com.fengyu.modules.service.user.PostAddressService;
 import com.fengyu.system.entity.ResultAPI;
+import com.fengyu.system.entity.SearchResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +26,6 @@ public class PostAddressController {
     @Autowired
     private PostAddressService postAddressService;
 
-    @GET
-    @Path("get")
-    public ResultAPI get() {
-
-        ResultAPI resultAPI = new ResultAPI();
-
-        return resultAPI;
-    }
-
     /**
      * 获取收获地址
      * @param id
@@ -43,16 +35,12 @@ public class PostAddressController {
     @Path("get/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI getPostAddress(@PathParam("id")Integer id){
-        ResultAPI resultAPI=new ResultAPI();
-        try {
-            resultAPI.setMsg(postAddressService.getPostAddress(id));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
+    public String getPostAddress(@PathParam("id")Integer id){
+        PostAddress postAddress=postAddressService.getPostAddress(id);
+        if (postAddress==null){
+            throw new WebActionException(WebExceptionType.PostAccessNotFund,postAddress);
         }
-        return resultAPI;
+        return JSON.toJSONString(postAddress);
     }
 
     /**
@@ -64,16 +52,12 @@ public class PostAddressController {
     @Path("insert")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI insertPostAddress(PostAddress postAddress){
-        ResultAPI resultAPI=new ResultAPI();
-        try {
-            resultAPI.setMsg(postAddressService.insert(postAddress));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
+    public String insertPostAddress(PostAddress postAddress){
+        Integer rows=postAddressService.insert(postAddress);
+        if (rows==0){
+            throw new WebActionException(WebExceptionType.InsertPostAccess,postAddress);
         }
-        return resultAPI;
+        return JSON.toJSONString(rows);
     }
 
     /**
@@ -85,16 +69,12 @@ public class PostAddressController {
     @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI updatePostAddress( PostAddress postAddress){
-        ResultAPI resultAPI=new ResultAPI();
-        try {
-            resultAPI.setMsg(postAddressService.updatePostAddress(postAddress));
-            resultAPI.setAccess_result("SUCCESS");
-        }catch (Exception e){
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
+    public String updatePostAddress( PostAddress postAddress){
+        Integer rows=postAddressService.updatePostAddress(postAddress);
+        if (rows == 0) {
+            throw new WebActionException(WebExceptionType.UpdatePostAccess,postAddress);
         }
-        return resultAPI;
+        return JSON.toJSONString(rows);
     }
 
     /**
@@ -121,8 +101,11 @@ public class PostAddressController {
     @Path("pageList")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI pageList(PostAddress postAddress){
-
-       return null;
+    public String pageList(PostAddress postAddress){
+        SearchResult searchResult=postAddressService.getListPostAddress(postAddress);
+        if (searchResult==null){
+            throw new WebActionException(WebExceptionType.PostAccessNotFund,postAddress);
+        }
+       return JSON.toJSONString(searchResult);
     }
 }
