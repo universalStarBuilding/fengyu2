@@ -2,7 +2,6 @@ package com.fengyu.modules.webservice.project.vo;
 
 import com.fengyu.common.page.Pagetables;
 
-import java.math.BigDecimal;
 
 public class HotRequestVo extends Pagetables{
     private Integer projectNo;//项目编号
@@ -13,7 +12,7 @@ public class HotRequestVo extends Pagetables{
 
     private String projectState;//状态
 
-    private BigDecimal fundAmt;//目标金额
+    private Double fundAmt;//目标金额
 
     private String fundTotalAmt;//已筹金额
 
@@ -52,11 +51,11 @@ public class HotRequestVo extends Pagetables{
     }
 
 
-    public BigDecimal getFundAmt() {
+    public Double getFundAmt() {
         return fundAmt;
     }
 
-    public void setFundAmt(BigDecimal fundAmt) {
+    public void setFundAmt(Double fundAmt) {
         this.fundAmt = fundAmt;
     }
 

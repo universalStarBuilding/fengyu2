@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fengyu.modules.dao.project.publish.CrowdfundOrganizerDao" >
+  <resultMap id="BaseResultMap" type="com.fengyu.modules.model.CrowdfundOrganizer" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="ORGANIZER_NO" property="organizerNo" jdbcType="INTEGER" />
+    <result column="ORGANIZER_NAME" property="organizerName" jdbcType="VARCHAR" />
+    <result column="ORGANIZER_INTRODUCTION" property="organizerIntroduction" jdbcType="VARCHAR" />
+    <result column="WEIBO_URL" property="weiboUrl" jdbcType="VARCHAR" />
+    <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR" />
+    <result column="THANK_YOU_NOTE" property="thankYouNote" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, USER_ID, ORGANIZER_NO, ORGANIZER_NAME, ORGANIZER_INTRODUCTION, WEIBO_URL, TELEPHONE, 
+    THANK_YOU_NOTE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from crowdfund_organizer
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from crowdfund_organizer
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fengyu.modules.model.CrowdfundOrganizer" >
+    insert into crowdfund_organizer (ID, USER_ID, ORGANIZER_NO, 
+      ORGANIZER_NAME, ORGANIZER_INTRODUCTION, WEIBO_URL, 
+      TELEPHONE, THANK_YOU_NOTE)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{organizerNo,jdbcType=INTEGER}, 
+      #{organizerName,jdbcType=VARCHAR}, #{organizerIntroduction,jdbcType=VARCHAR}, #{weiboUrl,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{thankYouNote,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fengyu.modules.model.CrowdfundOrganizer" >
+    insert into crowdfund_organizer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="organizerNo != null" >
+        ORGANIZER_NO,
+      </if>
+      <if test="organizerName != null" >
+        ORGANIZER_NAME,
+      </if>
+      <if test="organizerIntroduction != null" >
+        ORGANIZER_INTRODUCTION,
+      </if>
+      <if test="weiboUrl != null" >
+        WEIBO_URL,
+      </if>
+      <if test="telephone != null" >
+        TELEPHONE,
+      </if>
+      <if test="thankYouNote != null" >
+        THANK_YOU_NOTE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="organizerNo != null" >
+        #{organizerNo,jdbcType=INTEGER},
+      </if>
+      <if test="organizerName != null" >
+        #{organizerName,jdbcType=VARCHAR},
+      </if>
+      <if test="organizerIntroduction != null" >
+        #{organizerIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="weiboUrl != null" >
+        #{weiboUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="thankYouNote != null" >
+        #{thankYouNote,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fengyu.modules.model.CrowdfundOrganizer" >
+    update crowdfund_organizer
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="organizerNo != null" >
+        ORGANIZER_NO = #{organizerNo,jdbcType=INTEGER},
+      </if>
+      <if test="organizerName != null" >
+        ORGANIZER_NAME = #{organizerName,jdbcType=VARCHAR},
+      </if>
+      <if test="organizerIntroduction != null" >
+        ORGANIZER_INTRODUCTION = #{organizerIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="weiboUrl != null" >
+        WEIBO_URL = #{weiboUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="thankYouNote != null" >
+        THANK_YOU_NOTE = #{thankYouNote,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fengyu.modules.model.CrowdfundOrganizer" >
+    update crowdfund_organizer
+    set USER_ID = #{userId,jdbcType=INTEGER},
+      ORGANIZER_NO = #{organizerNo,jdbcType=INTEGER},
+      ORGANIZER_NAME = #{organizerName,jdbcType=VARCHAR},
+      ORGANIZER_INTRODUCTION = #{organizerIntroduction,jdbcType=VARCHAR},
+      WEIBO_URL = #{weiboUrl,jdbcType=VARCHAR},
+      TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      THANK_YOU_NOTE = #{thankYouNote,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

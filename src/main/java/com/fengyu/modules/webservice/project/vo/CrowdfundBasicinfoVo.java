@@ -2,7 +2,6 @@ package com.fengyu.modules.webservice.project.vo;
 
 import com.fengyu.common.page.Pagetables;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class CrowdfundBasicinfoVo extends Pagetables{
@@ -32,19 +31,19 @@ public class CrowdfundBasicinfoVo extends Pagetables{
 
     private String projectState;
 
-    private Short organizerNo;
+    private Integer organizerNo;
 
-    private BigDecimal fundAmt;
+    private Double fundAmt;
 
-    private BigDecimal fundLimitAmt;
+    private Double fundLimitAmt;
 
     private String fundTotalAmt;
 
-    private Short fundPeriod;
+    private Integer fundPeriod;
 
     private Boolean lastingFundFlag;
 
-    private Short preparePeriod;
+    private Integer preparePeriod;
 
     private String projectVideo;
 
@@ -182,27 +181,27 @@ public class CrowdfundBasicinfoVo extends Pagetables{
         this.projectState = projectState == null ? null : projectState.trim();
     }
 
-    public Short getOrganizerNo() {
+    public Integer getOrganizerNo() {
         return organizerNo;
     }
 
-    public void setOrganizerNo(Short organizerNo) {
+    public void setOrganizerNo(Integer organizerNo) {
         this.organizerNo = organizerNo;
     }
 
-    public BigDecimal getFundAmt() {
+    public Double getFundAmt() {
         return fundAmt;
     }
 
-    public void setFundAmt(BigDecimal fundAmt) {
+    public void setFundAmt(Double fundAmt) {
         this.fundAmt = fundAmt;
     }
 
-    public BigDecimal getFundLimitAmt() {
+    public Double getFundLimitAmt() {
         return fundLimitAmt;
     }
 
-    public void setFundLimitAmt(BigDecimal fundLimitAmt) {
+    public void setFundLimitAmt(Double fundLimitAmt) {
         this.fundLimitAmt = fundLimitAmt;
     }
 
@@ -214,11 +213,11 @@ public class CrowdfundBasicinfoVo extends Pagetables{
         this.fundTotalAmt = fundTotalAmt == null ? null : fundTotalAmt.trim();
     }
 
-    public Short getFundPeriod() {
+    public Integer getFundPeriod() {
         return fundPeriod;
     }
 
-    public void setFundPeriod(Short fundPeriod) {
+    public void setFundPeriod(Integer fundPeriod) {
         this.fundPeriod = fundPeriod;
     }
 
@@ -230,11 +229,11 @@ public class CrowdfundBasicinfoVo extends Pagetables{
         this.lastingFundFlag = lastingFundFlag;
     }
 
-    public Short getPreparePeriod() {
+    public Integer getPreparePeriod() {
         return preparePeriod;
     }
 
-    public void setPreparePeriod(Short preparePeriod) {
+    public void setPreparePeriod(Integer preparePeriod) {
         this.preparePeriod = preparePeriod;
     }
 

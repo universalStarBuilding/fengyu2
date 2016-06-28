@@ -1,5 +1,6 @@
 package com.fengyu.modules.dao.project.msg;
 
+import com.fengyu.common.persistence.CrudDao;
 import com.fengyu.common.persistence.annotation.MyBatisDao;
 import com.fengyu.modules.model.CrowdfundBasicinfo;
 import com.fengyu.modules.webservice.project.vo.HotResponseVo;
@@ -11,7 +12,7 @@ import java.util.List;
  * 我发起的项目
  */
 @MyBatisDao
-public interface CrowdfundBasicinfoDao {
+public interface CrowdfundBasicinfoDao extends CrudDao<CrowdfundBasicinfo>{
 
     //统计数量
     long queryBy(CrowdfundBasicinfoVo launchProjectVo);
