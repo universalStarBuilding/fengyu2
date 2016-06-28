@@ -2,7 +2,6 @@ package com.fengyu.modules.model;
 
 import com.fengyu.common.persistence.DataEntity;
 
-import java.math.BigDecimal;
 
 public class CrowdfundReturnset  extends DataEntity<CrowdfundReturnset>{
     private Integer id;
@@ -25,15 +24,15 @@ public class CrowdfundReturnset  extends DataEntity<CrowdfundReturnset>{
 
     private String returnChannel;
 
-    private BigDecimal appPerfScale;
+    private Double appPerfScale;
 
-    private BigDecimal price;
+    private Double price;
 
     private String remark;
 
     private Boolean postFlag;
 
-    private BigDecimal courierFees;
+    private Double courierFees;
 
     private Boolean invoiceFlag;
 
@@ -113,19 +112,19 @@ public class CrowdfundReturnset  extends DataEntity<CrowdfundReturnset>{
         this.returnChannel = returnChannel == null ? null : returnChannel.trim();
     }
 
-    public BigDecimal getAppPerfScale() {
+    public Double getAppPerfScale() {
         return appPerfScale;
     }
 
-    public void setAppPerfScale(BigDecimal appPerfScale) {
+    public void setAppPerfScale(Double appPerfScale) {
         this.appPerfScale = appPerfScale;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -145,11 +144,11 @@ public class CrowdfundReturnset  extends DataEntity<CrowdfundReturnset>{
         this.postFlag = postFlag;
     }
 
-    public BigDecimal getCourierFees() {
+    public Double getCourierFees() {
         return courierFees;
     }
 
-    public void setCourierFees(BigDecimal courierFees) {
+    public void setCourierFees(Double courierFees) {
         this.courierFees = courierFees;
     }
 

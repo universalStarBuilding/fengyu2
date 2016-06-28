@@ -1,6 +1,5 @@
 package com.fengyu.modules.webservice.project.vo;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -9,16 +8,16 @@ import java.util.Date;
 public class CrowdfundReturnsetRequestVo {
 
     private Integer projectNo;           //项目编号
-    private BigDecimal price;            //支付金额
+    private Double price;            //支付金额
     private Integer numberLimits;       //名额
     private String returnContent;       //回报内容
     private String returnType;          //回报类型   goods 实物   invented 虚拟
     private String returnImageDesc;    //回报图片地址
     private String returnChannel;       //回报渠道 APP 手机专享 PC电脑专享 APPPERF
-    private BigDecimal appPerfScale;    //手机优惠百分比
+    private Double appPerfScale;    //手机优惠百分比
     private String remark;               //备注
     private Boolean postFlag;            //是否需要物流标志 0 不需要1 需要
-    private BigDecimal courierFees;     //快递费
+    private Double courierFees;     //快递费
     private Boolean invoiceFlag;        //是否需要开具发票0不需要1需要
     private Integer returnDate;          //回报日期
 
@@ -30,11 +29,11 @@ public class CrowdfundReturnsetRequestVo {
         this.projectNo = projectNo;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -78,11 +77,11 @@ public class CrowdfundReturnsetRequestVo {
         this.returnChannel = returnChannel;
     }
 
-    public BigDecimal getAppPerfScale() {
+    public Double getAppPerfScale() {
         return appPerfScale;
     }
 
-    public void setAppPerfScale(BigDecimal appPerfScale) {
+    public void setAppPerfScale(Double appPerfScale) {
         this.appPerfScale = appPerfScale;
     }
 
@@ -102,11 +101,11 @@ public class CrowdfundReturnsetRequestVo {
         this.postFlag = postFlag;
     }
 
-    public BigDecimal getCourierFees() {
+    public Double getCourierFees() {
         return courierFees;
     }
 
-    public void setCourierFees(BigDecimal courierFees) {
+    public void setCourierFees(Double courierFees) {
         this.courierFees = courierFees;
     }
 

@@ -2,12 +2,11 @@ package com.fengyu.modules.model;
 
 import com.fengyu.common.persistence.DataEntity;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 
 public class CrowdfundBasicinfo extends DataEntity<CrowdfundBasicinfo>{
-    private Integer projectNo;
+    private String projectNo;
 
     private Integer userId;
 
@@ -31,19 +30,19 @@ public class CrowdfundBasicinfo extends DataEntity<CrowdfundBasicinfo>{
 
     private String projectState;
 
-    private Short organizerNo;
+    private String organizerNo;
 
-    private BigDecimal fundAmt;
+    private Double fundAmt;
 
-    private BigDecimal fundLimitAmt;
+    private Double fundLimitAmt;
 
     private String fundTotalAmt;
 
-    private Short fundPeriod;
+    private Integer fundPeriod;
 
     private Boolean lastingFundFlag;
 
-    private Short preparePeriod;
+    private Integer preparePeriod;
 
     private String projectVideo;
 
@@ -77,11 +76,11 @@ public class CrowdfundBasicinfo extends DataEntity<CrowdfundBasicinfo>{
         this.hotNum = hotNum;
     }
 
-    public Integer getProjectNo() {
+    public String getProjectNo() {
         return projectNo;
     }
 
-    public void setProjectNo(Integer projectNo) {
+    public void setProjectNo(String projectNo) {
         this.projectNo = projectNo;
     }
 
@@ -173,27 +172,27 @@ public class CrowdfundBasicinfo extends DataEntity<CrowdfundBasicinfo>{
         this.projectState = projectState == null ? null : projectState.trim();
     }
 
-    public Short getOrganizerNo() {
+    public String getOrganizerNo() {
         return organizerNo;
     }
 
-    public void setOrganizerNo(Short organizerNo) {
+    public void setOrganizerNo(String organizerNo) {
         this.organizerNo = organizerNo;
     }
 
-    public BigDecimal getFundAmt() {
+    public Double getFundAmt() {
         return fundAmt;
     }
 
-    public void setFundAmt(BigDecimal fundAmt) {
+    public void setFundAmt(Double fundAmt) {
         this.fundAmt = fundAmt;
     }
 
-    public BigDecimal getFundLimitAmt() {
+    public Double getFundLimitAmt() {
         return fundLimitAmt;
     }
 
-    public void setFundLimitAmt(BigDecimal fundLimitAmt) {
+    public void setFundLimitAmt(Double fundLimitAmt) {
         this.fundLimitAmt = fundLimitAmt;
     }
 
@@ -205,11 +204,11 @@ public class CrowdfundBasicinfo extends DataEntity<CrowdfundBasicinfo>{
         this.fundTotalAmt = fundTotalAmt == null ? null : fundTotalAmt.trim();
     }
 
-    public Short getFundPeriod() {
+    public Integer getFundPeriod() {
         return fundPeriod;
     }
 
-    public void setFundPeriod(Short fundPeriod) {
+    public void setFundPeriod(Integer fundPeriod) {
         this.fundPeriod = fundPeriod;
     }
 
@@ -221,11 +220,11 @@ public class CrowdfundBasicinfo extends DataEntity<CrowdfundBasicinfo>{
         this.lastingFundFlag = lastingFundFlag;
     }
 
-    public Short getPreparePeriod() {
+    public Integer getPreparePeriod() {
         return preparePeriod;
     }
 
-    public void setPreparePeriod(Short preparePeriod) {
+    public void setPreparePeriod(Integer preparePeriod) {
         this.preparePeriod = preparePeriod;
     }
 

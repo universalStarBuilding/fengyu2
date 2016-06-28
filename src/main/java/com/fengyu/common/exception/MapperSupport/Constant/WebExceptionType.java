@@ -30,6 +30,10 @@ public enum WebExceptionType {
     UPDATEPOSTACCESS("收货地址修改失败"),
     UPDATEINVALIDUSERINFO("用户信息修改异常！"),
 
+    //发起项目
+    PUBLISHINVALIDPROJECT("发起项目失败！"),
+
+
     //项目回报设置
     DELETEINVALIDPROEJCTRETURNSET("删除项目回报异常！"),
     UPDATEINVALIDPROEJCTRETURNSET("更新项目回报异常！"),

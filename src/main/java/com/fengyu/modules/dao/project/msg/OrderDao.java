@@ -3,7 +3,6 @@ package com.fengyu.modules.dao.project.msg;
 import com.fengyu.common.persistence.annotation.MyBatisDao;
 import com.fengyu.modules.model.Order;
 import com.fengyu.modules.webservice.project.vo.OrderVo;
-import com.sun.tools.corba.se.idl.constExpr.Or;
 
 import java.util.List;
 

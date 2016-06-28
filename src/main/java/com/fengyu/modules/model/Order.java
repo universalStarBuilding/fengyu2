@@ -4,7 +4,6 @@ import com.fengyu.common.page.Pagetables;
 import com.fengyu.common.persistence.DataEntity;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import java.math.BigDecimal;
 import java.util.Date;
 /**
  *@Order 我支持项目的实体类
@@ -14,7 +13,7 @@ public class Order extends DataEntity<Order>{
 
     private Integer orderOwner;
 
-    private BigDecimal orderAmt;
+    private Double orderAmt;
 
     private String orderState;
 
@@ -52,11 +51,11 @@ public class Order extends DataEntity<Order>{
         this.orderOwner = orderOwner;
     }
 
-    public BigDecimal getOrderAmt() {
+    public Double getOrderAmt() {
         return orderAmt;
     }
 
-    public void setOrderAmt(BigDecimal orderAmt) {
+    public void setOrderAmt(Double orderAmt) {
         this.orderAmt = orderAmt;
     }
 
