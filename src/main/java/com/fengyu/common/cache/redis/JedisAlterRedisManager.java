@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.fengyu.common.config.Global;
+import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
+import com.fengyu.common.exception.MapperSupport.WebActionException;
 import org.springframework.stereotype.Component;
 
 
@@ -25,6 +28,92 @@ public class JedisAlterRedisManager {
     private Jedis jedis = RedisPoolManager.createInstance();
 
     ////////////////////Basic Functions(String related) - Start /////////////////////////////
+
+    /**
+     * @Name:
+     * @Author: junz（作者）
+     * @Version: V1.00 （版本号）
+     * @Create Date: 2016-06-27（创建日期）
+     * @param ip type计数类型
+     * @Description:
+     * 根据计数器类型跟用户访问ip 获取当前计数值
+     */
+    public  String getCounter4TypeAndIp(String ip,String type)
+    {
+        int expire=getExpireTime4Counter(type);
+        String key=ip+"/"+type+".key";
+        String count="";
+        if(!jedis.exists(key))
+        {
+            jedis.setex(key,expire,"0");
+        }
+
+        return jedis.get(key);
+    }
+
+    /**
+     * @Name:
+     * @Author: junz（作者）
+     * @Version: V1.00 （版本号）
+     * @Create Date: 2016-06-27（创建日期）
+     * @param ip type计数类型
+     * @Description:
+     * 根据计数器类型跟用户访问ip 对当前计数器追加值
+     */
+    public  long incrCounter4TypeAndIp(String ip,String type)
+    {
+        int expire=getExpireTime4Counter(type);
+
+        String key=ip+"/"+type+".key";
+
+        if(!jedis.exists(key))
+        {
+            jedis.setex(key,expire,"0");
+        }
+        return jedis.incr(key);
+    }
+
+    /**
+     * @Name:
+     * @Author: junz（作者）
+     * @Version: V1.00 （版本号）
+     * @Create Date: 2016-06-27（创建日期）
+     * @param ip type计数类型
+     * @Description:
+     * 根据计数器类型跟用户访问ip 对当前计数器减少值
+     */
+    public  long decrounter4TypeAndIp(String ip,String type)
+    {
+        int expire=getExpireTime4Counter(type);
+        String key=ip+"/"+type+".key";
+
+        if(!jedis.exists(key))
+        {
+            jedis.setex(key,expire,"0");
+        }
+        return jedis.decr(key);
+    }
+    /**
+     * @Name:
+     * @Author: junz（作者）
+     * @Version: V1.00 （版本号）
+     * @Create Date: 2016-06-27（创建日期）
+     * @param  type 计数类型
+     * @Description:
+     * 根据计数器类型，获取该类型计数器在缓存中存放的时间 ,单位为妙
+     */
+    public int getExpireTime4Counter(String type)
+    {
+        int expire=0;
+        try {
+            expire=Global.counter.get(type);
+        }catch (Exception ex)
+        {
+            throw new WebActionException(WebExceptionType.COUNTERNOTFOUND,type);
+        }
+        return expire;
+    }
+
     /**
      * If the value existed, will override the value
      * @param entries
@@ -571,4 +660,7 @@ public class JedisAlterRedisManager {
     }
 
     ////////////////////Hash Map Functions - End //////////////////////////////
+    public static void main(String[] args) {
+
+    }
 }

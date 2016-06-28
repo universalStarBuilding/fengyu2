@@ -23,7 +23,7 @@ public class RedisPoolManager {
     /**
      * 属性文件加载对象
      */
-    private static PropertiesLoader loader = new PropertiesLoader("properties/config.properties");
+    private static PropertiesLoader loader = new PropertiesLoader("properties/redis-jedis.properties");
 
     static {
 
@@ -44,7 +44,7 @@ public class RedisPoolManager {
      */
     public static Jedis createInstance() {
         Jedis jedis = pool.getResource();
-        jedis.auth("diandi");
+        jedis.auth(loader.getProperty("redis.password"));
         return jedis;
     }
 
@@ -55,4 +55,5 @@ public class RedisPoolManager {
     public static void returnResource(Jedis jedis) {
         pool.returnResource(jedis);
     }
+
 }
