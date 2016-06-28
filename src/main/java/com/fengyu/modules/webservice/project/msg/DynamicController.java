@@ -31,7 +31,7 @@ public class DynamicController {
     @Consumes(MediaType.APPLICATION_JSON)
     public String insertDynamic(CrowdfundIfmtDscleRequestVo dynamicRequestVo){
         if (dynamicRequestVo==null){
-            throw new WebActionException(WebExceptionType.InsertInvalidDynamic,dynamicRequestVo);
+            throw new WebActionException(WebExceptionType.INSERTINVALIDDYNAMIC,dynamicRequestVo);
         }
         Integer resultAPI =dynamicService.insert(dynamicRequestVo);
 

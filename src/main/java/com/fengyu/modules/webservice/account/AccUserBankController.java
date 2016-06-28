@@ -33,7 +33,7 @@ public class AccUserBankController {
     public String insertAccUserBank(AccUserBank accUserBank){
         Integer rows=accUserBankService.insert(accUserBank);
         if(rows==0){
-            throw new WebActionException(WebExceptionType.InsertInvalidAccUserBank,accUserBank);
+            throw new WebActionException(WebExceptionType.INSERTINVALIDACCUSERBANK,accUserBank);
         }
         return JSON.toJSONString(rows);
     }
