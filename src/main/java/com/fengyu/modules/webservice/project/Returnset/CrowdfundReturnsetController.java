@@ -41,7 +41,7 @@ public class CrowdfundReturnsetController {
 
         List<CrowdfundReturnsetReponseVo> vo = crowdfundReturnsetService.getListByProjectNo(id);
         if(vo == null){
-            throw new WebActionException(WebExceptionType.CrowdFundReturnsetNotFund,vo);
+            throw new WebActionException(WebExceptionType.CROWDFUNDRETURNSETNOTFUND,vo);
         }
 
         return JSON.toJSONString(vo);
@@ -59,7 +59,7 @@ public class CrowdfundReturnsetController {
 
         Integer rows = crowdfundReturnsetService.saveCrowdfundReturnset(crowdfundReturnsetRequestVo);
         if(rows == 0){
-            throw  new WebActionException(WebExceptionType.DeleteInvalidProejctReturnset,crowdfundReturnsetRequestVo);
+            throw  new WebActionException(WebExceptionType.DELETEINVALIDPROEJCTRETURNSET,crowdfundReturnsetRequestVo);
         }
 
     }
@@ -74,7 +74,7 @@ public class CrowdfundReturnsetController {
 
         Integer rows = crowdfundReturnsetService.updateCrowdfundReturnset(crowdfundReturnsetRequestVo);
         if(rows == 0){
-            throw  new WebActionException(WebExceptionType.UpdateInvalidProejctReturnset,crowdfundReturnsetRequestVo);
+            throw  new WebActionException(WebExceptionType.UPDATEINVALIDPROEJCTRETURNSET,crowdfundReturnsetRequestVo);
         }
     }
 
@@ -90,7 +90,7 @@ public class CrowdfundReturnsetController {
 
         Integer rows = crowdfundReturnsetService.deleteById(id);
         if(rows == 0){
-            throw  new WebActionException(WebExceptionType.DeleteInvalidProejctReturnset,id);
+            throw  new WebActionException(WebExceptionType.DELETEINVALIDPROEJCTRETURNSET,id);
         }
     }
 

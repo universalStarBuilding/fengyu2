@@ -43,7 +43,7 @@ public class CrowdfundCommentController {
     public String pageList(CrowdfundCommentRequestVo crowdfundCommentVo){
 
         if(crowdfundCommentVo==null){
-            throw new WebActionException(WebExceptionType.QueryById,crowdfundCommentVo);
+            throw new WebActionException(WebExceptionType.GETINVALIDCROWDFUNDCOMMENT,crowdfundCommentVo);
         }
         SearchResult searchResult  = crowdfundCommentService.queryById(crowdfundCommentVo);
 

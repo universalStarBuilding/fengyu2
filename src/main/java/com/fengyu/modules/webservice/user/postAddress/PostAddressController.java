@@ -38,7 +38,7 @@ public class PostAddressController {
     public String getPostAddress(@PathParam("id")Integer id){
         PostAddress postAddress=postAddressService.getPostAddress(id);
         if (postAddress==null){
-            throw new WebActionException(WebExceptionType.PostAccessNotFund,postAddress);
+            throw new WebActionException(WebExceptionType.POSTACCESSNOTFUND,postAddress);
         }
         return JSON.toJSONString(postAddress);
     }
@@ -55,7 +55,7 @@ public class PostAddressController {
     public String insertPostAddress(PostAddress postAddress){
         Integer rows=postAddressService.insert(postAddress);
         if (rows==0){
-            throw new WebActionException(WebExceptionType.InsertPostAccess,postAddress);
+            throw new WebActionException(WebExceptionType.INSERTPOSTACCESS,postAddress);
         }
         return JSON.toJSONString(rows);
     }
@@ -72,7 +72,7 @@ public class PostAddressController {
     public String updatePostAddress( PostAddress postAddress){
         Integer rows=postAddressService.updatePostAddress(postAddress);
         if (rows == 0) {
-            throw new WebActionException(WebExceptionType.UpdatePostAccess,postAddress);
+            throw new WebActionException(WebExceptionType.UPDATEPOSTACCESS,postAddress);
         }
         return JSON.toJSONString(rows);
     }
@@ -87,7 +87,7 @@ public class PostAddressController {
     public String deletePostAddress(@PathParam("id")Integer id){
         Integer rows=postAddressService.deletePostAddress(id);
         if (rows==0){
-            throw new WebActionException(WebExceptionType.DeletePostAccess,id);
+            throw new WebActionException(WebExceptionType.DELETEPOSTACCESS,id);
         }
         return JSON.toJSONString(rows);
     }
@@ -104,7 +104,7 @@ public class PostAddressController {
     public String pageList(PostAddress postAddress){
         SearchResult searchResult=postAddressService.getListPostAddress(postAddress);
         if (searchResult==null){
-            throw new WebActionException(WebExceptionType.PostAccessNotFund,postAddress);
+            throw new WebActionException(WebExceptionType.POSTACCESSNOTFUND,postAddress);
         }
        return JSON.toJSONString(searchResult);
     }

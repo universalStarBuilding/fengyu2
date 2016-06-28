@@ -39,7 +39,7 @@ public class OrderController {
     @Consumes(MediaType.APPLICATION_JSON)
     public String pageList(OrderVo orderVo){
         if (orderVo==null){
-            //throw new WebActionException(WebExceptionType.GetPageList,orderVo);
+            throw new WebActionException(WebExceptionType.GETINVALIDPROJECTSUPPORT,orderVo);
         }
         SearchResult<Order> result=orderService.getPageList(orderVo);
 

@@ -34,7 +34,7 @@ public class AccBasicController {
     public String updatePayPwd(AccBasic accBasic){
         Integer rows=accBasicService.updatePayPwd(accBasic);
         if (rows==0){
-            throw new WebActionException(WebExceptionType.UpdatePayPwdAccUserBank,accBasic);
+            throw new WebActionException(WebExceptionType.UPDATEPAYPWDACCUSERBANK,accBasic);
         }
         return JSON.toJSONString(rows);
     }

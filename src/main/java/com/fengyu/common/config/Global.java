@@ -10,6 +10,7 @@ import org.springframework.core.io.DefaultResourceLoader;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -29,6 +30,16 @@ public class Global {
      */
     private static Map<String, String> map = Maps.newHashMap();
 
+    /**
+     * 保存全局属性值
+     * <类型,生命周期（seconds）>
+     */
+    public static Map< String,Integer> counter =new HashMap<String,Integer>(){{
+        //登录计数器
+        put("login",60);
+        //修改密码
+        put("modifypassword",60);
+    }};
     /**
      * 属性文件加载对象
      */
