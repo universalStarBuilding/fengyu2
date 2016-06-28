@@ -39,7 +39,7 @@ public class SercurityController {
     public String get(@PathParam("id")Integer id){
         SercurityVo sercurityVo=userService.getSercurityById(id);
         if (sercurityVo==null){
-            throw  new WebActionException(WebExceptionType.UserNotFund,sercurityVo);
+            throw  new WebActionException(WebExceptionType.USERNOTFUND,sercurityVo);
         }
         return JSON.toJSONString(sercurityVo);
     }
@@ -53,7 +53,7 @@ public class SercurityController {
     public String getContact(@PathParam("id") Integer id){
         SercurityVo sercurityVo=userService.getContact(id);
         if (sercurityVo==null){
-            throw  new WebActionException(WebExceptionType.UserPhoneEmail,sercurityVo);
+            throw  new WebActionException(WebExceptionType.USERPHONEEMAIL,sercurityVo);
         }
         return JSON.toJSONString(sercurityVo);
     }
@@ -88,7 +88,7 @@ public class SercurityController {
     public String updatePhone(User user){
         Integer rows=userService.updatePhone(user);
         if (rows==0){
-            throw  new WebActionException(WebExceptionType.UserPhoneEmail,user);
+            throw  new WebActionException(WebExceptionType.USERPHONEEMAIL,user);
         }
         return JSON.toJSONString(user);
     }
@@ -102,7 +102,7 @@ public class SercurityController {
     public String updateEmail(User user){
         Integer rows=userService.updatePhone(user);
         if (rows==0){
-            throw  new WebActionException(WebExceptionType.UserPhoneEmail,user);
+            throw  new WebActionException(WebExceptionType.USERPHONEEMAIL,user);
         }
         return JSON.toJSONString(user);
     }
@@ -116,7 +116,7 @@ public class SercurityController {
     public String updateLoginPwd(User user){
         Integer rows=userService.updatePhone(user);
         if (rows==0){
-            throw  new WebActionException(WebExceptionType.UserPassword,user);
+            throw  new WebActionException(WebExceptionType.USERPASSWORD,user);
         }
         return JSON.toJSONString(user);
     }

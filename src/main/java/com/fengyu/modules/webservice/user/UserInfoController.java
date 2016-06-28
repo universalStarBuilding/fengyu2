@@ -45,7 +45,7 @@ public class UserInfoController {
     public String getUserInfo(@PathParam("id") Integer id) {
         UserInfo userInfo = userInfoService.getUserInfo(id);
         if(userInfo == null){
-            throw  new WebActionException(WebExceptionType.UserNotFund,userInfo);
+            throw  new WebActionException(WebExceptionType.USERNOTFUND,userInfo);
         }
         return JSON.toJSONString(userInfo);
     }
@@ -55,7 +55,7 @@ public class UserInfoController {
     public String updateUserInfo(UserInfo userInfo){
         Integer rows = userInfoService.updateUserInfo(userInfo);
         if(rows == 0){
-            throw  new WebActionException(WebExceptionType.UpdateInvalidUserInfo,userInfo);
+            throw  new WebActionException(WebExceptionType.UPDATEINVALIDUSERINFO,userInfo);
         }
         return JSON.toJSONString(rows);
     }
@@ -64,7 +64,7 @@ public class UserInfoController {
     @Path("web/{id}")
     public String getException(@PathParam("id")Integer id){
         if (id == 0) {
-            throw new WebActionException(WebExceptionType.LoginNotFund, id);
+            throw new WebActionException(WebExceptionType.LOGINNOTFUND, id);
         }
 
         return null;
@@ -88,7 +88,7 @@ public class UserInfoController {
     public String insertRealName(UserInfo userInfo){
         Integer rows=userInfoService.insertRealName(userInfo);
         if (rows==0){
-            throw new WebActionException(WebExceptionType.LoginNotFund,userInfo);
+            throw new WebActionException(WebExceptionType.LOGINNOTFUND,userInfo);
         }
         return JSON.toJSONString(rows);
     }
