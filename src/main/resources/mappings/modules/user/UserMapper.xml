@@ -61,4 +61,10 @@
     UPDATE USER SET PWD_LOGIN=#{pwdLogin,jdbcType=VARCHAR}
     WHERE ID = #{id,jdbcType=INTEGER}
   </update>
+
+  <insert id="insertPhone" parameterType="com.fengyu.modules.model.User">
+    INSERT into `user`(PHONE,PWD_LOGIN,TIME_CREATE)
+    VALUES(#{phone,jdbcType=VARCHAR},#{pwdLogin,jdbcType=VARCHAR},#{timeCreate,jdbcType=TIMESTAMP})
+  </insert>
+
 </mapper>

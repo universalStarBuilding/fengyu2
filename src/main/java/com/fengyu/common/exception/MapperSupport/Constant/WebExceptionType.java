@@ -21,6 +21,7 @@ public enum WebExceptionType {
     COUNTERNOTFOUND("计数类型不存在！"),
     USERPHONEEMAIL("手机号不存在或邮箱不存在"),
     USERPASSWORD("原密码错误，修改失败"),
+    USERPHONENOTNULL("手机号不能为空"),
     //账户
     UPDATEPAYPWDACCUSERBANK("修改支付密码"),
     INSERTINVALIDACCUSERBANK("绑定银行卡失败"),

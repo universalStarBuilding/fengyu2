@@ -27,7 +27,7 @@ public class PostAddressController {
     private PostAddressService postAddressService;
 
     /**
-     * 获取收获地址
+     * 获取详细收获地址
      * @param id
      * @return
      */

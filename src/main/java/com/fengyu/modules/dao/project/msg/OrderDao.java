@@ -19,9 +19,9 @@ public interface OrderDao {
     //统计支持的数量
     Integer supportNumber(Order order);
     //查询所有订单列表
-    List<Order> getOrderList(Order order);
+    List<Order> getOrderList(OrderVo orderVo);
     //查询订单状态列表
-    List<Order> getStateOrderList(Order order);
+    List<Order> getStateOrderList(OrderVo orderVo);
     //统计订单的总数
-    Integer orderPage(Order order);
+    long orderPage(OrderVo orderVo);
 }

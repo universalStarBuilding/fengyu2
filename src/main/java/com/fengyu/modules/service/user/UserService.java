@@ -11,6 +11,7 @@ import com.fengyu.modules.dao.account.AccUserBankDao;
 import com.fengyu.modules.dao.user.UserDao;
 import com.fengyu.modules.dao.user.UserInfoDao;
 import com.fengyu.modules.model.User;
+import com.fengyu.modules.webservice.user.vo.SendMsgVo;
 import com.fengyu.modules.webservice.user.vo.SercurityVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -142,19 +143,25 @@ public class UserService extends CrudService<UserDao, User> {
         }
         return userDao.updateLoginPwd(user);
     }
-
-    /**
-     * 发送验证码
-     * @param type 类型
-     * @param value 发送的内容
-     */
-    public void sendMsg(String type,String value){
-        String code="456123";
-        if(type.equals("phone")){
-            AliMsgApi.sendMsg(null,value,code);
+    //生成验证码
+    public void sendMsg(SendMsgVo sendMsgVo){
+        //发送验证码
+        String messageCode = String.valueOf(Math.random()).substring(2,8);
+        String type=sendMsgVo.getTypes();
+        String email=sendMsgVo.getEmail();
+        String title=sendMsgVo.getTitle();
+        String context=sendMsgVo.getContext();
+        String phone=sendMsgVo.getPhone();
+        if (type.equals("phone")){
+            AliMsgApi.sendMsg(null,phone,messageCode);
         }else if (type.equals("email")){
-            SendMail.send(value,"测试邮箱","success:成功"+code);
+            SendMail.send(email,title,context);
         }
-        Cache.setCodeCache(code);
+        //保存验证码
+        Cache.setCodeCache(messageCode);
+    }
+    //验证验证码
+    public void verification(String phone,String type,String message){
+
     }
 }

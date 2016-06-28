@@ -49,7 +49,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.alibaba:tools:1.8.0">
         <CLASSES>
-          <root url="jar://G:/jdk8/lib/tools.jar!/" />
+          <root url="jar://D:/jdk8/lib/tools.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

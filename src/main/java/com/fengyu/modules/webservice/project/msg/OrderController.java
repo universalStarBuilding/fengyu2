@@ -6,15 +6,16 @@ import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.modules.model.Order;
 import com.fengyu.modules.service.project.msg.OrderService;
 import com.fengyu.modules.webservice.project.vo.OrderVo;
-import com.fengyu.system.entity.ResultAPI;
 import com.fengyu.system.entity.SearchResult;
-import com.sun.tools.corba.se.idl.constExpr.Or;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -55,32 +56,44 @@ public class OrderController {
     @Path("order")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String getOrderList(Order order){
-        SearchResult searchResult=orderService.getOrderList(order);
-        if (searchResult==null){
-            throw new WebActionException(WebExceptionType.GetStateOrderList,order);
+    public String getOrderList(OrderVo orderVo){
+        if (orderVo==null){
+            throw new WebActionException(WebExceptionType.GETINVALIDPROJECTSUPPORT,orderVo);
         }
+        SearchResult searchResult=orderService.getOrderList(orderVo);
         return JSON.toJSONString(searchResult);
     }
+
+    /**
+     * 查询待付款列表
+     * @param orderVo
+     * @return
+     */
     @POST
     @Path("payment")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String getPaymentList(Order order){
-        SearchResult searchResult=orderService.getPayment(order);
+    public String getPaymentList(OrderVo orderVo){
+        SearchResult searchResult=orderService.getPayment(orderVo);
         if (searchResult==null){
-            throw new WebActionException(WebExceptionType.GetStateOrderList,order);
+            throw new WebActionException(WebExceptionType.GETINVALIDPROJECTSUPPORT,orderVo);
         }
         return JSON.toJSONString(searchResult);
     }
+
+    /**
+     * 查询待评价列表
+     * @param orderVo
+     * @return
+     */
     @POST
     @Path("evaluate")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String getEvaluate(Order order){
-        SearchResult searchResult=orderService.getEvaluate(order);
+    public String getEvaluate(OrderVo orderVo){
+        SearchResult searchResult=orderService.getEvaluate(orderVo);
         if (searchResult==null){
-            throw new WebActionException(WebExceptionType.GetStateOrderList,order);
+            throw new WebActionException(WebExceptionType.GETINVALIDPROJECTSUPPORT,orderVo);
         }
         return JSON.toJSONString(searchResult);
     }
