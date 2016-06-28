@@ -6,7 +6,7 @@ package com.fengyu.common.config;
 public class Cache {
 
     private static String imgCodeCache;      //图形验证码
-    private static String phoneCodeCache;    //手机验证码
+    private static String codeCache;    //验证码
 
     public static String getImgCodeCache() {
         return imgCodeCache;
@@ -16,11 +16,11 @@ public class Cache {
         Cache.imgCodeCache = imgCodeCache;
     }
 
-    public static String getPhoneCodeCache() {
-        return phoneCodeCache;
+    public static String getCodeCache() {
+        return codeCache;
     }
 
-    public static void setPhoneCodeCache(String phoneCodeCache) {
-        Cache.phoneCodeCache = phoneCodeCache;
+    public static void setCodeCache(String codeCache) {
+        Cache.codeCache = codeCache;
     }
 }

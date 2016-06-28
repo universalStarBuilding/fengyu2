@@ -1,17 +1,12 @@
 package com.fengyu.modules.service.project.msg;
 
-import com.fengyu.modules.dao.project.msg.OrderMapper;
+import com.fengyu.modules.dao.project.msg.OrderDao;
 import com.fengyu.modules.model.Order;
 import com.fengyu.modules.webservice.project.vo.OrderVo;
-import com.fengyu.system.dao.LogAccessDao;
-import com.fengyu.system.entity.LogAccess;
 import com.fengyu.system.entity.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.math.BigDecimal;
-import java.util.Date;
 
 
 @Service(value = "orderService")
@@ -20,7 +15,7 @@ public class OrderService {
 
 
     @Autowired
-    private OrderMapper orderMapper;
+    private OrderDao orderMapper;
 
     /**
      * 分页：我支持的项目列表
@@ -28,15 +23,36 @@ public class OrderService {
      * @return
      */
     public SearchResult getPageList(OrderVo orderVo) {
-        if (orderVo==null){
-            throw new RuntimeException ("获取支持项目失败");
-        }
-
 
         SearchResult<Order> result = new SearchResult<>();
         result.setTotalRows(orderMapper.queryById(orderVo));
         result.setRows(orderMapper.orderPageList(orderVo));
 
         return result ;
+    }
+
+    /**
+     * 查询所有订单列表
+     * @param order
+     * @return
+     */
+    public SearchResult getOrderList(Order order){
+        SearchResult<Order> result = new SearchResult<>();
+        result.setTotalRows(orderMapper.orderPage(order));
+        result.setRows(orderMapper.getOrderList(order));
+        return result;
+    }
+
+    /**
+     * 查询待付款的订单
+     * @param order
+     * @return
+     */
+    public SearchResult getPayment(Order order){
+        order.setOrderState("0");
+        SearchResult<Order> result = new SearchResult<>();
+        result.setTotalRows(orderMapper.orderPage(order));
+        result.setRows(orderMapper.getStateOrderList(order));
+        return result;
     }
 }

@@ -1,7 +1,10 @@
 package com.fengyu.modules.webservice.project.msg;
 
-import com.fengyu.modules.service.project.msg.DynamicService;
-import com.fengyu.modules.webservice.project.vo.DynamicRequestVo;
+import com.alibaba.fastjson.JSON;
+import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
+import com.fengyu.common.exception.MapperSupport.WebActionException;
+import com.fengyu.modules.service.project.msg.CrowdfundIfmtDscleService;
+import com.fengyu.modules.webservice.project.vo.CrowdfundIfmtDscleRequestVo;
 import com.fengyu.system.entity.ResultAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,27 +23,19 @@ import javax.ws.rs.core.MediaType;
 public class DynamicController {
 
     @Autowired
-    private DynamicService dynamicService;
+    private CrowdfundIfmtDscleService dynamicService;
 
     @POST
     @Path("insertDynamic")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI insertDynamic(DynamicRequestVo dynamicRequestVo){
-
-        ResultAPI resultAPI = new ResultAPI();
-        try {
-            resultAPI.setMsg(dynamicService.insert(dynamicRequestVo));
-            resultAPI.setAccess_result("SUCCESS");
-
-        }catch (Exception e){
-            e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg("服务器异常");
+    public String insertDynamic(CrowdfundIfmtDscleRequestVo dynamicRequestVo){
+        if (dynamicRequestVo==null){
+            throw new WebActionException(WebExceptionType.InsertInvalidDynamic,dynamicRequestVo);
         }
+        Integer resultAPI =dynamicService.insert(dynamicRequestVo);
 
-
-        return resultAPI;
+        return JSON.toJSONString(resultAPI);
     }
 
 

@@ -18,9 +18,39 @@ public enum WebExceptionType {
 
     //用户基本信息
     UserNotFund("用户不存在！"),
+    UserPhoneEmail("手机号不存在或邮箱不存在"),
+    UserPassword("原密码错误，修改失败"),
+    //账户
+    UpdatePayPwdAccUserBank("修改支付密码"),
+    InsertInvalidAccUserBank("绑定银行卡失败"),
+    //收货地址
+    DeletePostAccess("删除收货地址失败"),
+    InsertPostAccess("收货地址添加失败"),
+    UpdatePostAccess("收货地址修改失败"),
     UpdateInvalidUserInfo("用户信息修改异常！"),
-    COUNTERNOTFOUND("计数类型不存在！");
 
+    //项目回报设置
+    DeleteInvalidProejctReturnset("删除项目回报异常！"),
+    UpdateInvalidProejctReturnset("更新项目回报异常！"),
+    CrowdFundReturnsetNotFund("项目回报不存在！"),
+
+    PostAccessNotFund("收货地址不存在"),
+    //添加
+    InsertInvalidDynamic("添加失败！"),
+    //查询我的私信列表
+    GetInvalidCrowdFundComment("获取信息列表失败"),
+    //我关注的项目列表
+    GetInvalidProjectConcerns("获取信息列表失败"),
+    //我发起的项目列表
+    GetInvalidLaunchProject("获取列表失败"),
+    //查询热门项目列表
+    SelectInvalidHot("获取热门项目列表失败"),
+    //查询我的私信列表
+    GetInvalidProjectLetter("获取我的私信失败"),
+    //删除私信
+    DeleteInvalidProjectLetter("删除私信失败"),
+    //我支持的项目列表
+    GetInvalidProjectSupport("获取支持项目失败");
 
 
 

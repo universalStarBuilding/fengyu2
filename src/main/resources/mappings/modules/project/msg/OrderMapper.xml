@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fengyu.modules.dao.project.msg.OrderMapper" >
+<mapper namespace="com.fengyu.modules.dao.project.msg.OrderDao" >
   <resultMap id="BaseResultMap" type="com.fengyu.modules.model.Order" >
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="ORDER_ID" property="orderId" jdbcType="INTEGER" />
@@ -35,4 +35,27 @@
     limit #{page},#{rows}
   </select>
 
+  <select id="supportNumber" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="com.fengyu.modules.webservice.project.vo.HotResponseVo">
+    SELECT COUNT(*)
+    FROM `order` O,crowdfund_basicinfo CB
+    WHERE O.ORDER_OWNER = CB.USER_ID
+  </select>
+
+  <select id="getOrderList" parameterType="com.fengyu.modules.model.Order" resultType="com.fengyu.modules.model.Order">
+    SELECT o.ORDER_OWNER,o.SUBMIT_TIME,o.ORDER_AMT,o.ORDER_STATE,p.USER_ID,p.PROJECT_LIST_IMAGE,p.PROJECT_NAME
+    FROM `order` o,crowdfund_basicinfo p
+    WHERE o.ORDER_OWNER=p.USER_ID AND o.ORDER_OWNER=#{orderOwner,jdbcType=INTEGER}
+    limit #{page},#{rows}
+  </select>
+  <select id="orderPage" parameterType="com.fengyu.modules.model.Order" resultType="com.fengyu.modules.model.Order">
+    SELECT COUNT(*)
+    FROM `order` o,crowdfund_basicinfo p
+    WHERE o.ORDER_OWNER = p.USER_ID
+  </select>
+  <select id="getState" parameterType="com.fengyu.modules.model.Order" resultType="com.fengyu.modules.model.Order">
+    SELECT o.ORDER_OWNER,o.SUBMIT_TIME,o.ORDER_AMT,o.ORDER_STATE,p.USER_ID,p.PROJECT_LIST_IMAGE,p.PROJECT_NAME
+    FROM `order` o,crowdfund_basicinfo p
+    WHERE o.ORDER_OWNER=p.USER_ID AND o.ORDER_OWNER=#{orderOwner,jdbcType=INTEGER} AND o.ORDER_STATE=#{orderType,jdbcType=VARCHAR}
+    limit #{page},#{rows}
+  </select>
 </mapper>

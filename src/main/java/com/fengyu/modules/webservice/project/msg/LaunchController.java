@@ -1,8 +1,13 @@
 package com.fengyu.modules.webservice.project.msg;
 
-import com.fengyu.modules.service.project.msg.LaunchService;
-import com.fengyu.modules.webservice.project.vo.LaunchVo;
+import com.alibaba.fastjson.JSON;
+import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
+import com.fengyu.common.exception.MapperSupport.WebActionException;
+import com.fengyu.modules.model.CrowdfundBasicinfo;
+import com.fengyu.modules.service.project.msg.CrowdfundBasicinfoService;
+import com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo;
 import com.fengyu.system.entity.ResultAPI;
+import com.fengyu.system.entity.SearchResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +16,7 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-/**
- * Created by admin on 2016/6/22.
- * @LaunchProjectController 测试我发起的项目
- */
+
 @Component
 @Path("/project/msg/launchProject")
 public class LaunchController {
@@ -28,27 +30,45 @@ public class LaunchController {
 
 
     @Autowired
-    private LaunchService launchProjectService;
+    private CrowdfundBasicinfoService launchProjectService;
 
+    /**
+     * 我发起的项目列表
+     * @param launchProjectVo
+     * @return
+     */
     @POST
     @Path("queryBy")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultAPI pageList(LaunchVo launchProjectVo){
-
-        ResultAPI resultAPI = new ResultAPI();
-        try {
-            resultAPI.setMsg(launchProjectService.queryBy(launchProjectVo));
-            resultAPI.setAccess_result("SUCCESS");
-
-        }catch (Exception e){
-            //e.printStackTrace();
-            resultAPI.setAccess_result("FAILURE");
-            resultAPI.setMsg("服务器异常");
+    public String pageList(CrowdfundBasicinfoVo launchProjectVo){
+        if (launchProjectVo==null){
+            throw new WebActionException(WebExceptionType.GetInvalidLaunchProject,launchProjectVo);
         }
+        SearchResult searchResult=launchProjectService.queryBy(launchProjectVo);
 
 
-        return resultAPI;
+        return JSON.toJSONString(searchResult);
     }
+
+    /**
+     * 查询热门项目列表
+     * @param launchVo
+     * @return
+     */
+    @POST
+    @Path("selectHot")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String selectHot(CrowdfundBasicinfoVo launchVo){
+
+            if (launchVo==null){
+                throw new WebActionException(WebExceptionType.SelectInvalidHot,launchVo);
+            }
+        SearchResult  searchResult=launchProjectService.selectHot(launchVo);
+
+        return JSON.toJSONString(searchResult);
+    }
+
 
 }
