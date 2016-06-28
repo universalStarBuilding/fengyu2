@@ -48,7 +48,9 @@ public enum WebExceptionType {
     //删除私信
     DeleteById("删除私信失败"),
     //我支持的项目列表
-    GetPageList("获取支持项目失败");
+    GetPageList("获取支持项目失败"),
+
+    GetStateOrderList("获取所有列表失败");
 
 
 

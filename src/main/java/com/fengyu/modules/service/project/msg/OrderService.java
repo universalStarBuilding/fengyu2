@@ -55,4 +55,18 @@ public class OrderService {
         result.setRows(orderMapper.getStateOrderList(order));
         return result;
     }
+
+    /**
+     * 查询待评价的列表
+     * @param order
+     * @return
+     */
+    public SearchResult getEvaluate(Order order){
+        order.setOrderState("1");
+        SearchResult<Order> result = new SearchResult<>();
+        result.setTotalRows(orderMapper.orderPage(order));
+        result.setRows(orderMapper.getStateOrderList(order));
+        return result;
+
+    }
 }
