@@ -2,49 +2,12 @@ package com.fengyu.modules.webservice.project.vo;
 
 public class CrowdfundOrganizerReponseVo {
 
-    private String organizerNo;
-
-    private String organizerName; //发起人姓名
-
-    private String realName;  //用户姓名
-
-    private String headImg;//用户头像
-
-    private  Integer launchTotal;//用户发起项目的总数
-
-    private Integer supportTotal;//用户支持的总数
-
-    public Integer getLaunchTotal() {
-        return launchTotal;
-    }
-
-    public void setLaunchTotal(Integer launchTotal) {
-        this.launchTotal = launchTotal;
-    }
-
-    public Integer getSupportTotal() {
-        return supportTotal;
-    }
-
-    public void setSupportTotal(Integer supportTotal) {
-        this.supportTotal = supportTotal;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
-    }
-
-    public String getHeadImg() {
-        return headImg;
-    }
-
-    public void setHeadImg(String headImg) {
-        this.headImg = headImg;
-    }
+    private String organizerIntroduction;       //发起方介绍
+    private String projectSynopsis;             //发起方详细介绍
+    private String weiboUrl;                    //微博地址
+    private String thankYouNote;                //感谢信
+    private String telephone;                   //联系电话
+    private String organizerNo;                 //发起人编号
 
     public String getOrganizerNo() {
         return organizerNo;
@@ -54,12 +17,43 @@ public class CrowdfundOrganizerReponseVo {
         this.organizerNo = organizerNo;
     }
 
-    public String getOrganizerName() {
-        return organizerName;
+    public String getOrganizerIntroduction() {
+        return organizerIntroduction;
     }
 
-    public void setOrganizerName(String organizerName) {
-        this.organizerName = organizerName == null ? null : organizerName.trim();
+    public void setOrganizerIntroduction(String organizerIntroduction) {
+        this.organizerIntroduction = organizerIntroduction;
     }
 
+    public String getProjectSynopsis() {
+        return projectSynopsis;
+    }
+
+    public void setProjectSynopsis(String projectSynopsis) {
+        this.projectSynopsis = projectSynopsis;
+    }
+
+    public String getWeiboUrl() {
+        return weiboUrl;
+    }
+
+    public void setWeiboUrl(String weiboUrl) {
+        this.weiboUrl = weiboUrl;
+    }
+
+    public String getThankYouNote() {
+        return thankYouNote;
+    }
+
+    public void setThankYouNote(String thankYouNote) {
+        this.thankYouNote = thankYouNote;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
 }

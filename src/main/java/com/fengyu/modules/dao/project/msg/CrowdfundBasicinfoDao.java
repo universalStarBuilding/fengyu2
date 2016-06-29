@@ -3,6 +3,8 @@ package com.fengyu.modules.dao.project.msg;
 import com.fengyu.common.persistence.CrudDao;
 import com.fengyu.common.persistence.annotation.MyBatisDao;
 import com.fengyu.modules.model.CrowdfundBasicinfo;
+import com.fengyu.modules.webservice.project.vo.CrowdfundOrganizerReponseVo;
+import com.fengyu.modules.webservice.project.vo.CrowdfundOrganizerRequestVo;
 import com.fengyu.modules.webservice.project.vo.HotResponseVo;
 import com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo;
 
@@ -28,7 +30,5 @@ public interface CrowdfundBasicinfoDao extends CrudDao<CrowdfundBasicinfo>{
     Integer getPreheat(CrowdfundBasicinfoVo launchVo);
     //查询项目详情
     List<HotResponseVo> selectDetails(CrowdfundBasicinfoVo launchVo);
-
-
 
 }

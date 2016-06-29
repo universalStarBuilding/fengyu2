@@ -1,26 +1,31 @@
 package com.fengyu.modules.service.project.publish;
 
 import com.fengyu.common.persistence.annotation.MyBatisDao;
+import com.fengyu.modules.dao.project.msg.CrowdfundBasicinfoDao;
+import com.fengyu.modules.dao.project.publish.CrowdfundOrganizerDao;
+import com.fengyu.modules.model.CrowdfundBasicinfo;
 import com.fengyu.modules.model.CrowdfundOrganizer;
 import com.fengyu.modules.webservice.project.vo.CrowdfundOrganizerReponseVo;
 import com.fengyu.modules.webservice.project.vo.CrowdfundOrganizerRequestVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@MyBatisDao
-public interface CrowdfundOrganizerService {
-    int deleteByPrimaryKey(Integer id);
+@Service(value = "crowdfundOrganizerService")
+@Transactional
+public class CrowdfundOrganizerService {
 
-    int insert(CrowdfundOrganizer record);
+    @Autowired
+    private CrowdfundOrganizerDao crowdfundOrganizerDao;
 
-    int insertSelective(CrowdfundOrganizer record);
+    @Autowired
+    private CrowdfundBasicinfoDao crowdfundBasicinfoDao;
 
-    CrowdfundOrganizer selectByPrimaryKey(Integer id);
+    public CrowdfundOrganizerReponseVo getLaunch(CrowdfundOrganizerRequestVo crowdfundOrganizerRequestVo){
+        CrowdfundOrganizerReponseVo corv=crowdfundOrganizerDao.getLaunch(crowdfundOrganizerRequestVo);
+        return corv;
+    }
 
-    int updateByPrimaryKeySelective(CrowdfundOrganizer record);
-
-    int updateByPrimaryKey(CrowdfundOrganizer record);
-
-    //查询发起人信息
-    List<CrowdfundOrganizerReponseVo> getLaunch(CrowdfundOrganizerRequestVo crowdfundOrganizerRequestVo);
 }

@@ -57,9 +57,19 @@ public class CrowdfundBasicinfoVo extends Pagetables{
 
     private Date shelvesTime;
 
-        private Boolean hot;
+    private Boolean hot;
 
     private Integer hotNum;
+
+    private String orderOwner;
+
+    public String getOrderOwner() {
+        return orderOwner;
+    }
+
+    public void setOrderOwner(String orderOwner) {
+        this.orderOwner = orderOwner;
+    }
 
     public Boolean getHot() {
         return hot;

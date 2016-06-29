@@ -6,8 +6,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class HotResponseVo extends Pagetables{
-    private String projectNo;//项目编号
-public class HotResponseVo{
 
     private Integer userId;//用户编号
 
@@ -23,7 +21,6 @@ public class HotResponseVo{
 
     private String projectImage;//项目图片
 
-    public String getProjectNo() {
     private Integer number;//支持人数
 
     private String projectListImage;//详情页图片
@@ -80,12 +77,8 @@ public class HotResponseVo{
         this.projectNo = projectNo;
     }
 
-    public Integer getOrderOwner() {
-        return orderOwner;
-    }
-
-    public void setOrderOwner(Integer orderOwner) {
-        this.orderOwner = orderOwner;
+    public void setFundAmt(Double fundAmt) {
+        this.fundAmt = fundAmt;
     }
 
     public String getProjectName() {
@@ -102,15 +95,6 @@ public class HotResponseVo{
 
     public void setProjectState(String projectState) {
         this.projectState = projectState == null ? null : projectState.trim();
-    }
-
-
-    public BigDecimal getFundAmt() {
-        return fundAmt;
-    }
-
-    public void setFundAmt(BigDecimal fundAmt) {
-        this.fundAmt = fundAmt;
     }
 
     public String getFundTotalAmt() {

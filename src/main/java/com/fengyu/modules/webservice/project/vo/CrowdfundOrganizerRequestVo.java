@@ -17,6 +17,16 @@ public class CrowdfundOrganizerRequestVo {
 
     private String thankYouNote;
 
+    private String projectSynopsis;
+
+    public String getProjectSynopsis() {
+        return projectSynopsis;
+    }
+
+    public void setProjectSynopsis(String projectSynopsis) {
+        this.projectSynopsis = projectSynopsis;
+    }
+
     public Integer getId() {
         return id;
     }

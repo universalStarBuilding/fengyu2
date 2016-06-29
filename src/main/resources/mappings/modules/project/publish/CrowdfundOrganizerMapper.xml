@@ -126,4 +126,12 @@
       THANK_YOU_NOTE = #{thankYouNote,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="getLaunch" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundOrganizerRequestVo" resultType="com.fengyu.modules.webservice.project.vo.CrowdfundOrganizerReponseVo">
+    SELECT CO.ORGANIZER_INTRODUCTION,CB.PROJECT_SYNOPSIS,CO.WEIBO_URL,CO.THANK_YOU_NOTE,CO.TELEPHONE
+    FROM crowdfund_organizer CO,crowdfund_basicinfo CB
+    WHERE CO.ORGANIZER_NO=CB.ORGANIZER_NO
+    AND CO.ORGANIZER_NO=#{organizerNo,jdbcType=VARCHAR}
+  </select>
+
 </mapper>

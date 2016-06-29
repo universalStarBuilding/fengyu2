@@ -47,31 +47,15 @@
     WHERE o.ORDER_OWNER=p.USER_ID AND o.ORDER_OWNER=#{orderOwner,jdbcType=INTEGER}
     limit #{page},#{rows}
   </select>
-
-  <select id="orderPage" parameterType="com.fengyu.modules.webservice.project.vo.OrderVo" resultType="java.lang.Long">
+  <select id="orderPage" parameterType="com.fengyu.modules.model.Order" resultType="com.fengyu.modules.model.Order">
     SELECT COUNT(*)
     FROM `order` o,crowdfund_basicinfo p
     WHERE o.ORDER_OWNER = p.USER_ID
   </select>
-
-  <select id="getStateOrderList" parameterType="com.fengyu.modules.webservice.project.vo.OrderVo" resultType="com.fengyu.modules.model.Order">
+  <select id="getState" parameterType="com.fengyu.modules.model.Order" resultType="com.fengyu.modules.model.Order">
     SELECT o.ORDER_OWNER,o.SUBMIT_TIME,o.ORDER_AMT,o.ORDER_STATE,p.USER_ID,p.PROJECT_LIST_IMAGE,p.PROJECT_NAME
     FROM `order` o,crowdfund_basicinfo p
     WHERE o.ORDER_OWNER=p.USER_ID AND o.ORDER_OWNER=#{orderOwner,jdbcType=INTEGER} AND o.ORDER_STATE=#{orderType,jdbcType=VARCHAR}
     limit #{page},#{rows}
   </select>
-
-
-  <select id="supportNumber" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="java.lang.Integer">
-    SELECT COUNT(*)
-    FROM `order` O
-    WHERE O.ORDER_OWNER = #{orderOwner,jdbcType=VARCHAR}
-  </select>
-
-  <select id="supportState" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="java.lang.Integer">
-    SELECT COUNT(*)
-    FROM `order` O
-    WHERE O.ORDER_STATE = #{orderState,jdbcType=VARCHAR}
-  </select>
-
 </mapper>
