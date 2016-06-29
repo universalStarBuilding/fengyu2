@@ -14,15 +14,28 @@ import java.util.logging.Logger;
 @Provider
 public class ExceptionMapperSupport implements ExceptionMapper<Throwable>{
 
-    Log log = LogFactory.getLog(ExceptionMapperSupport.class);
+    Log logger = LogFactory.getLog(ExceptionMapperSupport.class);
 
     @Override
     public Response toResponse(Throwable exception) {
-        log.info(exception.getMessage());
-        exception.printStackTrace();
-        AbstractException exception1= (AbstractException) exception;
-       // return Response.status(500).entity("{exceptionMsg:\""+exception1.getUserDefindExType()+".\"}").type("application/json").build();
-        return Response.status(500).entity("[{message:\""+exception1.getUserDefindExType()+".\"}]").type("application/json").build();
+//        log.info(exception.getMessage());
+//        exception.printStackTrace();
+//        AbstractException exception1= (AbstractException) exception;
+//       // return Response.status(500).entity("{exceptionMsg:\""+exception1.getUserDefindExType()+".\"}").type("application/json").build();
+//        return Response.status(500).entity("[{message:\""+exception1.getUserDefindExType()+".\"}]").type("application/json").build();
+
+        logger.info(exception.getMessage());
+        if(logger.isDebugEnabled())
+        {
+
+            exception.printStackTrace();
+        }
+        if(exception instanceof AbstractException ) {
+            AbstractException exception1 = (AbstractException) exception;
+            return Response.status(500).entity("[{message:\""+exception1.getUserDefindExType()+".\"}]").type("application/json").build();
+        }
+        return Response.status(500).entity("[{message:\""+"系统异常"+".\"}]").type("application/json").build();
+
     }
 }
 

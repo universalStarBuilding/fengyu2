@@ -49,12 +49,12 @@ public class PublishController {
      * @return
      */
     @POST
-    @Path("get/{id}")
+    @Path("get/{projectNo}")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
-    public void get(@PathParam("id")String id){
+    public void get(@PathParam("projectNo")String projectNo){
 
-        CrowdfundPublishReponseVo vo =  crowdfundPublishService.getCrowdfundPublishInfo(id);
+        CrowdfundPublishReponseVo vo =  crowdfundPublishService.getCrowdfundPublishInfo(projectNo);
         if(vo == null){
             throw  new WebActionException(WebExceptionType.PUBLISHINVALIDPROJECT,vo);
         }
