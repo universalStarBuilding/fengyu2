@@ -161,7 +161,8 @@ public class UserService extends CrudService<UserDao, User> {
         Cache.setCodeCache(messageCode);
     }
     //验证验证码
-    public void verification(String phone,String type,String message){
+    public void verification(String phone,String type,String messageCode){
+        //取出验证码
 
     }
 }

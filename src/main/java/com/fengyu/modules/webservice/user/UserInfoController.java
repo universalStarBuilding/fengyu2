@@ -100,7 +100,7 @@ public class UserInfoController {
     @POST
     @Path("insert")
     public String insertPhone(SendMsgVo sendMsgVo){
-        userService.insertPhone(sendMsgVo);
+       // userService.insertPhone(sendMsgVo);
         if (sendMsgVo==null){
             throw new WebActionException(WebExceptionType.USERPHONENOTNULL,sendMsgVo);
         }
