@@ -4,6 +4,7 @@ package com.fengyu.modules.dao.user;
 import com.fengyu.common.persistence.CrudDao;
 import com.fengyu.common.persistence.annotation.MyBatisDao;
 import com.fengyu.modules.model.User;
+import com.fengyu.modules.webservice.user.vo.SendMsgVo;
 
 @MyBatisDao
 public interface UserDao extends CrudDao<User> {
@@ -19,4 +20,8 @@ public interface UserDao extends CrudDao<User> {
     Integer updateEmail(User user);
     //修改登录密码
     Integer updateLoginPwd(User user);
+    //手机注册账号
+    Integer insertPhone(SendMsgVo sendMsgVo);
+    //邮箱注册账号
+    Integer inserEmail(User user);
 }

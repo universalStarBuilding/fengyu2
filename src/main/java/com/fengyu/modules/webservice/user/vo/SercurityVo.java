@@ -12,6 +12,9 @@ public class SercurityVo {
     private String hidePayPwd;
     private Boolean payPwdStatus;
     private String vagueUserBank;
+    private String vagueRealName;
+    private Boolean realNameStatus;
+    private Boolean userBankStatus;
 
     public String getVagueUserBank() {
         return vagueUserBank;
@@ -29,8 +32,6 @@ public class SercurityVo {
         this.userBankStatus = userBankStatus;
     }
 
-    private Boolean userBankStatus;
-
     public String getVagueRealName() {
         return vagueRealName;
     }
@@ -46,9 +47,6 @@ public class SercurityVo {
     public void setRealNameStatus(Boolean realNameStatus) {
         this.realNameStatus = realNameStatus;
     }
-
-    private String vagueRealName;
-    private Boolean realNameStatus;
 
     public String getHidePayPwd() {
         return hidePayPwd;

@@ -28,15 +28,14 @@ public class SendMsgService {
         String email=sendMsgVo.getEmail();
         String title=sendMsgVo.getTitle();
         String context=sendMsgVo.getContext();
-        String type=sendMsgVo.getType();
+        String type=sendMsgVo.getTypes();
 
-        if (!type.equals(email)){
-            throw new RuntimeException("验证码发送失败");
-        }else {
+        if (type.equals("email")) {
             sendMsgVo.setVerifyCode(messageCode);
-            SendMail.send(email,title,context);
+            SendMail.send(email, title, context);
         }
         return sendMsgVo;
+
     }
     public static void main(String[]args){
         String messageCode = String.valueOf(Math.random()).substring(2,8);

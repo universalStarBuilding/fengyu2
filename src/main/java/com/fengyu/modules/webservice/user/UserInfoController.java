@@ -3,10 +3,13 @@ package com.fengyu.modules.webservice.user;
 import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
 import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.common.utils.Constant;
+import com.fengyu.modules.model.User;
 import com.fengyu.modules.model.UserInfo;
 import com.fengyu.modules.service.user.UserInfoService;
 import com.alibaba.fastjson.JSON;
+import com.fengyu.modules.service.user.UserService;
 import com.fengyu.modules.webservice.user.vo.FormVo;
+import com.fengyu.modules.webservice.user.vo.SendMsgVo;
 import com.sun.org.apache.xerces.internal.impl.xs.identity.Selector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,6 +37,8 @@ public class UserInfoController {
 
     @Autowired
     private UserInfoService userInfoService;
+    @Autowired
+    private UserService userService;
 
     /**
      * 获取用户详细信息
@@ -91,5 +96,14 @@ public class UserInfoController {
             throw new WebActionException(WebExceptionType.LOGINNOTFUND,userInfo);
         }
         return JSON.toJSONString(rows);
+    }
+    @POST
+    @Path("insert")
+    public String insertPhone(SendMsgVo sendMsgVo){
+       // userService.insertPhone(sendMsgVo);
+        if (sendMsgVo==null){
+            throw new WebActionException(WebExceptionType.USERPHONENOTNULL,sendMsgVo);
+        }
+        return JSON.toJSONString(sendMsgVo);
     }
 }

@@ -514,6 +514,119 @@
                 }
             });
         }
+    function getOrderList() {
+        $.ajax({
+            url: "http://localhost:8080/rest/project/msg/order",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json", //返回的数据类型,text 或者 json数据，建议为json
+            type: "post", //传参方式，get 或post
+            data: JSON.stringify({
+                "orderOwner":"1",
+                "page":"0",
+                "rows":"10"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                console.log(data);
+                alert("Ajax处理已成功：" + data);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request);
+                console.log(request.responseText);
+                var json = eval(request.responseText);
+                console.log(json.exceptionMsg);
+            }
+        });
+    }
+    function getEvaluate() {
+        $.ajax({
+            url: "http://localhost:8080/rest/project/msg/evaluate",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json", //返回的数据类型,text 或者 json数据，建议为json
+            type: "post", //传参方式，get 或post
+            data: JSON.stringify({
+                "orderOwner":"1",
+                "page":"0",
+                "rows":"10"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                console.log(data);
+                alert("Ajax处理已成功：" + data);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request);
+                console.log(request.responseText);
+                var json = eval(request.responseText);
+                console.log(json.exceptionMsg);
+            }
+        });
+    }
+    function getPayment() {
+        $.ajax({
+            url: "http://localhost:8080/rest/project/msg/payment",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json", //返回的数据类型,text 或者 json数据，建议为json
+            type: "post", //传参方式，get 或post
+            data: JSON.stringify({
+                "orderOwner":"1",
+                "page":"0",
+                "rows":"10"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                console.log(data);
+                alert("Ajax处理已成功：" + data);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request);
+                console.log(request.responseText);
+                var json = eval(request.responseText);
+                console.log(json.exceptionMsg);
+            }
+        });
+    }
+    function sendMsg() {
+        $.ajax({
+            url: "http://localhost:8080/rest/send/sendMsg",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json", //返回的数据类型,text 或者 json数据，建议为json
+            type: "post", //传参方式，get 或post
+            data: JSON.stringify({
+               "email":"296734078@qq.com",
+                "types":"email",
+                "title":"1111",
+                "context":"2222"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                console.log(data);
+                alert("Ajax处理已成功：" + data);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request);
+                console.log(request.responseText);
+                var json = eval(request.responseText);
+                console.log(json.exceptionMsg);
+            }
+        });
+    }
     function selectConduct()
     {
         $.ajax({
@@ -593,5 +706,14 @@
     <input type="button" value="添加回报" onclick="returnsetSave()">
     <input type="button" value="进行中或者预热中" onclick="selectConduct()">
     <input type="button" value="项目详情" onclick="selectDetails()">
+    <input type="button" value="查询所有列表" onclick="getOrderList()">
+    <input type="button" value="查询待付款列表" onclick="getPayment()">
+    <input type="button" value="查询待评价列表" onclick="getEvaluate()">
+    <input type="button" value="发送验证码"onclick="sendMsg()">
+    <form action="#" method="post">
+        <input type="text" name="messageCode">
+        <input type="button" value="发送验证码">
+        <input type="submit" value="注册">
+    </form>
 </body>
 </html>

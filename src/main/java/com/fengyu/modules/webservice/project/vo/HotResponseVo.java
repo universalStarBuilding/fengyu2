@@ -5,6 +5,8 @@ import com.fengyu.common.page.Pagetables;
 import java.math.BigDecimal;
 import java.util.Date;
 
+public class HotResponseVo extends Pagetables{
+    private String projectNo;//项目编号
 public class HotResponseVo{
 
     private Integer userId;//用户编号
@@ -15,12 +17,13 @@ public class HotResponseVo{
 
     private String projectState;//状态
 
-    private BigDecimal fundAmt;//目标金额
+    private Double fundAmt;//目标金额
 
     private String fundTotalAmt;//已筹金额
 
     private String projectImage;//项目图片
 
+    public String getProjectNo() {
     private Integer number;//支持人数
 
     private String projectListImage;//详情页图片
@@ -75,6 +78,14 @@ public class HotResponseVo{
 
     public void setProjectNo(String projectNo) {
         this.projectNo = projectNo;
+    }
+
+    public Integer getOrderOwner() {
+        return orderOwner;
+    }
+
+    public void setOrderOwner(Integer orderOwner) {
+        this.orderOwner = orderOwner;
     }
 
     public String getProjectName() {

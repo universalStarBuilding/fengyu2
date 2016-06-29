@@ -9,10 +9,11 @@ public class SendMsgVo extends DataEntity<SendMsgVo>{
     private String sendUser;//发送目标
     private String phone;//手机号
     private String verifyCode;//验证码
-    private String type="email";//类型
+    private String types;//类型
     private String context;//內容
     private String title;//标题
     private String email;//邮箱
+
 
     public String getContext() {
         return context;
@@ -38,12 +39,12 @@ public class SendMsgVo extends DataEntity<SendMsgVo>{
         this.email = email;
     }
 
-    public String getType() {
-        return type;
+    public String getTypes() {
+        return types;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypes(String types) {
+        this.types = types;
     }
 
     public String getSendUser() {

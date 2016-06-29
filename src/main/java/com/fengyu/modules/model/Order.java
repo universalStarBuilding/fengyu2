@@ -14,7 +14,7 @@ public class Order extends DataEntity<Order>{
 
     private String orderOwner;
 
-    private String orderAmt;
+    private Double orderAmt;
 
     private String orderState;
 
@@ -52,11 +52,11 @@ public class Order extends DataEntity<Order>{
         this.orderOwner = orderOwner;
     }
 
-    public String getOrderAmt() {
+    public Double getOrderAmt() {
         return orderAmt;
     }
 
-    public void setOrderAmt(String orderAmt) {
+    public void setOrderAmt(Double orderAmt) {
         this.orderAmt = orderAmt;
     }
 

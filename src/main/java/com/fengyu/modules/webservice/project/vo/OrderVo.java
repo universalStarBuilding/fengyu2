@@ -3,7 +3,6 @@ package com.fengyu.modules.webservice.project.vo;
 import com.fengyu.common.page.Pagetables;
 import com.fengyu.common.persistence.DataEntity;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class OrderVo extends Pagetables{
@@ -13,7 +12,7 @@ public class OrderVo extends Pagetables{
 
     private Integer orderOwner;
 
-    private BigDecimal orderAmt;
+    private Double orderAmt;
 
     private String orderState;
 
@@ -55,11 +54,11 @@ public class OrderVo extends Pagetables{
         this.orderOwner = orderOwner;
     }
 
-    public BigDecimal getOrderAmt() {
+    public Double getOrderAmt() {
         return orderAmt;
     }
 
-    public void setOrderAmt(BigDecimal orderAmt) {
+    public void setOrderAmt(Double orderAmt) {
         this.orderAmt = orderAmt;
     }
 

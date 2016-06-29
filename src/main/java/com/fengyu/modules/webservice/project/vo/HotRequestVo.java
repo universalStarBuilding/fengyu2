@@ -3,7 +3,6 @@ package com.fengyu.modules.webservice.project.vo;
 import com.fengyu.common.page.Pagetables;
 import com.fengyu.common.persistence.DataEntity;
 
-import java.math.BigDecimal;
 
 public class HotRequestVo extends DataEntity<HotRequestVo>{
     private String projectNo;//项目编号
@@ -14,7 +13,7 @@ public class HotRequestVo extends DataEntity<HotRequestVo>{
 
     private String projectState;//状态
 
-    private BigDecimal fundAmt;//目标金额
+    private Double fundAmt;//目标金额
 
     private String fundTotalAmt;//已筹金额
 
@@ -93,11 +92,11 @@ public class HotRequestVo extends DataEntity<HotRequestVo>{
     }
 
 
-    public BigDecimal getFundAmt() {
+    public Double getFundAmt() {
         return fundAmt;
     }
 
-    public void setFundAmt(BigDecimal fundAmt) {
+    public void setFundAmt(Double fundAmt) {
         this.fundAmt = fundAmt;
     }
 

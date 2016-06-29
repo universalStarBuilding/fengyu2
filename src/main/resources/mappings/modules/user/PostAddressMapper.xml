@@ -72,6 +72,8 @@
   </update>
   <select id="postAddressPage" resultType="java.lang.Long" parameterType="com.fengyu.modules.model.PostAddress">
     SELECT COUNT(*) FROM post_address
+    WHERE
+    where USER_ID = #{userId,jdbcType=INTEGER}
   </select>
 
   <select id="getListPostAddress" resultType="com.fengyu.modules.model.PostAddress" parameterType="com.fengyu.modules.model.PostAddress">

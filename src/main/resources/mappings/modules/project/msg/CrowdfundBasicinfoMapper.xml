@@ -3,7 +3,7 @@
 <mapper namespace="com.fengyu.modules.dao.project.msg.CrowdfundBasicinfoDao" >
   <resultMap id="BaseResultMap" type="com.fengyu.modules.model.CrowdfundBasicinfo" >
     <id column="ID" property="id" jdbcType="INTEGER" />
-    <result column="PROJECT_NO" property="projectNo" jdbcType="INTEGER" />
+    <result column="PROJECT_NO" property="projectNo" jdbcType="VARCHAR" />
     <result column="USER_ID" property="userId" jdbcType="INTEGER" />
     <result column="PROJECT_NAME" property="projectName" jdbcType="VARCHAR" />
     <result column="PROJECT_TYPE" property="projectType" jdbcType="VARCHAR" />
@@ -36,6 +36,120 @@
     FUND_PERIOD, LASTING_FUND_FLAG, PREPARE_PERIOD, PROJECT_VIDEO, PROJECT_LIST_IMAGE,
     PROJECT_IMAGE, CREATE_TIME, RELEASES_TIME, SHELVES_TIME
   </sql>
+
+  <insert id="insert" parameterType="com.fengyu.modules.model.CrowdfundBasicinfo" >
+    insert into crowdfund_basicinfo (ID, PROJECT_NO, USER_ID,
+    PROJECT_NAME, PROJECT_TYPE, PROJECT_CATEGORY,
+    PROJECT_LOCATION_PROVINCE, PROJECT_LOCATION_CITY,
+    PROJECT_LOCATION_DISTRICT, PROJECT_LOCATION_DETAIL,
+    PROJECT_SYNOPSIS, PROJECT_SUMMARY, PROJECT_STATE,
+    ORGANIZER_NO, FUND_AMT, FUND_LIMIT_AMT,
+    FUND_TOTAL_AMT, FUND_PERIOD, LASTING_FUND_FLAG,
+    PREPARE_PERIOD, PROJECT_VIDEO, PROJECT_LIST_IMAGE,
+    PROJECT_IMAGE, CREATE_TIME, RELEASES_TIME,
+    SHELVES_TIME, HOT, HOT_NUM
+    )
+    values (#{id,jdbcType=INTEGER}, #{projectNo,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER},
+    #{projectName,jdbcType=VARCHAR}, #{projectType,jdbcType=VARCHAR}, #{projectCategory,jdbcType=VARCHAR},
+    #{projectLocationProvince,jdbcType=VARCHAR}, #{projectLocationCity,jdbcType=VARCHAR},
+    #{projectLocationDistrict,jdbcType=VARCHAR}, #{projectLocationDetail,jdbcType=VARCHAR},
+    #{projectSynopsis,jdbcType=VARCHAR}, #{projectSummary,jdbcType=VARCHAR}, #{projectState,jdbcType=VARCHAR},
+    #{organizerNo,jdbcType=VARCHAR}, #{fundAmt,jdbcType=DECIMAL}, #{fundLimitAmt,jdbcType=DECIMAL},
+    #{fundTotalAmt,jdbcType=VARCHAR}, #{fundPeriod,jdbcType=SMALLINT}, #{lastingFundFlag,jdbcType=BIT},
+    #{preparePeriod,jdbcType=SMALLINT}, #{projectVideo,jdbcType=VARCHAR}, #{projectListImage,jdbcType=VARCHAR},
+    #{projectImage,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{releasesTime,jdbcType=TIMESTAMP},
+    #{shelvesTime,jdbcType=TIMESTAMP}, #{hot,jdbcType=BIT}, #{hotNum,jdbcType=INTEGER}
+    )
+  </insert>
+
+  <update id="update" parameterType="com.fengyu.modules.model.CrowdfundBasicinfo" >
+    update crowdfund_basicinfo
+    <set >
+      <if test="projectNo != null" >
+        PROJECT_NO = #{projectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null" >
+        PROJECT_NAME = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectType != null" >
+        PROJECT_TYPE = #{projectType,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCategory != null" >
+        PROJECT_CATEGORY = #{projectCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="projectLocationProvince != null" >
+        PROJECT_LOCATION_PROVINCE = #{projectLocationProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="projectLocationCity != null" >
+        PROJECT_LOCATION_CITY = #{projectLocationCity,jdbcType=VARCHAR},
+      </if>
+      <if test="projectLocationDistrict != null" >
+        PROJECT_LOCATION_DISTRICT = #{projectLocationDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="projectLocationDetail != null" >
+        PROJECT_LOCATION_DETAIL = #{projectLocationDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="projectSynopsis != null" >
+        PROJECT_SYNOPSIS = #{projectSynopsis,jdbcType=VARCHAR},
+      </if>
+      <if test="projectSummary != null" >
+        PROJECT_SUMMARY = #{projectSummary,jdbcType=VARCHAR},
+      </if>
+      <if test="projectState != null" >
+        PROJECT_STATE = #{projectState,jdbcType=VARCHAR},
+      </if>
+      <if test="organizerNo != null" >
+        ORGANIZER_NO = #{organizerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fundAmt != null" >
+        FUND_AMT = #{fundAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="fundLimitAmt != null" >
+        FUND_LIMIT_AMT = #{fundLimitAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="fundTotalAmt != null" >
+        FUND_TOTAL_AMT = #{fundTotalAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="fundPeriod != null" >
+        FUND_PERIOD = #{fundPeriod,jdbcType=SMALLINT},
+      </if>
+      <if test="lastingFundFlag != null" >
+        LASTING_FUND_FLAG = #{lastingFundFlag,jdbcType=BIT},
+      </if>
+      <if test="preparePeriod != null" >
+        PREPARE_PERIOD = #{preparePeriod,jdbcType=SMALLINT},
+      </if>
+      <if test="projectVideo != null" >
+        PROJECT_VIDEO = #{projectVideo,jdbcType=VARCHAR},
+      </if>
+      <if test="projectListImage != null" >
+        PROJECT_LIST_IMAGE = #{projectListImage,jdbcType=VARCHAR},
+      </if>
+      <if test="projectImage != null" >
+        PROJECT_IMAGE = #{projectImage,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releasesTime != null" >
+        RELEASES_TIME = #{releasesTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shelvesTime != null" >
+        SHELVES_TIME = #{shelvesTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hot != null" >
+        HOT = #{hot,jdbcType=BIT},
+      </if>
+      <if test="hotNum != null" >
+        HOT_NUM = #{hotNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+
 
   <select id="queryBy" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="java.lang.Long">
     SELECT COUNT(*) FROM crowdfund_basicinfo cb

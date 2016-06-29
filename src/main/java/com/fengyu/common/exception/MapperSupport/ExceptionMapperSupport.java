@@ -1,8 +1,12 @@
 package com.fengyu.common.exception.MapperSupport;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
+import java.util.logging.Logger;
 
 /**
  * Created by admin on 2016/6/24.
@@ -10,9 +14,11 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class ExceptionMapperSupport implements ExceptionMapper<Throwable>{
 
+    Log log = LogFactory.getLog(ExceptionMapperSupport.class);
 
     @Override
     public Response toResponse(Throwable exception) {
+        log.info(exception.getMessage());
         exception.printStackTrace();
         AbstractException exception1= (AbstractException) exception;
        // return Response.status(500).entity("{exceptionMsg:\""+exception1.getUserDefindExType()+".\"}").type("application/json").build();

@@ -36,23 +36,37 @@ public class OrderService {
      * @param order
      * @return
      */
-    public SearchResult getOrderList(Order order){
+    public SearchResult getOrderList(OrderVo orderVo){
         SearchResult<Order> result = new SearchResult<>();
-        result.setTotalRows(orderMapper.orderPage(order));
-        result.setRows(orderMapper.getOrderList(order));
+        result.setTotalRows(orderMapper.orderPage(orderVo));
+        result.setRows(orderMapper.getOrderList(orderVo));
         return result;
     }
 
     /**
      * 查询待付款的订单
-     * @param order
+     * @param
      * @return
      */
-    public SearchResult getPayment(Order order){
-        order.setOrderState("0");
+    public SearchResult getPayment(OrderVo orderVo){
+        orderVo.setOrderState("0");
         SearchResult<Order> result = new SearchResult<>();
-        result.setTotalRows(orderMapper.orderPage(order));
-        result.setRows(orderMapper.getStateOrderList(order));
+        result.setTotalRows(orderMapper.orderPage(orderVo));
+        result.setRows(orderMapper.getStateOrderList(orderVo));
         return result;
+    }
+
+    /**
+     * dai
+     * @param orderVo
+     * @return
+     */
+    public SearchResult getEvaluate(OrderVo orderVo){
+        orderVo.setOrderState("1");
+        SearchResult<Order> result = new SearchResult<>();
+        result.setTotalRows(orderMapper.orderPage(orderVo));
+        result.setRows(orderMapper.getStateOrderList(orderVo));
+        return result;
+
     }
 }
