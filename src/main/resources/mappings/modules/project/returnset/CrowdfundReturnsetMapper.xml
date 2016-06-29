@@ -3,8 +3,8 @@
 <mapper namespace="com.fengyu.modules.dao.project.returnset.CrowdfundReturnsetDao" >
   <resultMap id="BaseResultMap" type="com.fengyu.modules.model.CrowdfundReturnset" >
     <id column="ID" property="id" jdbcType="INTEGER" />
-    <result column="PROJECT_NO" property="projectNo" jdbcType="INTEGER" />
-    <result column="RETURN_NO" property="returnNo" jdbcType="INTEGER" />
+    <result column="PROJECT_NO" property="projectNo" jdbcType="VARCHAR" />
+    <result column="RETURN_NO" property="returnNo" jdbcType="VARCHAR" />
     <result column="NUMBER_LIMITS" property="numberLimits" jdbcType="INTEGER" />
     <result column="RETURN_CONTENT" property="returnContent" jdbcType="VARCHAR" />
     <result column="RETURN_TYPE" property="returnType" jdbcType="VARCHAR" />
@@ -25,16 +25,16 @@
     COURIER_FEES, INVOICE_FLAG
   </sql>
 
-  <select id="getListByProjectNo"  resultType="com.fengyu.modules.webservice.project.vo.CrowdfundReturnsetReponseVo" parameterType="java.lang.Integer" >
+  <select id="getListByProjectNo"  resultType="com.fengyu.modules.webservice.project.vo.CrowdfundReturnsetReponseVo" parameterType="java.lang.String" >
     select
     <include refid="Base_Column_List" />
     from crowdfund_returnset
-    where PROJECT_NO = #{projectNo,jdbcType=INTEGER}
+    where PROJECT_NO = #{projectNo,jdbcType=VARCHAR}
   </select>
 
-  <delete id="deleteByProjectNo" parameterType="java.lang.Integer" >
+  <delete id="deleteByReturnNo" parameterType="java.lang.String" >
     delete from crowdfund_returnset
-    where returnNo = #{returnNo,jdbcType=INTEGER}
+    where RETURN_NO = #{returnNo,jdbcType=VARCHAR}
   </delete>
 
   <insert id="insert" parameterType="com.fengyu.modules.model.CrowdfundReturnset" >
@@ -44,7 +44,7 @@
       RETURN_CHANNEL, APP_PERF_SCALE, PRICE, 
       REMARK, POST_FLAG, COURIER_FEES, 
       INVOICE_FLAG)
-    values (#{id,jdbcType=INTEGER}, #{projectNo,jdbcType=INTEGER}, #{returnNo,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{projectNo,jdbcType=VARCHAR}, #{returnNo,jdbcType=VARCHAR},
       #{numberLimits,jdbcType=INTEGER}, #{returnContent,jdbcType=VARCHAR}, #{returnType,jdbcType=VARCHAR}, 
       #{returnDate,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR}, #{returnImageDesc,jdbcType=VARCHAR}, 
       #{returnChannel,jdbcType=VARCHAR}, #{appPerfScale,jdbcType=DECIMAL}, #{price,jdbcType=DECIMAL}, 
@@ -55,11 +55,8 @@
   <update id="update" parameterType="com.fengyu.modules.model.CrowdfundReturnset" >
     update crowdfund_returnset
     <set >
-      <if test="projectNo != null" >
-        PROJECT_NO = #{projectNo,jdbcType=INTEGER},
-      </if>
       <if test="returnNo != null" >
-        RETURN_NO = #{returnNo,jdbcType=INTEGER},
+        RETURN_NO = #{returnNo,jdbcType=VARCHAR},
       </if>
       <if test="numberLimits != null" >
         NUMBER_LIMITS = #{numberLimits,jdbcType=INTEGER},
@@ -101,7 +98,7 @@
         INVOICE_FLAG = #{invoiceFlag,jdbcType=BIT},
       </if>
     </set>
-    where RETURN_NO = #{returnNo,jdbcType=INTEGER}
+    where RETURN_NO = #{returnNo,jdbcType=VARCHAR}
   </update>
 
 </mapper>

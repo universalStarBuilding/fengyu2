@@ -1,4 +1,4 @@
-package com.modules.service.project.publish;
+package com.fengyu.modules.service.project.publish;
 
 import com.fengyu.modules.model.AccUserBank;
 import com.fengyu.modules.service.account.AccUserBankService;

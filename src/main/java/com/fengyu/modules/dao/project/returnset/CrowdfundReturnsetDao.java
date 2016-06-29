@@ -29,7 +29,7 @@ public interface CrowdfundReturnsetDao extends CrudDao<CrowdfundReturnset>{
      * @param projectNo
      * @return
      */
-    List<CrowdfundReturnsetReponseVo> getListByProjectNo(Integer projectNo);
+    List<CrowdfundReturnsetReponseVo> getListByProjectNo(String projectNo);
 
     /**
      * 删除指定项目的回报
