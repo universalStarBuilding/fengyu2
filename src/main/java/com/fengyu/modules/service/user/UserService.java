@@ -144,7 +144,8 @@ public class UserService extends CrudService<UserDao, User> {
         return userDao.updateLoginPwd(user);
     }
     //生成验证码
-    public void sendMsg(SendMsgVo sendMsgVo){
+    public void sendMsg(){
+        SendMsgVo sendMsgVo=new SendMsgVo();
         //发送验证码
         String messageCode = String.valueOf(Math.random()).substring(2,8);
         String type=sendMsgVo.getTypes();
@@ -161,8 +162,12 @@ public class UserService extends CrudService<UserDao, User> {
         Cache.setCodeCache(messageCode);
     }
     //验证验证码
-    public void verification(String phone,String type,String messageCode){
+    public void verification(String phone,String type,String messageCode) {
+        UserService userService=new UserService();
+        //调用方验证码方法
+        userService.sendMsg();
         //取出验证码
-
+        Cache.getCodeCache();
     }
+
 }
