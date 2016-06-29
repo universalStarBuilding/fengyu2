@@ -6,9 +6,7 @@ import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.modules.model.Order;
 import com.fengyu.modules.service.project.msg.OrderService;
 import com.fengyu.modules.webservice.project.vo.OrderVo;
-import com.fengyu.system.entity.ResultAPI;
 import com.fengyu.system.entity.SearchResult;
-import com.sun.tools.corba.se.idl.constExpr.Or;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +56,7 @@ public class OrderController {
     public String getOrderList(Order order){
         SearchResult searchResult=orderService.getOrderList(order);
         if (searchResult==null){
-            throw new WebActionException(WebExceptionType.GetStateOrderList,order);
+            //throw new WebActionException(WebExceptionType.GetStateOrderList,order);
         }
         return JSON.toJSONString(searchResult);
     }
@@ -69,7 +67,7 @@ public class OrderController {
     public String getPaymentList(Order order){
         SearchResult searchResult=orderService.getPayment(order);
         if (searchResult==null){
-            throw new WebActionException(WebExceptionType.GetStateOrderList,order);
+           // throw new WebActionException(WebExceptionType.GetStateOrderList,order);
         }
         return JSON.toJSONString(searchResult);
     }
@@ -80,7 +78,7 @@ public class OrderController {
     public String getEvaluate(Order order){
         SearchResult searchResult=orderService.getEvaluate(order);
         if (searchResult==null){
-            throw new WebActionException(WebExceptionType.GetStateOrderList,order);
+          //  throw new WebActionException(WebExceptionType.GetStateOrderList,order);
         }
         return JSON.toJSONString(searchResult);
     }
