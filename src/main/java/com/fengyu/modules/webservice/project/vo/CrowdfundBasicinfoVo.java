@@ -8,7 +8,7 @@ import java.util.Date;
 public class CrowdfundBasicinfoVo extends Pagetables{
     private Integer id;
 
-    private Integer projectNo;
+    private String projectNo;
 
     private Integer userId;
 
@@ -58,15 +58,15 @@ public class CrowdfundBasicinfoVo extends Pagetables{
 
     private Date shelvesTime;
 
-        private Integer hot;
+        private Boolean hot;
 
     private Integer hotNum;
 
-    public Integer getHot() {
+    public Boolean getHot() {
         return hot;
     }
 
-    public void setHot(Integer hot) {
+    public void setHot(Boolean hot) {
         this.hot = hot;
     }
 
@@ -86,11 +86,11 @@ public class CrowdfundBasicinfoVo extends Pagetables{
         this.id = id;
     }
 
-    public Integer getProjectNo() {
+    public String getProjectNo() {
         return projectNo;
     }
 
-    public void setProjectNo(Integer projectNo) {
+    public void setProjectNo(String projectNo) {
         this.projectNo = projectNo;
     }
 

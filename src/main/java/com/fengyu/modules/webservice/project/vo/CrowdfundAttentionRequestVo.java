@@ -11,7 +11,7 @@ public class CrowdfundAttentionRequestVo extends Pagetables{
 
     private Integer userId;
 
-    private Integer attentionNo;
+    private String attentionNo;
 
     private String attentionType;
 
@@ -33,11 +33,11 @@ public class CrowdfundAttentionRequestVo extends Pagetables{
         this.userId = userId;
     }
 
-    public Integer getAttentionNo() {
+    public String getAttentionNo() {
         return attentionNo;
     }
 
-    public void setAttentionNo(Integer attentionNo) {
+    public void setAttentionNo(String attentionNo) {
         this.attentionNo = attentionNo;
     }
 

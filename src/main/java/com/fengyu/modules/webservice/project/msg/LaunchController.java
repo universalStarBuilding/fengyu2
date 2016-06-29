@@ -6,6 +6,7 @@ import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.modules.model.CrowdfundBasicinfo;
 import com.fengyu.modules.service.project.msg.CrowdfundBasicinfoService;
 import com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo;
+import com.fengyu.modules.webservice.project.vo.HotResponseVo;
 import com.fengyu.system.entity.ResultAPI;
 import com.fengyu.system.entity.SearchResult;
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 
 @Component
@@ -67,6 +69,42 @@ public class LaunchController {
             }
         SearchResult  searchResult=launchProjectService.selectHot(launchVo);
 
+        return JSON.toJSONString(searchResult);
+    }
+
+    /**
+     * 进行中和预热中的项目
+     * @param launchVo
+     * @return
+     */
+    @POST
+    @Path("selectConduct")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String selectConduct(CrowdfundBasicinfoVo launchVo){
+
+        if (launchVo==null){
+            throw new WebActionException(WebExceptionType.SELECTINVALIDHOT,launchVo);
+        }
+        SearchResult  searchResult=launchProjectService.selectConduct(launchVo);
+        return JSON.toJSONString(searchResult);
+    }
+
+    /**
+     * 项目详情
+     * @param launchVo
+     * @return
+     */
+    @POST
+    @Path("selectDetails")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String selectDetails(CrowdfundBasicinfoVo launchVo){
+
+        if (launchVo==null){
+            throw new WebActionException(WebExceptionType.SELECTINVALIDHOT,launchVo);
+        }
+        List<HotResponseVo> searchResult=launchProjectService.selectDetails(launchVo);
         return JSON.toJSONString(searchResult);
     }
 

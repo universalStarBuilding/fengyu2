@@ -5,10 +5,11 @@ import com.fengyu.common.page.Pagetables;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class HotResponseVo extends Pagetables{
-    private Integer projectNo;//项目编号
+public class HotResponseVo{
 
-    private Integer orderOwner;//支持人数
+    private Integer userId;//用户编号
+
+    private String projectNo;//项目编号
 
     private String projectName;//项目名称
 
@@ -20,20 +21,60 @@ public class HotResponseVo extends Pagetables{
 
     private String projectImage;//项目图片
 
-    public Integer getProjectNo() {
+    private Integer number;//支持人数
+
+    private String projectListImage;//详情页图片
+
+    private String projectSynopsis;//项目简介
+
+    private Integer followNumber;//关注人数
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getProjectListImage() {
+        return projectListImage;
+    }
+
+    public void setProjectListImage(String projectListImage) {
+        this.projectListImage = projectListImage;
+    }
+
+    public String getProjectSynopsis() {
+        return projectSynopsis;
+    }
+
+    public void setProjectSynopsis(String projectSynopsis) {
+        this.projectSynopsis = projectSynopsis;
+    }
+
+    public Integer getFollowNumber() {
+        return followNumber;
+    }
+
+    public void setFollowNumber(Integer followNumber) {
+        this.followNumber = followNumber;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public String getProjectNo() {
         return projectNo;
     }
 
-    public void setProjectNo(Integer projectNo) {
+    public void setProjectNo(String projectNo) {
         this.projectNo = projectNo;
-    }
-
-    public Integer getOrderOwner() {
-        return orderOwner;
-    }
-
-    public void setOrderOwner(Integer orderOwner) {
-        this.orderOwner = orderOwner;
     }
 
     public String getProjectName() {

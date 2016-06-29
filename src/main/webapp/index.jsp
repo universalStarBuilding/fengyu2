@@ -460,15 +460,16 @@
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
-                    "page":"1",
+                    "page":"0",
                     "rows":"3",
                     "hot":"1",
-                    "hotNum":"2000",
-                     "projectState":"funding"
+                    "projectState":"funding"
             }),
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
             },
             error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 console.log(request);
@@ -513,6 +514,60 @@
                 }
             });
         }
+    function selectConduct()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/project/msg/launchProject/selectConduct",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "page":"0",
+                "rows":"7",
+                "projectState":"funding"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
+
+    function selectDetails()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/project/msg/launchProject/selectDetails",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "projectNo":"08d553a369cc45deb6535a4458f5694b"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
+
 
 
 </script>
@@ -536,5 +591,7 @@
     <input type="button" value="热门项目列表" onclick="selectHot()">
     <input type="button" value="QuartzTest" onclick="quartzTest()">
     <input type="button" value="添加回报" onclick="returnsetSave()">
+    <input type="button" value="进行中或者预热中" onclick="selectConduct()">
+    <input type="button" value="项目详情" onclick="selectDetails()">
 </body>
 </html>

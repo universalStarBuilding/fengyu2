@@ -7,7 +7,7 @@ import java.util.Date;
 
 
 public class CrowdfundBasicinfo extends DataEntity<CrowdfundBasicinfo>{
-    private Integer projectNo;
+    private String projectNo;
 
     private Integer userId;
 
@@ -77,11 +77,11 @@ public class CrowdfundBasicinfo extends DataEntity<CrowdfundBasicinfo>{
         this.hotNum = hotNum;
     }
 
-    public Integer getProjectNo() {
+    public String getProjectNo() {
         return projectNo;
     }
 
-    public void setProjectNo(Integer projectNo) {
+    public void setProjectNo(String projectNo) {
         this.projectNo = projectNo;
     }
 

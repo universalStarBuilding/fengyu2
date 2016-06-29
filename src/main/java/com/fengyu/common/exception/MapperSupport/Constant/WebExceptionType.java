@@ -44,8 +44,8 @@ public enum WebExceptionType {
     GETINVALIDPROJECTCONCERNS("获取信息列表失败"),
     //我发起的项目列表
     GETINVALIDLAUNCHPROJECT("获取列表失败"),
-    //查询热门项目列表
-    SELECTINVALIDHOT("获取热门项目列表失败"),
+    //查询项目列表
+    SELECTINVALIDHOT("获取项目列表失败"),
     //查询我的私信列表
     GETINVALIDPROJECTLETTER("获取我的私信失败"),
     //删除私信

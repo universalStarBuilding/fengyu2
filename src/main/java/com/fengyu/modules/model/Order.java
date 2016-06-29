@@ -12,9 +12,9 @@ import java.util.Date;
 public class Order extends DataEntity<Order>{
     private Integer orderId;
 
-    private Integer orderOwner;
+    private String orderOwner;
 
-    private BigDecimal orderAmt;
+    private String orderAmt;
 
     private String orderState;
 
@@ -44,19 +44,19 @@ public class Order extends DataEntity<Order>{
         this.orderId = orderId;
     }
 
-    public Integer getOrderOwner() {
+    public String getOrderOwner() {
         return orderOwner;
     }
 
-    public void setOrderOwner(Integer orderOwner) {
+    public void setOrderOwner(String orderOwner) {
         this.orderOwner = orderOwner;
     }
 
-    public BigDecimal getOrderAmt() {
+    public String getOrderAmt() {
         return orderAmt;
     }
 
-    public void setOrderAmt(BigDecimal orderAmt) {
+    public void setOrderAmt(String orderAmt) {
         this.orderAmt = orderAmt;
     }
 

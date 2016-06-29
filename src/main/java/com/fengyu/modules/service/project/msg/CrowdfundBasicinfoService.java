@@ -1,7 +1,9 @@
 package com.fengyu.modules.service.project.msg;
 
+import com.fengyu.modules.dao.project.msg.CrowdfundAttentionDao;
 import com.fengyu.modules.dao.project.msg.CrowdfundBasicinfoDao;
 import com.fengyu.modules.dao.project.msg.OrderDao;
+import com.fengyu.modules.model.CrowdfundAttention;
 import com.fengyu.modules.model.CrowdfundBasicinfo;
 import com.fengyu.modules.model.Order;
 import com.fengyu.modules.webservice.project.vo.HotResponseVo;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -23,6 +26,10 @@ public class CrowdfundBasicinfoService {
 
     @Autowired
     private OrderDao orderDao;
+
+    @Autowired
+    private CrowdfundAttentionDao crowdfundAttentionDao;
+
     /**
      * 分页：我发起的项目列表
      * @param launchProjectVo
@@ -43,47 +50,60 @@ public class CrowdfundBasicinfoService {
      * @return
      */
     public SearchResult selectHot(CrowdfundBasicinfoVo launchVo){
-/*        CrowdfundBasicinfo launch=new CrowdfundBasicinfo();
-        launch.setHot(launchVo.getHot());
-        launch.setHotNum(launchVo.getHotNum());
-        launch.setProjectState(launchVo.getProjectState());
-        List<HotResponseVo> list = new LinkedList<>();
-        list = launchProjectMapper.selectHot(launchVo);
 
+        List<HotResponseVo> list = launchProjectMapper.selectHot(launchVo);
         for (HotResponseVo vo :list){
             Order order=new Order();
-            order.setOrderOwner(launch.getUserId());
+            order.setOrderOwner(vo.getProjectNo());
             Integer count = orderDao.supportNumber(order);
-
-            vo.setOrderOwner(count);
-        }*/
-
-        CrowdfundBasicinfo launch=new CrowdfundBasicinfo();/*
-        launch.setHot(launchVo.getHot());
-        launch.setHotNum(launchVo.getHotNum());
-        launch.setProjectState(launchVo.getProjectState());*/
-        List<HotResponseVo> list=launchProjectMapper.selectHot(launchVo);
-
-        for (HotResponseVo vo:list){
-            vo.setProjectNo(launch.getProjectNo());
-            vo.setProjectName(launch.getProjectName());
-            vo.setProjectState(launch.getProjectState());
-            vo.setProjectImage(launch.getProjectImage());
-            vo.setFundAmt(launch.getFundAmt());
-            vo.setFundTotalAmt(launch.getFundTotalAmt());
-
-  /*          Order order=new Order();
-            CrowdfundBasicinfo launch=new CrowdfundBasicinfo();
-            order.setOrderOwner(launch.getUserId());
-            count = orderDao.supportNumber(order);
-            vo.setOrderOwner(count);*/
+            vo.setNumber(count);
         }
-        Order order=new Order();
-        order.setOrderOwner(launch.getUserId());
-        Integer count=orderDao.supportNumber(order);
+        Integer count=launchProjectMapper.getTotal(launchVo);
+        SearchResult<HotResponseVo> result = new SearchResult<>();
+        result.setTotalRows(count);
+        result.setRows(list);
+
+        return result;
+    }
+
+
+    /**
+     * 进行中或者预热中的项目
+     * @param launchVo
+     * @return
+     */
+    public SearchResult selectConduct(CrowdfundBasicinfoVo launchVo){
+        List<HotResponseVo> list=launchProjectMapper.selectConduct(launchVo);
+        for (HotResponseVo vo:list){
+            Order order=new Order();
+            order.setOrderOwner(vo.getProjectNo());
+            Integer count=orderDao.supportNumber(order);
+            vo.setNumber(count);
+        }
+        Integer count=launchProjectMapper.getPreheat(launchVo);
         SearchResult<HotResponseVo> result = new SearchResult<>();
         result.setTotalRows(count);
         result.setRows(list);
         return result;
+    }
+
+    /**
+     * 项目详情
+     * @param launchVo
+     * @return
+     */
+    public List<HotResponseVo> selectDetails(CrowdfundBasicinfoVo launchVo){
+        List<HotResponseVo> list=launchProjectMapper.selectDetails(launchVo);
+        for (HotResponseVo vo:list){
+            Order order=new Order();
+            order.setOrderOwner(vo.getProjectNo());
+            Integer count=orderDao.supportNumber(order);
+            vo.setNumber(count);
+            CrowdfundAttention crowdfundAttention=new CrowdfundAttention();
+            crowdfundAttention.setAttentionNo(vo.getProjectNo());
+            Integer followcount=crowdfundAttentionDao.getDetails(crowdfundAttention);
+            vo.setFollowNumber(followcount);
+        }
+        return list;
     }
 }
