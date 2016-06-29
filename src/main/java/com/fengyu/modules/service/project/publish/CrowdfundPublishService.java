@@ -1,5 +1,6 @@
 package com.fengyu.modules.service.project.publish;
 
+import com.alibaba.fastjson.JSON;
 import com.fengyu.common.utils.PKGenarator;
 import com.fengyu.modules.dao.project.msg.CrowdfundBasicinfoDao;
 import com.fengyu.modules.dao.project.publish.CrowdfundDetailDao;
@@ -11,6 +12,7 @@ import com.fengyu.modules.webservice.project.vo.CrowdfundPublishReponseVo;
 import com.fengyu.modules.webservice.project.vo.CrowdfundPublishRequestVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -56,8 +58,24 @@ public class CrowdfundPublishService {
         return 1;
     }
 
-    public CrowdfundPublishReponseVo get(Integer id) {
 
-        return null;
+    public CrowdfundPublishReponseVo getCrowdfundPublishInfo(String projectNo) {
+
+        CrowdfundPublishReponseVo vo = new CrowdfundPublishReponseVo();
+
+        CrowdfundBasicinfo crowdfundBasicinfo = crowdfundBasicinfoDao.getDetailbyProjectNo(projectNo);
+
+        BeanUtils.copyProperties(crowdfundBasicinfo,vo);
+
+        CrowdfundDetail  crowdfundDetail = crowdfundDetailDao.getDetailbyProjectNo(projectNo);
+
+        BeanUtils.copyProperties(crowdfundDetail,vo);
+
+        CrowdfundOrganizer crowdfundOrganizer = crowdfundOrganizerDao.getDetailByOrganizerNo(crowdfundBasicinfo.getOrganizerNo());
+
+        BeanUtils.copyProperties(crowdfundOrganizer,vo);
+
+        return vo;
+
     }
 }

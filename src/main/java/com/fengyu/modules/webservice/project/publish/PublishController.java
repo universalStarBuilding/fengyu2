@@ -43,4 +43,20 @@ public class PublishController {
             throw  new WebActionException(WebExceptionType.PUBLISHINVALIDPROJECT,crowdfundPublishRequestVo);
         }
     }
+
+    /**
+     * 获取发起项目详情
+     * @return
+     */
+    @POST
+    @Path("get/{id}")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void get(@PathParam("id")String id){
+
+        CrowdfundPublishReponseVo vo =  crowdfundPublishService.getCrowdfundPublishInfo(id);
+        if(vo == null){
+            throw  new WebActionException(WebExceptionType.PUBLISHINVALIDPROJECT,vo);
+        }
+    }
 }

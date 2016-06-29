@@ -150,6 +150,13 @@
     where ID = #{id,jdbcType=INTEGER}
   </update>
 
+  <select id="getDetailbyProjectNo" parameterType="java.lang.String" resultType="com.fengyu.modules.model.CrowdfundBasicinfo">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM crowdfund_basicinfo cb
+    WHERE cb.PROJECT_NO=#{projectNo,jdbcType=VARCHAR}
+  </select>
+
 
   <select id="queryBy" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="java.lang.Long">
     SELECT COUNT(*) FROM crowdfund_basicinfo cb

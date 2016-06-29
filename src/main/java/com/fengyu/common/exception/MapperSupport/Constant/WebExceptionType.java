@@ -33,6 +33,7 @@ public enum WebExceptionType {
 
     //发起项目
     PUBLISHINVALIDPROJECT("发起项目失败！"),
+    PUBLISHINVALIDPROJECTINFO("获取发起项目信息失败！"),
 
 
     //项目回报设置

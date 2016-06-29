@@ -4,21 +4,20 @@
   <resultMap id="BaseResultMap" type="com.fengyu.modules.model.CrowdfundDetail" >
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="PROJECT_NO" property="projectNo" jdbcType="VARCHAR" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.fengyu.modules.model.CrowdfundDetail" extends="BaseResultMap" >
     <result column="PROJECT_DETAIL" property="projectDetail" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, PROJECT_NO
+    ID, PROJECT_NO,PROJECT_DETAIL
   </sql>
-  <sql id="Blob_Column_List" >
-    PROJECT_DETAIL
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="getDetailbyProjectNo" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from crowdfund_detail
+    where PROJECT_NO = #{projectNo,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from crowdfund_detail
     where ID = #{id,jdbcType=INTEGER}
   </select>

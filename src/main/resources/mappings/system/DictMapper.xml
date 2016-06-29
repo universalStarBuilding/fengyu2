@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fengyu.system.dao.DictDao" >
+  <resultMap id="BaseResultMap" type="com.fengyu.system.model.Dict" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="TYPE_CODE" property="typeCode" jdbcType="VARCHAR" />
+    <result column="TYPE_NAME" property="typeName" jdbcType="VARCHAR" />
+    <result column="CODE" property="code" jdbcType="VARCHAR" />
+    <result column="DISPLAY_NAME" property="displayName" jdbcType="VARCHAR" />
+    <result column="SORT" property="sort" jdbcType="INTEGER" />
+    <result column="STATUS" property="status" jdbcType="TINYINT" />
+    <result column="DESC" property="desc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, TYPE_CODE, TYPE_NAME, CODE, DISPLAY_NAME, SORT, STATUS, DESC
+  </sql>
+
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dict
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="getListByTypeCode" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from dict
+    where TYPE_CODE = #{typecode,jdbcType=VARCHAR}
+  </select>
+  <select id="getListByCode" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from dict
+    where CODE = #{code,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dict
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.fengyu.system.model.Dict" >
+    insert into dict (id, TYPE_CODE, TYPE_NAME,
+      CODE, DISPLAY_NAME, SORT,
+      STATUS, DESC)
+    values (#{id,jdbcType=INTEGER}, #{typeCode,jdbcType=VARCHAR}, #{typeName,jdbcType=VARCHAR},
+      #{code,jdbcType=VARCHAR}, #{displayName,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER},
+      #{status,jdbcType=TINYINT}, #{desc,jdbcType=VARCHAR})
+  </insert>
+  <update id="update" parameterType="com.fengyu.system.model.Dict" >
+    update dict
+    <set >
+      <if test="typeCode != null" >
+        TYPE_CODE = #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null" >
+        TYPE_NAME = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        CODE = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="displayName != null" >
+        DISPLAY_NAME = #{displayName,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        SORT = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="desc != null" >
+        DESC = #{desc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>
