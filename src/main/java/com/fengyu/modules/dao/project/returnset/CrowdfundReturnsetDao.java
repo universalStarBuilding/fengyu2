@@ -33,8 +33,7 @@ public interface CrowdfundReturnsetDao extends CrudDao<CrowdfundReturnset>{
 
     /**
      * 删除指定项目的回报
-     * @param projectNo
      * @return
      */
-    Integer deleteByProjectNo(Integer id);
+    Integer deleteByReturnNo(String returnNo);
 }

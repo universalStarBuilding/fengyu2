@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class CrowdfundReturnsetRequestVo {
 
-    private Integer projectNo;           //项目编号
+    private String returnNo;          //回报编号
     private Double price;            //支付金额
     private Integer numberLimits;       //名额
     private String returnContent;       //回报内容
@@ -21,14 +21,13 @@ public class CrowdfundReturnsetRequestVo {
     private Boolean invoiceFlag;        //是否需要开具发票0不需要1需要
     private Integer returnDate;          //回报日期
 
-    public Integer getProjectNo() {
-        return projectNo;
+    public String getReturnNo() {
+        return returnNo;
     }
 
-    public void setProjectNo(Integer projectNo) {
-        this.projectNo = projectNo;
+    public void setReturnNo(String returnNo) {
+        this.returnNo = returnNo;
     }
-
     public Double getPrice() {
         return price;
     }

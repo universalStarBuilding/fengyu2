@@ -487,7 +487,7 @@
                 type: "post", //传参方式，get 或post
                 data: JSON.stringify({
                     "projectNo": "002",
-                    "price": "500000",
+                    "price": "20000",
                     "numberLimits": "100",
                     "returnContent": "这是回报内容",
                     "returnType": "goods",
