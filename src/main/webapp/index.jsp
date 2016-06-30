@@ -743,10 +743,9 @@
     </form>
 
 
-    <form action="http://localhost:8080/rest/common/uploadimage" method="post" enctype="multipart/form-data">
+    <form action="http://localhost:8080/rest/common/uploadimage/project" method="post" enctype="multipart/form-data">
         <p>
             文件 :<input type="file" name="file"/><br />
-            用户名: <input type="text" name="username"/><br />
         </p>
         <input type="submit" value="上传" />
     </form>
