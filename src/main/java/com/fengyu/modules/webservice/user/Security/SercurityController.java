@@ -120,5 +120,4 @@ public class SercurityController {
         }
         return JSON.toJSONString(user);
     }
-
 }

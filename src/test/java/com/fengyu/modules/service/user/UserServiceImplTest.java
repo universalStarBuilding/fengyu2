@@ -4,6 +4,7 @@ import com.fengyu.modules.model.User;
 import com.fengyu.modules.model.UserInfo;
 import com.fengyu.modules.service.user.UserInfoService;
 import com.fengyu.modules.service.user.UserService;
+import com.fengyu.modules.webservice.user.vo.UserVo;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,6 +12,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 /*
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -25,10 +30,9 @@ import java.util.List;
 /**
  * Created by guozheng.
  */
-/*@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
-//@ContextConfiguration(classes=AppConfig.class, loader=AnnotationConfigContextLoader.class)
-@TestExecutionListeners(value = { DependencyInjectionTestExecutionListener.class })*/
+@TestExecutionListeners(value = { DependencyInjectionTestExecutionListener.class })
 public class UserServiceImplTest {
 
     @Autowired
@@ -41,6 +45,8 @@ public class UserServiceImplTest {
     private UserInfo userInfo=new UserInfo();
 
     private User user=new User();
+
+    private UserVo userVo=new UserVo();
 
     /**
      * 查询用户真实姓名
@@ -99,7 +105,6 @@ public class UserServiceImplTest {
         user.setEmail("87157043@qq.com");
         userService.updateEmail(user);
     }
-
     /**
      * 修改登录密码
      */
@@ -108,5 +113,18 @@ public class UserServiceImplTest {
         user.setId(id);
         user.setPwdLogin("456qwe");
         userService.updateLoginPwd(user);
+    }
+    /**
+     * 查询手机号是否存在
+     */
+    @Test
+    public void getPhone(){
+        user.setPhone("13127158258");
+        userService.checkMobileRegister(user.getPhone());
+    }
+    @Test
+    public void getEmail(){
+        user.setEmail("87157042@qq.com");
+        userService.checkEmailRegister(user.getEmail());
     }
 }

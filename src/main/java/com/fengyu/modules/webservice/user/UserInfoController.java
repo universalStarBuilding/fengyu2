@@ -88,6 +88,12 @@ public class UserInfoController {
 
         return JSON.toJSONString(form);
     }
+
+    /**
+     * 添加实名信息
+     * @param userInfo
+     * @return
+     */
     @POST
     @Path("insertRealName")
     public String insertRealName(UserInfo userInfo){
@@ -97,13 +103,34 @@ public class UserInfoController {
         }
         return JSON.toJSONString(rows);
     }
+
+    /**
+     * 手机注册
+     * @param
+     * @return
+     */
     @POST
-    @Path("insert")
-    public String insertPhone(SendMsgVo sendMsgVo){
-       // userService.insertPhone(sendMsgVo);
-        if (sendMsgVo==null){
-            throw new WebActionException(WebExceptionType.USERPHONENOTNULL,sendMsgVo);
+    @Path("insertPhone")
+    public String insertPhone(User user){
+        Integer rows=userService.insertPhone(user);
+        if (rows==null){
+            throw new WebActionException(WebExceptionType.USERPHONENOTNULL,user);
         }
-        return JSON.toJSONString(sendMsgVo);
+        return JSON.toJSONString(user);
+    }
+
+    /**
+     * 邮箱注册
+     * @param user
+     * @return
+     */
+    @POST
+    @Path("insertEmail")
+    public String insertEmail(User user){
+        Integer rows=userService.insertEmail(user);
+        if (rows==null){
+            throw new WebActionException(WebExceptionType.USEREMAILNOTNULL,user);
+        }
+        return JSON.toJSONString(user);
     }
 }

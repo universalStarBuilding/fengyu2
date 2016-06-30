@@ -63,8 +63,23 @@
   </update>
 
   <insert id="insertPhone" parameterType="com.fengyu.modules.model.User">
-    INSERT into `user`(PHONE,PWD_LOGIN,TIME_CREATE)
-    VALUES(#{phone,jdbcType=VARCHAR},#{pwdLogin,jdbcType=VARCHAR},#{timeCreate,jdbcType=TIMESTAMP})
+    INSERT into `user`(PHONE,PWD_LOGIN,TIME_CREATE,USER_TYPE,NAME_LOGIN)
+    VALUES(#{phone,jdbcType=VARCHAR},#{pwdLogin,jdbcType=VARCHAR},#{timeCreate,jdbcType=TIMESTAMP},#{userType,jdbcType=INTEGER},#{nameLogin,jdbcType=VARCHAR})
+  </insert>
+  <insert id="inserEmail" parameterType="com.fengyu.modules.model.User">
+    INSERT into `user`(EMAIL,PWD_LOGIN,TIME_CREATE,USER_TYPE,NAME_LOGIN)
+    VALUES(#{email,jdbcType=VARCHAR},#{pwdLogin,jdbcType=VARCHAR},#{timeCreate,jdbcType=TIMESTAMP},#{userType,jdbcType=INTEGER},#{nameLogin,jdbcType=VARCHAR})
   </insert>
 
+  <select id="findByMoblie" resultType="com.fengyu.modules.model.User" parameterType="java.lang.String">
+    select
+    PHONE
+    from `user`
+    WHERE PHONE=#{phone,jdbcType=VARCHAR};
+  </select>
+  <select id="findByEmail" resultType="com.fengyu.modules.model.User" parameterType="java.lang.String">
+    SELECT EMAIL
+    FROM `user`
+    WHERE EMAIL=#{email,jdbcType=VARCHAR};
+  </select>
 </mapper>

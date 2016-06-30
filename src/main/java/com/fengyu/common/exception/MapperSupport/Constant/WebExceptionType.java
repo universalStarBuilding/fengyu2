@@ -17,11 +17,14 @@ public enum WebExceptionType {
 
     //用户基本信息
     USERNOTFUND("用户不存在！"),
-
     COUNTERNOTFOUND("计数类型不存在！"),
     USERPHONEEMAIL("手机号不存在或邮箱不存在"),
     USERPASSWORD("原密码错误，修改失败"),
     USERPHONENOTNULL("手机号不能为空"),
+    VERIFYCODE("验证码错误"),
+    USERPHONEEXISTS("手机号已存在"),
+    USEREMAILEXISTS("邮箱已存在已存在"),
+    USEREMAILNOTNULL("邮箱不能为空"),
     //账户
     UPDATEPAYPWDACCUSERBANK("修改支付密码"),
     INSERTINVALIDACCUSERBANK("绑定银行卡失败"),
@@ -57,10 +60,12 @@ public enum WebExceptionType {
     //删除私信
     DELETEINVALIDPROJECTLETTER("删除私信失败"),
     //我支持的项目列表
-    GETINVALIDPROJECTSUPPORT("获取支持项目失败"),
     UPLOADINVALIDIMG("图片上传失败！"),
     //发起人信息
-    GETINVALIDLAUNCHPEOPELINFORMATION("获取发起人信息失败");
+    GETINVALIDLAUNCHPEOPELINFORMATION("获取发起人信息失败"),
+    GETINVALIDPROJECTSUPPORT("获取支持项目失败"),
+    GETINVALIDORDERLIST("获取订单列表失败");
+
 
 
 

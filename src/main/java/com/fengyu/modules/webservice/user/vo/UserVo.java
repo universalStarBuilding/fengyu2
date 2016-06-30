@@ -22,7 +22,7 @@ public class UserVo{
     private String pwdLogin;
 
     private Integer userType;
-    private Integer phone;
+    private String phone;
     private Date timeCreate;
     private Date timeLastLogin;
     private Date timeLastLogout;
@@ -88,11 +88,11 @@ public class UserVo{
         this.userType = userType;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
