@@ -50,7 +50,6 @@ public class CrowdfundReturnsetController {
      */
     @POST
     @Path("save")
-    @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     public void save(CrowdfundReturnsetRequestVo crowdfundReturnsetRequestVo){
 
@@ -83,7 +82,6 @@ public class CrowdfundReturnsetController {
      */
     @GET
     @Path("delete/{returnNo}")
-    @Produces(MediaType.TEXT_PLAIN)
     public void delete(@PathParam("returnNo") String returnNo){
 
         Integer rows = crowdfundReturnsetService.deleteByReturnNo(returnNo);

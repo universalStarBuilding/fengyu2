@@ -460,10 +460,11 @@
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
-                    "page":"0",
+                    "page":"1",
                     "rows":"3",
                     "hot":"1",
-                    "projectState":"funding"
+                    "hotNum":"2000",
+                     "projectState":"funding"
             }),
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
@@ -739,6 +740,15 @@
         <input type="text" name="messageCode">
         <input type="button" value="发送验证码">
         <input type="submit" value="注册">
+    </form>
+
+
+    <form action="http://localhost:8080/rest/common/uploadimage" method="post" enctype="multipart/form-data">
+        <p>
+            文件 :<input type="file" name="file"/><br />
+            用户名: <input type="text" name="username"/><br />
+        </p>
+        <input type="submit" value="上传" />
     </form>
 
     <input type="button" value="发起人信息" onclick="getLaunch()">
