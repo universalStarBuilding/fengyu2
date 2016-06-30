@@ -8,8 +8,8 @@ import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
-@XmlRootElement
 public class UserInfo extends DataEntity<UserInfo> {
+
     private Integer userId;
     private String realName;
     private String nickName;

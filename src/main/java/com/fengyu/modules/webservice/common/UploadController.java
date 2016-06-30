@@ -59,9 +59,12 @@ public class UploadController {
                 + disposition.getFileName();
 
         Date dt=new Date();
-        SimpleDateFormat matter1=new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat matter=new SimpleDateFormat("yyyyMMdd");
 
-        File file = new File(ARTICLE_IMAGES_PATH +type +"/"+ matter1.format(dt)+"/"+imageName);
+        //
+        String staticFile = type +"/"+ matter.format(dt)+"/"+imageName;
+
+        File file = new File(ARTICLE_IMAGES_PATH + staticFile);
         try {
             //使用common io的文件写入操作
             FileUtils.copyInputStreamToFile(fileInputStream, file);
@@ -70,7 +73,7 @@ public class UploadController {
             throw new WebActionException(WebExceptionType.UPLOADINVALIDIMG,imageName);
         }
 
-        return null;
+        return staticFile;
     }
 
 }
