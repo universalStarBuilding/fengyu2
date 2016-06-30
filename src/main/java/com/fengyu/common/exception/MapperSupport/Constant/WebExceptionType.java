@@ -57,7 +57,9 @@ public enum WebExceptionType {
     //删除私信
     DELETEINVALIDPROJECTLETTER("删除私信失败"),
     //我支持的项目列表
-    GETINVALIDPROJECTSUPPORT("获取支持项目失败");
+    GETINVALIDPROJECTSUPPORT("获取支持项目失败"),
+    UPLOADINVALIDIMG("图片上传失败！")
+    ;
 
 
 
