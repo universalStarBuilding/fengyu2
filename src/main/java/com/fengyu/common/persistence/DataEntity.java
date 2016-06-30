@@ -27,12 +27,6 @@ public abstract class DataEntity<T> extends  BaseEntity<T>{
 
 	protected int page = 1;
 	protected int rows;
-	protected String sort;
-	protected String order;
-	protected long startPage;
-	protected long endPage;
-	protected String defaultSort;
-	protected Map<String, Object> paramMap = new HashMap();
 
 
 	public boolean isNewRecord() {
@@ -57,54 +51,6 @@ public abstract class DataEntity<T> extends  BaseEntity<T>{
 
 	public void setRows(int rows) {
 		this.rows = rows;
-	}
-
-	public String getSort() {
-		return sort;
-	}
-
-	public void setSort(String sort) {
-		this.sort = sort;
-	}
-
-	public String getOrder() {
-		return order;
-	}
-
-	public void setOrder(String order) {
-		this.order = order;
-	}
-
-	public long getStartPage() {
-		return startPage;
-	}
-
-	public void setStartPage(long startPage) {
-		this.startPage = startPage;
-	}
-
-	public long getEndPage() {
-		return endPage;
-	}
-
-	public void setEndPage(long endPage) {
-		this.endPage = endPage;
-	}
-
-	public String getDefaultSort() {
-		return defaultSort;
-	}
-
-	public void setDefaultSort(String defaultSort) {
-		this.defaultSort = defaultSort;
-	}
-
-	public Map<String, Object> getParamMap() {
-		return paramMap;
-	}
-
-	public void setParamMap(Map<String, Object> paramMap) {
-		this.paramMap = paramMap;
 	}
 
 	public DataEntity() {

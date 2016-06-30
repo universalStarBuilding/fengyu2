@@ -1,4 +1,4 @@
-package com.modules.service.user;
+package com.fengyu.modules.service.user;
 
 import com.fengyu.modules.model.User;
 import com.fengyu.modules.model.UserInfo;

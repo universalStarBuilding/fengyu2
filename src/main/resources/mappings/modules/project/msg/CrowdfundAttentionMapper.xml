@@ -34,4 +34,10 @@
     VALUE (#{userId,jdbcType=INTEGER},#{attentionNo,jdbcType=INTEGER},#{attentionTime,jdbcType=TIMESTAMP})
   </insert>
 
+  <select id="getDetails" parameterType="com.fengyu.modules.model.CrowdfundAttention" resultType="java.lang.Integer">
+    SELECT COUNT(*)
+    FROM crowdfund_attention
+    WHERE ATTENTION_NO=#{attentionNo,jdbcType=VARCHAR}
+  </select>
+
 </mapper>

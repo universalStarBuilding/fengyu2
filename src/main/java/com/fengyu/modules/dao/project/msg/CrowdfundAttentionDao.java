@@ -17,4 +17,6 @@ public interface CrowdfundAttentionDao {
     List<CrowdfundAttention> getListFollow(CrowdfundAttentionRequestVo followProjectVo);
     //添加关注项目
     Integer insert(CrowdfundAttention followProject);
+    //统计项目关注人数
+    Integer getDetails(CrowdfundAttention followProject);
 }

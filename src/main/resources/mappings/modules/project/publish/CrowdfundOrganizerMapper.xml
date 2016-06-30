@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.fengyu.modules.model.CrowdfundOrganizer" >
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="USER_ID" property="userId" jdbcType="INTEGER" />
-    <result column="ORGANIZER_NO" property="organizerNo" jdbcType="INTEGER" />
+    <result column="ORGANIZER_NO" property="organizerNo" jdbcType="VARCHAR" />
     <result column="ORGANIZER_NAME" property="organizerName" jdbcType="VARCHAR" />
     <result column="ORGANIZER_INTRODUCTION" property="organizerIntroduction" jdbcType="VARCHAR" />
     <result column="WEIBO_URL" property="weiboUrl" jdbcType="VARCHAR" />
@@ -15,16 +15,21 @@
     ID, USER_ID, ORGANIZER_NO, ORGANIZER_NAME, ORGANIZER_INTRODUCTION, WEIBO_URL, TELEPHONE, 
     THANK_YOU_NOTE
   </sql>
+
+  <select id="getDetailByOrganizerNo" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from crowdfund_organizer
+    where ORGANIZER_NO = #{organizerNo,jdbcType=VARCHAR}
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from crowdfund_organizer
     where ID = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from crowdfund_organizer
-    where ID = #{id,jdbcType=INTEGER}
-  </delete>
+
   <insert id="insert" parameterType="com.fengyu.modules.model.CrowdfundOrganizer" >
     insert into crowdfund_organizer (ID, USER_ID, ORGANIZER_NO, 
       ORGANIZER_NAME, ORGANIZER_INTRODUCTION, WEIBO_URL, 
@@ -126,4 +131,12 @@
       THANK_YOU_NOTE = #{thankYouNote,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="getLaunch" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundOrganizerRequestVo" resultType="com.fengyu.modules.webservice.project.vo.CrowdfundOrganizerReponseVo">
+    SELECT CO.ORGANIZER_INTRODUCTION,CB.PROJECT_SYNOPSIS,CO.WEIBO_URL,CO.THANK_YOU_NOTE,CO.TELEPHONE
+    FROM crowdfund_organizer CO,crowdfund_basicinfo CB
+    WHERE CO.ORGANIZER_NO=CB.ORGANIZER_NO
+    AND CO.ORGANIZER_NO=#{organizerNo,jdbcType=VARCHAR}
+  </select>
+
 </mapper>

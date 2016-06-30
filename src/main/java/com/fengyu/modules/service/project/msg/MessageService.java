@@ -96,7 +96,7 @@ public class MessageService {
     public int deleteById(MessageRequestVo messageRequestVo){
         Message message=new Message();
         message.setId(messageRequestVo.getId());
-        return messageDao.updateById(messageRequestVo);
+        return 1;
     }
 
 }

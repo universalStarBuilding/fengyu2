@@ -1,12 +1,13 @@
 package com.fengyu.modules.webservice.project.vo;
 
 import com.fengyu.common.page.Pagetables;
+import com.fengyu.common.persistence.DataEntity;
 
 
-public class HotRequestVo extends Pagetables{
-    private Integer projectNo;//项目编号
+public class HotRequestVo extends DataEntity<HotRequestVo>{
+    private String projectNo;//项目编号
 
-    private Integer orderOwner;//支持人数
+    private Integer orderOwner;//支人数
 
     private String projectName;//项目名称
 
@@ -18,11 +19,51 @@ public class HotRequestVo extends Pagetables{
 
     private String projectImage;//项目图片
 
-    public Integer getProjectNo() {
+    private Integer number;//支持人数
+
+    private String projectListImage;//详情页图片
+
+    private String projectSynopsis;//项目简介
+
+    private Integer followNumber;//关注人数
+
+    public String getProjectListImage() {
+        return projectListImage;
+    }
+
+    public void setProjectListImage(String projectListImage) {
+        this.projectListImage = projectListImage;
+    }
+
+    public String getProjectSynopsis() {
+        return projectSynopsis;
+    }
+
+    public void setProjectSynopsis(String projectSynopsis) {
+        this.projectSynopsis = projectSynopsis;
+    }
+
+    public Integer getFollowNumber() {
+        return followNumber;
+    }
+
+    public void setFollowNumber(Integer followNumber) {
+        this.followNumber = followNumber;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public String getProjectNo() {
         return projectNo;
     }
 
-    public void setProjectNo(Integer projectNo) {
+    public void setProjectNo(String projectNo) {
         this.projectNo = projectNo;
     }
 
