@@ -59,6 +59,7 @@
     }
 </style>
 <body>
+    <h1>http://123.56.205.77:9082/fengyu2/rest</h1>
     <div class="content">
         <!--查看用户详细信息-->
         <div class="data">
@@ -3900,6 +3901,13 @@
                 </div>
             </div >
         </div>
+        <h3>error: function(request,status,message){  //若服务器处理失败后回调函数，```errrorText[0]["message"]```是返回的错误信息</h3>
+        <h3>console.log("this is error! request:"+request+",status:"+status+",message:"+message);</h3>
+        <h2>console.log(request.responseText);</h2>
+        <h2>var errrorText = request.responseText;</h2>
+        <h2>var errrorText = eval('(' + errrorText + ')');</h2>
+        <h2>console.log(errrorText[0]["message"]);</h2>
+        <h2>}</h2>
 </div>
 </body>
 <script>
