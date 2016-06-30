@@ -1,9 +1,12 @@
-package com.modules.service.project.publish;
+package com.fengyu.modules.service.project.publish;
 
+import com.alibaba.fastjson.JSON;
 import com.fengyu.modules.model.AccUserBank;
 import com.fengyu.modules.service.account.AccUserBankService;
 import com.fengyu.modules.service.project.publish.CrowdfundPublishService;
+import com.fengyu.modules.webservice.project.vo.CrowdfundPublishReponseVo;
 import com.fengyu.modules.webservice.project.vo.CrowdfundPublishRequestVo;
+import com.fengyu.modules.webservice.project.vo.CrowdfundReturnsetReponseVo;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -57,5 +60,15 @@ public class CrowdfundPublishServiceImplTest {
 
         crowdfundPublishService.saveCrowdfundPublish(vo);
        // Assert.assertTrue("Failed to find user " + accUserBank, accUserBank != null);
+    }
+
+    @Test
+    public void getPublishProjectDetail(){
+
+        CrowdfundPublishReponseVo vo  = crowdfundPublishService.getCrowdfundPublishInfo("51cf943d41d04bf68f9de51cec251a02");
+
+        System.out.println(JSON.toJSONString(vo));
+
+        // Assert.assertTrue("Failed to find user " + accUserBank, accUserBank != null);
     }
 }

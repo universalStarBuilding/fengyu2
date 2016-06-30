@@ -6,7 +6,7 @@ import com.fengyu.common.persistence.DataEntity;
 public class CrowdfundReturnset  extends DataEntity<CrowdfundReturnset>{
     private Integer id;
 
-    private Integer projectNo;
+    private String projectNo;
 
     private String returnNo;
 
@@ -40,11 +40,11 @@ public class CrowdfundReturnset  extends DataEntity<CrowdfundReturnset>{
         this.id = id;
     }
 
-    public Integer getProjectNo() {
+    public String getProjectNo() {
         return projectNo;
     }
 
-    public void setProjectNo(Integer projectNo) {
+    public void setProjectNo(String projectNo) {
         this.projectNo = projectNo;
     }
 

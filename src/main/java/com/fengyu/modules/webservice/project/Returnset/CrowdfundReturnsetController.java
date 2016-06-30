@@ -1,4 +1,4 @@
-package com.fengyu.modules.webservice.project.Returnset;
+package com.fengyu.modules.webservice.project.returnset;
 
 import com.alibaba.fastjson.JSON;
 import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
@@ -34,7 +34,7 @@ public class CrowdfundReturnsetController {
     @GET
     @Path("list/{id}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String list(@PathParam("id") Integer id){
+    public String list(@PathParam("id") String id){
 
         List<CrowdfundReturnsetReponseVo> vo = crowdfundReturnsetService.getListByProjectNo(id);
         if(vo == null){
@@ -66,9 +66,10 @@ public class CrowdfundReturnsetController {
      * @return
      */
     @POST
-    @Path("edit")
-    public void edit(@Valid CrowdfundReturnsetRequestVo crowdfundReturnsetRequestVo){
+    @Path("edit/{returnNo}")
+    public void edit(@PathParam("returnNo")String returnNo, @Valid CrowdfundReturnsetRequestVo crowdfundReturnsetRequestVo){
 
+        crowdfundReturnsetRequestVo.setReturnNo(returnNo);
         Integer rows = crowdfundReturnsetService.updateCrowdfundReturnset(crowdfundReturnsetRequestVo);
         if(rows == 0){
             throw  new WebActionException(WebExceptionType.UPDATEINVALIDPROEJCTRETURNSET,crowdfundReturnsetRequestVo);
@@ -77,17 +78,17 @@ public class CrowdfundReturnsetController {
 
     /**
      * 删除指定项目的回报
-     * @param id
+     * @param returnNo
      * @return
      */
     @GET
-    @Path("delete/{id}")
+    @Path("delete/{returnNo}")
     @Produces(MediaType.TEXT_PLAIN)
-    public void delete(@PathParam("id") Integer id){
+    public void delete(@PathParam("returnNo") String returnNo){
 
-        Integer rows = crowdfundReturnsetService.deleteById(id);
+        Integer rows = crowdfundReturnsetService.deleteByReturnNo(returnNo);
         if(rows == 0){
-            throw  new WebActionException(WebExceptionType.DELETEINVALIDPROEJCTRETURNSET,id);
+            throw  new WebActionException(WebExceptionType.DELETEINVALIDPROEJCTRETURNSET,returnNo);
         }
     }
 

@@ -33,6 +33,7 @@ public enum WebExceptionType {
 
     //发起项目
     PUBLISHINVALIDPROJECT("发起项目失败！"),
+    PUBLISHINVALIDPROJECTINFO("获取发起项目信息失败！"),
 
 
     //项目回报设置
@@ -56,7 +57,9 @@ public enum WebExceptionType {
     //删除私信
     DELETEINVALIDPROJECTLETTER("删除私信失败"),
     //我支持的项目列表
-    GETINVALIDPROJECTSUPPORT("获取支持项目失败");
+    GETINVALIDPROJECTSUPPORT("获取支持项目失败"),
+    //发起人信息
+    GETINVALIDLAUNCHPEOPELINFORMATION("获取发起人信息失败");
 
 
 

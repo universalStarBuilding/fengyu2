@@ -1,4 +1,4 @@
-package com.modules.service.account;
+package com.fengyu.modules.service.account;
 
 import com.fengyu.modules.model.AccUserBank;
 import com.fengyu.modules.service.account.AccBasicService;

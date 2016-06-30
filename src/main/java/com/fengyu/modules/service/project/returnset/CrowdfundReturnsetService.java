@@ -25,14 +25,14 @@ public class CrowdfundReturnsetService extends CrudService<CrowdfundReturnsetDao
     @Autowired
     private CrowdfundReturnsetDao crowdfundReturnsetDao;
 
-    public List<CrowdfundReturnsetReponseVo> getListByProjectNo(Integer projectNo) {
+    public List<CrowdfundReturnsetReponseVo> getListByProjectNo(String projectNo) {
 
         return crowdfundReturnsetDao.getListByProjectNo(projectNo);
     }
 
-    public Integer deleteById(Integer id) {
+    public Integer deleteByReturnNo(String returnNo) {
 
-        return crowdfundReturnsetDao.deleteByProjectNo(id);
+        return crowdfundReturnsetDao.deleteByReturnNo(returnNo);
     }
 
     public Integer saveCrowdfundReturnset(CrowdfundReturnsetRequestVo crowdfundReturnsetRequestVo) {

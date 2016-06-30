@@ -9,7 +9,7 @@ public class CrowdfundPublishRequestVo {
     private String projectNo;               //项目编号
     private Integer userId;                  //用户编号
     private String projectName;             //项目名称
-    private String projectSummary;         //项目简介
+    private String projectSummary;         //项目一句话描述
     private String projectType;             //项目类型
     private String projectCategory;        //项目种类   （标签）
     private Double fundAmt;                 //筹资金额

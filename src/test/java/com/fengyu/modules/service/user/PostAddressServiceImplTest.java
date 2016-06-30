@@ -1,4 +1,4 @@
-package com.modules.service.user;
+package com.fengyu.modules.service.user;
 
 /**
  * Created by admin on 2016/6/27.

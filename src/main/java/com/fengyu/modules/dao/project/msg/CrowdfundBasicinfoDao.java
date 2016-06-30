@@ -31,4 +31,5 @@ public interface CrowdfundBasicinfoDao extends CrudDao<CrowdfundBasicinfo>{
     //查询项目详情
     List<HotResponseVo> selectDetails(CrowdfundBasicinfoVo launchVo);
 
+    CrowdfundBasicinfo getDetailbyProjectNo(String projectNo);
 }
