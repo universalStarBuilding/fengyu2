@@ -24,6 +24,7 @@ public class CrowdfundOrganizerService {
     private CrowdfundBasicinfoDao crowdfundBasicinfoDao;
 
     public CrowdfundOrganizerReponseVo getLaunch(CrowdfundOrganizerRequestVo crowdfundOrganizerRequestVo){
+
         CrowdfundOrganizerReponseVo corv=crowdfundOrganizerDao.getLaunch(crowdfundOrganizerRequestVo);
         return corv;
     }

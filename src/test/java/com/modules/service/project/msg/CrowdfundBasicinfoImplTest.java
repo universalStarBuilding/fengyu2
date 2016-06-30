@@ -38,4 +38,28 @@ public class CrowdfundBasicinfoImplTest {
         Assert.assertTrue("Failed to find user " + cbv, cbv != null);
     }
 
+    @Test
+    public void selectHot(){
+        cbv.setHot(true);
+        cbv.setProjectState("funding");
+        cbv.setPage(0);
+        cbv.setRows(3);
+        crowdfundBasicinfoService.selectHot(cbv);
+        Assert.assertTrue("Failed to find user " + cbv, cbv != null);
+    }
+    @Test
+    public void selectConduct(){
+        cbv.setProjectState("funding");
+        cbv.setPage(0);
+        cbv.setRows(3);
+        crowdfundBasicinfoService.selectConduct(cbv);
+        Assert.assertTrue("Failed to find user " + cbv, cbv != null);
+    }
+
+    @Test
+    public void selectDetails(){
+        cbv.setProjectNo("08d553a369cc45deb6535a4458f5694b");
+        crowdfundBasicinfoService.selectDetails(cbv);
+        Assert.assertTrue("Failed to find user " + cbv, cbv != null);
+    }
 }

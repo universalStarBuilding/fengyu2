@@ -37,7 +37,7 @@ public class OrganizerController {
     public String getLaunch(CrowdfundOrganizerRequestVo crowdfundOrganizerRequestVo){
 
         if (crowdfundOrganizerRequestVo==null){
-            throw new WebActionException(WebExceptionType.GETINVALIDPROJECTSUPPORT,crowdfundOrganizerRequestVo);
+            throw new WebActionException(WebExceptionType.GETINVALIDLAUNCHPEOPELINFORMATION,crowdfundOrganizerRequestVo);
         }
         CrowdfundOrganizerReponseVo crowdfundOrganizerReponseVo=crowdfundOrganizerService.getLaunch(crowdfundOrganizerRequestVo);
         return JSON.toJSONString(crowdfundOrganizerReponseVo);
