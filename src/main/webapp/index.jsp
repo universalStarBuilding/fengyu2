@@ -469,6 +469,8 @@
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
             },
             error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 console.log(request);
@@ -627,6 +629,85 @@
             }
         });
     }
+    function selectConduct()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/project/msg/launchProject/selectConduct",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "page":"0",
+                "rows":"7",
+                "projectState":"funding"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
+
+    function selectDetails()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/project/msg/launchProject/selectDetails",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "projectNo":"08d553a369cc45deb6535a4458f5694b"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
+
+    function getLaunch()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/project/publish/organizer/launch",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "organizerNo":"1962ca055a52476788a9493648e31fb1"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
 
 </script>
 <body>
@@ -649,6 +730,8 @@
     <input type="button" value="热门项目列表" onclick="selectHot()">
     <input type="button" value="QuartzTest" onclick="quartzTest()">
     <input type="button" value="添加回报" onclick="returnsetSave()">
+    <input type="button" value="进行中或者预热中" onclick="selectConduct()">
+    <input type="button" value="项目详情" onclick="selectDetails()">
     <input type="button" value="查询所有列表" onclick="getOrderList()">
     <input type="button" value="查询待付款列表" onclick="getPayment()">
     <input type="button" value="查询待评价列表" onclick="getEvaluate()">
@@ -667,5 +750,7 @@
         </p>
         <input type="submit" value="上传" />
     </form>
+
+    <input type="button" value="发起人信息" onclick="getLaunch()">
 </body>
 </html>

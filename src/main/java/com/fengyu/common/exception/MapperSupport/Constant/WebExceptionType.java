@@ -50,8 +50,8 @@ public enum WebExceptionType {
     GETINVALIDPROJECTCONCERNS("获取信息列表失败"),
     //我发起的项目列表
     GETINVALIDLAUNCHPROJECT("获取列表失败"),
-    //查询热门项目列表
-    SELECTINVALIDHOT("获取热门项目列表失败"),
+    //查询项目列表
+    SELECTINVALIDHOT("获取项目列表失败"),
     //查询我的私信列表
     GETINVALIDPROJECTLETTER("获取我的私信失败"),
     //删除私信
@@ -60,6 +60,9 @@ public enum WebExceptionType {
     GETINVALIDPROJECTSUPPORT("获取支持项目失败"),
     UPLOADINVALIDIMG("图片上传失败！")
     ;
+    GETINVALIDPROJECTSUPPORT("获取支持项目失败"),
+    //发起人信息
+    GETINVALIDLAUNCHPEOPELINFORMATION("获取发起人信息失败");
 
 
 

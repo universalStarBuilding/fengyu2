@@ -1,15 +1,19 @@
 package com.fengyu.system.entity;
 
+import com.fengyu.common.page.Pagetables;
+
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by admin on 2016/6/20.
  */
-public class SearchResult<T> implements Serializable{
+public class SearchResult<T> {
 
     private long totalRows;
-    private List<T> rows;
+    private List rows;
 
     public long getTotalRows() {
         return totalRows;
@@ -19,11 +23,11 @@ public class SearchResult<T> implements Serializable{
         this.totalRows = totalRows;
     }
 
-    public List<T> getRows() {
+    public List getRows() {
         return rows;
     }
 
-    public void setRows(List<T> rows) {
+    public void setRows(List rows) {
         this.rows = rows;
     }
 }

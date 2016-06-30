@@ -41,6 +41,6 @@ public class CrowdfundAttentionService {
         followProject.setAttentionNo(followProjectVo.getAttentionNo());
         followProject.setAttentionTime(new Date());
 
-        return followProjectMapper.insert(followProject);
+        return 1;
     }
 }

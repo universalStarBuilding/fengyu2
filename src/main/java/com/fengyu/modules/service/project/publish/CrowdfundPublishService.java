@@ -8,6 +8,8 @@ import com.fengyu.modules.dao.project.publish.CrowdfundOrganizerDao;
 import com.fengyu.modules.model.CrowdfundBasicinfo;
 import com.fengyu.modules.model.CrowdfundDetail;
 import com.fengyu.modules.model.CrowdfundOrganizer;
+import com.fengyu.modules.webservice.project.vo.CrowdfundOrganizerReponseVo;
+import com.fengyu.modules.webservice.project.vo.CrowdfundOrganizerRequestVo;
 import com.fengyu.modules.webservice.project.vo.CrowdfundPublishReponseVo;
 import com.fengyu.modules.webservice.project.vo.CrowdfundPublishRequestVo;
 import org.springframework.beans.BeanUtils;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by guozheng on 2016/6/28.
@@ -78,4 +81,7 @@ public class CrowdfundPublishService {
         return vo;
 
     }
+
+
+
 }
