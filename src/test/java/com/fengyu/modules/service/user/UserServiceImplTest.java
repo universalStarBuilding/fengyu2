@@ -122,9 +122,34 @@ public class UserServiceImplTest {
         user.setPhone("13127158258");
         userService.checkMobileRegister(user.getPhone());
     }
+
+    /**
+     * 查询邮箱是否存在
+     */
     @Test
     public void getEmail(){
         user.setEmail("87157042@qq.com");
         userService.checkEmailRegister(user.getEmail());
+    }
+
+    /**
+     * 手机注册账号
+     */
+    @Test
+    public void insertPhone(){
+        user.setPhone("13853121952");
+        user.setPwdLogin("1234zxcv");
+        user.setUserType(1);
+        userService.insertPhone(user);
+    }
+    /**
+     * 邮箱注册账号
+     */
+    @Test
+    public void insertEmail(){
+        user.setEmail("44544@qq.com");
+        user.setPwdLogin("1234zxcv");
+        user.setUserType(1);
+        userService.insertEmail(user);
     }
 }
