@@ -80,16 +80,13 @@ public class CrowdfundReturnsetController {
      * @param id
      * @return
      */
-    @GET
+   /* @GET
     @Path("delete/{id}")
     @Produces(MediaType.TEXT_PLAIN)
     public void delete(@PathParam("id") Integer id){
-
         Integer rows = crowdfundReturnsetService.deleteById(id);
         if(rows == 0){
             throw  new WebActionException(WebExceptionType.DELETEINVALIDPROEJCTRETURNSET,id);
         }
-    }
-
-
+    }*/
 }

@@ -85,13 +85,13 @@
     function updateUserInfo()
     {
         $.ajax({
-            url:"http://localhost:8080/rest/user/update",
+            url:"http://192.168.4.46:8080/rest/user/update",
             contentType: "application/json; charset=utf-8",
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
-                "userId":"2",
-                "realName":"nidaye",
+                "userId":"1",
+                "realName":"nidass",
                 "nickName":"3",
                 "idCardNo":"4",
                 "headImg":"3",
@@ -682,6 +682,66 @@
             }
         });
     }
+    function insertPhone() {
+        $.ajax({
+            url: "http://localhost:8080/rest/user/insertPhone",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json", //返回的数据类型,text 或者 json数据，建议为json
+            type: "post", //传参方式，get 或post
+            data: JSON.stringify({
+                "phone":"13127158259",
+                "pwdLogin":"123zxc",
+                "userType":"1"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                console.log(data);
+                alert("Ajax处理已成功：" + data);
+                var jsonText=JSON.stringify(data)
+                alert("Ajax处理已成功：" + jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request);
+                console.log(request.responseText);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+                alert(errrorText[0]["message"]);
+            }
+        });
+    }
+    function insertEmail() {
+        $.ajax({
+            url: "http://localhost:8080/rest/user/insertEmail",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json", //返回的数据类型,text 或者 json数据，建议为json
+            type: "post", //传参方式，get 或post
+            data: JSON.stringify({
+                "email":"296734078@qq.com",
+                "pwdLogin":"123zxc",
+                "userType":"1"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                console.log(data);
+                alert("Ajax处理已成功：" + data);
+                var jsonText=JSON.stringify(data)
+                alert("Ajax处理已成功：" + jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                console.log(request);
+                console.log(request.responseText);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+                alert(errrorText[0]["message"]);
+            }
+        });
+    }
     /**
      * 获取输入框的内容
      */
@@ -713,5 +773,7 @@
     <input type="button" value="发送邮箱验证码"onclick="sendEmailMsg()">
     <input type="text" name="verifyCode" id="verifyCode"/>
     <input type="button" value="验证" onclick="verifyCode()">
+    <input type="button" value="手机注册账户" onclick="insertPhone()">
+    <input type="button" value="邮箱注册账户" onclick="insertEmail()">
 </body>
 </html>

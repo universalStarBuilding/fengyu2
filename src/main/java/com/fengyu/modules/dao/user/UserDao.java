@@ -22,7 +22,7 @@ public interface UserDao extends CrudDao<User> {
     //修改登录密码
     Integer updateLoginPwd(User user);
     //手机注册账号
-    Integer insertPhone(SendMsgVo sendMsgVo);
+    Integer insertPhone(User user);
     //邮箱注册账号
     Integer inserEmail(User user);
     //判断手机号是否重复

@@ -153,7 +153,6 @@ public class User extends DataEntity<User> implements Principal {
         return name;
     }
 
-    @Override
     public boolean implies(Subject subject) {
         return false;
     }

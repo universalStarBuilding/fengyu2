@@ -44,7 +44,6 @@ public class CrowdfundReturnsetService extends CrudService<CrowdfundReturnsetDao
         crowdfundReturnset.setReturnNo(PKGenarator.getOrderId());
         crowdfundReturnset.setState("yes");        //回报档状态，是否还有空余  yes 有 no 没有
         crowdfundReturnsetDao.insert(crowdfundReturnset);
-
         return 1;
     }
 

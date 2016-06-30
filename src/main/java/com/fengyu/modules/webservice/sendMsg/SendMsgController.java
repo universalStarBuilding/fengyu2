@@ -59,7 +59,7 @@ public class SendMsgController {
      * 手机号注册账号
      * @param user
      * @return
-     */
+   /*  *//*
     @POST
     @Path("registerPhone")
     @Produces(MediaType.APPLICATION_JSON)
@@ -70,5 +70,5 @@ public class SendMsgController {
         }
 
         return JSON.toJSONString(null);
-    }
+    }*/
 }

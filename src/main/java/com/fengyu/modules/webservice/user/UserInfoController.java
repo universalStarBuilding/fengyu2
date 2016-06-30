@@ -106,17 +106,31 @@ public class UserInfoController {
 
     /**
      * 手机注册
-     * @param sendMsgVo
+     * @param
      * @return
      */
     @POST
-    @Path("insert")
-    public String insertPhone(SendMsgVo sendMsgVo){
-       // userService.insertPhone(sendMsgVo);
-        if (sendMsgVo==null){
-            throw new WebActionException(WebExceptionType.USERPHONENOTNULL,sendMsgVo);
+    @Path("insertPhone")
+    public String insertPhone(User user){
+        Integer rows=userService.insertPhone(user);
+        if (rows==null){
+            throw new WebActionException(WebExceptionType.USERPHONENOTNULL,user);
         }
-        return JSON.toJSONString(sendMsgVo);
+        return JSON.toJSONString(user);
     }
 
+    /**
+     * 邮箱注册
+     * @param user
+     * @return
+     */
+    @POST
+    @Path("insertEmail")
+    public String insertEmail(User user){
+        Integer rows=userService.insertEmail(user);
+        if (rows==null){
+            throw new WebActionException(WebExceptionType.USEREMAILNOTNULL,user);
+        }
+        return JSON.toJSONString(user);
+    }
 }

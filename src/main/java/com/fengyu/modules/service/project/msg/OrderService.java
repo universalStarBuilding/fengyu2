@@ -33,7 +33,7 @@ public class OrderService {
 
     /**
      * 查询所有订单列表
-     * @param order
+     * @param orderVo
      * @return
      */
     public SearchResult getOrderList(OrderVo orderVo){
@@ -57,7 +57,7 @@ public class OrderService {
     }
 
     /**
-     * dai
+     * 待付款的列表
      * @param orderVo
      * @return
      */
@@ -67,6 +67,5 @@ public class OrderService {
         result.setTotalRows(orderMapper.orderPage(orderVo));
         result.setRows(orderMapper.getStateOrderList(orderVo));
         return result;
-
     }
 }

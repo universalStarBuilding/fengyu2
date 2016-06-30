@@ -21,6 +21,8 @@ import org.springframework.context.ApplicationContextException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 @Service(value = "userService")
 @Transactional
 public class UserService extends CrudService<UserDao, User> {
@@ -155,7 +157,7 @@ public class UserService extends CrudService<UserDao, User> {
     }
 
     /**
-     * 验证手机号是否存在
+     * 验证手机号的唯一性
      *
      * @param phone
      */
@@ -180,6 +182,42 @@ public class UserService extends CrudService<UserDao, User> {
         if (user!=null){
             throw new WebActionException(WebExceptionType.USEREMAILEXISTS, email);
         }
+    }
+
+    /**
+     * 手机注册
+     * @param user
+     * @return
+     */
+    public Integer insertPhone(User user){
+
+        if (user.getPhone()==null){
+            throw new WebActionException(WebExceptionType.USERPHONENOTNULL,user);
+        }
+        //检查手机号是否唯一
+        this.checkMobileRegister(user.getPhone());
+        //设置手机号是登录账户
+        user.setNameLogin(user.getPhone());
+        //用户注册的时间
+        user.setTimeCreate(new Date());
+        //默认为1
+        user.setUserType(1);
+        return userDao.insertPhone(user);
+    }
+
+    /**
+     * 邮箱注册账号
+     * @param user
+     * @return
+     */
+    public Integer insertEmail(User user){
+        if (user.getEmail()==null){
+            throw new WebActionException(WebExceptionType.USEREMAILNOTNULL,user);
+        }
+        this.checkEmailRegister(user.getEmail());
+        user.setNameLogin(user.getEmail());
+        user.setTimeCreate(new Date());
+        return userDao.inserEmail(user);
     }
 }
 

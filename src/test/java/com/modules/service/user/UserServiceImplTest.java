@@ -105,7 +105,6 @@ public class UserServiceImplTest {
         user.setEmail("87157043@qq.com");
         userService.updateEmail(user);
     }
-
     /**
      * 修改登录密码
      */

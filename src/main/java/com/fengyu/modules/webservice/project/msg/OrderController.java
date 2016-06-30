@@ -57,10 +57,10 @@ public class OrderController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String getOrderList(OrderVo orderVo){
-        if (orderVo==null){
-            throw new WebActionException(WebExceptionType.GETINVALIDPROJECTSUPPORT,orderVo);
-        }
         SearchResult searchResult=orderService.getOrderList(orderVo);
+        if (searchResult==null){
+            throw new WebActionException(WebExceptionType.GETINVALIDORDERLIST,orderVo);
+        }
         return JSON.toJSONString(searchResult);
     }
 
@@ -76,7 +76,7 @@ public class OrderController {
     public String getPaymentList(OrderVo orderVo){
         SearchResult searchResult=orderService.getPayment(orderVo);
         if (searchResult==null){
-            throw new WebActionException(WebExceptionType.GETINVALIDPROJECTSUPPORT,orderVo);
+            throw new WebActionException(WebExceptionType.GETINVALIDORDERLIST,orderVo);
         }
         return JSON.toJSONString(searchResult);
     }
@@ -93,7 +93,7 @@ public class OrderController {
     public String getEvaluate(OrderVo orderVo){
         SearchResult searchResult=orderService.getEvaluate(orderVo);
         if (searchResult==null){
-            throw new WebActionException(WebExceptionType.GETINVALIDPROJECTSUPPORT,orderVo);
+            throw new WebActionException(WebExceptionType.GETINVALIDORDERLIST,orderVo);
         }
         return JSON.toJSONString(searchResult);
     }
