@@ -66,5 +66,15 @@
     INSERT into `user`(PHONE,PWD_LOGIN,TIME_CREATE)
     VALUES(#{phone,jdbcType=VARCHAR},#{pwdLogin,jdbcType=VARCHAR},#{timeCreate,jdbcType=TIMESTAMP})
   </insert>
-
+  <select id="findByMoblie" resultType="com.fengyu.modules.model.User" parameterType="java.lang.String">
+    select
+    PHONE
+    from `user`
+    WHERE PHONE=#{phone,jdbcType=VARCHAR};
+  </select>
+  <select id="findByEmail" resultType="com.fengyu.modules.model.User" parameterType="java.lang.String">
+    SELECT EMAIL
+    FROM `user`
+    WHERE EMAIL=#{email,jdbcType=VARCHAR};
+  </select>
 </mapper>

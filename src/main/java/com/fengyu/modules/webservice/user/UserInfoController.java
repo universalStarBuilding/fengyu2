@@ -88,6 +88,12 @@ public class UserInfoController {
 
         return JSON.toJSONString(form);
     }
+
+    /**
+     * 添加实名信息
+     * @param userInfo
+     * @return
+     */
     @POST
     @Path("insertRealName")
     public String insertRealName(UserInfo userInfo){
@@ -97,6 +103,12 @@ public class UserInfoController {
         }
         return JSON.toJSONString(rows);
     }
+
+    /**
+     * 手机注册
+     * @param sendMsgVo
+     * @return
+     */
     @POST
     @Path("insert")
     public String insertPhone(SendMsgVo sendMsgVo){
@@ -106,4 +118,5 @@ public class UserInfoController {
         }
         return JSON.toJSONString(sendMsgVo);
     }
+
 }

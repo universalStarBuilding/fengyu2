@@ -5,7 +5,7 @@ import com.fengyu.common.persistence.DataEntity;
 /**
  * Created by admin on 2016/6/25.
  */
-public class SendMsgVo extends DataEntity<SendMsgVo>{
+public class SendMsgVo{
     private String sendUser;//发送目标
     private String phone;//手机号
     private String verifyCode;//验证码
