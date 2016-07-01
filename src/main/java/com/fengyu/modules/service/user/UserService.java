@@ -48,12 +48,11 @@ public class UserService extends CrudService<UserDao, User> {
             throw new WebActionException(WebExceptionType.GETPHONEEXISTS,id);
         }
         SercurityVo vo = new SercurityVo();
-
         //手机
         String phone = userDao.getPhone(id);
         if (StringUtils.isNotEmpty(phone)) {
+            phone = phone.replace(phone.substring(3, 7), "****");
             vo.setVaguePhone(phone);
-            phone.replace(phone.substring(3, 7), "****");
             vo.setPhoneStatus(true);
         } else {
             vo.setPhoneStatus(false);
@@ -61,8 +60,8 @@ public class UserService extends CrudService<UserDao, User> {
         //邮箱
         String email = userDao.getEmail(id);
         if (StringUtils.isNotEmpty(email)) {
+            email=email.replace(email.substring(3, 7), "****");
             vo.setVagueEmail(email);
-            email.replace(email.substring(3, 7), "****");
             vo.setEmailStatus(true);
         } else {
             vo.setEmailStatus(false);
@@ -77,15 +76,16 @@ public class UserService extends CrudService<UserDao, User> {
         //实名
         String realName = userInfoDao.getRealName(id);
         if (StringUtils.isNotEmpty(realName)) {
+            realName=realName.replace(realName.substring(2), "*");
             vo.setVagueRealName(realName);
-            realName.replace(realName.substring(2), "*");
             vo.setRealNameStatus(true);
         } else {
             vo.setRealNameStatus(false);
         }
         //银行卡
         String userBank = accUserBankDao.getUserBank(id);
-        if (StringUtils.isNotEmpty(userBank)) {
+        if (StringUtils.isNotEmpty(userBank)) {//622 2804 3360 1000 3614
+            userBank=userBank.replace(userBank.substring(3,15),"************");
             vo.setVagueUserBank(userBank);
             vo.setUserBankStatus(true);
         } else {
@@ -108,8 +108,10 @@ public class UserService extends CrudService<UserDao, User> {
         String phone = userDao.getPhone(id);
         String email = userDao.getEmail(id);
         if (StringUtils.isNotEmpty(email) && StringUtils.isNotEmpty(phone)) {
-            email.replace(email.substring(3, 7), "****");
-            phone.replace(email.substring(3, 7), "****");
+            email=email.replace(email.substring(3, 7), "****");
+            phone=phone.replace(email.substring(3, 7), "****");
+            vo.setVaguePhone(phone);
+            vo.setVagueEmail(email);
             vo.setEmailStatus(true);
         } else {
             vo.setEmailStatus(false);
