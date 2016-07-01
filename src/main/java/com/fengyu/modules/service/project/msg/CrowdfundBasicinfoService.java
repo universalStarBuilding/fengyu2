@@ -65,8 +65,6 @@ public class CrowdfundBasicinfoService {
 
         return result;
     }
-
-
     /**
      * 进行中或者预热中的项目
      * @param launchVo

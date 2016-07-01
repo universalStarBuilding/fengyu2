@@ -23,8 +23,12 @@ public enum WebExceptionType {
     USERPHONENOTNULL("手机号不能为空"),
     VERIFYCODE("验证码错误"),
     USERPHONEEXISTS("手机号已存在"),
+    GETPHONEEXISTS("手机号获取失败"),
+    UPDATEPHONEEXISTS("手机号修改失败"),
     USEREMAILEXISTS("邮箱已存在已存在"),
+    UPDATEEMAILEXISTS("邮箱修改失败"),
     USEREMAILNOTNULL("邮箱不能为空"),
+    INSERTINVALIDREALNAME("添加实名信息失败"),
     //账户
     UPDATEPAYPWDACCUSERBANK("修改支付密码"),
     INSERTINVALIDACCUSERBANK("绑定银行卡失败"),
@@ -33,6 +37,7 @@ public enum WebExceptionType {
     INSERTPOSTACCESS("收货地址添加失败"),
     UPDATEPOSTACCESS("收货地址修改失败"),
     UPDATEINVALIDUSERINFO("用户信息修改异常！"),
+    GETRINVALADDRESS("收货地址获取失败"),
 
     //发起项目
     PUBLISHINVALIDPROJECT("发起项目失败！"),

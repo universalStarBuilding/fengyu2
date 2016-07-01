@@ -14,10 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.json.Json;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 
 /**
  * Created by admin on 2016/6/23.
@@ -85,6 +83,8 @@ public class SercurityController {
      */
     @POST
     @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
     public String updatePhone(User user){
         Integer rows=userService.updatePhone(user);
         if (rows==0){
@@ -99,6 +99,8 @@ public class SercurityController {
      */
     @POST
     @Path("emailUpdate")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
     public String updateEmail(User user){
         Integer rows=userService.updatePhone(user);
         if (rows==0){
@@ -113,6 +115,8 @@ public class SercurityController {
      */
     @POST
     @Path("updateLoginPwd")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
     public String updateLoginPwd(User user){
         Integer rows=userService.updatePhone(user);
         if (rows==0){

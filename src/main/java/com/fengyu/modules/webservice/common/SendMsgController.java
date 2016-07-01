@@ -1,4 +1,4 @@
-package com.fengyu.modules.webservice.sendMsg;
+package com.fengyu.modules.webservice.common;
 
 import com.alibaba.fastjson.JSON;
 import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
@@ -54,21 +54,4 @@ public class SendMsgController {
             throw  new WebActionException(WebExceptionType.VERIFYCODE,sendMsgVo);
         }
     }
-
-    /**
-     * 手机号注册账号
-     * @param user
-     * @return
-   /*  *//*
-    @POST
-    @Path("registerPhone")
-    @Produces(MediaType.APPLICATION_JSON)
-        @Consumes(MediaType.APPLICATION_JSON)
-        public String insertPhone(User user,SendMsgVo sendMsgVo){
-        if (sendMsgVo.getTypes().equals("phone")){
-            sendMsgVo.getVerifyCode();
-        }
-
-        return JSON.toJSONString(null);
-    }*/
 }

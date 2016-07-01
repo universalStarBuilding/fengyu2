@@ -101,6 +101,8 @@ public class UserInfoController {
      */
     @POST
     @Path("insertPhone")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
     public String insertPhone(User user){
         Integer rows=userService.insertPhone(user);
         if (rows==null){
@@ -116,6 +118,8 @@ public class UserInfoController {
      */
     @POST
     @Path("insertEmail")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
     public String insertEmail(User user){
         Integer rows=userService.insertEmail(user);
         if (rows==null){

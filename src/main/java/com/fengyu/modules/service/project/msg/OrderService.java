@@ -37,7 +37,7 @@ public class OrderService {
      * @return
      */
     public SearchResult getOrderList(OrderVo orderVo){
-        SearchResult<Order> result = new SearchResult<>();
+        SearchResult<OrderVo> result = new SearchResult<>();
         result.setTotalRows(orderMapper.orderPage(orderVo));
         result.setRows(orderMapper.getOrderList(orderVo));
         return result;

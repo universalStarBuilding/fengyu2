@@ -45,7 +45,7 @@ public class UserService extends CrudService<UserDao, User> {
      */
     public SercurityVo getSercurityById(Integer id) {
         if (id == null) {
-            throw new RuntimeException("用户手机号获取失败");
+            throw new WebActionException(WebExceptionType.GETPHONEEXISTS,id);
         }
         SercurityVo vo = new SercurityVo();
 
@@ -102,7 +102,7 @@ public class UserService extends CrudService<UserDao, User> {
      */
     public SercurityVo getContact(Integer id) {
         if (id == null) {
-            throw new RuntimeException("查询手机号和邮箱失败");
+            throw new WebActionException(WebExceptionType.USERPHONEEMAIL,id);
         }
         SercurityVo vo = new SercurityVo();
         String phone = userDao.getPhone(id);
@@ -124,8 +124,8 @@ public class UserService extends CrudService<UserDao, User> {
      * @return
      */
     public Integer updatePhone(User user) {
-        if (user == null) {
-            throw new RuntimeException("手机号修改失败");
+        if (user.getPhone()==null) {
+            throw new WebActionException(WebExceptionType.UPDATEPHONEEXISTS,user);
         }
         return userDao.updatePhone(user);
     }
@@ -137,8 +137,8 @@ public class UserService extends CrudService<UserDao, User> {
      * @return
      */
     public Integer updateEmail(User user) {
-        if (user == null) {
-            throw new RuntimeException("邮箱修改失败");
+        if (user.getEmail()==null) {
+            throw new WebActionException(WebExceptionType.UPDATEEMAILEXISTS,user);
         }
         return userDao.updateEmail(user);
     }

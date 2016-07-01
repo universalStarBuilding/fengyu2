@@ -1,11 +1,14 @@
 package com.fengyu.modules.service.user;
 
+import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
+import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.common.service.CrudService;
 import com.fengyu.common.utils.StringUtils;
 import com.fengyu.modules.dao.user.UserInfoDao;
 import com.fengyu.modules.model.User;
 import com.fengyu.modules.model.UserInfo;
 import com.fengyu.modules.webservice.user.vo.SercurityVo;
+import com.sun.mail.imap.protocol.UIDSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +31,7 @@ public class UserInfoService extends CrudService<UserInfoDao,UserInfo> {
     //修改用户信息
     public Integer updateUserInfo(UserInfo userInfo){
         if (userInfo.getUserId()==null){
-            throw new RuntimeException("用户信息修改失败");
+            throw new WebActionException(WebExceptionType.GETRINVALADDRESS,userInfo);
         }
         return userInfoDao.updateUserInfo(userInfo);
     }
@@ -40,7 +43,7 @@ public class UserInfoService extends CrudService<UserInfoDao,UserInfo> {
      */
     public Integer insertRealName(UserInfo userInfo){
         if (userInfo.getUserId()==null){
-            throw new RuntimeException("添加实名信息失败");
+            throw new WebActionException(WebExceptionType.INSERTINVALIDREALNAME,userInfo);
         }
         return userInfoDao.insertRealName(userInfo);
     }

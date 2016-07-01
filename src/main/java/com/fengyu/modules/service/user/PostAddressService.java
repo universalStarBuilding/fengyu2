@@ -1,5 +1,7 @@
 package com.fengyu.modules.service.user;
 
+import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
+import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.common.service.CrudService;
 import com.fengyu.modules.dao.user.PostAddressDao;
 import com.fengyu.modules.model.PostAddress;
@@ -35,6 +37,7 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
      * @return
      */
     public Integer insert(PostAddress postAddress){
+
         return postAddressDao.insert(postAddress);
     }
 
@@ -45,7 +48,7 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
      */
     public Integer updatePostAddress(PostAddress postAddress){
         if (postAddress.getUserId()==null){
-            throw new RuntimeException("收货地址修改失败");
+            throw new WebActionException(WebExceptionType.UPDATEPOSTACCESS,postAddress);
         }
         return postAddressDao.updatePostAddress(postAddress);
     }
@@ -57,7 +60,7 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
      */
     public Integer deletePostAddress(Integer id){
         if (id==null){
-            throw new RuntimeException("收货地址删除失败");
+            throw new WebActionException(WebExceptionType.DELETEPOSTACCESS,id);
         }
         PostAddress postAddress=new PostAddress();
         postAddress.setUserId(id);
