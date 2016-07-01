@@ -71,6 +71,9 @@
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
                 console.log(data);
+                alert("Ajax处理已成功：" + data);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
             },
             error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 console.log("this is error! request:"+request+",status:"+status+",message:"+message);

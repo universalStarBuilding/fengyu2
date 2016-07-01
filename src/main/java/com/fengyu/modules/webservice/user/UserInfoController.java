@@ -57,6 +57,8 @@ public class UserInfoController {
     //修改用户信息
     @POST
     @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
     public String updateUserInfo(UserInfo userInfo){
         Integer rows = userInfoService.updateUserInfo(userInfo);
         if(rows == 0){
@@ -66,28 +68,14 @@ public class UserInfoController {
     }
 
     @GET
-    @Path("web/{id}")
-    public String getException(@PathParam("id")Integer id){
-        if (id == 0) {
-            throw new WebActionException(WebExceptionType.LOGINNOTFUND, id);
-        }
+    @Path("update/{type}")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String updateUserInfo1(@PathParam("type") String update){
 
         return null;
     }
-    @GET
-    @Path("test/{phone}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String test(@PathParam("phone") @Pattern(message = Constant.PhoneInvalidError, regexp = "[0-9]{3,9}") String phone){
 
-        return phone;
-    }
-
-    @POST
-    @Path("test/form")
-    public String testPhone(@Valid FormVo form){
-
-        return JSON.toJSONString(form);
-    }
 
     /**
      * 添加实名信息
@@ -96,6 +84,8 @@ public class UserInfoController {
      */
     @POST
     @Path("insertRealName")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
     public String insertRealName(UserInfo userInfo){
         Integer rows=userInfoService.insertRealName(userInfo);
         if (rows==0){
