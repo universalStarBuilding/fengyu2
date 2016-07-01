@@ -68,13 +68,13 @@
         IS_DEFAULT = #{isDefault,jdbcType=BIT},
       </if>
     </set>
-    where USER_ID = #{userId,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
   </update>
-  <select id="postAddressPage" resultType="java.lang.Long" parameterType="com.fengyu.modules.webservice.user.vo.PostAddressResponseVo">
+  <select id="postAddressPage" resultType="java.lang.Long" parameterType="com.fengyu.modules.webservice.user.vo.PostAddressRequestVo">
     SELECT COUNT(*) FROM post_address
     where USER_ID = #{userId,jdbcType=INTEGER}
   </select>
-  <select id="getListPostAddress" resultType="com.fengyu.modules.model.PostAddress" parameterType="com.fengyu.modules.webservice.user.vo.PostAddressResponseVo">
+  <select id="getListPostAddress" resultType="com.fengyu.modules.model.PostAddress" parameterType="com.fengyu.modules.webservice.user.vo.PostAddressRequestVo">
     SELECT
     <include refid="Base_Column_List" />
     FROM post_address

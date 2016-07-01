@@ -5,6 +5,7 @@ import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.common.service.CrudService;
 import com.fengyu.modules.dao.user.PostAddressDao;
 import com.fengyu.modules.model.PostAddress;
+import com.fengyu.modules.webservice.user.vo.PostAddressRequestVo;
 import com.fengyu.modules.webservice.user.vo.PostAddressResponseVo;
 import com.fengyu.system.entity.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,13 +71,13 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
 
     /**
      * 分页查询收获地址
-     * @param postAddressResponseVo
+     * @param postAddressRequestVo
      * @return
      */
-    public SearchResult getListPostAddress(PostAddressResponseVo postAddressResponseVo){
+    public SearchResult getListPostAddress(PostAddressRequestVo postAddressRequestVo){
         SearchResult<PostAddressResponseVo> result=new SearchResult<>();
-        result.setTotalRows(postAddressDao.postAddressPage(postAddressResponseVo));
-        result.setRows(postAddressDao.getListPostAddress(postAddressResponseVo));
+        result.setTotalRows(postAddressDao.postAddressPage(postAddressRequestVo));
+        result.setRows(postAddressDao.getListPostAddress(postAddressRequestVo));
         return result;
     }
 }
