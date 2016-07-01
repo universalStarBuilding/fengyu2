@@ -54,7 +54,7 @@ public class UploadController {
     public String uploadimage1(
                                 @PathParam("type") String type,
                                 @FormDataParam("file") java.io.InputStream fileInputStream,
-                               @FormDataParam("file") FormDataContentDisposition disposition) {
+                                @FormDataParam("file") FormDataContentDisposition disposition) {
         String imageName = Calendar.getInstance().getTimeInMillis()
                 + disposition.getFileName();
 
