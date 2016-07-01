@@ -64,17 +64,17 @@ public class PostAddressController {
 
     /**
      * 修改收获地址
-     * @param postAddress
+     * @param postAddressResponseVo
      * @return
      */
     @POST
     @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String updatePostAddress( PostAddress postAddress){
-        Integer rows=postAddressService.updatePostAddress(postAddress);
+    public String updatePostAddress(PostAddressResponseVo postAddressResponseVo){
+        Integer rows=postAddressService.updatePostAddress(postAddressResponseVo);
         if (rows == 0) {
-            throw new WebActionException(WebExceptionType.UPDATEPOSTACCESS,postAddress);
+            throw new WebActionException(WebExceptionType.UPDATEPOSTACCESS,postAddressResponseVo);
         }
         return JSON.toJSONString(rows);
     }

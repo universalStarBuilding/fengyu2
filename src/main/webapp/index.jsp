@@ -713,6 +713,31 @@
             }
         });
     }
+    function getLaunch()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/project/publish/organizer/launch",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
 
 </script>
 <body>
@@ -723,6 +748,7 @@
     <input type="button" value="添加收货地址"id="insertPostAddress"onclick="insertPostAddress()">
     <input type="button" value="修改收货地址"id="updatePostAddress" onclick="updatePostAddress()">
     <input type="button" value="分页查询收货地址" onclick="pageList()">
+    <input type="button" value="查询地址详细信息" onclick="getAddress()">
     <input type="button" value="支持" onclick="queryById()">
     <input type="button" value="发起" onclick="queryBy()">
     <input type="button" value="关注" onclick="queryByIdFollow()">

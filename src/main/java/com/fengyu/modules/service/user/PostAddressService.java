@@ -45,14 +45,14 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
 
     /**
      *  修改收货地址
-     * @param postAddress
+     * @param postAddressResponseVo
      * @return
      */
-    public Integer updatePostAddress(PostAddress postAddress){
-        if (postAddress.getUserId()==null){
-            throw new WebActionException(WebExceptionType.UPDATEPOSTACCESS,postAddress);
+    public Integer updatePostAddress(PostAddressResponseVo postAddressResponseVo){
+        if (postAddressResponseVo.getId()==null){
+            throw new WebActionException(WebExceptionType.UPDATEPOSTACCESS,postAddressResponseVo);
         }
-        return postAddressDao.updatePostAddress(postAddress);
+        return postAddressDao.updatePostAddress(postAddressResponseVo);
     }
 
     /**
