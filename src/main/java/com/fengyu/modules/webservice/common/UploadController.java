@@ -2,6 +2,7 @@ package com.fengyu.modules.webservice.common;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.fengyu.common.config.Global;
 import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
 import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.modules.model.AccBasic;
@@ -21,7 +22,9 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -36,33 +39,41 @@ public class UploadController {
     /**
      * Constants operating with images
      */
-    private static final String ARTICLE_IMAGES_PATH = "c:/upload/";
+    private static final String ARTICLE_IMAGES_PATH = Global.getConfig("imagesPath");
 
     /**
-     * 第一种方式上传
+     * 图片上传
      *
      * @param fileInputStream
      * @param disposition
      * @return
      */
     @POST
-    @Path("uploadimage")
+    @Path("uploadimage/{type}")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public String uploadimage1(@FormDataParam("file") java.io.InputStream fileInputStream,
+    public String uploadimage1(
+                                @PathParam("type") String type,
+                                @FormDataParam("file") java.io.InputStream fileInputStream,
                                @FormDataParam("file") FormDataContentDisposition disposition) {
         String imageName = Calendar.getInstance().getTimeInMillis()
                 + disposition.getFileName();
 
-        File file = new File(ARTICLE_IMAGES_PATH + imageName);
+        Date dt=new Date();
+        SimpleDateFormat matter=new SimpleDateFormat("yyyyMMdd");
+
+        //
+        String staticFile = type +"/"+ matter.format(dt)+"/"+imageName;
+
+        File file = new File(ARTICLE_IMAGES_PATH + staticFile);
         try {
             //使用common io的文件写入操作
             FileUtils.copyInputStreamToFile(fileInputStream, file);
-            //原来自己的文件写入操作
-            //saveFile(fileInputStream, file);
-        } catch (IOException ex) {
-         //   Logger.getLogger(UploadImageResource.class.getName()).log(Level.SEVERE, null, ex);
+
+        }catch (IOException ex) {
+            throw new WebActionException(WebExceptionType.UPLOADINVALIDIMG,imageName);
         }
 
-        return null;
+        return staticFile;
     }
+
 }

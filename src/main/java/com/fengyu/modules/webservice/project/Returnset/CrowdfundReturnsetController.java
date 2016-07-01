@@ -68,24 +68,27 @@ public class CrowdfundReturnsetController {
     @Path("edit/{returnNo}")
     public void edit(@PathParam("returnNo")String returnNo, @Valid CrowdfundReturnsetRequestVo crowdfundReturnsetRequestVo){
 
+        crowdfundReturnsetRequestVo.setReturnNo(returnNo);
         Integer rows = crowdfundReturnsetService.updateCrowdfundReturnset(crowdfundReturnsetRequestVo);
         if(rows == 0){
             throw  new WebActionException(WebExceptionType.UPDATEINVALIDPROEJCTRETURNSET,crowdfundReturnsetRequestVo);
         }
     }
 
-    /**
-     * 删除指定项目的回报
-     * @param returnNo
-     * @return
-     */
-   /* @GET
-    @Path("delete/{id}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public void delete(@PathParam("id") Integer id){
-        Integer rows = crowdfundReturnsetService.deleteById(id);
-        if(rows == 0){
-            throw  new WebActionException(WebExceptionType.DELETEINVALIDPROEJCTRETURNSET,returnNo);
-        }
-    }*/
+//    /**
+//     * 删除指定项目的回报
+//     * @param returnNo
+//     * @return
+//     */
+//    @POST
+//    @Path("delete/{returnNo}")
+//    public void delete(@PathParam("returnNo") String returnNo){
+//
+//        Integer rows = crowdfundReturnsetService.deleteByReturnNo(returnNo);
+//        if(rows == 0){
+//            throw  new WebActionException(WebExceptionType.DELETEINVALIDPROEJCTRETURNSET,returnNo);
+//        }
+//    }
+
+
 }
