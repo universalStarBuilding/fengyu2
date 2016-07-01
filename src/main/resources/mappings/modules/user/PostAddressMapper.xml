@@ -21,11 +21,11 @@
     select 
     <include refid="Base_Column_List" />
     from post_address
-    where USER_ID = #{userId,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
   </select>
   <delete id="delete" parameterType="java.lang.Integer" >
     delete from post_address
-    where USER_ID = #{userId,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.fengyu.modules.model.PostAddress" >
     insert into post_address ( USER_ID, POST_CODE,
@@ -70,17 +70,16 @@
     </set>
     where USER_ID = #{userId,jdbcType=INTEGER}
   </update>
-  <select id="postAddressPage" resultType="java.lang.Long" parameterType="com.fengyu.modules.model.PostAddress">
+  <select id="postAddressPage" resultType="java.lang.Long" parameterType="com.fengyu.modules.webservice.user.vo.PostAddressResponseVo">
     SELECT COUNT(*) FROM post_address
-    WHERE
     where USER_ID = #{userId,jdbcType=INTEGER}
   </select>
-
-  <select id="getListPostAddress" resultType="com.fengyu.modules.model.PostAddress" parameterType="com.fengyu.modules.model.PostAddress">
+  <select id="getListPostAddress" resultType="com.fengyu.modules.model.PostAddress" parameterType="com.fengyu.modules.webservice.user.vo.PostAddressResponseVo">
     SELECT
     <include refid="Base_Column_List" />
     FROM post_address
-    limit #{startPage},#{rows}
+    where USER_ID = #{userId,jdbcType=INTEGER}
+    limit #{page},#{rows}
   </select>
 
 </mapper>

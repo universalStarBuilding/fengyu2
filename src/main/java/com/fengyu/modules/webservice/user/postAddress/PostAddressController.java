@@ -5,6 +5,7 @@ import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
 import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.modules.model.PostAddress;
 import com.fengyu.modules.service.user.PostAddressService;
+import com.fengyu.modules.webservice.user.vo.PostAddressResponseVo;
 import com.fengyu.system.entity.ResultAPI;
 import com.fengyu.system.entity.SearchResult;
 import org.slf4j.Logger;
@@ -94,18 +95,17 @@ public class PostAddressController {
 
     /**
      * 分页查询收获地址
-     * @param postAddress
+     * @param postAddressResponseVo
      * @return
      */
     @POST
     @Path("pageList")
-    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String pageList(PostAddress postAddress){
-        SearchResult searchResult=postAddressService.getListPostAddress(postAddress);
+    public String pageList(PostAddressResponseVo postAddressResponseVo){
+        SearchResult searchResult=postAddressService.getListPostAddress(postAddressResponseVo);
         if (searchResult==null){
-            throw new WebActionException(WebExceptionType.POSTACCESSNOTFUND,postAddress);
+            throw new WebActionException(WebExceptionType.POSTACCESSNOTFUND,postAddressResponseVo);
         }
-       return JSON.toJSONString(searchResult);
+        return JSON.toJSONString(searchResult);
     }
 }

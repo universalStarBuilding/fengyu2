@@ -3,7 +3,7 @@ package com.fengyu.modules.dao.user;
 import com.fengyu.common.persistence.CrudDao;
 import com.fengyu.common.persistence.annotation.MyBatisDao;
 import com.fengyu.modules.model.PostAddress;
-import com.fengyu.system.entity.LogAccess;
+import com.fengyu.modules.webservice.user.vo.PostAddressResponseVo;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public interface PostAddressDao extends CrudDao<PostAddress> {
     //修改收货地址
     Integer updatePostAddress(PostAddress postAddress);
     //查询收货列表
-    List<PostAddress>getListPostAddress(PostAddress postAddress);
+    List<PostAddress>getListPostAddress(PostAddressResponseVo postAddressResponseVo);
     //统计数据
-    long postAddressPage(PostAddress postAddress);
+    long postAddressPage(PostAddressResponseVo PostAddressResponseVo);
 }

@@ -5,6 +5,7 @@ import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.common.service.CrudService;
 import com.fengyu.modules.dao.user.PostAddressDao;
 import com.fengyu.modules.model.PostAddress;
+import com.fengyu.modules.webservice.user.vo.PostAddressResponseVo;
 import com.fengyu.system.entity.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,20 +63,20 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
         if (id==null){
             throw new WebActionException(WebExceptionType.DELETEPOSTACCESS,id);
         }
-        PostAddress postAddress=new PostAddress();
-        postAddress.setUserId(id);
+        PostAddressResponseVo postAddressResponseVo=new PostAddressResponseVo();
+        postAddressResponseVo.setId(id);
         return postAddressDao.delete(id);
     }
 
     /**
      * 分页查询收获地址
-     * @param postAddress
+     * @param postAddressResponseVo
      * @return
      */
-    public SearchResult getListPostAddress(PostAddress postAddress){
-        SearchResult<PostAddress> result=new SearchResult<>();
-        result.setTotalRows(postAddressDao.postAddressPage(postAddress));
-        result.setRows(postAddressDao.getListPostAddress(postAddress));
+    public SearchResult getListPostAddress(PostAddressResponseVo postAddressResponseVo){
+        SearchResult<PostAddressResponseVo> result=new SearchResult<>();
+        result.setTotalRows(postAddressDao.postAddressPage(postAddressResponseVo));
+        result.setRows(postAddressDao.getListPostAddress(postAddressResponseVo));
         return result;
     }
 }
