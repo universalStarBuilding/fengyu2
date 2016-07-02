@@ -75,7 +75,7 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
      * @return
      */
     public SearchResult getListPostAddress(PostAddressRequestVo postAddressRequestVo){
-        SearchResult<PostAddressResponseVo> result=new SearchResult<>();
+        SearchResult<PostAddressRequestVo> result=new SearchResult<>();
         result.setTotalRows(postAddressDao.postAddressPage(postAddressRequestVo));
         result.setRows(postAddressDao.getListPostAddress(postAddressRequestVo));
         return result;

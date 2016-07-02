@@ -2,6 +2,7 @@ package com.fengyu.modules.service.project.msg;
 
 import com.fengyu.modules.dao.project.msg.OrderDao;
 import com.fengyu.modules.model.Order;
+import com.fengyu.modules.webservice.project.vo.OrderRequestVo;
 import com.fengyu.modules.webservice.project.vo.OrderVo;
 import com.fengyu.system.entity.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
