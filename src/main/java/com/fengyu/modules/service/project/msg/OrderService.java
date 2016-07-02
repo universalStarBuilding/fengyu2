@@ -20,6 +20,7 @@ public class OrderService {
 
     /**
      * 分页：我支持的项目列表
+     *
      * @param orderVo
      * @return
      */
@@ -29,44 +30,46 @@ public class OrderService {
         result.setTotalRows(orderMapper.queryById(orderVo));
         result.setRows(orderMapper.orderPageList(orderVo));
 
-        return result ;
-    }
-
-    /**
-     * 查询所有订单列表
-     * @param orderVo
-     * @return
-     */
-    public SearchResult getOrderList(OrderVo orderVo){
-        SearchResult<OrderVo> result = new SearchResult<>();
-        result.setTotalRows(orderMapper.orderPage(orderVo));
-        result.setRows(orderMapper.getOrderList(orderVo));
         return result;
     }
 
     /**
-     * 查询待付款的订单
-     * @param
+     * 查询所有订单列表
+     *
+     * @param orderRequestVo
      * @return
      */
-    public SearchResult getPayment(OrderVo orderVo){
-        orderVo.setOrderState("0");
-        SearchResult<Order> result = new SearchResult<>();
-        result.setTotalRows(orderMapper.orderPage(orderVo));
-        result.setRows(orderMapper.getStateOrderList(orderVo));
+    public SearchResult getOrderList(OrderRequestVo orderRequestVo) {
+
+        SearchResult<OrderRequestVo> result = new SearchResult<>();
+        result.setTotalRows(orderMapper.orderPage(orderRequestVo));
+        result.setRows(orderMapper.getOrderList(orderRequestVo));
         return result;
     }
 
     /**
      * 待付款的列表
-     * @param orderVo
+     * @param orderRequestVo
      * @return
      */
-    public SearchResult getEvaluate(OrderVo orderVo){
-        orderVo.setOrderState("1");
-        SearchResult<Order> result = new SearchResult<>();
-        result.setTotalRows(orderMapper.orderPage(orderVo));
-        result.setRows(orderMapper.getStateOrderList(orderVo));
+    public SearchResult getPayment(OrderRequestVo orderRequestVo) {
+        orderRequestVo.setOrderState("0");
+        SearchResult<OrderRequestVo> result = new SearchResult<>();
+        result.setTotalRows(orderMapper.orderPage(orderRequestVo));
+        result.setRows(orderMapper.getStateOrderList(orderRequestVo));
+        return result;
+    }
+
+    /**
+     * 查询待评价的列表
+     * @param orderRequestVo
+     * @return
+     */
+    public SearchResult getEvaluate(OrderRequestVo orderRequestVo){
+        orderRequestVo.setOrderState("1");
+        SearchResult<OrderRequestVo> result = new SearchResult<>();
+        result.setTotalRows(orderMapper.orderPage(orderRequestVo));
+        result.setRows(orderMapper.getStateOrderList(orderRequestVo));
         return result;
     }
 }

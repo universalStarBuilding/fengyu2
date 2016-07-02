@@ -528,7 +528,7 @@
             dataType: "json", //返回的数据类型,text 或者 json数据，建议为json
             type: "post", //传参方式，get 或post
             data: JSON.stringify({
-                "orderOwner":"1",
+                "orderOwner":"2",
                 "page":"0",
                 "rows":"10"
             }),
@@ -556,7 +556,7 @@
             dataType: "json", //返回的数据类型,text 或者 json数据，建议为json
             type: "post", //传参方式，get 或post
             data: JSON.stringify({
-                "orderOwner":"1",
+                "orderOwner":"2",
                 "page":"0",
                 "rows":"10"
             }),
@@ -584,7 +584,7 @@
             dataType: "json", //返回的数据类型,text 或者 json数据，建议为json
             type: "post", //传参方式，get 或post
             data: JSON.stringify({
-                "orderOwner":"1",
+                "orderOwner":"2",
                 "page":"0",
                 "rows":"10"
             }),

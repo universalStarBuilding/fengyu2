@@ -18,6 +18,7 @@ public interface PostAddressDao extends CrudDao<PostAddress> {
     int delete(Integer id);
     //修改收货地址
     Integer updatePostAddress(PostAddressResponseVo PostAddressResponseVo);
+
     //查询收货列表
     List<PostAddress>getListPostAddress(PostAddressRequestVo postAddressRequestVo);
     //统计数据

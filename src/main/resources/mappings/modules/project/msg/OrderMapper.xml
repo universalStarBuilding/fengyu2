@@ -40,9 +40,8 @@
     FROM `order` O,crowdfund_basicinfo CB
     WHERE O.ORDER_OWNER = CB.USER_ID
   </select>
-
-  <select id="getOrderList" parameterType="com.fengyu.modules.webservice.project.vo.OrderRequestVo" resultType="com.fengyu.modules.model.Order">
-    SELECT o.ORDER_OWNER,o.SUBMIT_TIME,o.ORDER_AMT,o.ORDER_STATE,p.USER_ID,p.PROJECT_LIST_IMAGE,p.PROJECT_NAME
+  <select id="getOrderList" parameterType="com.fengyu.modules.webservice.project.vo.OrderRequestVo" resultType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo">
+    SELECT o.ORDER_OWNER,o.SUBMIT_TIME,o.ORDER_AMT,o.ORDER_STATE,p.USER_ID,p.PROJECT_LIST_IMAGE,p.PROJECT_NAME,o.ID
     FROM `order` o,crowdfund_basicinfo p
     WHERE o.ORDER_OWNER=p.USER_ID AND o.ORDER_OWNER=#{orderOwner,jdbcType=INTEGER}
     limit #{page},#{rows}
@@ -52,10 +51,10 @@
     FROM `order` o,crowdfund_basicinfo p
     WHERE o.ORDER_OWNER = p.USER_ID AND o.ORDER_OWNER=#{orderOwner,jdbcType=INTEGER}
   </select>
-  <select id="getStateOrderList" parameterType="com.fengyu.modules.webservice.project.vo.OrderRequestVo" resultType="com.fengyu.modules.model.Order">
-    SELECT o.ORDER_OWNER,o.SUBMIT_TIME,o.ORDER_AMT,o.ORDER_STATE,p.USER_ID,p.PROJECT_LIST_IMAGE,p.PROJECT_NAME
+  <select id="getStateOrderList" parameterType="com.fengyu.modules.webservice.project.vo.OrderRequestVo" resultType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo">
+    SELECT o.ORDER_OWNER,o.SUBMIT_TIME,o.ORDER_AMT,o.ORDER_STATE,p.USER_ID,p.PROJECT_LIST_IMAGE,p.PROJECT_NAME,o.ID
     FROM `order` o,crowdfund_basicinfo p
-    WHERE o.ORDER_OWNER=p.USER_ID AND o.ORDER_OWNER=#{orderOwner,jdbcType=INTEGER} AND o.ORDER_STATE=#{orderType,jdbcType=VARCHAR}
+    WHERE o.ORDER_OWNER=p.USER_ID AND o.ORDER_OWNER=#{orderOwner,jdbcType=INTEGER} AND o.ORDER_STATE=#{orderState,jdbcType=VARCHAR}
     limit #{page},#{rows}
   </select>
 </mapper>
