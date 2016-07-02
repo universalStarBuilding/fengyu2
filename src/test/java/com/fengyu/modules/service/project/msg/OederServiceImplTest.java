@@ -1,4 +1,4 @@
-package com.modules.service.project.msg;
+package com.fengyu.modules.service.project.msg;
 
 import com.fengyu.modules.model.Order;
 import com.fengyu.modules.service.project.msg.OrderService;

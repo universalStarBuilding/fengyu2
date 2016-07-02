@@ -709,6 +709,32 @@
         });
     }
 
+    function deleteById()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/porject/msg/crowdfundComment/deleteById",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "id":"6"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
+
 </script>
 <body>
 <div id = "error"></div>
@@ -724,7 +750,7 @@
     <input type="button" value="添加关注" onclick="insert()">
     <input type="button" value="添加站内信" onclick="inserts()">
     <input type="button" value="私信列表" onclick="privateLetter()">
-    <input type="button" value="删除私信" onclick="deleteLetter()">
+    <input type="button" value="删除站内信" onclick="deleteLetter()">
     <input type="button" value="项目动态" onclick="insertDynamic()">
     <input type="button" value="项目评论列表" onclick="querysById()">
     <input type="button" value="热门项目列表" onclick="selectHot()">
@@ -752,5 +778,7 @@
     </form>
 
     <input type="button" value="发起人信息" onclick="getLaunch()">
+    <input type="button" value="删除评论" onclick="deleteById()">
+
 </body>
 </html>

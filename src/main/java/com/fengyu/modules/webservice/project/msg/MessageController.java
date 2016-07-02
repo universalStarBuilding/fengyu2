@@ -60,6 +60,11 @@ public class MessageController {
         return JSON.toJSONString(searchResult);
     }
 
+    /**
+     * 删除站内信
+     * @param messageTextVo
+     * @return
+     */
     @POST
     @Path("deleteLetter")
     @Produces(MediaType.APPLICATION_JSON)
@@ -74,5 +79,6 @@ public class MessageController {
 
         return JSON.toJSONString(message);
     }
+
 
 }

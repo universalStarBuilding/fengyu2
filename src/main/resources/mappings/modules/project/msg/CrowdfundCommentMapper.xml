@@ -28,4 +28,9 @@
     AND CC.TOPIC_ID=#{topicId,jdbcType=INTEGER}
     limit #{page},#{rows}
   </select>
+
+  <delete id="deleteById" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundCommentRequestVo">
+    DELETE FROM  crowdfund_comment
+    WHERE ID=#{id,jdbcType=INTEGER}
+  </delete>
 </mapper>

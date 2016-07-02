@@ -7,6 +7,8 @@ import java.util.Date;
 
 public class CrowdfundCommentRequestVo extends DataEntity<CrowdfundCommentRequestVo>{
 
+    private Integer id;
+
     private Integer topicId;
 
     private String topicType;

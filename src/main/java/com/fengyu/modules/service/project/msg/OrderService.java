@@ -33,7 +33,7 @@ public class OrderService {
 
     /**
      * 查询所有订单列表
-     * @param order
+     * @param orderVo
      * @return
      */
     public SearchResult getOrderList(OrderVo orderVo){

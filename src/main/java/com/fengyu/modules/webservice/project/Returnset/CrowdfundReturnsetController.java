@@ -80,7 +80,7 @@ public class CrowdfundReturnsetController {
      * @param returnNo
      * @return
      */
-    @GET
+/*    @GET
     @Path("delete/{returnNo}")
     public void delete(@PathParam("returnNo") String returnNo){
 
@@ -88,7 +88,7 @@ public class CrowdfundReturnsetController {
         if(rows == 0){
             throw  new WebActionException(WebExceptionType.DELETEINVALIDPROEJCTRETURNSET,returnNo);
         }
-    }
+    }*/
 
 
 }

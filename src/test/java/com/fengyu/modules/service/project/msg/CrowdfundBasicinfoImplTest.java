@@ -1,4 +1,4 @@
-package com.modules.service.project.msg;
+package com.fengyu.modules.service.project.msg;
 
 import com.fengyu.modules.dao.project.msg.CrowdfundBasicinfoDao;
 import com.fengyu.modules.dao.project.msg.OrderDao;
