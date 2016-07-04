@@ -27,9 +27,9 @@ public interface OrderDao {
 
 
     //查询所有订单列表
-    List<Order> getOrderList(OrderRequestVo orderRequestVo);
+    List<OrderVo> getOrderList(OrderRequestVo orderRequestVo);
     //查询订单状态列表
-    List<Order> getStateOrderList(OrderRequestVo orderRequestVo);
+    List<OrderVo> getStateOrderList(OrderRequestVo orderRequestVo);
     //统计订单的总数
     long orderPage(OrderRequestVo orderRequestVo);
 }

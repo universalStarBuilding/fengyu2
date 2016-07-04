@@ -5,7 +5,8 @@ import com.fengyu.common.persistence.DataEntity;
 
 import java.util.Date;
 
-public class OrderVo extends Pagetables{
+public class OrderVo{
+
     private Integer id;
 
     private Integer orderId;
@@ -29,6 +30,38 @@ public class OrderVo extends Pagetables{
     private Date completeTime;
 
     private Date paymentTime;
+
+    private Integer userid;//用户编号
+
+    public String getProjectListImage() {
+        return projectListImage;
+    }
+
+    public void setProjectListImage(String projectListImage) {
+        this.projectListImage = projectListImage;
+    }
+
+    private String projectListImage;//项目头像
+
+    private String projectName;//项目名称
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
+
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
 
     public Integer getId() {
         return id;

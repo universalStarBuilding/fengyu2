@@ -23,7 +23,7 @@ public class OederServiceImplTest {
     @Autowired
     private OrderService orderService;
 
-    @Test
+  /*  @Test
     public void getPageList(){
 
         orderVo.setOrderOwner(1);
@@ -32,5 +32,5 @@ public class OederServiceImplTest {
         orderService.getPageList(orderVo);
         Assert.assertTrue("Failed to find user " + orderVo, orderVo != null);
     }
-
+*/
 }

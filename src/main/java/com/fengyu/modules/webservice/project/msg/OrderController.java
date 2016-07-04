@@ -69,7 +69,7 @@ public class OrderController {
      * @param orderRequestVo
      * @return
      */
-    @POST
+   @POST
     @Path("payment")
     @Consumes(MediaType.APPLICATION_JSON)
     public String getPaymentList(OrderRequestVo orderRequestVo){

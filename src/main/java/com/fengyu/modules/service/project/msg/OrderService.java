@@ -52,9 +52,9 @@ public class OrderService {
      * @param orderRequestVo
      * @return
      */
-    public SearchResult getPayment(OrderRequestVo orderRequestVo) {
-        orderRequestVo.setOrderState("0");
-        SearchResult<OrderRequestVo> result = new SearchResult<>();
+   public SearchResult getPayment(OrderRequestVo orderRequestVo) {
+       orderRequestVo.setOrderState("0");
+        SearchResult<OrderVo> result = new SearchResult<>();
         result.setTotalRows(orderMapper.orderPage(orderRequestVo));
         result.setRows(orderMapper.getStateOrderList(orderRequestVo));
         return result;
@@ -67,7 +67,7 @@ public class OrderService {
      */
     public SearchResult getEvaluate(OrderRequestVo orderRequestVo){
         orderRequestVo.setOrderState("1");
-        SearchResult<OrderRequestVo> result = new SearchResult<>();
+        SearchResult<OrderVo> result = new SearchResult<>();
         result.setTotalRows(orderMapper.orderPage(orderRequestVo));
         result.setRows(orderMapper.getStateOrderList(orderRequestVo));
         return result;
