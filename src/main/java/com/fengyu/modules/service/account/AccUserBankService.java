@@ -1,5 +1,7 @@
 package com.fengyu.modules.service.account;
 
+import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
+import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.common.service.CrudService;
 import com.fengyu.modules.dao.account.AccUserBankDao;
 import com.fengyu.modules.model.AccUserBank;
@@ -26,7 +28,7 @@ public class AccUserBankService extends CrudService<AccUserBankDao,AccUserBank> 
      */
     public Integer insert(AccUserBank accUserBank){
         if (accUserBank.getUserId()==null){
-            throw new RuntimeException("添加失败");
+           throw new WebActionException(WebExceptionType.INSERTINVALIDACCUSERBANK,accUserBank);
         }
         accUserBank.setCreateTime(new Date());
         return accUserBankDao.insert(accUserBank);

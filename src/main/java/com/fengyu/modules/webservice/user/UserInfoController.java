@@ -57,6 +57,8 @@ public class UserInfoController {
     //修改用户信息
     @POST
     @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
     public String updateUserInfo(UserInfo userInfo){
         Integer rows = userInfoService.updateUserInfo(userInfo);
         if(rows == 0){
@@ -66,30 +68,24 @@ public class UserInfoController {
     }
 
     @GET
-    @Path("web/{id}")
-    public String getException(@PathParam("id")Integer id){
-        if (id == 0) {
-            throw new WebActionException(WebExceptionType.LOGINNOTFUND, id);
-        }
+    @Path("update/{type}")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String updateUserInfo1(@PathParam("type") String update){
 
         return null;
     }
-    @GET
-    @Path("test/{phone}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String test(@PathParam("phone") @Pattern(message = Constant.PhoneInvalidError, regexp = "[0-9]{3,9}") String phone){
 
-        return phone;
-    }
 
-    @POST
-    @Path("test/form")
-    public String testPhone(@Valid FormVo form){
-
-        return JSON.toJSONString(form);
-    }
+    /**
+     * 添加实名信息
+     * @param userInfo
+     * @return
+     */
     @POST
     @Path("insertRealName")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
     public String insertRealName(UserInfo userInfo){
         Integer rows=userInfoService.insertRealName(userInfo);
         if (rows==0){
@@ -97,13 +93,38 @@ public class UserInfoController {
         }
         return JSON.toJSONString(rows);
     }
+
+    /**
+     * 手机注册
+     * @param
+     * @return
+     */
     @POST
-    @Path("insert")
-    public String insertPhone(SendMsgVo sendMsgVo){
-       // userService.insertPhone(sendMsgVo);
-        if (sendMsgVo==null){
-            throw new WebActionException(WebExceptionType.USERPHONENOTNULL,sendMsgVo);
+    @Path("insertPhone")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String insertPhone(User user){
+        Integer rows=userService.insertPhone(user);
+        if (rows==null){
+            throw new WebActionException(WebExceptionType.USERPHONENOTNULL,user);
         }
-        return JSON.toJSONString(sendMsgVo);
+        return JSON.toJSONString(user);
+    }
+
+    /**
+     * 邮箱注册
+     * @param user
+     * @return
+     */
+    @POST
+    @Path("insertEmail")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String insertEmail(User user){
+        Integer rows=userService.insertEmail(user);
+        if (rows==null){
+            throw new WebActionException(WebExceptionType.USEREMAILNOTNULL,user);
+        }
+        return JSON.toJSONString(user);
     }
 }

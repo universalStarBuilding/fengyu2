@@ -45,17 +45,7 @@
     )
   </insert>
   <select id="getUserBank" resultType="java.lang.String" parameterType="java.lang.Integer">
-    SELECT COUNT(*) FROM acc_user_bank
+    SELECT BANK_ACCOUNT FROM acc_user_bank
     WHERE USER_ID = #{userId,jdbcType=INTEGER}
   </select>
 </mapper>
-      <!--  `NAME`=#{name,jdbcType=VARCHAR},
-        BANK_NO = #{bankNo,jdbcType=VARCHAR},
-        BANK_ACCOUNT = #{bankAccount,jdbcType=VARCHAR},
-        OWNER_NAME = #{ownerName,jdbcType=VARCHAR},
-        OPEN_ACCT_BANK =#{openAcctBank,jdbcType=VARCHAR},
-        BANK_TYPE =#{bankType,jdbcType=VARCHAR},
-        BANK_CITY_ID =#{bankCityId,jdbcType=VARCHAR},
-        BANK_PROVINCE_ID = #{bankProvinceId,jdbcType=VARCHAR},
-        CREATE_TIME =#{createTime,jdbcType=TIMESTAMP},
-        STATE = #{state,jdbcType=TINYINT}-->

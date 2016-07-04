@@ -5,6 +5,8 @@ import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
 import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.modules.model.PostAddress;
 import com.fengyu.modules.service.user.PostAddressService;
+import com.fengyu.modules.webservice.user.vo.PostAddressRequestVo;
+import com.fengyu.modules.webservice.user.vo.PostAddressResponseVo;
 import com.fengyu.system.entity.ResultAPI;
 import com.fengyu.system.entity.SearchResult;
 import org.slf4j.Logger;
@@ -62,17 +64,17 @@ public class PostAddressController {
 
     /**
      * 修改收获地址
-     * @param postAddress
+     * @param postAddressResponseVo
      * @return
      */
     @POST
     @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String updatePostAddress( PostAddress postAddress){
-        Integer rows=postAddressService.updatePostAddress(postAddress);
+    public String updatePostAddress(PostAddressResponseVo postAddressResponseVo){
+        Integer rows=postAddressService.updatePostAddress(postAddressResponseVo);
         if (rows == 0) {
-            throw new WebActionException(WebExceptionType.UPDATEPOSTACCESS,postAddress);
+            throw new WebActionException(WebExceptionType.UPDATEPOSTACCESS,postAddressResponseVo);
         }
         return JSON.toJSONString(rows);
     }
@@ -94,18 +96,17 @@ public class PostAddressController {
 
     /**
      * 分页查询收获地址
-     * @param postAddress
+     * @param
      * @return
      */
     @POST
     @Path("pageList")
-    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String pageList(PostAddress postAddress){
-        SearchResult searchResult=postAddressService.getListPostAddress(postAddress);
+    public String pageList(PostAddressRequestVo PostAddressRequestVo){
+        SearchResult searchResult=postAddressService.getListPostAddress(PostAddressRequestVo);
         if (searchResult==null){
-            throw new WebActionException(WebExceptionType.POSTACCESSNOTFUND,postAddress);
+            throw new WebActionException(WebExceptionType.POSTACCESSNOTFUND,PostAddressRequestVo);
         }
-       return JSON.toJSONString(searchResult);
+        return JSON.toJSONString(searchResult);
     }
 }

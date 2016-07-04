@@ -5,6 +5,7 @@ import com.fengyu.common.persistence.CrudDao;
 import com.fengyu.common.persistence.annotation.MyBatisDao;
 import com.fengyu.modules.model.User;
 import com.fengyu.modules.webservice.user.vo.SendMsgVo;
+import com.fengyu.modules.webservice.user.vo.UserVo;
 
 @MyBatisDao
 public interface UserDao extends CrudDao<User> {
@@ -21,7 +22,11 @@ public interface UserDao extends CrudDao<User> {
     //修改登录密码
     Integer updateLoginPwd(User user);
     //手机注册账号
-    Integer insertPhone(SendMsgVo sendMsgVo);
+    Integer insertPhone(User user);
     //邮箱注册账号
     Integer inserEmail(User user);
+    //判断手机号是否重复
+    User findByMoblie(String phone);
+    //判断邮箱是否存在
+    User findByEmail(String email);
 }

@@ -25,6 +25,7 @@ public class ExceptionMapperSupport implements ExceptionMapper<Throwable>{
 //        return Response.status(500).entity("[{message:\""+exception1.getUserDefindExType()+".\"}]").type("application/json").build();
 
         logger.info(exception.getMessage());
+        exception.printStackTrace();
         if(logger.isDebugEnabled())
         {
 

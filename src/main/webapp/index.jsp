@@ -71,6 +71,9 @@
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
                 console.log(data);
+                alert("Ajax处理已成功：" + data);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
             },
             error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 console.log("this is error! request:"+request+",status:"+status+",message:"+message);
@@ -116,13 +119,13 @@
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
-                "userId":"2",
-                "postCode":"4444",
+                "id":"17",
+                "postCode":"5555",
                 "postUser":"zs123",
                 "mobile":"13127158259",
                 "provinceId":"3",
                 "countyId":"3",
-                "addressDetail":"艾欧尼亚"
+                "addressDetail":"德玛西亚"
             }),
             //传过去的参数，格式为 变量名：变量值
             success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
@@ -172,12 +175,14 @@
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
-                "startPage":"1",
+                "userId":"2",
+                "page":"1",
                 "rows":"2"
             }),
             //传过去的参数，格式为 变量名：变量值
             success: function(text) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 alert("Ajax处理已成功：" + text);
+                document.write(text);
                 var jsonText=JSON.stringify(text)
                 document.write(jsonText);
             },
@@ -547,7 +552,7 @@
             dataType: "json", //返回的数据类型,text 或者 json数据，建议为json
             type: "post", //传参方式，get 或post
             data: JSON.stringify({
-                "orderOwner":"1",
+                "orderOwner":"2",
                 "page":"0",
                 "rows":"10"
             }),
@@ -575,7 +580,7 @@
             dataType: "json", //返回的数据类型,text 或者 json数据，建议为json
             type: "post", //传参方式，get 或post
             data: JSON.stringify({
-                "orderOwner":"1",
+                "orderOwner":"2",
                 "page":"0",
                 "rows":"10"
             }),
@@ -603,7 +608,7 @@
             dataType: "json", //返回的数据类型,text 或者 json数据，建议为json
             type: "post", //传参方式，get 或post
             data: JSON.stringify({
-                "orderOwner":"1",
+                "orderOwner":"2",
                 "page":"0",
                 "rows":"10"
             }),
@@ -732,6 +737,31 @@
             }
         });
     }
+    function getLaunch()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/project/publish/organizer/launch",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
 
     function deleteById()
     {
@@ -768,6 +798,7 @@
     <input type="button" value="添加收货地址"id="insertPostAddress"onclick="insertPostAddress()">
     <input type="button" value="修改收货地址"id="updatePostAddress" onclick="updatePostAddress()">
     <input type="button" value="分页查询收货地址" onclick="pageList()">
+    <input type="button" value="查询地址详细信息" onclick="getAddress()">
     <input type="button" value="支持" onclick="queryById()">
     <input type="button" value="发起" onclick="queryBy()">
     <input type="button" value="关注" onclick="queryByIdFollow()">
@@ -793,10 +824,9 @@
     </form>
 
 
-    <form action="http://localhost:8080/rest/common/uploadimage" method="post" enctype="multipart/form-data">
+    <form action="http://localhost:8080/rest/common/uploadimage/project" method="post" enctype="multipart/form-data">
         <p>
             文件 :<input type="file" name="file"/><br />
-            用户名: <input type="text" name="username"/><br />
         </p>
         <input type="submit" value="上传" />
     </form>
