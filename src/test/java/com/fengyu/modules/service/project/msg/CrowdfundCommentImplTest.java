@@ -1,12 +1,9 @@
-package com.modules.service.project.msg;
+package com.fengyu.modules.service.project.msg;
 
-import com.fengyu.modules.dao.project.msg.CrowdfundBasicinfoDao;
-import com.fengyu.modules.dao.project.msg.OrderDao;
+import com.fengyu.modules.dao.project.msg.CrowdfundCommentDao;
 import com.fengyu.modules.model.CrowdfundBasicinfo;
-import com.fengyu.modules.model.Order;
-import com.fengyu.modules.service.project.msg.CrowdfundBasicinfoService;
-import com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo;
-import com.fengyu.modules.webservice.project.vo.HotResponseVo;
+import com.fengyu.modules.service.project.msg.CrowdfundCommentService;
+import com.fengyu.modules.webservice.project.vo.CrowdfundCommentRequestVo;
 import com.fengyu.system.entity.SearchResult;
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,23 +16,25 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
 @TestExecutionListeners(value = { DependencyInjectionTestExecutionListener.class })
-public class CrowdfundBasicinfoImplTest {
+public class CrowdfundCommentImplTest {
 
+    private CrowdfundCommentRequestVo ccrv=new CrowdfundCommentRequestVo();
     @Autowired
-    private CrowdfundBasicinfoService crowdfundBasicinfoService;
-    private CrowdfundBasicinfoVo cbv=new CrowdfundBasicinfoVo();
+    private CrowdfundCommentService crowdfundCommentService;
 
     @Test
-    public void queryBy(){
-            cbv.setPage(1);
-            cbv.setRows(2);
-            cbv.setUserId(2);
-        Assert.assertTrue("Failed to find user " + cbv, cbv != null);
+    public void queryById(){
+        ccrv.setTopicId("08d553a369cc45deb6535a4458f5694bx");
+        ccrv.setPage(1);
+
+        ccrv.setRows(2);
+        crowdfundCommentService.queryById(ccrv);
+        Assert.assertTrue("Failed to find user " + ccrv, ccrv != null);
     }
+
 
 }

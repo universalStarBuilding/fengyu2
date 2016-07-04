@@ -18,7 +18,7 @@
 
   <select id="getSendUserListByRecId" resultType="com.fengyu.modules.webservice.project.vo.MessageResponseVo" parameterType="com.fengyu.modules.webservice.project.vo.MessageRequestVo" >
     select
-    MESS_ID,STATUE
+    ID,MESS_ID,STATUE
     from message
     where REC_ID = #{recId,jdbcType=INTEGER}  and STATUE != 2
     limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
@@ -33,5 +33,6 @@
     SET STATUE=2
     WHERE ID=#{id,jdbcType=INTEGER}
   </update>
+
 
 </mapper>

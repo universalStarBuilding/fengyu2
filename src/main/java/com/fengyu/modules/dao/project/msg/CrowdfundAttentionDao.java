@@ -2,6 +2,7 @@ package com.fengyu.modules.dao.project.msg;
 
 import com.fengyu.common.persistence.annotation.MyBatisDao;
 import com.fengyu.modules.model.CrowdfundAttention;
+import com.fengyu.modules.webservice.project.vo.CrowdfundAttentionReponseVo;
 import com.fengyu.modules.webservice.project.vo.CrowdfundAttentionRequestVo;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface CrowdfundAttentionDao {
     //统计数量
     long queryById(CrowdfundAttentionRequestVo followProjectVo);
     //查询关注列表
-    List<CrowdfundAttention> getListFollow(CrowdfundAttentionRequestVo followProjectVo);
+    List<CrowdfundAttentionReponseVo> getListFollow(CrowdfundAttentionRequestVo followProjectVo);
     //添加关注项目
     Integer insert(CrowdfundAttention followProject);
     //统计项目关注人数

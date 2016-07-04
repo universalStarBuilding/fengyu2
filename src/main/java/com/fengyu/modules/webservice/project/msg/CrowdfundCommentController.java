@@ -50,6 +50,26 @@ public class CrowdfundCommentController {
         return JSON.toJSONString(searchResult);
     }
 
+    /**
+     * 删除评论
+     * @param crowdfundCommentVo
+     * @return
+     */
+    @POST
+    @Path("deleteById")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String deleteById(CrowdfundCommentRequestVo crowdfundCommentVo){
+
+        if(crowdfundCommentVo==null){
+            throw new WebActionException(WebExceptionType.GETINVALIDCROWDFUNDCOMMENT,crowdfundCommentVo);
+        }
+        Integer searchResult  = crowdfundCommentService.deleteById(crowdfundCommentVo);
+
+        return JSON.toJSONString(searchResult);
+    }
+
+
 /*    @POST
     @Path("quartzTest")
     @Produces(MediaType.APPLICATION_JSON)

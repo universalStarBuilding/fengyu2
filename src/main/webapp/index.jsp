@@ -201,13 +201,15 @@
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
-
-                "startPage":"1",
-                "rows":"2"
+                "orderOwner":"1",
+                "page":"0",
+                "rows":"5"
             }),
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
             },
            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                console.log(request);
@@ -228,12 +230,15 @@
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
-                "startPage":"1",
-                "rows":"10"
+                "userId":"2",
+                "page":"0",
+                "rows":"5"
             }),
             //传过去的参数，格式为 变量名：变量值
                success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
+                   var jsonText=JSON.stringify(data)
+                   document.write(jsonText);
             },
            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 console.log(request);
@@ -253,12 +258,15 @@
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
-                "startPage":"1",
-                "rows":"10"
+                "userId":"1",
+                "page":"0",
+                "rows":"5"
             }),
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
             },
             error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 console.log(request);
@@ -284,6 +292,8 @@
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
             },
             error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 console.log(request);
@@ -313,6 +323,8 @@
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
             },
             error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 console.log(request);
@@ -332,14 +344,16 @@
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
                 "page":"0",
-                "rows":"9",
-                "recId":"1",
+                "rows":"3",
+                "recId":"3",
                 "messageType":"0"
 
             }),
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
             },
             error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 console.log(request);
@@ -365,6 +379,8 @@
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
             },
             error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 console.log(request);
@@ -395,6 +411,8 @@
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
             },
             error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 console.log(request);
@@ -414,13 +432,15 @@
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
-                "topicId":"1",
-                "page":"1",
+                "topicId":"42cdcce263f9440db23ff5191a1cbf90",
+                "page":"0",
                 "rows":"2"
             }),
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
             },
             error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 console.log(request);
@@ -446,6 +466,8 @@
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                 console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
             },
             error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                 console.log(request);
@@ -511,6 +533,8 @@
                 //传过去的参数，格式为 变量名：变量值
                 success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
                     console.log("this is success! data:"+data,",status="+status);
+                    var jsonText=JSON.stringify(data)
+                    document.write(jsonText);
                 },
                 error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
                     console.log(request);
@@ -528,7 +552,7 @@
             dataType: "json", //返回的数据类型,text 或者 json数据，建议为json
             type: "post", //传参方式，get 或post
             data: JSON.stringify({
-                "orderOwner":"1",
+                "orderOwner":"2",
                 "page":"0",
                 "rows":"10"
             }),
@@ -556,7 +580,7 @@
             dataType: "json", //返回的数据类型,text 或者 json数据，建议为json
             type: "post", //传参方式，get 或post
             data: JSON.stringify({
-                "orderOwner":"1",
+                "orderOwner":"2",
                 "page":"0",
                 "rows":"10"
             }),
@@ -584,7 +608,7 @@
             dataType: "json", //返回的数据类型,text 或者 json数据，建议为json
             type: "post", //传参方式，get 或post
             data: JSON.stringify({
-                "orderOwner":"1",
+                "orderOwner":"2",
                 "page":"0",
                 "rows":"10"
             }),
@@ -688,6 +712,31 @@
         });
     }
 
+    function getLaunchs()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/project/publish/organizer/launch",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "organizerNo":"6671fa1fb2e245dea1ed534647c9eaeb"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
     function getLaunch()
     {
         $.ajax({
@@ -696,31 +745,6 @@
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
-                "organizerNo":"1962ca055a52476788a9493648e31fb1"
-            }),
-            //传过去的参数，格式为 变量名：变量值
-            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
-                console.log("this is success! data:"+data,",status="+status);
-                var jsonText=JSON.stringify(data)
-                document.write(jsonText);
-            },
-            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                console.log(request);
-                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
-                var errrorText = request.responseText;
-                var errrorText = eval('(' + errrorText + ')');
-                console.log(errrorText[0]["message"]);
-            }
-        });
-    }
-    function getLaunch()
-    {
-        $.ajax({
-            url:"http://localhost:8080/rest/project/publish/organizer/launch",
-            contentType: "application/json; charset=utf-8",
-            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
-            type:"post", //传参方式，get 或post
-            data:JSON.stringify({
 
             }),
             //传过去的参数，格式为 变量名：变量值
@@ -738,42 +762,16 @@
             }
         });
     }
-    function accuser()
+
+    function deleteById()
     {
         $.ajax({
-            url:"http://localhost:8080/rest/accUserBank/accUser",
+            url:"http://localhost:8080/rest/porject/msg/crowdfundComment/deleteById",
             contentType: "application/json; charset=utf-8",
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
-
-                "id":"1"
-            }),
-            //传过去的参数，格式为 变量名：变量值
-            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
-                console.log("this is success! data:"+data,",status="+status);
-                var jsonText=JSON.stringify(data)
-                document.write(jsonText);
-            },
-            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
-                console.log(request);
-                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
-                var errrorText = request.responseText;
-                var errrorText = eval('(' + errrorText + ')');
-                console.log(errrorText[0]["message"]);
-            }
-        });
-    }
-    function getPostAddress()
-    {
-        $.ajax({
-            url:"http://localhost:8080/rest/user/postAddress/getPostAddress",
-            contentType: "application/json; charset=utf-8",
-            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
-            type:"post", //传参方式，get 或post
-            data:JSON.stringify({
-
-                "id":"17"
+                "id":"6"
             }),
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
@@ -819,8 +817,6 @@
     <input type="button" value="查询待付款列表" onclick="getPayment()">
     <input type="button" value="查询待评价列表" onclick="getEvaluate()">
     <input type="button" value="发送验证码"onclick="sendMsg()">
-    <input type="button" value="查询银行个人信息" onclick="accuser()">
-    <input type="button" value="查询收货地址详细信息" onclick="getPostAddress()">
     <form action="#" method="post">
         <input type="text" name="messageCode">
         <input type="button" value="发送验证码">
@@ -835,5 +831,6 @@
         <input type="submit" value="上传" />
     </form>
 
+    <input type="button" value="发起人信息" onclick="getLaunch()">
 </body>
 </html>

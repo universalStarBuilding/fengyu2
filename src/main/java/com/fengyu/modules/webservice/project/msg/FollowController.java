@@ -32,7 +32,11 @@ public class FollowController {
     @Autowired
     private CrowdfundAttentionService followProjectService;
 
-
+    /**
+     * 查询我关注的项目列表
+     * @param followProjectVo
+     * @return
+     */
     @POST
     @Path("queryByIdFollow")
     @Produces(MediaType.APPLICATION_JSON)

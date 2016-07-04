@@ -32,5 +32,14 @@ public class CrowdfundCommentService {
         return result ;
     }
 
+    /**
+     * 删除评论
+     * @param crowdfundCommentRequestVo
+     * @return
+     */
+    public Integer deleteById(CrowdfundCommentRequestVo crowdfundCommentRequestVo){
+        crowdfundCommentDao.deleteById(crowdfundCommentRequestVo);
+        return 1;
+    }
 
 }

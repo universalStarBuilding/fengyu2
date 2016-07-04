@@ -158,20 +158,20 @@
   </select>
 
 
-  <select id="queryBy" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="java.lang.Long">
+  <select id="queryBy" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoRequestVo" resultType="java.lang.Long">
     SELECT COUNT(*) FROM crowdfund_basicinfo cb
-    WHERE cb.user_id=#{id,jdbcType=INTEGER}
+    WHERE cb.USER_ID=#{userId,jdbcType=INTEGER}
   </select>
 
-  <select id="getListLaunch" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="com.fengyu.modules.model.CrowdfundBasicinfo">
+  <select id="getListLaunch" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoRequestVo" resultType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoReponseVo">
     SELECT
     CB.PROJECT_NAME,CB.PROJECT_IMAGE,CB.PROJECT_SUMMARY,CB.RELEASES_TIME
     FROM crowdfund_basicinfo CB
-    WHERE cb.user_id=#{id,jdbcType=INTEGER}
+    WHERE cb.USER_ID=#{userId,jdbcType=INTEGER}
     limit #{page},#{rows}
   </select>
 
-  <select id="selectHot" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="com.fengyu.modules.webservice.project.vo.HotResponseVo">
+  <select id="selectHot" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoRequestVo" resultType="com.fengyu.modules.webservice.project.vo.HotResponseVo">
     SELECT CB.USER_ID, CB.PROJECT_NAME,CB.PROJECT_IMAGE,CB.FUND_AMT,CB.FUND_TOTAL_AMT,CB.PROJECT_NO,CB.PROJECT_STATE
     FROM  crowdfund_basicinfo CB
     where CB.HOT=#{hot,jdbcType=BIT}
@@ -180,27 +180,27 @@
     limit #{page},#{rows}
   </select>
 
-  <select id="getTotal" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="java.lang.Integer">
+  <select id="getTotal" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoRequestVo" resultType="java.lang.Integer">
     SELECT COUNT(*)
     FROM  crowdfund_basicinfo CB
     WHERE CB.HOT=#{hot,jdbcType=BIT}
     AND CB.PROJECT_STATE=#{projectState,jdbcType=VARCHAR}
   </select>
 
-  <select id="selectConduct" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="com.fengyu.modules.webservice.project.vo.HotResponseVo">
+  <select id="selectConduct" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoRequestVo" resultType="com.fengyu.modules.webservice.project.vo.HotResponseVo">
     SELECT CB.USER_ID,CB.PROJECT_NAME,CB.PROJECT_IMAGE,CB.FUND_AMT,CB.FUND_TOTAL_AMT,CB.PROJECT_NO,CB.PROJECT_STATE
     FROM crowdfund_basicinfo CB
     WHERE CB.PROJECT_STATE=#{projectState,jdbcType=VARCHAR}
     limit #{page},#{rows}
   </select>
 
-  <select id="getPreheat" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="java.lang.Integer">
+  <select id="getPreheat" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoRequestVo" resultType="java.lang.Integer">
     SELECT COUNT(*)
     FROM crowdfund_basicinfo CB
     WHERE CB.PROJECT_STATE=#{projectState,jdbcType=VARCHAR}
   </select>
 
-  <select id="selectDetails" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="com.fengyu.modules.webservice.project.vo.HotResponseVo">
+  <select id="selectDetails" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoRequestVo" resultType="com.fengyu.modules.webservice.project.vo.HotResponseVo">
     SELECT CB.PROJECT_NAME,CB.FUND_AMT,CB.FUND_TOTAL_AMT,CB.PROJECT_SYNOPSIS,CB.PROJECT_IMAGE,CB.PROJECT_LIST_IMAGE
     FROM crowdfund_basicinfo CB
     WHERE CB.PROJECT_NO=#{projectNo,jdbcType=VARCHAR}
