@@ -17,7 +17,9 @@ public interface MessageDao extends CrudDao<Message>{
     List<MessageResponseVo> getSendUserListByRecId(MessageRequestVo messageRequestVo);
     //统计我的私信数量
     Integer coutSendUserListByRecId(Integer messId);
-
-    //删除私信
+    //删除站内信
     int updateById(MessageRequestVo messageRequestVo);
+
+
+
 }

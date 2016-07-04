@@ -1,4 +1,4 @@
-package com.modules.service.project.msg;
+package com.fengyu.modules.service.project.msg;
 
 import com.fengyu.modules.dao.project.msg.CrowdfundCommentDao;
 import com.fengyu.modules.model.CrowdfundBasicinfo;
@@ -28,7 +28,7 @@ public class CrowdfundCommentImplTest {
 
     @Test
     public void queryById(){
-        ccrv.setTopicId(1);
+        ccrv.setTopicId("08d553a369cc45deb6535a4458f5694bx");
         ccrv.setPage(1);
 
         ccrv.setRows(2);

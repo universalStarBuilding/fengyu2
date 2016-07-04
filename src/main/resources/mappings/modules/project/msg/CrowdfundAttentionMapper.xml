@@ -20,7 +20,7 @@
 
   </select>
 
-  <select id="getListFollow" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundAttentionRequestVo" resultType="com.fengyu.modules.model.CrowdfundAttention">
+  <select id="getListFollow" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundAttentionRequestVo" resultType="com.fengyu.modules.webservice.project.vo.CrowdfundAttentionReponseVo">
     SELECT
     CB.PROJECT_NAME,CB.PROJECT_IMAGE,CB.PROJECT_SUMMARY,CB.RELEASES_TIME
     FROM crowdfund_basicinfo CB,crowdfund_attention CA

@@ -2,6 +2,7 @@ package com.fengyu.modules.service.project.msg;
 
 import com.fengyu.modules.dao.project.msg.CrowdfundAttentionDao;
 import com.fengyu.modules.model.CrowdfundAttention;
+import com.fengyu.modules.webservice.project.vo.CrowdfundAttentionReponseVo;
 import com.fengyu.modules.webservice.project.vo.CrowdfundAttentionRequestVo;
 import com.fengyu.system.entity.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class CrowdfundAttentionService {
      * @return
      */
     public SearchResult queryById(CrowdfundAttentionRequestVo followProjectVo){
-        SearchResult<CrowdfundAttention> result = new SearchResult<>();
+        SearchResult<CrowdfundAttentionReponseVo> result = new SearchResult<>();
         result.setTotalRows(followProjectMapper.queryById(followProjectVo));
         result.setRows(followProjectMapper.getListFollow(followProjectVo));
         return result ;

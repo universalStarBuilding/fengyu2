@@ -5,7 +5,7 @@ import com.fengyu.common.page.Pagetables;
 import java.util.Date;
 
 public class MessageResponseVo  extends Pagetables{
-
+    private Integer id;             //表编号
     private String messId;          //模板编号
     private Integer type;           //消息类型：0 private，1public，2global
     private String status;          //状态类型：0 未读，1已读，2删除
@@ -16,6 +16,13 @@ public class MessageResponseVo  extends Pagetables{
     private String content;         //发送内容
     private Date sendTime;        //发送时间
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getType() {
         return type;

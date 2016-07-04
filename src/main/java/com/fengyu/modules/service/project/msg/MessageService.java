@@ -89,7 +89,7 @@ public class MessageService {
     }
 
     /**
-     * 删除私信
+     * 删除站内信
      * @param messageRequestVo
      * @return
      */
@@ -98,5 +98,6 @@ public class MessageService {
         message.setId(messageRequestVo.getId());
         return 1;
     }
+
 
 }

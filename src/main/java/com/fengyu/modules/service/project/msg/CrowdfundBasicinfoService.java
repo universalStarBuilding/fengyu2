@@ -6,14 +6,14 @@ import com.fengyu.modules.dao.project.msg.OrderDao;
 import com.fengyu.modules.model.CrowdfundAttention;
 import com.fengyu.modules.model.CrowdfundBasicinfo;
 import com.fengyu.modules.model.Order;
+import com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoReponseVo;
 import com.fengyu.modules.webservice.project.vo.HotResponseVo;
-import com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo;
+import com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoRequestVo;
 import com.fengyu.system.entity.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.LinkedList;
 import java.util.List;
 
 
@@ -35,9 +35,9 @@ public class CrowdfundBasicinfoService {
      * @param launchProjectVo
      * @return
      */
-    public SearchResult queryBy(CrowdfundBasicinfoVo launchProjectVo){
+    public SearchResult queryBy(CrowdfundBasicinfoRequestVo launchProjectVo){
 
-        SearchResult<CrowdfundBasicinfo> result = new SearchResult<>();
+        SearchResult<CrowdfundBasicinfoReponseVo> result = new SearchResult<>();
         result.setTotalRows(launchProjectMapper.queryBy(launchProjectVo));
         result.setRows(launchProjectMapper.getListLaunch(launchProjectVo));
 
@@ -49,7 +49,7 @@ public class CrowdfundBasicinfoService {
      * @param launchVo
      * @return
      */
-    public SearchResult selectHot(CrowdfundBasicinfoVo launchVo){
+    public SearchResult selectHot(CrowdfundBasicinfoRequestVo launchVo){
 
         List<HotResponseVo> list = launchProjectMapper.selectHot(launchVo);
         for (HotResponseVo vo :list){
@@ -72,7 +72,7 @@ public class CrowdfundBasicinfoService {
      * @param launchVo
      * @return
      */
-    public SearchResult selectConduct(CrowdfundBasicinfoVo launchVo){
+    public SearchResult selectConduct(CrowdfundBasicinfoRequestVo launchVo){
         List<HotResponseVo> list=launchProjectMapper.selectConduct(launchVo);
         for (HotResponseVo vo:list){
             Order order=new Order();
@@ -92,7 +92,7 @@ public class CrowdfundBasicinfoService {
      * @param launchVo
      * @return
      */
-    public List<HotResponseVo> selectDetails(CrowdfundBasicinfoVo launchVo){
+    public List<HotResponseVo> selectDetails(CrowdfundBasicinfoRequestVo launchVo){
         List<HotResponseVo> list=launchProjectMapper.selectDetails(launchVo);
         for (HotResponseVo vo:list){
             Order order=new Order();

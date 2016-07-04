@@ -12,5 +12,6 @@ public interface CrowdfundCommentDao {
     long queryById(CrowdfundCommentRequestVo crowdfundCommentVo);
     //查询项目评论列表
     List<CrowdfundBasicinfo> getListCrowdfund(CrowdfundCommentRequestVo crowdfundCommentVo);
-
+    //删除评论
+    Integer deleteById(CrowdfundCommentRequestVo crowdfundCommentRequestVo);
 }

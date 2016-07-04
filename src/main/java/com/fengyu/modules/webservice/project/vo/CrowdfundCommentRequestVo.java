@@ -7,7 +7,9 @@ import java.util.Date;
 
 public class CrowdfundCommentRequestVo extends DataEntity<CrowdfundCommentRequestVo>{
 
-    private Integer topicId;
+    private Integer id;
+
+    private String topicId;
 
     private String topicType;
 
@@ -23,11 +25,11 @@ public class CrowdfundCommentRequestVo extends DataEntity<CrowdfundCommentReques
 
     private Byte auditDate;
 
-    public Integer getTopicId() {
+    public String getTopicId() {
         return topicId;
     }
 
-    public void setTopicId(Integer topicId) {
+    public void setTopicId(String topicId) {
         this.topicId = topicId;
     }
 

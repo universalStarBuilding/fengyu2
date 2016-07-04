@@ -2,7 +2,8 @@ package com.fengyu.modules.service.project.msg;
 
 import com.fengyu.modules.dao.project.msg.OrderDao;
 import com.fengyu.modules.model.Order;
-import com.fengyu.modules.webservice.project.vo.OrderVo;
+import com.fengyu.modules.webservice.project.vo.OrderReponseVo;
+import com.fengyu.modules.webservice.project.vo.OrderRequestVo;
 import com.fengyu.system.entity.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,9 +23,9 @@ public class OrderService {
      * @param orderVo
      * @return
      */
-    public SearchResult getPageList(OrderVo orderVo) {
+    public SearchResult getPageList(OrderRequestVo orderVo) {
 
-        SearchResult<Order> result = new SearchResult<>();
+        SearchResult<OrderReponseVo> result = new SearchResult<>();
         result.setTotalRows(orderMapper.queryById(orderVo));
         result.setRows(orderMapper.orderPageList(orderVo));
 
@@ -33,10 +34,10 @@ public class OrderService {
 
     /**
      * 查询所有订单列表
-     * @param order
+     * @param orderVo
      * @return
      */
-    public SearchResult getOrderList(OrderVo orderVo){
+    public SearchResult getOrderList(OrderRequestVo orderVo){
         SearchResult<Order> result = new SearchResult<>();
         result.setTotalRows(orderMapper.orderPage(orderVo));
         result.setRows(orderMapper.getOrderList(orderVo));
@@ -48,7 +49,7 @@ public class OrderService {
      * @param
      * @return
      */
-    public SearchResult getPayment(OrderVo orderVo){
+    public SearchResult getPayment(OrderRequestVo orderVo){
         orderVo.setOrderState("0");
         SearchResult<Order> result = new SearchResult<>();
         result.setTotalRows(orderMapper.orderPage(orderVo));
@@ -61,7 +62,7 @@ public class OrderService {
      * @param orderVo
      * @return
      */
-    public SearchResult getEvaluate(OrderVo orderVo){
+    public SearchResult getEvaluate(OrderRequestVo orderVo){
         orderVo.setOrderState("1");
         SearchResult<Order> result = new SearchResult<>();
         result.setTotalRows(orderMapper.orderPage(orderVo));
