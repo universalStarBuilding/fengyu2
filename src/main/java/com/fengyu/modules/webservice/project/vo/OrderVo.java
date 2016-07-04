@@ -53,8 +53,6 @@ public class OrderVo{
         this.userid = userid;
     }
 
-
-
     public String getProjectName() {
         return projectName;
     }

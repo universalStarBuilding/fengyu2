@@ -55,7 +55,7 @@ public class OrderService {
    public SearchResult getPayment(OrderRequestVo orderRequestVo) {
        orderRequestVo.setOrderState("0");
         SearchResult<OrderVo> result = new SearchResult<>();
-        result.setTotalRows(orderMapper.orderPage(orderRequestVo));
+        result.setTotalRows(orderMapper.orderStatePage(orderRequestVo));
         result.setRows(orderMapper.getStateOrderList(orderRequestVo));
         return result;
     }
@@ -68,7 +68,7 @@ public class OrderService {
     public SearchResult getEvaluate(OrderRequestVo orderRequestVo){
         orderRequestVo.setOrderState("1");
         SearchResult<OrderVo> result = new SearchResult<>();
-        result.setTotalRows(orderMapper.orderPage(orderRequestVo));
+        result.setTotalRows(orderMapper.orderStatePage(orderRequestVo));
         result.setRows(orderMapper.getStateOrderList(orderRequestVo));
         return result;
     }

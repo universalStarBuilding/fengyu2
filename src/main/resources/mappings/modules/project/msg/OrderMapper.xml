@@ -53,6 +53,12 @@
     WHERE o.ORDER_OWNER = p.USER_ID and o.ORDER_OWNER=#{orderOwner,jdbcType=INTEGER}
   </select>
 
+  <select id="orderStatePage" parameterType="com.fengyu.modules.webservice.project.vo.OrderRequestVo" resultType="java.lang.Long">
+    SELECT COUNT(*)
+    FROM `order` o,crowdfund_basicinfo p
+    WHERE o.ORDER_OWNER = p.USER_ID and o.ORDER_OWNER=#{orderOwner,jdbcType=INTEGER} AND o.ORDER_STATE=#{orderState,jdbcType=VARCHAR}
+
+  </select>
   <select id="getStateOrderList" parameterType="com.fengyu.modules.webservice.project.vo.OrderRequestVo" resultType="com.fengyu.modules.webservice.project.vo.OrderVo">
     SELECT o.ORDER_OWNER,o.SUBMIT_TIME,o.ORDER_AMT,o.ORDER_STATE,p.USER_ID,p.PROJECT_LIST_IMAGE,p.PROJECT_NAME,o.ID
     FROM `order` o,crowdfund_basicinfo p

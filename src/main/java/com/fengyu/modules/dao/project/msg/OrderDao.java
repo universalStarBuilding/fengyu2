@@ -32,4 +32,6 @@ public interface OrderDao {
     List<OrderVo> getStateOrderList(OrderRequestVo orderRequestVo);
     //统计订单的总数
     long orderPage(OrderRequestVo orderRequestVo);
+    //统计状态总数
+    long orderStatePage(OrderRequestVo orderRequestVo);
 }
