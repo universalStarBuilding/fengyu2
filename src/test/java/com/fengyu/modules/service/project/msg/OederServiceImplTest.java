@@ -1,8 +1,6 @@
 package com.fengyu.modules.service.project.msg;
 
-import com.fengyu.modules.model.Order;
-import com.fengyu.modules.service.project.msg.OrderService;
-import com.fengyu.modules.webservice.project.vo.OrderVo;
+import com.fengyu.modules.webservice.project.vo.OrderRequestVo;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +17,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
 @TestExecutionListeners(value = { DependencyInjectionTestExecutionListener.class })
 public class OederServiceImplTest {
-    private OrderVo orderVo=new OrderVo();
+    private OrderRequestVo orderVo=new OrderRequestVo();
     @Autowired
     private OrderService orderService;
 

@@ -3,11 +3,9 @@ package com.fengyu.modules.webservice.project.msg;
 import com.alibaba.fastjson.JSON;
 import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
 import com.fengyu.common.exception.MapperSupport.WebActionException;
-import com.fengyu.modules.model.CrowdfundBasicinfo;
 import com.fengyu.modules.service.project.msg.CrowdfundBasicinfoService;
-import com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo;
+import com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoRequestVo;
 import com.fengyu.modules.webservice.project.vo.HotResponseVo;
-import com.fengyu.system.entity.ResultAPI;
 import com.fengyu.system.entity.SearchResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,7 +41,7 @@ public class LaunchController {
     @Path("queryBy")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String pageList(CrowdfundBasicinfoVo launchProjectVo){
+    public String pageList(CrowdfundBasicinfoRequestVo launchProjectVo){
         if (launchProjectVo==null){
             throw new WebActionException(WebExceptionType.GETINVALIDLAUNCHPROJECT,launchProjectVo);
         }
@@ -62,7 +60,7 @@ public class LaunchController {
     @Path("selectHot")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String selectHot(CrowdfundBasicinfoVo launchVo){
+    public String selectHot(CrowdfundBasicinfoRequestVo launchVo){
 
             if (launchVo==null){
                 throw new WebActionException(WebExceptionType.SELECTINVALIDHOT,launchVo);
@@ -81,7 +79,7 @@ public class LaunchController {
     @Path("selectConduct")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String selectConduct(CrowdfundBasicinfoVo launchVo){
+    public String selectConduct(CrowdfundBasicinfoRequestVo launchVo){
 
         if (launchVo==null){
             throw new WebActionException(WebExceptionType.SELECTINVALIDHOT,launchVo);
@@ -99,7 +97,7 @@ public class LaunchController {
     @Path("selectDetails")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String selectDetails(CrowdfundBasicinfoVo launchVo){
+    public String selectDetails(CrowdfundBasicinfoRequestVo launchVo){
 
         if (launchVo==null){
             throw new WebActionException(WebExceptionType.SELECTINVALIDHOT,launchVo);

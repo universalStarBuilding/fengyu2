@@ -5,7 +5,8 @@ import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
 import com.fengyu.common.exception.MapperSupport.WebActionException;
 import com.fengyu.modules.model.Order;
 import com.fengyu.modules.service.project.msg.OrderService;
-import com.fengyu.modules.webservice.project.vo.OrderVo;
+import com.fengyu.modules.webservice.project.vo.OrderReponseVo;
+import com.fengyu.modules.webservice.project.vo.OrderRequestVo;
 import com.fengyu.system.entity.SearchResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,15 +35,20 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    /**
+     * 我支持的项目列表
+     * @param orderVo
+     * @return
+     */
     @POST
     @Path("queryById")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String pageList(OrderVo orderVo){
+    public String pageList(OrderRequestVo orderVo){
         if (orderVo==null){
             throw new WebActionException(WebExceptionType.GETINVALIDPROJECTSUPPORT,orderVo);
         }
-        SearchResult<Order> result=orderService.getPageList(orderVo);
+        SearchResult<OrderReponseVo> result=orderService.getPageList(orderVo);
 
         return JSON.toJSONString(result);
     }
@@ -56,7 +62,7 @@ public class OrderController {
     @Path("order")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String getOrderList(OrderVo orderVo){
+    public String getOrderList(OrderRequestVo orderVo){
         if (orderVo==null){
             throw new WebActionException(WebExceptionType.GETINVALIDPROJECTSUPPORT,orderVo);
         }
@@ -73,7 +79,7 @@ public class OrderController {
     @Path("payment")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String getPaymentList(OrderVo orderVo){
+    public String getPaymentList(OrderRequestVo orderVo){
         SearchResult searchResult=orderService.getPayment(orderVo);
         if (searchResult==null){
             throw new WebActionException(WebExceptionType.GETINVALIDPROJECTSUPPORT,orderVo);
@@ -90,7 +96,7 @@ public class OrderController {
     @Path("evaluate")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String getEvaluate(OrderVo orderVo){
+    public String getEvaluate(OrderRequestVo orderVo){
         SearchResult searchResult=orderService.getEvaluate(orderVo);
         if (searchResult==null){
             throw new WebActionException(WebExceptionType.GETINVALIDPROJECTSUPPORT,orderVo);

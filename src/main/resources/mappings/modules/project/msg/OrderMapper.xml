@@ -20,28 +20,28 @@
     PAY_USER, SUBMIT_TIME, COMPLETE_TIME, PAYMENT_TIME
   </sql>
 
-  <select id="queryById" parameterType="com.fengyu.modules.webservice.project.vo.OrderVo" resultType="java.lang.Long">
+  <select id="queryById" parameterType="com.fengyu.modules.webservice.project.vo.OrderRequestVo" resultType="java.lang.Long">
     SELECT COUNT(*) FROM `order` O,crowdfund_basicinfo CB
     WHERE O.ORDER_OWNER = CB.USER_ID
-    AND CB.USER_ID=#{id,jdbcType=INTEGER}
+    AND CB.USER_ID=#{orderOwner,jdbcType=INTEGER}
   </select>
 
-  <select id="orderPageList" parameterType="com.fengyu.modules.webservice.project.vo.OrderVo" resultType="com.fengyu.modules.model.Order">
+  <select id="orderPageList" parameterType="com.fengyu.modules.webservice.project.vo.OrderRequestVo" resultType="com.fengyu.modules.webservice.project.vo.OrderReponseVo">
       SELECT
       CB.PROJECT_NAME,CB.PROJECT_IMAGE,CB.PROJECT_SUMMARY,CB.RELEASES_TIME
       FROM `order` O,crowdfund_basicinfo CB
       WHERE O.ORDER_OWNER = CB.USER_ID
-    AND CB.USER_ID =#{id,jdbcType=INTEGER}
-    limit #{page},#{rows}
+      AND CB.USER_ID =#{orderOwner,jdbcType=INTEGER}
+      limit #{page},#{rows}
   </select>
 
-  <select id="supportNumber" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoVo" resultType="com.fengyu.modules.webservice.project.vo.HotResponseVo">
+  <select id="supportNumber" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundBasicinfoRequestVo" resultType="com.fengyu.modules.webservice.project.vo.HotResponseVo">
     SELECT COUNT(*)
     FROM `order` O,crowdfund_basicinfo CB
     WHERE O.ORDER_OWNER = CB.USER_ID
   </select>
 
-  <select id="getOrderList" parameterType="com.fengyu.modules.webservice.project.vo.OrderVo" resultType="com.fengyu.modules.model.Order">
+  <select id="getOrderList" parameterType="com.fengyu.modules.webservice.project.vo.OrderRequestVo" resultType="com.fengyu.modules.model.Order">
     SELECT o.ORDER_OWNER,o.SUBMIT_TIME,o.ORDER_AMT,o.ORDER_STATE,p.USER_ID,p.PROJECT_LIST_IMAGE,p.PROJECT_NAME
     FROM `order` o,crowdfund_basicinfo p
     WHERE o.ORDER_OWNER=p.USER_ID AND o.ORDER_OWNER=#{orderOwner,jdbcType=INTEGER}

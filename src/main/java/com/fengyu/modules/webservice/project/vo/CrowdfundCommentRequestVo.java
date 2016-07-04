@@ -9,7 +9,7 @@ public class CrowdfundCommentRequestVo extends DataEntity<CrowdfundCommentReques
 
     private Integer id;
 
-    private Integer topicId;
+    private String topicId;
 
     private String topicType;
 
@@ -25,11 +25,11 @@ public class CrowdfundCommentRequestVo extends DataEntity<CrowdfundCommentReques
 
     private Byte auditDate;
 
-    public Integer getTopicId() {
+    public String getTopicId() {
         return topicId;
     }
 
-    public void setTopicId(Integer topicId) {
+    public void setTopicId(String topicId) {
         this.topicId = topicId;
     }
 

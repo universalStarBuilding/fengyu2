@@ -5,7 +5,7 @@ import com.fengyu.common.persistence.DataEntity;
 
 import java.util.Date;
 
-public class OrderVo extends Pagetables{
+public class OrderRequestVo extends Pagetables{
     private Integer id;
 
     private Integer orderId;
