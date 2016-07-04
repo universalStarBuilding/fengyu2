@@ -11,14 +11,13 @@ import java.util.List;
 @MyBatisDao
 public interface PostAddressDao extends CrudDao<PostAddress> {
     //查询收货地址详细信息
-    PostAddress getPostAddress(Integer id);
+    PostAddress getPostAddress(PostAddressResponseVo postAddressResponseVo);
     //增加收货地址
     int insert(PostAddress record);
     //删除收获地址
     int delete(Integer id);
     //修改收货地址
     Integer updatePostAddress(PostAddressResponseVo PostAddressResponseVo);
-
     //查询收货列表
     List<PostAddress>getListPostAddress(PostAddressRequestVo postAddressRequestVo);
     //统计数据

@@ -738,6 +738,58 @@
             }
         });
     }
+    function accuser()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/accUserBank/accUser",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+
+                "id":"1"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
+    function getPostAddress()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/user/postAddress/getPostAddress",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+
+                "id":"17"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
 
 </script>
 <body>
@@ -767,6 +819,8 @@
     <input type="button" value="查询待付款列表" onclick="getPayment()">
     <input type="button" value="查询待评价列表" onclick="getEvaluate()">
     <input type="button" value="发送验证码"onclick="sendMsg()">
+    <input type="button" value="查询银行个人信息" onclick="accuser()">
+    <input type="button" value="查询收货地址详细信息" onclick="getPostAddress()">
     <form action="#" method="post">
         <input type="text" name="messageCode">
         <input type="button" value="发送验证码">
@@ -781,6 +835,5 @@
         <input type="submit" value="上传" />
     </form>
 
-    <input type="button" value="发起人信息" onclick="getLaunch()">
 </body>
 </html>

@@ -23,14 +23,14 @@ public class PostAddressService extends CrudService<PostAddressDao,PostAddress> 
 
     /**
      * 查询详细收货地址
-     * @param id
+     * @param postAddressResponseVo
      * @return
      */
-    public PostAddress getPostAddress(Integer id){
-        if (id==null){
+    public PostAddress getPostAddress(PostAddressResponseVo postAddressResponseVo){
+        if (postAddressResponseVo.getId()==null){
             throw new RuntimeException("收货地址获取失败");
         }
-        return postAddressDao.getPostAddress(id);
+        return postAddressDao.getPostAddress(postAddressResponseVo);
     }
 
     /**

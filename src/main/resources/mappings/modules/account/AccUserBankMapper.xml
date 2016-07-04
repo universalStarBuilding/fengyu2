@@ -15,20 +15,11 @@
     <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
     <result column="STATE" property="state" jdbcType="TINYINT" />
   </resultMap>
+
   <sql id="Base_Column_List" >
     ID, USER_ID, NAME, BANK_NO, BANK_ACCOUNT, OWNER_NAME, OPEN_ACCT_BANK, BANK_TYPE, 
     BANK_CITY_ID, BANK_PROVINCE_ID, CREATE_TIME, STATE
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from acc_user_bank
-    where ID = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from acc_user_bank
-    where ID = #{id,jdbcType=INTEGER}
-  </delete>
 
   <insert id="insert" parameterType="com.fengyu.modules.model.AccUserBank" >
     insert into acc_user_bank (
@@ -47,5 +38,12 @@
   <select id="getUserBank" resultType="java.lang.String" parameterType="java.lang.Integer">
     SELECT BANK_ACCOUNT FROM acc_user_bank
     WHERE USER_ID = #{userId,jdbcType=INTEGER}
+  </select>
+
+  <select id="accUserBank" resultType="com.fengyu.modules.model.AccUserBank" parameterType="com.fengyu.modules.webservice.account.vo.AccUserBankVo">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM acc_user_bank
+    WHERE ID = #{id,jdbcType=INTEGER}
   </select>
 </mapper>

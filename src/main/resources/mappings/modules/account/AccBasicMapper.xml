@@ -11,7 +11,6 @@
   <sql id="Base_Column_List">
     USER_ID, BALANCE, FROZEN_AMT, PAY_PWD, STATUS
   </sql>
-
   <select id="getPayPwd" resultType="java.lang.String" parameterType="java.lang.Integer" >
     SELECT PAY_PWD
     FROM  acc_basic

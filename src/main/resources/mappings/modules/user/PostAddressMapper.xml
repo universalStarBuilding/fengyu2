@@ -14,11 +14,11 @@
     <result column="IS_DEFAULT" property="isDefault" jdbcType="BIT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, USER_ID, POST_CODE, POST_USER, MOBILE, PROVINCE_ID, CITY_ID, COUNTY_ID, ADDRESS_DETAIL, 
+    ID, USER_ID, POST_CODE, POST_USER, MOBILE, PROVINCE_ID, CITY_ID, COUNTY_ID, ADDRESS_DETAIL,
     IS_DEFAULT
   </sql>
-  <select id="getPostAddress" resultType="com.fengyu.modules.model.PostAddress" parameterType="java.lang.Integer" >
-    select 
+  <select id="getPostAddress" resultType="com.fengyu.modules.model.PostAddress" parameterType="com.fengyu.modules.webservice.user.vo.PostAddressResponseVo" >
+    select
     <include refid="Base_Column_List" />
     from post_address
     where ID = #{id,jdbcType=INTEGER}
@@ -29,13 +29,13 @@
   </delete>
   <insert id="insert" parameterType="com.fengyu.modules.model.PostAddress" >
     insert into post_address ( USER_ID, POST_CODE,
-      POST_USER, MOBILE, PROVINCE_ID, 
-      CITY_ID, COUNTY_ID, ADDRESS_DETAIL, 
-      IS_DEFAULT)
+    POST_USER, MOBILE, PROVINCE_ID,
+    CITY_ID, COUNTY_ID, ADDRESS_DETAIL,
+    IS_DEFAULT)
     values ( #{userId,jdbcType=INTEGER}, #{postCode,jdbcType=INTEGER},
-      #{postUser,jdbcType=VARCHAR}, #{mobile,jdbcType=INTEGER}, #{provinceId,jdbcType=INTEGER}, 
-      #{cityId,jdbcType=INTEGER}, #{countyId,jdbcType=INTEGER}, #{addressDetail,jdbcType=VARCHAR}, 
-      #{isDefault,jdbcType=BIT})
+    #{postUser,jdbcType=VARCHAR}, #{mobile,jdbcType=INTEGER}, #{provinceId,jdbcType=INTEGER},
+    #{cityId,jdbcType=INTEGER}, #{countyId,jdbcType=INTEGER}, #{addressDetail,jdbcType=VARCHAR},
+    #{isDefault,jdbcType=BIT})
   </insert>
   <update id="updatePostAddress" parameterType="com.fengyu.modules.model.PostAddress" >
     update post_address

@@ -2,9 +2,8 @@ package com.fengyu.modules.model;
 
 import com.fengyu.common.persistence.DataEntity;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
-@XmlRootElement
+
 public class AccUserBank extends DataEntity<AccUserBank>{
 
     private Integer userId;

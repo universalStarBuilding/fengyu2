@@ -30,15 +30,15 @@ public class PostAddressController {
 
     /**
      * 获取详细收获地址
-     * @param id
+     * @param postAddressResponseVo
      * @return
      */
-    @GET
-    @Path("get/{id}")
+    @POST
+    @Path("getPostAddress")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String getPostAddress(@PathParam("id")Integer id){
-        PostAddress postAddress=postAddressService.getPostAddress(id);
+    public String getPostAddress(PostAddressResponseVo postAddressResponseVo){
+        PostAddress postAddress=postAddressService.getPostAddress(postAddressResponseVo);
         if (postAddress==null){
             throw new WebActionException(WebExceptionType.POSTACCESSNOTFUND,postAddress);
         }

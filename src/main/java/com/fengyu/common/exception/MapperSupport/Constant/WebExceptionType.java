@@ -32,6 +32,7 @@ public enum WebExceptionType {
     //账户
     UPDATEPAYPWDACCUSERBANK("修改支付密码"),
     INSERTINVALIDACCUSERBANK("绑定银行卡失败"),
+    GETINVALIDACCUSERBANK("银行卡信息查询失败"),
     //收货地址
     DELETEPOSTACCESS("删除收货地址失败"),
     INSERTPOSTACCESS("收货地址添加失败"),
