@@ -712,7 +712,7 @@
         });
     }
 
-    function getLaunch()
+    function getLaunchs()
     {
         $.ajax({
             url:"http://localhost:8080/rest/project/publish/organizer/launch",
@@ -720,7 +720,7 @@
             dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
             type:"post", //传参方式，get 或post
             data:JSON.stringify({
-                "organizerNo":"1962ca055a52476788a9493648e31fb1"
+                "organizerNo":"6671fa1fb2e245dea1ed534647c9eaeb"
             }),
             //传过去的参数，格式为 变量名：变量值
             success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
@@ -831,7 +831,7 @@
         <input type="submit" value="上传" />
     </form>
 
-    <input type="button" value="发起人信息" onclick="getLaunch()">
+    <input type="button" value="发起人信息" onclick="getLaunchs()">
     <input type="button" value="删除评论" onclick="deleteById()">
 
 </body>

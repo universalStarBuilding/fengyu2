@@ -3,8 +3,8 @@ package com.fengyu.modules.webservice.project.msg;
 import com.alibaba.fastjson.JSON;
 import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
 import com.fengyu.common.exception.MapperSupport.WebActionException;
-import com.fengyu.modules.model.Order;
 import com.fengyu.modules.service.project.msg.OrderService;
+
 import com.fengyu.modules.webservice.project.vo.OrderReponseVo;
 import com.fengyu.modules.webservice.project.vo.OrderRequestVo;
 import com.fengyu.system.entity.SearchResult;
@@ -55,51 +55,48 @@ public class OrderController {
 
     /**
      * 查询订单列表
-     * @param orderVo
+     * @param orderRequestVo
      * @return
      */
     @POST
     @Path("order")
-    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String getOrderList(OrderRequestVo orderVo){
-        if (orderVo==null){
-            throw new WebActionException(WebExceptionType.GETINVALIDPROJECTSUPPORT,orderVo);
+    public String getOrderList(OrderRequestVo orderRequestVo){
+        SearchResult searchResult=orderService.getOrderList(orderRequestVo);
+        if (searchResult==null){
+            throw new WebActionException(WebExceptionType.GETINVALIDORDERLIST,orderRequestVo);
         }
-        SearchResult searchResult=orderService.getOrderList(orderVo);
         return JSON.toJSONString(searchResult);
     }
 
     /**
      * 查询待付款列表
-     * @param orderVo
+     * @param orderRequestVo
      * @return
      */
     @POST
     @Path("payment")
-    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String getPaymentList(OrderRequestVo orderVo){
-        SearchResult searchResult=orderService.getPayment(orderVo);
+    public String getPaymentList(OrderRequestVo orderRequestVo){
+        SearchResult searchResult=orderService.getPayment(orderRequestVo);
         if (searchResult==null){
-            throw new WebActionException(WebExceptionType.GETINVALIDPROJECTSUPPORT,orderVo);
+            throw new WebActionException(WebExceptionType.GETINVALIDORDERLIST,orderRequestVo);
         }
         return JSON.toJSONString(searchResult);
     }
 
     /**
      * 查询待评价列表
-     * @param orderVo
+     * @param orderRequestVo
      * @return
      */
     @POST
     @Path("evaluate")
-    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String getEvaluate(OrderRequestVo orderVo){
-        SearchResult searchResult=orderService.getEvaluate(orderVo);
+    public String getEvaluate(OrderRequestVo orderRequestVo){
+        SearchResult searchResult=orderService.getEvaluate(orderRequestVo);
         if (searchResult==null){
-            throw new WebActionException(WebExceptionType.GETINVALIDPROJECTSUPPORT,orderVo);
+            throw new WebActionException(WebExceptionType.GETINVALIDORDERLIST,orderRequestVo);
         }
         return JSON.toJSONString(searchResult);
     }

@@ -4,6 +4,8 @@ import com.fengyu.common.persistence.annotation.MyBatisDao;
 import com.fengyu.modules.model.Order;
 import com.fengyu.modules.webservice.project.vo.OrderReponseVo;
 import com.fengyu.modules.webservice.project.vo.OrderRequestVo;
+import com.fengyu.modules.webservice.project.vo.OrderRequestVo;
+import com.sun.org.apache.xpath.internal.operations.Or;
 
 import java.util.List;
 
@@ -24,9 +26,9 @@ public interface OrderDao {
     //查询详情的支持人数
     Integer supportDetails(Order order);
     //查询所有订单列表
-    List<Order> getOrderList(OrderRequestVo orderVo);
+    List<Order> getOrderList(OrderRequestVo orderRequestVo);
     //查询订单状态列表
-    List<Order> getStateOrderList(OrderRequestVo orderVo);
+    List<Order> getStateOrderList(OrderRequestVo orderRequestVo);
     //统计订单的总数
-    long orderPage(OrderRequestVo orderVo);
+    long orderPage(OrderRequestVo orderRequestVo);
 }
