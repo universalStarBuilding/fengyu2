@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fengyu.modules.dao.information.InformationDao" >
+  <resultMap id="BaseResultMap" type="com.fengyu.modules.model.Information" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="AUTHOR" property="author" jdbcType="VARCHAR" />
+    <result column="QUOTE_ADDRESS" property="quoteAddress" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="PUBLISH_USERID" property="publishUserid" jdbcType="INTEGER" />
+    <result column="PUBLISH_DATE" property="publishDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.fengyu.modules.model.Information" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, TITLE, AUTHOR, QUOTE_ADDRESS, TYPE, PUBLISH_USERID, PUBLISH_DATE,CONTENT
+  </sql>
+  <select id="getInformationPage" resultType="java.lang.Long" parameterType="com.fengyu.modules.webservice.information.vo.InformationRequestVo">
+    SELECT COUNT(*) FROM information
+    WHERE PUBLISH_USERID=#{publishUserid,jdbcType=INTEGER}
+  </select>
+  <select id="getListInformation" resultType="com.fengyu.modules.webservice.information.vo.InformationRespone" parameterType="com.fengyu.modules.webservice.information.vo.InformationRequestVo">
+    SELECT <include refid="Base_Column_List"/>
+    FROM information
+    WHERE PUBLISH_USERID=#{publishUserid,jdbcType=INTEGER}
+    limit #{page},#{rows}
+  </select>
+
+  <select id="selectById" resultType="com.fengyu.modules.model.Information" parameterType="com.fengyu.modules.webservice.information.vo.InformationRequestVo">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM information
+    WHERE ID=#{id,jdbcType=INTEGER}
+  </select>
+</mapper>

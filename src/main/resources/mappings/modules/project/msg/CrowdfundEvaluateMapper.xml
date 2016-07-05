@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fengyu.modules.dao.project.msg.CrowdfundEvaluateDao" >
+  <resultMap id="BaseResultMap" type="com.fengyu.modules.model.CrowdfundEvaluate" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="PROJECT_NO" property="projectNo" jdbcType="VARCHAR" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="SATISFATION" property="satisfation" jdbcType="INTEGER" />
+    <result column="LABEL" property="label" jdbcType="VARCHAR" />
+    <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+    <result column="IMG" property="img" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, PROJECT_NO, USER_ID, SATISFATION, LABEL, CONTENT, IMG
+  </sql>
+  <insert id="insert" parameterType="com.fengyu.modules.model.CrowdfundEvaluate" >
+    insert into crwodfund_evaluate (id, PROJECT_NO, USER_ID, 
+      SATISFATION, LABEL, CONTENT, 
+      IMG)
+    values (#{id,jdbcType=INTEGER}, #{projectNo,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{satisfation,jdbcType=INTEGER}, #{label,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{img,jdbcType=VARCHAR})
+  </insert>
+  <select id="getUserEvaluate" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundEvaluateReponseVo" resultType="com.fengyu.modules.model.CrowdfundEvaluate">
+    SELECT <include refid="Base_Column_List"/>
+    FROM crwodfund_evaluate
+    WHERE USER_ID=#{userId,jdbcType=INTEGER}
+  </select>
+  <select id="getProjectEvaluate" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundEvaluateRequestVo" resultType="com.fengyu.modules.webservice.project.vo.CrowdfundEvaluateReponseVo">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM crwodfund_evaluate
+    WHERE PROJECT_NO= #{projectNo,jdbcType=VARCHAR}
+    limit #{page},#{rows}
+  </select>
+  <select id="getEvaluatePage" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundEvaluateRequestVo" resultType="java.lang.Long">
+    SELECT COUNT(*)FROM crwodfund_evaluate
+    WHERE PROJECT_NO= #{projectNo,jdbcType=VARCHAR}
+  </select>
+</mapper>
