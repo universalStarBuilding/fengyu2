@@ -5,6 +5,7 @@ import com.fengyu.common.channel.phone.AliMsgApi;
 import com.fengyu.common.config.Cache;
 import com.fengyu.common.utils.StringUtils;
 import com.fengyu.modules.webservice.user.vo.SendMsgVo;
+import com.sun.xml.internal.bind.v2.runtime.output.SAXOutput;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,6 +39,8 @@ public class SendMsgService {
         }
         //保存验证码
         Cache.setCodeCache(code);
+
+        System.out.println(Cache.getCodeCache());
         return sendMsgVo;
     }
     //验证验证码

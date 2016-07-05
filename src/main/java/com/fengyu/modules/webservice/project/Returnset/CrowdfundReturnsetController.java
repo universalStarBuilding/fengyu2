@@ -1,8 +1,9 @@
-package com.fengyu.modules.webservice.project.returnset;
+package com.fengyu.modules.webservice.project.Returnset;
 
 import com.alibaba.fastjson.JSON;
 import com.fengyu.common.exception.MapperSupport.Constant.WebExceptionType;
 import com.fengyu.common.exception.MapperSupport.WebActionException;
+import com.fengyu.modules.model.CrowdfundReturnset;
 import com.fengyu.modules.service.project.returnset.CrowdfundReturnsetService;
 import com.fengyu.modules.webservice.project.vo.CrowdfundReturnsetReponseVo;
 import com.fengyu.modules.webservice.project.vo.CrowdfundReturnsetRequestVo;
@@ -90,4 +91,17 @@ public class CrowdfundReturnsetController {
 //        }
 //    }
 
+    /**
+     * 获取单条项目回报的详细信息
+     * @param crowdfundReturnsetRequestVo
+     * @return
+     */
+    @POST
+    @Path("getCrowdfund")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String getCrowdfund(CrowdfundReturnsetRequestVo crowdfundReturnsetRequestVo){
+          CrowdfundReturnset crowdfundReturnset=crowdfundReturnsetService.getCrowdfund(crowdfundReturnsetRequestVo);
+        return JSON.toJSONString(crowdfundReturnset);
+    }
 }

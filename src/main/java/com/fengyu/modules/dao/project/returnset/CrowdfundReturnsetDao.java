@@ -4,6 +4,7 @@ import com.fengyu.common.persistence.CrudDao;
 import com.fengyu.common.persistence.annotation.MyBatisDao;
 import com.fengyu.modules.model.CrowdfundReturnset;
 import com.fengyu.modules.webservice.project.vo.CrowdfundReturnsetReponseVo;
+import com.fengyu.modules.webservice.project.vo.CrowdfundReturnsetRequestVo;
 
 import java.util.List;
 
@@ -36,4 +37,10 @@ public interface CrowdfundReturnsetDao extends CrudDao<CrowdfundReturnset>{
      * @return
      */
     Integer deleteByReturnNo(String returnNo);
+
+    /**
+     * 查询指定项目回报的详细信息
+     * @return
+     */
+    CrowdfundReturnset getCrowdfund(CrowdfundReturnsetRequestVo crowdfundReturnsetRequestVo);
 }

@@ -100,5 +100,10 @@
     </set>
     where RETURN_NO = #{returnNo,jdbcType=VARCHAR}
   </update>
-
+  <select id="getCrowdfund"  resultType="com.fengyu.modules.model.CrowdfundReturnset" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundReturnsetRequestVo" >
+    select
+    <include refid="Base_Column_List" />
+    from crowdfund_returnset
+    where RETURN_NO = #{returnNo,jdbcType=VARCHAR}
+  </select>
 </mapper>

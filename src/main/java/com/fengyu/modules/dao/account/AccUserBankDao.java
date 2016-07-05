@@ -12,6 +12,5 @@ public interface AccUserBankDao extends CrudDao<AccUserBank> {
     //查询是否有银行卡绑定
     String getUserBank(Integer id);
     //查询用户的银行个人信息
-    //AccUserBankVo accUserBank(Integer id);
     AccUserBank accUserBank(AccUserBankVo accUserBankVo);
 }

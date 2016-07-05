@@ -685,7 +685,6 @@
             }
         });
     }
-
     function selectDetails()
     {
         $.ajax({
@@ -788,7 +787,242 @@
             }
         });
     }
+    function getCrowdfund()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/project/returnset/getCrowdfund",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "returnNo":"2016062999760820"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
+    function getInformation()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/information/getInformation",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "publishUserid":"1",
+                "page":"0",
+                "rows":"10"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
+    function selectById()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/information/selectById",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
 
+                "id":"1"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
+    function insertEvaluate()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/porject/msg/crowdfundComment/insertEvaluate",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "projectNo":"7",
+                "userId":"1",
+                "satisfation":"5",
+                "label":"大神",
+                "content":"asdas",
+                "img":"list/img.jpg"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
+    function getUserEvaluate()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/porject/msg/crowdfundComment/getUserEvaluate",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+               "userId":"1"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
+    function getAddress()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/user/postAddress/getPostAddress",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "id":"17"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
+    function getProjectEvaluate()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/porject/msg/crowdfundComment/getProjectEvaluate",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "projectNo":"1",
+                "page":"0",
+                "rows":"10"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
+    function sendPhoneMsg()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/send/sendMsg",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "types":"phone",
+                "phone":"13127158259"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
+    function yanzheng()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/send/verifyCode",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "verifyCode":$("#messageCode").val(),
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
 </script>
 <body>
 <div id = "error"></div>
@@ -817,11 +1051,16 @@
     <input type="button" value="查询待付款列表" onclick="getPayment()">
     <input type="button" value="查询待评价列表" onclick="getEvaluate()">
     <input type="button" value="发送验证码"onclick="sendMsg()">
-    <form action="#" method="post">
-        <input type="text" name="messageCode">
-        <input type="button" value="发送验证码">
-        <input type="submit" value="注册">
-    </form>
+    <input type="button" value="查询回报详细信息" onclick="getCrowdfund()">
+    <input type="button" value="获取资讯列表" onclick="getInformation()">
+    <input type="button" value="获取资讯详细信息" onclick="selectById()">
+    <input type="button" value="添加评价" onclick="insertEvaluate()">
+    <input type="button" value="根据用户查询评价" onclick="getUserEvaluate()">
+    <input type="button" value="根据项目查询评价" onclick="getProjectEvaluate()">
+    <input type="button" value="查询银行卡详细信息" onclick="getAccUserBank()">
+    <input type="text" name="messageCode" id="messageCode">
+    <input type="button" value="发送手机验证码" onclick="sendPhoneMsg()">
+    <input type="button" value="验证" onclick="yanzheng()">
 
 
     <form action="http://localhost:8080/rest/common/uploadimage/project" method="post" enctype="multipart/form-data">

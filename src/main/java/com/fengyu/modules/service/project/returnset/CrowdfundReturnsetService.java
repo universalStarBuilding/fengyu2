@@ -53,7 +53,19 @@ public class CrowdfundReturnsetService extends CrudService<CrowdfundReturnsetDao
         BeanUtils.copyProperties(crowdfundReturnsetRequestVo,crowdfundReturnset);
         crowdfundReturnset.setState("yes");        //回报档状态，是否还有空余  yes 有 no 没有
         crowdfundReturnsetDao.update(crowdfundReturnset);
-
         return 1;
+    }
+
+    /**
+     * 查询项目回报
+     * @param crowdfundReturnsetRequestVo
+     * @return
+     */
+    public CrowdfundReturnset getCrowdfund(CrowdfundReturnsetRequestVo crowdfundReturnsetRequestVo){
+
+        if (crowdfundReturnsetRequestVo.getReturnNo()==null){
+            throw new RuntimeException("查询失败");
+        }
+        return crowdfundReturnsetDao.getCrowdfund(crowdfundReturnsetRequestVo);
     }
 }
