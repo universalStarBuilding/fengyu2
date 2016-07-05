@@ -20,13 +20,9 @@ public class CrowdfundOrganizerService {
     @Autowired
     private CrowdfundOrganizerDao crowdfundOrganizerDao;
 
-    @Autowired
-    private CrowdfundBasicinfoDao crowdfundBasicinfoDao;
 
     public CrowdfundOrganizerReponseVo getLaunch(CrowdfundOrganizerRequestVo crowdfundOrganizerRequestVo){
-
-        CrowdfundOrganizerReponseVo corv=crowdfundOrganizerDao.getLaunch(crowdfundOrganizerRequestVo);
-        return corv;
+        return crowdfundOrganizerDao.getLaunch(crowdfundOrganizerRequestVo);
     }
 
 }

@@ -13,7 +13,7 @@ public class OrderRequestVo extends Pagetables{
 
     private Integer orderId;
 
-    private Integer orderOwner;
+    private String orderOwner;
 
     private Double orderAmt;
 
@@ -49,11 +49,11 @@ public class OrderRequestVo extends Pagetables{
         this.orderId = orderId;
     }
 
-    public Integer getOrderOwner() {
+    public String getOrderOwner() {
         return orderOwner;
     }
 
-    public void setOrderOwner(Integer orderOwner) {
+    public void setOrderOwner(String orderOwner) {
         this.orderOwner = orderOwner;
     }
 

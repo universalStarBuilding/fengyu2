@@ -24,7 +24,7 @@ public class OederServiceImplTest {
   /*  @Test
     public void getPageList(){
 
-        orderVo.setOrderOwner(1);
+        orderVo.setOrderOwner("1");
         orderVo.setPage(1);
         orderVo.setRows(2);
         orderService.getPageList(orderVo);

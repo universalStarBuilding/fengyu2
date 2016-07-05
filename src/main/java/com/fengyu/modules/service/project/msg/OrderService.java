@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 
 @Service(value = "orderService")
 @Transactional
@@ -72,4 +74,27 @@ public class OrderService {
         result.setRows(orderMapper.getStateOrderList(orderRequestVo));
         return result;
     }
+
+
+    /**
+     * 添加支持的项目
+     * @param orderRequestVo
+     */
+    public void insertSupport(OrderRequestVo orderRequestVo){
+        Order order=new Order();
+
+        order.setPayChannel(orderRequestVo.getPayChannel());
+        order.setPayUser(orderRequestVo.getPayUser());
+        order.setOrderType(orderRequestVo.getOrderType());
+        order.setOrderOwner(orderRequestVo.getOrderOwner());
+        order.setOrderObject(orderRequestVo.getOrderObject());
+        order.setOrderState(orderRequestVo.getOrderState());
+        order.setOrderId(orderRequestVo.getOrderId());
+        order.setOrderAmt(orderRequestVo.getOrderAmt());
+        order.setCompleteTime(new Date());
+        order.setSubmitTime(new Date());
+        order.setPaymentTime(new Date());
+        orderMapper.insertSupport(order);
+    }
+
 }
