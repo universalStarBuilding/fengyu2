@@ -65,5 +65,77 @@
     WHERE o.ORDER_OWNER=p.USER_ID AND o.ORDER_OWNER=#{orderOwner,jdbcType=INTEGER} AND o.ORDER_STATE=#{orderState,jdbcType=VARCHAR}
     limit #{page},#{rows}
   </select>
-
+  <insert id="insertSupport" parameterType="com.fengyu.modules.model.Order" >
+    insert into `order`
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="orderOwner != null" >
+        ORDER_OWNER,
+      </if>
+      <if test="orderAmt != null" >
+        ORDER_AMT,
+      </if>
+      <if test="orderState != null" >
+        ORDER_STATE,
+      </if>
+      <if test="orderType != null" >
+        ORDER_TYPE,
+      </if>
+      <if test="orderObject != null" >
+        ORDER_OBJECT,
+      </if>
+      <if test="payChannel != null" >
+        PAY_CHANNEL,
+      </if>
+      <if test="payUser != null" >
+        PAY_USER,
+      </if>
+      <if test="submitTime != null" >
+        SUBMIT_TIME,
+      </if>
+      <if test="completeTime != null" >
+        COMPLETE_TIME,
+      </if>
+      <if test="paymentTime != null" >
+        PAYMENT_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="orderOwner != null" >
+        #{orderOwner,jdbcType=INTEGER},
+      </if>
+      <if test="orderAmt != null" >
+        #{orderAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="orderState != null" >
+        #{orderState,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderObject != null" >
+        #{orderObject,jdbcType=INTEGER},
+      </if>
+      <if test="payChannel != null" >
+        #{payChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="payUser != null" >
+        #{payUser,jdbcType=INTEGER},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null" >
+        #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentTime != null" >
+        #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
 </mapper>
