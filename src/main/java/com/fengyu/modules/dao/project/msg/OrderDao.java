@@ -31,4 +31,6 @@ public interface OrderDao {
     List<Order> getStateOrderList(OrderRequestVo orderRequestVo);
     //统计订单的总数
     long orderPage(OrderRequestVo orderRequestVo);
+    //添加我支持的项目
+    void insertSupport(Order order);
 }

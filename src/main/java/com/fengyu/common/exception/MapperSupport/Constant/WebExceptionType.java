@@ -69,7 +69,9 @@ public enum WebExceptionType {
     //发起人信息
     GETINVALIDLAUNCHPEOPELINFORMATION("获取发起人信息失败"),
     GETINVALIDPROJECTSUPPORT("获取支持项目失败"),
-    GETINVALIDORDERLIST("获取订单列表失败");
+    GETINVALIDORDERLIST("获取订单列表失败"),
+    //查询回复列表
+    SELECTINVALIDREPLY("获取回复列表失败");
 
 
 

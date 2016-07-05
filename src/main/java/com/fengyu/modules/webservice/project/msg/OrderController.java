@@ -101,4 +101,19 @@ public class OrderController {
         return JSON.toJSONString(searchResult);
     }
 
+
+    /**
+     * 添加我支持的项目
+     * @param orderRequestVo
+     */
+    @POST
+    @Path("insertSupport")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void insertSupport(OrderRequestVo orderRequestVo){
+        orderService.insertSupport(orderRequestVo);
+        if (orderRequestVo==null){
+            throw new WebActionException(WebExceptionType.INSERTINVALIDDYNAMIC,orderRequestVo);
+        }
+    }
+
 }
