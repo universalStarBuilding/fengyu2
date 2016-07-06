@@ -14,10 +14,14 @@
     <result column="CITY_ID" property="cityId" jdbcType="INTEGER" />
     <result column="COUNTY_ID" property="countyId" jdbcType="INTEGER" />
     <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="FRONT_PHOTO" property="frontPhoto" jdbcType="VARCHAR"/>
+    <result column="BACK_PHOTO" property="backPhoto" jdbcType="VARCHAR"/>
+    <result column="HANDHELD_PHONTO" property="handheldPhoto" jdbcType="VARCHAR"/>
+
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, USER_ID, REAL_NAME, NICK_NAME, SEX, BRITHDAY, ID_CARD_NO, HEAD_IMG, PROVINCE_ID, 
-    CITY_ID, COUNTY_ID, ADDRESS
+    ID, USER_ID, REAL_NAME, NICK_NAME, SEX, BRITHDAY, ID_CARD_NO, HEAD_IMG, PROVINCE_ID,
+    CITY_ID, COUNTY_ID, ADDRESS, FRONT_PHOTO, BACK_PHOTO, HANDHELD_PHONTO
   </sql>
   <select id="getUserInfo" resultType="com.fengyu.modules.model.UserInfo" parameterType="java.lang.Integer" >
     select 
@@ -70,10 +74,14 @@
     from user_info
     WHERE USER_ID = #{userId,jdbcType=INTEGER}
   </select>
+
   <update id="insertRealName" parameterType="com.fengyu.modules.model.UserInfo">
     UPDATE user_info SET
     REAL_NAME= #{realName,jdbcType=VARCHAR},
-    ID_CARD_NO= #{idCardNo,jdbcType=VARCHAR}
+    ID_CARD_NO= #{idCardNo,jdbcType=VARCHAR},
+    FRONT_PHOTO=#{frontPhoto,jdbcType=VARCHAR},
+    BACK_PHOTO=#{backPhoto,jdbcType=VARCHAR},
+    HANDHELD_PHONTO=#{handheldPhoto,jdbcType=VARCHAR}
     WHERE USER_ID = #{userId,jdbcType=INTEGER}
   </update>
 </mapper>

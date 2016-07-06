@@ -109,12 +109,14 @@ public class UserService extends CrudService<UserDao, User> {
         String email = userDao.getEmail(id);
         if (StringUtils.isNotEmpty(email) && StringUtils.isNotEmpty(phone)) {
             email=email.replace(email.substring(3, 7), "****");
-            phone=phone.replace(email.substring(3, 7), "****");
+            phone=phone.replace(phone.substring(3, 7), "****");
             vo.setVaguePhone(phone);
             vo.setVagueEmail(email);
             vo.setEmailStatus(true);
+            vo.setPhoneStatus(true);
         } else {
             vo.setEmailStatus(false);
+            vo.setPhoneStatus(false);
         }
         return vo;
     }

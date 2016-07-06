@@ -1023,12 +1023,68 @@
             }
         });
     }
+    function getAccUserBank()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/user/postAddress/getPostAddress",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "id":"17",
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
+    function insertRealName()
+    {
+        $.ajax({
+            url:"http://localhost:8080/rest/user/insertRealName",
+            contentType: "application/json; charset=utf-8",
+            dataType:"json", //返回的数据类型,text 或者 json数据，建议为json
+            type:"post", //传参方式，get 或post
+            data:JSON.stringify({
+                "userId":"1",
+                "realName":"天才第一步",
+                "IdcardNo":"123456789009871234",
+                "frontPhoto":"list/front.jpg",
+                "backPhoto":"list/back.jpg",
+                "handheldPhoto":"list/handheld.jpg"
+            }),
+            //传过去的参数，格式为 变量名：变量值
+            success: function(data,status) { //若Ajax处理成功后的回调函数，text是返回的页面信息
+                console.log("this is success! data:"+data,",status="+status);
+                var jsonText=JSON.stringify(data)
+                document.write(jsonText);
+            },
+            error: function(request,status,message){  //若Ajax处理失败后回调函数，msg是返回的错误信息
+                console.log(request);
+                console.log("this is error! request:"+request+",status:"+status+",message:"+message);
+                var errrorText = request.responseText;
+                var errrorText = eval('(' + errrorText + ')');
+                console.log(errrorText[0]["message"]);
+            }
+        });
+    }
 </script>
 <body>
 <div id = "error"></div>
     <input type="button" value="测试token" id="testButton" onclick="loginSystem()">
     <input type="button" value="获取用户信息"id="getUserInfo" onclick="getUserInfo()">
     <input type="button" value="修改用户信息"id="updateUserInfo" onclick="updateUserInfo()">
+    <input type="button" value="修改登录密码" onclick="updatePwdLogin">
     <input type="button" value="添加收货地址"id="insertPostAddress"onclick="insertPostAddress()">
     <input type="button" value="修改收货地址"id="updatePostAddress" onclick="updatePostAddress()">
     <input type="button" value="分页查询收货地址" onclick="pageList()">
@@ -1058,6 +1114,7 @@
     <input type="button" value="根据用户查询评价" onclick="getUserEvaluate()">
     <input type="button" value="根据项目查询评价" onclick="getProjectEvaluate()">
     <input type="button" value="查询银行卡详细信息" onclick="getAccUserBank()">
+    <input type="button" value="添加实名信息" onclick="insertRealName()">
     <input type="text" name="messageCode" id="messageCode">
     <input type="button" value="发送手机验证码" onclick="sendPhoneMsg()">
     <input type="button" value="验证" onclick="yanzheng()">

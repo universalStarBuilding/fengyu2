@@ -9,7 +9,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 public class UserInfo extends DataEntity<UserInfo> {
-
     private Integer userId;
     private String realName;
     private String nickName;
@@ -21,10 +20,34 @@ public class UserInfo extends DataEntity<UserInfo> {
     private Integer cityId;
     private Integer countyId;
     private String address;
-
-
-
+    private String frontPhoto;
+    private String backPhoto;
+    private String handheldPhoto;
     private String email;
+
+    public String getFrontPhoto() {
+        return frontPhoto;
+    }
+
+    public void setFrontPhoto(String frontPhoto) {
+        this.frontPhoto = frontPhoto;
+    }
+
+    public String getBackPhoto() {
+        return backPhoto;
+    }
+
+    public void setBackPhoto(String backPhoto) {
+        this.backPhoto = backPhoto;
+    }
+
+    public String getHandheldPhoto() {
+        return handheldPhoto;
+    }
+
+    public void setHandheldPhoto(String handheldPhoto) {
+        this.handheldPhoto = handheldPhoto;
+    }
 
     @Email(message = "{contact.wrong.email}", regexp = "[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")
     public String getEmail() {

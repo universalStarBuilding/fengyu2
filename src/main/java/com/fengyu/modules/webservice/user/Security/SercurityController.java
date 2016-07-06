@@ -118,7 +118,7 @@ public class SercurityController {
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     public String updateLoginPwd(User user){
-        Integer rows=userService.updatePhone(user);
+        Integer rows=userService.updateLoginPwd(user);
         if (rows==0){
             throw  new WebActionException(WebExceptionType.USERPASSWORD,user);
         }
