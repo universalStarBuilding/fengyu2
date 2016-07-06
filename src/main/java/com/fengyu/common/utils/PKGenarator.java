@@ -37,6 +37,14 @@ public class PKGenarator {
 /*  53 */     return sdate + sRandom;
 /*     */   }
     /*     */
+            public static String getProjectNo()
+/*     */   {
+/*  66 */     return getOrderId();
+/*     */   }
+            public static String getLightProjectNo()
+/*     */   {
+/*  66 */     return getOrderId();
+/*     */   }
 /*     */   public static String getInvestId()
 /*     */   {
 /*  66 */     return getOrderId();

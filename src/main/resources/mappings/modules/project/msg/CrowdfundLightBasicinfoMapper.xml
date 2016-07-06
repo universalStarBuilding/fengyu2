@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fengyu.modules.dao.project.msg.CrowdfundLightBasicinfoDao" >
+  <resultMap id="BaseResultMap" type="com.fengyu.modules.model.CrowdfundLightBasicinfo" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="USERID" property="userid" jdbcType="INTEGER" />
+    <result column="PROJECT_NO" property="projectNo" jdbcType="VARCHAR" />
+    <result column="img" property="img" jdbcType="VARCHAR" />
+    <result column="AMT" property="amt" jdbcType="DECIMAL" />
+    <result column="LIMIT_DATE" property="limitDate" jdbcType="INTEGER" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="LIMIT_AMT" property="limitAmt" jdbcType="DECIMAL" />
+    <result column="INFO" property="info" jdbcType="VARCHAR" />
+    <result column="MORE_INFO" property="moreInfo" jdbcType="VARCHAR" />
+    <result column="POST_ADDRESS_FLAG" property="postAddressFlag" jdbcType="BIT" />
+    <result column="HIDDEN_RAISE_FLAG" property="hiddenRaiseFlag" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, USERID, PROJECT_NO, img, AMT, LIMIT_DATE, TYPE, PHONE, LIMIT_AMT, INFO, MORE_INFO, 
+    POST_ADDRESS_FLAG, HIDDEN_RAISE_FLAG
+  </sql>
+
+  <insert id="insertSelective" parameterType="com.fengyu.modules.model.CrowdfundLightBasicinfo" >
+    insert into crowdfund_light_basicinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+
+      <if test="userid != null" >
+        USERID,
+      </if>
+      <if test="projectNo != null" >
+        PROJECT_NO,
+      </if>
+      <if test="img != null" >
+        img,
+      </if>
+      <if test="amt != null" >
+        AMT,
+      </if>
+      <if test="limitDate != null" >
+        LIMIT_DATE,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="limitAmt != null" >
+        LIMIT_AMT,
+      </if>
+      <if test="info != null" >
+        INFO,
+      </if>
+      <if test="moreInfo != null" >
+        MORE_INFO,
+      </if>
+      <if test="postAddressFlag != null" >
+        POST_ADDRESS_FLAG,
+      </if>
+      <if test="hiddenRaiseFlag != null" >
+        HIDDEN_RAISE_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="projectNo != null" >
+        #{projectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null" >
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="amt != null" >
+        #{amt,jdbcType=DECIMAL},
+      </if>
+      <if test="limitDate != null" >
+        #{limitDate,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="limitAmt != null" >
+        #{limitAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="info != null" >
+        #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="moreInfo != null" >
+        #{moreInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="postAddressFlag != null" >
+        #{postAddressFlag,jdbcType=BIT},
+      </if>
+      <if test="hiddenRaiseFlag != null" >
+        #{hiddenRaiseFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+
+</mapper>

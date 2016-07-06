@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fengyu.modules.dao.project.msg.CrowdfundReplyDao" >
+  <resultMap id="BaseResultMap" type="com.fengyu.modules.model.CrowdfundReply" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="COMMENT_ID" property="commentId" jdbcType="INTEGER" />
+    <result column="REPLY_ID" property="replyId" jdbcType="INTEGER" />
+    <result column="REPLY_TYPE" property="replyType" jdbcType="VARCHAR" />
+    <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+    <result column="FROM_UID" property="fromUid" jdbcType="INTEGER" />
+    <result column="TO_UID" property="toUid" jdbcType="INTEGER" />
+    <result column="REPLY_DATE" property="replyDate" jdbcType="TIMESTAMP" />
+    <result column="STATUS" property="status" jdbcType="BIT" />
+    <result column="AUDIT_ID" property="auditId" jdbcType="INTEGER" />
+    <result column="AUDIT_DATE" property="auditDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, COMMENT_ID, REPLY_ID, REPLY_TYPE, CONTENT, FROM_UID, TO_UID, REPLY_DATE, STATUS, 
+    AUDIT_ID, AUDIT_DATE
+  </sql>
+
+
+  <insert id="insertReply" parameterType="com.fengyu.modules.model.CrowdfundReply">
+    INSERT INTO crowdfund_reply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commentId != null" >
+        COMMENT_ID,
+      </if>
+      <if test="replyId != null" >
+        REPLY_ID,
+      </if>
+      <if test="replyType != null" >
+        REPLY_TYPE,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+      <if test="fromUid != null" >
+        FROM_UID,
+      </if>
+      <if test="toUid != null" >
+        TO_UID,
+      </if>
+      <if test="replyDate != null" >
+        REPLY_DATE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="auditId != null" >
+        AUDIT_ID,
+      </if>
+      <if test="auditDate != null" >
+        AUDIT_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        #{commentId,jdbcType=INTEGER},
+      </if>
+      <if test="replyId != null" >
+        #{replyId,jdbcType=INTEGER},
+      </if>
+      <if test="replyType != null" >
+        #{replyType,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="fromUid != null" >
+        #{fromUid,jdbcType=INTEGER},
+      </if>
+      <if test="toUid != null" >
+        #{toUid,jdbcType=INTEGER},
+      </if>
+      <if test="replyDate != null" >
+        #{replyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="auditId != null" >
+        #{auditId,jdbcType=INTEGER},
+      </if>
+      <if test="auditDate != null" >
+        #{auditDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="getTotal" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundReplyRequsetVo" resultType="java.lang.Integer">
+    SELECT COUNT(*)
+    FROM crowdfund_reply CR,user_info UI
+    WHERE CR.FROM_UID=UI.USER_ID
+    AND CR.FROM_UID=#{fromUid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectReply" parameterType="com.fengyu.modules.webservice.project.vo.CrowdfundReplyRequsetVo" resultType="com.fengyu.modules.webservice.project.vo.CrowdfundReplyReponseVo" >
+    SELECT UI.NICK_NAME,UI.HEAD_IMG,CR.REPLY_TYPE,CR.CONTENT,CR.REPLY_DATE
+    FROM crowdfund_reply CR,user_info UI
+    WHERE CR.FROM_UID=UI.USER_ID
+    AND CR.FROM_UID=#{fromUid,jdbcType=INTEGER}
+  </select>
+</mapper>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fengyu.modules.dao.project.msg.CrowdfundLightFastenDao" >
+  <resultMap id="BaseResultMap" type="com.fengyu.modules.model.CrowdfundLightFasten" >
+    <id column="PROJECT_NO" property="projectNo" jdbcType="VARCHAR" />
+    <result column="FASTEN_AMT" property="fastenAmt" jdbcType="DECIMAL" />
+    <result column="COUNT" property="count" jdbcType="INTEGER" />
+    <result column="LIMIT_COUNT" property="limitCount" jdbcType="INTEGER" />
+    <result column="EVERYONE_BUY_COUNT" property="everyoneBuyCount" jdbcType="INTEGER" />
+    <result column="RETURN_CONTENT" property="returnContent" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PROJECT_NO, FASTEN_AMT, COUNT, LIMIT_COUNT, EVERYONE_BUY_COUNT, RETURN_CONTENT
+  </sql>
+
+  <insert id="insertFixed" parameterType="com.fengyu.modules.model.CrowdfundLightFasten" >
+    insert into crowdfund_light_fasten
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectNo != null" >
+        PROJECT_NO,
+      </if>
+      <if test="fastenAmt != null" >
+        FASTEN_AMT,
+      </if>
+      <if test="count != null" >
+        COUNT,
+      </if>
+      <if test="limitCount != null" >
+        LIMIT_COUNT,
+      </if>
+      <if test="everyoneBuyCount != null" >
+        EVERYONE_BUY_COUNT,
+      </if>
+      <if test="returnContent != null" >
+        RETURN_CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectNo != null" >
+        #{projectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fastenAmt != null" >
+        #{fastenAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="count != null" >
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="limitCount != null" >
+        #{limitCount,jdbcType=INTEGER},
+      </if>
+      <if test="everyoneBuyCount != null" >
+        #{everyoneBuyCount,jdbcType=INTEGER},
+      </if>
+      <if test="returnContent != null" >
+        #{returnContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+</mapper>
