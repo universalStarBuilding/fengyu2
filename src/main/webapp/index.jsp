@@ -905,7 +905,6 @@
                 "amt":"100000",
                 "limitDate":"20",
                 "phone":"13838384388",
-                "limitAmt":"200",
                 "info":"创建国钰公司",
                 "moreInfo":"我们公司是一流上市公司",
                 "postAddressFlag":"不提供收货地址",
