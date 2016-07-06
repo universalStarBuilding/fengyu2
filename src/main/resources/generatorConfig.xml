@@ -4,7 +4,7 @@
 <generatorConfiguration>
 
 	<classPathEntry
-		location="D:/jar/mysql-connector-java-5.1.38.jar" ></classPathEntry>
+		location="G:/mySQLjar/mysql-connector-java-5.1.38.jar" ></classPathEntry>
 	<context id="MysqlTables" targetRuntime="MyBatis3">
 		<commentGenerator>
 			<property name="suppressAllComments" value="true" />
@@ -33,7 +33,7 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 		<!-- 要生成那些表(更改tableName和domainObjectName就可以) -->
-		<table tableName="crowdfund_reply" domainObjectName="CrowdfundReply" enableCountByExample="false" enableUpdateByExample="false"
+		<table tableName="crowdfund_light_basicinfo" domainObjectName="CrowdfundLbbb" enableCountByExample="false" enableUpdateByExample="false"
 			   enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 		</table>
 	</context>

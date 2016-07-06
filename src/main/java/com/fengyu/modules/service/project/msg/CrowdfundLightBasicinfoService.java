@@ -1,5 +1,6 @@
 package com.fengyu.modules.service.project.msg;
 
+import com.fengyu.common.utils.PKGenarator;
 import com.fengyu.modules.dao.project.msg.CrowdfundLightBasicinfoDao;
 import com.fengyu.modules.model.CrowdfundLightBasicinfo;
 import com.fengyu.modules.webservice.project.vo.CrowdfundLightBasicinfoRequestVo;
@@ -23,6 +24,8 @@ public class CrowdfundLightBasicinfoService {
      */
     public void insertSelective(CrowdfundLightBasicinfoRequestVo clbrv){
         CrowdfundLightBasicinfo clb=new CrowdfundLightBasicinfo();
+        clb.setUserId(clbrv.getUserId());
+        clb.setProjectNo(PKGenarator.getLightProjectNo());
         clb.setImg(clbrv.getImg());
         clb.setInfo(clbrv.getInfo());
         clb.setMoreInfo(clbrv.getMoreInfo());

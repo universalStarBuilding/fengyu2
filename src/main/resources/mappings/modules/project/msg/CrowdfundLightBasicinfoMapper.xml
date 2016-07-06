@@ -3,7 +3,7 @@
 <mapper namespace="com.fengyu.modules.dao.project.msg.CrowdfundLightBasicinfoDao" >
   <resultMap id="BaseResultMap" type="com.fengyu.modules.model.CrowdfundLightBasicinfo" >
     <id column="ID" property="id" jdbcType="INTEGER" />
-    <result column="USERID" property="userid" jdbcType="INTEGER" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
     <result column="PROJECT_NO" property="projectNo" jdbcType="VARCHAR" />
     <result column="img" property="img" jdbcType="VARCHAR" />
     <result column="AMT" property="amt" jdbcType="DECIMAL" />
@@ -17,16 +17,15 @@
     <result column="HIDDEN_RAISE_FLAG" property="hiddenRaiseFlag" jdbcType="BIT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, USERID, PROJECT_NO, img, AMT, LIMIT_DATE, TYPE, PHONE, LIMIT_AMT, INFO, MORE_INFO, 
+    ID, USER_ID, PROJECT_NO, img, AMT, LIMIT_DATE, TYPE, PHONE, LIMIT_AMT, INFO, MORE_INFO,
     POST_ADDRESS_FLAG, HIDDEN_RAISE_FLAG
   </sql>
 
   <insert id="insertSelective" parameterType="com.fengyu.modules.model.CrowdfundLightBasicinfo" >
     insert into crowdfund_light_basicinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
-
-      <if test="userid != null" >
-        USERID,
+      <if test="userId != null" >
+        USER_ID,
       </if>
       <if test="projectNo != null" >
         PROJECT_NO,
@@ -63,8 +62,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
+
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="projectNo != null" >
         #{projectNo,jdbcType=VARCHAR},

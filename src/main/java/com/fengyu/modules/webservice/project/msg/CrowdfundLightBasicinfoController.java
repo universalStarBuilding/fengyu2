@@ -25,7 +25,7 @@ public class CrowdfundLightBasicinfoController {
     private CrowdfundLightBasicinfoService crowdfundLightBasicinfoService;
 
     /**
-     * 插入任意档位
+     * 添加任意档位
      * @param crowdfundLightBasicinfoRequestVo
      */
     @POST

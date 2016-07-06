@@ -3,7 +3,7 @@ package com.fengyu.modules.model;
 public class CrowdfundLightBasicinfo {
     private Integer id;
 
-    private Integer userid;
+    private Integer userId;
 
     private String projectNo;
 
@@ -27,6 +27,14 @@ public class CrowdfundLightBasicinfo {
 
     private Boolean hiddenRaiseFlag;
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -35,13 +43,6 @@ public class CrowdfundLightBasicinfo {
         this.id = id;
     }
 
-    public Integer getUserid() {
-        return userid;
-    }
-
-    public void setUserid(Integer userid) {
-        this.userid = userid;
-    }
 
     public String getProjectNo() {
         return projectNo;

@@ -30,4 +30,6 @@ public class OrganizerServiceImplTest {
         crowdfundOrganizerService.getLaunch(crowdfundOrganizerRequestVo);
         Assert.assertTrue("Failed to find user " + crowdfundOrganizerRequestVo, crowdfundOrganizerRequestVo != null);
     }
+
+
 }

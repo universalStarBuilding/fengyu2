@@ -3,7 +3,7 @@ package com.fengyu.modules.webservice.project.vo;
 public class CrowdfundLightBasicinfoReponseVo {
     private Integer id;
 
-    private Integer userid;             //发起人编号
+    private Integer userId;             //发起人编号
 
     private String projectNo;           //项目编号
 
@@ -35,12 +35,12 @@ public class CrowdfundLightBasicinfoReponseVo {
         this.id = id;
     }
 
-    public Integer getUserid() {
-        return userid;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getProjectNo() {
